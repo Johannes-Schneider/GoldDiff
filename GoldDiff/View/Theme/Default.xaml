@@ -1,0 +1,46 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:view="clr-namespace:GoldDiff.View"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!-- Font -->
+
+    <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyRegular}">pack://application:,,,/GoldDiff;component/Resource/Font/SourceSansPro/#Source Sans Pro Regular</FontFamily>
+    <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyHint}">pack://application:,,,/GoldDiff;component/Resource/Font/SourceSansPro/#Source Sans Pro Italic</FontFamily>
+
+    <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeRegular}">16</system:Double>
+    <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeHint}">16</system:Double>
+
+    <!-- /Font -->
+
+    <!-- Background -->
+
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDarkColor}">#212121</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundRegularColor}">#fcf9f0</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundLightColor}">#727272</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDisabledColor}">#707070</Color>
+
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDark}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.BackgroundDarkColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.BackgroundRegular}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.BackgroundRegularColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.BackgroundLight}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.BackgroundLightColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDisabled}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.BackgroundDisabledColor}}" />
+
+    <!-- /Background -->
+    
+    <!-- Foreground -->
+
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.ForegroundDarkColor}">#1b1b1b</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.ForegroundRegularColor}">#424242</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.ForegroundLightColor}">#6d6d6d</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.ForegroundDisabledColor}">#b7b7b7</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.ForegroundHintColor}">#b7b7b7</Color>
+
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundDark}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundDarkColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundRegular}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundRegularColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundLight}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundLightColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundDisabled}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundDisabledColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundHint}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundHintColor}}" />
+
+    <!-- /Foreground -->
+
+</ResourceDictionary>
