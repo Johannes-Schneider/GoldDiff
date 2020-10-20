@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
 using System.Windows.Input;
 
 namespace GoldDiff.View.Command
@@ -42,5 +43,25 @@ namespace GoldDiff.View.Command
                                                                                                                                              : WindowState.Normal;
                                                                                                          });
                                                                             });
+        
+        public static ICommand Copy { get; } = new GenericCommand(parameter =>
+                                                                  {
+                                                                      if (parameter is string stringParameter)
+                                                                      {
+                                                                          Clipboard.SetText(stringParameter);
+                                                                          return;
+                                                                      }
+                                                                  });
+        
+        public static ICommand OpenUrl { get; } = new GenericCommand(parameter => parameter is string,
+                                                                     parameter =>
+                                                                     {
+                                                                         if (!(parameter is string stringParameter))
+                                                                         {
+                                                                             return;
+                                                                         }
+
+                                                                         Process.Start(stringParameter);
+                                                                     });
     }
 }

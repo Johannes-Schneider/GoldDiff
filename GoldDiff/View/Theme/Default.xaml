@@ -9,7 +9,8 @@
     <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyHint}">pack://application:,,,/GoldDiff;component/Resource/Font/SourceSansPro/#Source Sans Pro Italic</FontFamily>
 
     <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeRegular}">16</system:Double>
-    <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeHint}">16</system:Double>
+    <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeHint}">12</system:Double>
+    <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeTitle}">28</system:Double>
 
     <!-- /Font -->
 
@@ -26,7 +27,7 @@
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDisabled}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.BackgroundDisabledColor}}" />
 
     <!-- /Background -->
-    
+
     <!-- Foreground -->
 
     <Color x:Key="{x:Static view:GoldDiffResourceKey.ForegroundDarkColor}">#1b1b1b</Color>

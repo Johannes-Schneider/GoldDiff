@@ -9,6 +9,7 @@
 
         public const string FontSizeRegular = nameof(FontSizeRegular);
         public const string FontSizeHint = nameof(FontSizeHint);
+        public const string FontSizeTitle = nameof(FontSizeTitle);
 
     #endregion
 
@@ -58,6 +59,8 @@
         public const string IconSettings = nameof(IconSettings);
         public const string IconCopy = nameof(IconCopy);
         public const string IconGitHub = nameof(IconGitHub);
+
+        public const string IconCoins = nameof(IconCoins);
 
     #endregion
     }

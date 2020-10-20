@@ -7,6 +7,7 @@
         xmlns:properties="clr-namespace:GoldDiff.Properties"
         xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
         xmlns:command="clr-namespace:GoldDiff.View.Command"
+        xmlns:data="clr-namespace:GoldDiff.Data"
         mc:Ignorable="d"
 
         x:Name="This"
@@ -28,6 +29,9 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -36,5 +40,44 @@
                                          CanClose="True"
                                          CanMinimize="True"
                                          CanMaximize="False" />
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Margin="30, 30, 30, 18"
+                   FontSize="{DynamicResource {x:Static local:GoldDiffResourceKey.FontSizeTitle}}"
+                   Text="{x:Static properties:MainWindowResources.Title}" />
+
+        <controlElement:IconControl Grid.Column="0"
+                                    Grid.Row="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    Width="196"
+                                    Height="196"
+                                    Style="{DynamicResource {x:Static local:GoldDiffResourceKey.DefaultIconControlStyle}}"
+                                    Source="{DynamicResource {x:Static local:GoldDiffResourceKey.IconCoins}}" />
+
+        <StackPanel Grid.Column="0"
+                    Grid.Row="3"
+                    Margin="0, 18, 0, 0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <TextBlock VerticalAlignment="Center"
+                       Text="{x:Static data:ApplicationConstants.Version}" />
+
+            <controlElement:IconButton Margin="12, 0, 0, 0"
+                                       Style="{DynamicResource {x:Static local:GoldDiffResourceKey.DefaultIconButtonStyle}}"
+                                       Icon="{DynamicResource {x:Static local:GoldDiffResourceKey.IconCopy}}"
+                                       Command="{x:Static command:Commands.Copy}"
+                                       CommandParameter="{x:Static data:ApplicationConstants.Version}" />
+            
+            <controlElement:IconButton Margin="12, 0, 0, 0"
+                                       Style="{DynamicResource {x:Static local:GoldDiffResourceKey.DefaultIconButtonStyle}}"
+                                       Icon="{DynamicResource {x:Static local:GoldDiffResourceKey.IconGitHub}}"
+                                       Command="{x:Static command:Commands.OpenUrl}"
+                                       CommandParameter="{x:Static data:ApplicationConstants.RepositoryUrl}" />
+
+        </StackPanel>
     </Grid>
 </Window>

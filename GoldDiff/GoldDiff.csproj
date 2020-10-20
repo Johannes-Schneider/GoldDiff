@@ -56,6 +56,7 @@
             <DependentUpon>App.xaml</DependentUpon>
             <SubType>Code</SubType>
         </Compile>
+        <Compile Include="Data\ApplicationConstants.cs" />
         <Compile Include="Properties\MainWindowResources.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>

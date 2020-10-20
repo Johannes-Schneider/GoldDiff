@@ -23,5 +23,34 @@
     <StreamGeometry x:Key="{x:Static view:GoldDiffResourceKey.IconGitHub}">
         M12,2A10,10 0 0,0 2,12C2,16.42 4.87,20.17 8.84,21.5C9.34,21.58 9.5,21.27 9.5,21C9.5,20.77 9.5,20.14 9.5,19.31C6.73,19.91 6.14,17.97 6.14,17.97C5.68,16.81 5.03,16.5 5.03,16.5C4.12,15.88 5.1,15.9 5.1,15.9C6.1,15.97 6.63,16.93 6.63,16.93C7.5,18.45 8.97,18 9.54,17.76C9.63,17.11 9.89,16.67 10.17,16.42C7.95,16.17 5.62,15.31 5.62,11.5C5.62,10.39 6,9.5 6.65,8.79C6.55,8.54 6.2,7.5 6.75,6.15C6.75,6.15 7.59,5.88 9.5,7.17C10.29,6.95 11.15,6.84 12,6.84C12.85,6.84 13.71,6.95 14.5,7.17C16.41,5.88 17.25,6.15 17.25,6.15C17.8,7.5 17.45,8.54 17.35,8.79C18,9.5 18.38,10.39 18.38,11.5C18.38,15.32 16.04,16.16 13.81,16.41C14.17,16.72 14.5,17.33 14.5,18.26C14.5,19.6 14.5,20.68 14.5,21C14.5,21.27 14.66,21.59 15.17,21.5C19.14,20.16 22,16.42 22,12A10,10 0 0,0 12,2Z
     </StreamGeometry>
+    
+    <CombinedGeometry x:Key="{x:Static view:GoldDiffResourceKey.IconCoins}" GeometryCombineMode="Union">
+        <CombinedGeometry.Geometry1>
+            <CombinedGeometry GeometryCombineMode="Union">
+                <CombinedGeometry.Geometry1>
+                    <StreamGeometry>
+                        M20.847,8.202c0.173,0.759,0.273,1.546,0.273,2.358c0,5.833-4.728,10.56-10.56,10.56 c-0.812,0-1.599-0.101-2.358-0.273c1.532,1.203,3.458,1.927,5.558,1.927c4.979,0,9.014-4.035,9.014-9.014 C22.773,11.661,22.05,9.734,20.847,8.202z
+                    </StreamGeometry>
+                </CombinedGeometry.Geometry1>
+                <CombinedGeometry.Geometry2>
+                    <StreamGeometry>
+                        M19.854,5.545c0.333,0.616,0.604,1.27,0.811,1.951c1.504,1.657,2.429,3.85,2.429,6.264 c0,5.155-4.179,9.334-9.334,9.334c-2.414,0-4.607-0.925-6.264-2.429c-0.682-0.207-1.335-0.478-1.951-0.811 C7.411,22.365,10.391,24,13.76,24C19.415,24,24,19.415,24,13.76C24,10.391,22.365,7.411,19.854,5.545z
+                    </StreamGeometry>
+                </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+        </CombinedGeometry.Geometry1>
+        <CombinedGeometry.Geometry2>
+            <CombinedGeometry GeometryCombineMode="Union">
+                <CombinedGeometry.Geometry1>
+                    <StreamGeometry>
+                        M10.56,0.32c-5.655,0-10.24,4.585-10.24,10.24c0,5.656,4.585,10.24,10.24,10.24 c5.656,0,10.24-4.584,10.24-10.24C20.8,4.905,16.216,0.32,10.56,0.32z M10.56,19.894c-5.155,0-9.333-4.179-9.333-9.333 s4.179-9.333,9.333-9.333s9.333,4.179,9.333,9.333S15.715,19.894,10.56,19.894z
+                    </StreamGeometry>
+                </CombinedGeometry.Geometry1>
+                <CombinedGeometry.Geometry2>
+                    <EllipseGeometry Center="10.56, 10.56" RadiusX="9.013" RadiusY="9.013" />
+                </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+        </CombinedGeometry.Geometry2>
+    </CombinedGeometry>
 
 </ResourceDictionary>
