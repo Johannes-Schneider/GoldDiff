@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="ApplicationSettings.cs" />
     <Compile Include="BaseNotifyPropertyChanged.cs" />
+    <Compile Include="LeagueOfLegends\LoLGameMode.cs" />
+    <Compile Include="LeagueOfLegends\LoLMap.cs" />
+    <Compile Include="LeagueOfLegends\LoLMapTerrain.cs" />
+    <Compile Include="LeagueOfLegends\LoLPosition.cs" />
+    <Compile Include="LeagueOfLegends\LoLTeam.cs" />
+    <Compile Include="LeagueOfLegends\LoLVersion.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Command\Commands.cs" />

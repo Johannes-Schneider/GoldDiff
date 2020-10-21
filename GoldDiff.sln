@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiff", "GoldDiff\GoldDi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiff.Shared", "GoldDiff.Shared\GoldDiff.Shared.csproj", "{F1491585-01B6-46A0-A72C-89E73A436DCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiff.LeagueOfLegends.ClientApi", "GoldDiff.LeagueOfLegends.ClientApi\GoldDiff.LeagueOfLegends.ClientApi.csproj", "{60CCB9F2-29D2-4204-A516-528CD98CA894}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60CCB9F2-29D2-4204-A516-528CD98CA894}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60CCB9F2-29D2-4204-A516-528CD98CA894}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60CCB9F2-29D2-4204-A516-528CD98CA894}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60CCB9F2-29D2-4204-A516-528CD98CA894}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
