@@ -10,6 +10,7 @@
         public const string FontSizeRegular = nameof(FontSizeRegular);
         public const string FontSizeHint = nameof(FontSizeHint);
         public const string FontSizeTitle = nameof(FontSizeTitle);
+        public const string FontSizeHeadline = nameof(FontSizeHeadline);
 
     #endregion
 
@@ -81,6 +82,7 @@
         public const string DefaultWindowStyle = nameof(DefaultWindowStyle);
         public const string DefaultIconButtonStyle = nameof(DefaultIconButtonStyle);
         public const string DefaultIconControlStyle = nameof(DefaultIconControlStyle);
+        public const string DefaultProgressBarStyle = nameof(DefaultProgressBarStyle);
 
     #endregion
     }

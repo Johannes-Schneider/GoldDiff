@@ -1,95 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-    <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{F1491585-01B6-46A0-A72C-89E73A436DCE}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>GoldDiff.Shared</RootNamespace>
-        <AssemblyName>GoldDiff.Shared</AssemblyName>
-        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
-        <LangVersion>latest</LangVersion>
-        <Nullable>enable</Nullable>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <ItemGroup>
-        <Reference Include="PresentationCore" />
-        <Reference Include="PresentationFramework" />
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="System.Data" />
-        <Reference Include="System.Xaml" />
-        <Reference Include="System.Xml" />
-        <Reference Include="WindowsBase" />
-    </ItemGroup>
-    <ItemGroup>
-        <Compile Include="BaseNotifyPropertyChanged.cs" />
-        <Compile Include="Properties\Annotations.cs" />
-        <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="View\Command\Commands.cs" />
-        <Compile Include="View\Command\GenericCommand.cs" />
-        <Compile Include="View\ControlElement\IconButton.cs" />
-        <Compile Include="View\ControlElement\IconControl.cs" />
-        <Compile Include="View\ControlElement\WindowControlBar.xaml.cs">
-          <DependentUpon>WindowControlBar.xaml</DependentUpon>
-        </Compile>
-        <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
-        <Compile Include="View\GoldDiffResourceKey.cs" />
-        <Compile Include="View\Model\ViewModel.cs" />
-    </ItemGroup>
-    <ItemGroup>
-      <Page Include="View\ControlElement\WindowControlBar.xaml" />
-      <Page Include="View\Resource\VectorIcons.xaml" />
-      <Page Include="View\Style\DefaultIconButtonStyle.xaml" />
-      <Page Include="View\Style\DefaultIconControlStyle.xaml" />
-      <Page Include="View\Style\DefaultWindowStyle.xaml" />
-      <Page Include="View\Theme\Default.xaml" />
-    </ItemGroup>
-    <ItemGroup>
-      <Content Include="View\Resource\Font\SourceSansPro\License.txt" />
-    </ItemGroup>
-    <ItemGroup>
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Black.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-BlackItalic.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Bold.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-BoldItalic.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-ExtraLight.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-ExtraLightItalic.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Italic.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Light.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-LightItalic.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Regular.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-SemiBold.ttf" />
-      <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-SemiBoldItalic.ttf" />
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F1491585-01B6-46A0-A72C-89E73A436DCE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GoldDiff.Shared</RootNamespace>
+    <AssemblyName>GoldDiff.Shared</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationSettings.cs" />
+    <Compile Include="BaseNotifyPropertyChanged.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Command\Commands.cs" />
+    <Compile Include="View\Command\GenericCommand.cs" />
+    <Compile Include="View\ControlElement\IconButton.cs" />
+    <Compile Include="View\ControlElement\IconControl.cs" />
+    <Compile Include="View\ControlElement\ProgressView.xaml.cs">
+      <DependentUpon>ProgressView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlElement\WindowControlBar.xaml.cs">
+      <DependentUpon>WindowControlBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controller\ProgressViewController.cs" />
+    <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="View\GoldDiffResourceKey.cs" />
+    <Compile Include="View\Model\ProgressViewViewModel.cs" />
+    <Compile Include="View\Model\ViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\ControlElement\ProgressView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ControlElement\WindowControlBar.xaml" />
+    <Page Include="View\Resource\VectorIcons.xaml" />
+    <Page Include="View\Style\DefaultIconButtonStyle.xaml" />
+    <Page Include="View\Style\DefaultIconControlStyle.xaml" />
+    <Page Include="View\Style\DefaultProgressBarStyle.xaml" />
+    <Page Include="View\Style\DefaultWindowStyle.xaml" />
+    <Page Include="View\Theme\Default.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="View\Resource\Font\SourceSansPro\License.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Black.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-BlackItalic.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Bold.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-BoldItalic.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-ExtraLight.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-ExtraLightItalic.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Italic.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Light.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-LightItalic.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Regular.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-SemiBold.ttf" />
+    <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-SemiBoldItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
     <Target Name="BeforeBuild">
     </Target>
     <Target Name="AfterBuild">
     </Target>
     -->
-
 </Project>

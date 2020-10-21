@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultWindowStyle.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultIconButtonStyle.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultIconControlStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultProgressBarStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

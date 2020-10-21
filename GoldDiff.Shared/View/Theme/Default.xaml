@@ -11,6 +11,7 @@
     <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeRegular}">16</system:Double>
     <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeHint}">12</system:Double>
     <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeTitle}">28</system:Double>
+    <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeHeadline}">22</system:Double>
 
     <!-- /Font -->
 

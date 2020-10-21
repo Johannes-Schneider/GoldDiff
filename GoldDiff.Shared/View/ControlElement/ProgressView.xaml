@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="GoldDiff.Shared.View.ControlElement.ProgressView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GoldDiff.Shared.View.ControlElement"
+             xmlns:view="clr-namespace:GoldDiff.Shared.View"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
+
+             x:Name="This"
+
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.DataContext>
+        <Binding ElementName="This" Path="PrivateModel" />
+    </UserControl.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Title -->
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="0"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="{DynamicResource {x:Static view:GoldDiffResourceKey.FontSizeHeadline}}"
+                   Text="{Binding Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <!-- /Title -->
+
+        <!-- Current Step -->
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"
+                   Margin="0, 12, 0, 0">
+            <Run Text="(" />
+            <Run Text="{Binding CurrentStepNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Run Text=" / " />
+            <Run Text="{Binding TotalNumberOfSteps, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            <Run Text=") " />
+            <Run Text="{Binding CurrentStepDescription, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        </TextBlock>
+
+        <TextBlock Grid.Column="0"
+                   Grid.Row="1"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Margin="0, 12, 0, 0"
+                   Text="{Binding CurrentStepProgress, StringFormat=P0, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <ProgressBar Grid.Column="0"
+                     Grid.Row="2"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
+                     Margin="0, 6, 0, 0"
+                     Style="{DynamicResource {x:Static view:GoldDiffResourceKey.DefaultProgressBarStyle}}"
+                     Value="{Binding CurrentStepProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <!-- /Current Step -->
+        
+        <!-- Total Progress -->
+        
+        <ProgressBar Grid.Column="0"
+                     Grid.Row="3"
+                     HorizontalAlignment="Stretch"
+                     VerticalAlignment="Center"
+                     Margin="0, 3, 0, 0"
+                     Style="{DynamicResource {x:Static view:GoldDiffResourceKey.DefaultProgressBarStyle}}"
+                     Value="{Binding TotalProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <TextBlock Grid.Column="0"
+                   Grid.Row="4"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Margin="0, 6, 0, 0"
+                   Text="{Binding TotalProgress, StringFormat=P0, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        
+        <!-- /Total Progress -->
+
+    </Grid>
+
+</UserControl>

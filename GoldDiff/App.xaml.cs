@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows;
+using GoldDiff.Shared;
+using GoldDiff.Shared.View.ControlElement;
 using GoldDiff.View;
 
 namespace GoldDiff
@@ -11,20 +13,25 @@ namespace GoldDiff
     {
         private void App_OnStartup(object sender, StartupEventArgs e)
         {
-            LoadTheme();
+            var applicationSettings = ApplicationSettings.Load();
+            LoadTheme(applicationSettings);
             
-            MainWindow = new MainWindow();
+            var mainWindow = new MainWindow();
+
+            var progressView = new ProgressView();
+            progressView.Model.Title = "Updating ...";
+            mainWindow.Model.Content = progressView;
+
+            MainWindow = mainWindow;
             ShutdownMode = ShutdownMode.OnMainWindowClose;
-            
             MainWindow.Show();
         }
 
-        private static void LoadTheme()
+        private static void LoadTheme(ApplicationSettings settings)
         {
-            // TODO: load theme based on user settings
             var theme = new ResourceDictionary
                         {
-                            Source = new Uri("pack://application:,,,/GoldDiff.Shared;component/View/Theme/Default.xaml"),
+                            Source = new Uri(settings.ThemeLocation),
                         };
             Current.Resources.MergedDictionaries.Add(theme);
         }

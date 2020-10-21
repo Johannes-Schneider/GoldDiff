@@ -77,5 +77,11 @@
                                        CommandParameter="{x:Static data:ApplicationConstants.RepositoryUrl}" />
 
         </StackPanel>
+
+        <ContentPresenter Grid.Column="0"
+                          Grid.Row="4"
+                          Margin="60, 18, 60, 18"
+                          VerticalAlignment="Center"
+                          Content="{Binding Content, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>
