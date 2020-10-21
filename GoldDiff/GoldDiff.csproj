@@ -36,6 +36,10 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+        <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
+          <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+          <Private>True</Private>
+        </Reference>
         <Reference Include="System" />
         <Reference Include="System.Core" />
         <Reference Include="System.Data" />
@@ -57,6 +61,16 @@
             <SubType>Code</SubType>
         </Compile>
         <Compile Include="Data\ApplicationConstants.cs" />
+        <Compile Include="LeagueOfLegends\StaticResource\LoLStaticChampion.cs" />
+        <Compile Include="LeagueOfLegends\StaticResource\LoLStaticItem.cs" />
+        <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache+CreateChampionIndex.cs" />
+        <Compile Include="LeagueOfLegends\StaticResource\LolStaticResourceCache+CreateItemIndex.cs" />
+        <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache.cs" />
+        <Compile Include="Properties\LoLStaticResourceCacheResources.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>LoLStaticResourceCacheResources.resx</DependentUpon>
+        </Compile>
         <Compile Include="Properties\MainWindowResources.Designer.cs">
           <DesignTime>True</DesignTime>
           <AutoGen>True</AutoGen>
@@ -71,6 +85,10 @@
         <Compile Include="Properties\AssemblyInfo.cs">
             <SubType>Code</SubType>
         </Compile>
+        <EmbeddedResource Include="Properties\LoLStaticResourceCacheResources.resx">
+          <Generator>PublicResXFileCodeGenerator</Generator>
+          <LastGenOutput>LoLStaticResourceCacheResources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
         <EmbeddedResource Include="Properties\MainWindowResources.resx">
           <Generator>PublicResXFileCodeGenerator</Generator>
           <LastGenOutput>MainWindowResources.Designer.cs</LastGenOutput>
@@ -84,13 +102,14 @@
       <Page Include="View\MainWindow.xaml" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\GoldDiff.LeagueOfLegends.RemoteApi\GoldDiff.LeagueOfLegends.RemoteApi.csproj">
+        <Project>{1a3da65e-5bf1-4625-8bf4-f90de94b65c5}</Project>
+        <Name>GoldDiff.LeagueOfLegends.RemoteApi</Name>
+      </ProjectReference>
       <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj">
         <Project>{cbec5169-a4bc-4d1b-ab20-a55496ead63b}</Project>
         <Name>GoldDiff.Shared</Name>
       </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Resource" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\GitInfo.2.1.2\build\GitInfo.targets" Condition="Exists('..\packages\GitInfo.2.1.2\build\GitInfo.targets')" />

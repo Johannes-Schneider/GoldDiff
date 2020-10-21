@@ -42,7 +42,7 @@
                    Grid.Row="1"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Margin="0, 12, 0, 0">
+                   Margin="0, 18, 0, 0">
             <Run Text="(" />
             <Run Text="{Binding CurrentStepNumber, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
             <Run Text=" / " />
@@ -55,7 +55,7 @@
                    Grid.Row="1"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Center"
-                   Margin="0, 12, 0, 0"
+                   Margin="0, 18, 0, 0"
                    Text="{Binding CurrentStepProgress, StringFormat=P0, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
         
         <ProgressBar Grid.Column="0"

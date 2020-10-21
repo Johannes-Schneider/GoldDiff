@@ -3,11 +3,11 @@ using System.Net.Http;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
+using GoldDiff.Shared.Http;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi
 {
-    public class LoLClientEndpoint
+    public sealed class LoLClientEndpoint : IDisposable
     {
         private const string ClientCertificateThumbprint = "8259aafd8f71a809d2b154dd1cdb492981e448bd";
         private const string Host = "https://127.0.0.1:2999";
@@ -21,14 +21,14 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
             get { return _instance ??= new LoLClientEndpoint(); }
         }
 
-        private HttpClient Client { get; }
+        private RestRequester Requester { get; }
 
         private LoLClientEndpoint()
         {
-            Client = new HttpClient(new HttpClientHandler
-                                    {
-                                        ServerCertificateCustomValidationCallback = ValidateServerCertificate,
-                                    });
+            Requester = new RestRequester(new HttpClientHandler
+                                          {
+                                              ServerCertificateCustomValidationCallback = ValidateServerCertificate,
+                                          });
         }
 
         private static bool ValidateServerCertificate(HttpRequestMessage message, X509Certificate2 certificate, X509Chain chain, SslPolicyErrors errors)
@@ -48,14 +48,39 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
 
         public async Task<LoLClientGameData?> GetGameDataAsync()
         {
-            using var response = await Client.GetAsync(GameDataUrl).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
+            return await Requester.GetAsync<LoLClientGameData?>(GameDataUrl);
+        }
+
+    #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~LoLClientEndpoint()
+        {
+            Dispose(false);
+        }
+
+        private bool _isDisposed;
+
+        private void Dispose(bool disposing)
+        {
+            if (_isDisposed)
             {
-                return null;
+                return;
             }
 
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<LoLClientGameData>(json);
+            _instance = null;
+            _isDisposed = true;
+            if (disposing)
+            {
+                Requester.Dispose();
+            }
         }
+
+    #endregion
     }
 }

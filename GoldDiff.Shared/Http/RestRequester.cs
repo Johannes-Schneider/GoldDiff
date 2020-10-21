@@ -1,0 +1,65 @@
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+
+namespace GoldDiff.Shared.Http
+{
+    public class RestRequester : IDisposable
+    {
+        private HttpClient Client { get; }
+
+        public RestRequester()
+        {
+            Client = new HttpClient();
+        }
+
+        public RestRequester(HttpClientHandler clientHandler)
+        {
+            Client = new HttpClient(clientHandler ?? throw new ArgumentNullException(nameof(clientHandler)));
+        }
+
+        public async Task<TResultType> GetAsync<TResultType>(string url)
+        {
+            var response = await Client.GetAsync(url).ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode)
+            {
+                return default!;
+            }
+
+            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return JsonConvert.DeserializeObject<TResultType>(json);
+        }
+
+    #region IDisposable
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~RestRequester()
+        {
+            Dispose(false);
+        }
+
+        protected bool _isDisposed;
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_isDisposed)
+            {
+                return;
+            }
+
+            _isDisposed = true;
+            if (disposing)
+            {
+                Client.Dispose();
+            }
+        }
+
+    #endregion
+    }
+}

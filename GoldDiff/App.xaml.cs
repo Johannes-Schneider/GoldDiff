@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Windows;
+using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.Shared;
 using GoldDiff.Shared.View.ControlElement;
 using GoldDiff.View;
@@ -11,20 +13,21 @@ namespace GoldDiff
     /// </summary>
     public partial class App
     {
-        private void App_OnStartup(object sender, StartupEventArgs e)
+        private MainWindow? _mainWindow;
+        private LoLStaticResourceCache? _lolResourceCache;
+        
+        private async void App_OnStartup(object sender, StartupEventArgs e)
         {
             var applicationSettings = ApplicationSettings.Load();
             LoadTheme(applicationSettings);
             
-            var mainWindow = new MainWindow();
-
-            var progressView = new ProgressView();
-            progressView.Model.Title = "Updating ...";
-            mainWindow.Model.Content = progressView;
-
-            MainWindow = mainWindow;
+            _mainWindow = new MainWindow();
+            MainWindow = _mainWindow;
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             MainWindow.Show();
+            
+            _lolResourceCache = LoLStaticResourceCache.Load();
+            await UpdateResourceCacheAsync();
         }
 
         private static void LoadTheme(ApplicationSettings settings)
@@ -34,6 +37,16 @@ namespace GoldDiff
                             Source = new Uri(settings.ThemeLocation),
                         };
             Current.Resources.MergedDictionaries.Add(theme);
+        }
+
+        private async Task UpdateResourceCacheAsync()
+        {
+            var progressView = new ProgressView();
+            _mainWindow!.Model.Content = progressView;
+            
+            await _lolResourceCache!.UpdateAsync(progressView.Controller);
+
+            _mainWindow!.Model.Content = null;
         }
     }
 }

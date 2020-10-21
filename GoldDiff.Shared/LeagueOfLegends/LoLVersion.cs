@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace GoldDiff.Shared.LeagueOfLegends
 {
@@ -7,7 +8,10 @@ namespace GoldDiff.Shared.LeagueOfLegends
     {
         private const string ComponentSeparator = ".";
         
+        [JsonProperty]
         private int[] Components { get; }
+        
+        public static LoLVersion Zero => new LoLVersion(0);
 
         public static bool TryParse(string? input, out LoLVersion? version)
         {
@@ -26,12 +30,30 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
         public LoLVersion(params int[]? components)
         {
-            Components = components ?? throw new ArgumentNullException(nameof(components));
-            if (Components.Length < 1)
+            if (components == null)
             {
-                throw new Exception($"{nameof(components)} must contain at least 1 element!");
+                throw new ArgumentNullException(nameof(components));
             }
+
+            if (components.Length < 1)
+            {
+                throw new AggregateException($"{nameof(components)} must contain at least 1 element!");
+            }
+
+            if (components.Any(component => component < 0))
+            {
+                throw new ArgumentException($"{nameof(components)} must not contain any negative elements!");
+            }
+
+            Components = components;
         }
+        
+        public override string ToString()
+        {
+            return string.Join(ComponentSeparator, Components);
+        }
+
+    #region IEquatable
 
         public override bool Equals(object? obj)
         {
@@ -40,7 +62,7 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
         public bool Equals(LoLVersion? other)
         {
-            if (other == null)
+            if (ReferenceEquals(other, null))
             {
                 return false;
             }
@@ -58,9 +80,144 @@ namespace GoldDiff.Shared.LeagueOfLegends
             return Components.GetHashCode();
         }
 
-        public override string ToString()
+    #endregion
+
+    #region Operators
+
+        public static bool operator ==(LoLVersion? a, LoLVersion? b)
         {
-            return string.Join(ComponentSeparator, Components);
+            return a?.Equals(b) == true;
         }
+
+        public static bool operator !=(LoLVersion? a, LoLVersion? b)
+        {
+            return a?.Equals(b) == false;
+        }
+        
+        public static bool operator >(LoLVersion? a, LoLVersion? b)
+        {
+            if (ReferenceEquals(a, null))
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (ReferenceEquals(b, null))
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
+            for (var componentIndex = 0; componentIndex < Math.Max(a.Components.Length, b.Components.Length); ++componentIndex)
+            {
+                var componentA = componentIndex < a.Components.Length ? a.Components[componentIndex] : 0;
+                var componentB = componentIndex < b.Components.Length ? b.Components[componentIndex] : 0;
+
+                if (componentA > componentB)
+                {
+                    return true;
+                }
+
+                if (componentA < componentB)
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+        
+        public static bool operator >=(LoLVersion? a, LoLVersion? b)
+        {
+            if (ReferenceEquals(a, null))
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (ReferenceEquals(b, null))
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
+            for (var componentIndex = 0; componentIndex < Math.Max(a.Components.Length, b.Components.Length); ++componentIndex)
+            {
+                var componentA = componentIndex < a.Components.Length ? a.Components[componentIndex] : 0;
+                var componentB = componentIndex < b.Components.Length ? b.Components[componentIndex] : 0;
+
+                if (componentA > componentB)
+                {
+                    return true;
+                }
+
+                if (componentA < componentB)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        
+        public static bool operator <(LoLVersion? a, LoLVersion? b)
+        {
+            if (ReferenceEquals(a, null))
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (ReferenceEquals(b, null))
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
+            for (var componentIndex = 0; componentIndex < Math.Max(a.Components.Length, b.Components.Length); ++componentIndex)
+            {
+                var componentA = componentIndex < a.Components.Length ? a.Components[componentIndex] : 0;
+                var componentB = componentIndex < b.Components.Length ? b.Components[componentIndex] : 0;
+
+                if (componentA < componentB)
+                {
+                    return true;
+                }
+
+                if (componentA > componentB)
+                {
+                    return false;
+                }
+            }
+
+            return false;
+        }
+        
+        public static bool operator <=(LoLVersion? a, LoLVersion? b)
+        {
+            if (ReferenceEquals(a, null))
+            {
+                throw new ArgumentNullException(nameof(a));
+            }
+
+            if (ReferenceEquals(b, null))
+            {
+                throw new ArgumentNullException(nameof(b));
+            }
+
+            for (var componentIndex = 0; componentIndex < Math.Max(a.Components.Length, b.Components.Length); ++componentIndex)
+            {
+                var componentA = componentIndex < a.Components.Length ? a.Components[componentIndex] : 0;
+                var componentB = componentIndex < b.Components.Length ? b.Components[componentIndex] : 0;
+
+                if (componentA < componentB)
+                {
+                    return true;
+                }
+
+                if (componentA > componentB)
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+    #endregion
     }
 }
