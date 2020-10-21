@@ -8,6 +8,7 @@
         <Setter Property="Background" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
         <Setter Property="BorderBrush" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
+        <Setter Property="Icon" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ApplicationIcon}}" />
         <Setter Property="BorderThickness" Value="1" />
     </Style>
 

@@ -70,7 +70,7 @@ namespace GoldDiff.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating static champion index ....
+        ///   Looks up a localized string similar to Creating champion index ....
         /// </summary>
         public static string CreateChampionIndexProgressStepDescription {
             get {
@@ -79,11 +79,29 @@ namespace GoldDiff.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating static item index ....
+        ///   Looks up a localized string similar to Creating item index ....
         /// </summary>
         public static string CreateItemIndexProgressStepDescription {
             get {
                 return ResourceManager.GetString("CreateItemIndexProgressStepDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting older resources ....
+        /// </summary>
+        public static string DeleteOldStatisResourcesProgressStepDescription {
+            get {
+                return ResourceManager.GetString("DeleteOldStatisResourcesProgressStepDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting resource archive ....
+        /// </summary>
+        public static string DeleteResourceArchiveProgressStepDescription {
+            get {
+                return ResourceManager.GetString("DeleteResourceArchiveProgressStepDescription", resourceCulture);
             }
         }
         
@@ -115,7 +133,7 @@ namespace GoldDiff.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating Static Resources.
+        ///   Looks up a localized string similar to Updating Resources.
         /// </summary>
         public static string UpdateProgressTitle {
             get {

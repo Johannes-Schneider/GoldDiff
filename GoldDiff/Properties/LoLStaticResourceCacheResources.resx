@@ -19,7 +19,7 @@
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
     <data name="UpdateProgressTitle" xml:space="preserve">
-        <value>Updating Static Resources</value>
+        <value>Updating Resources</value>
     </data>
     <data name="CheckForUpdatesProgressStepDescription" xml:space="preserve">
         <value>Checking for updates ...</value>
@@ -34,9 +34,15 @@
         <value>Unpacking resources ...</value>
     </data>
     <data name="CreateChampionIndexProgressStepDescription" xml:space="preserve">
-        <value>Creating static champion index ...</value>
+        <value>Creating champion index ...</value>
     </data>
     <data name="CreateItemIndexProgressStepDescription" xml:space="preserve">
-        <value>Creating static item index ...</value>
+        <value>Creating item index ...</value>
+    </data>
+    <data name="DeleteResourceArchiveProgressStepDescription" xml:space="preserve">
+        <value>Deleting resource archive ...</value>
+    </data>
+    <data name="DeleteOldStatisResourcesProgressStepDescription" xml:space="preserve">
+        <value>Deleting older resources ...</value>
     </data>
 </root>

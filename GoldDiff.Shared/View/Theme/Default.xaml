@@ -44,9 +44,9 @@
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundHint}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundHintColor}}" />
 
     <!-- /Foreground -->
-    
+
     <!-- Colors -->
-    
+
     <Color x:Key="{x:Static view:GoldDiffResourceKey.RedDarkColor}">#ab000d</Color>
     <Color x:Key="{x:Static view:GoldDiffResourceKey.RedRegularColor}">#e53935</Color>
     <Color x:Key="{x:Static view:GoldDiffResourceKey.RedLightColor}">#ff6f60</Color>
@@ -62,7 +62,13 @@
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.GreenDark}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.GreenDarkColor}}" />
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.GreenRegular}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.GreenRegularColor}}" />
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.GreenLight}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.GreenLightColor}}" />
-    
+
     <!-- /Colors -->
+
+    <!-- Icon -->
+
+    <BitmapImage x:Key="{x:Static view:GoldDiffResourceKey.ApplicationIcon}" UriSource="pack://application:,,,/GoldDiff.Shared;component/View/Theme/Default/ApplicationIcon.ico" />
+
+    <!-- /Icon -->
 
 </ResourceDictionary>

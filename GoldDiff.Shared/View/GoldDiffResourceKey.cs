@@ -66,6 +66,8 @@
 
     #region Icons
 
+        public const string ApplicationIcon = nameof(ApplicationIcon);
+
         public const string IconClose = nameof(IconClose);
         public const string IconMinimize = nameof(IconMinimize);
         public const string IconMaximize = nameof(IconMaximize);

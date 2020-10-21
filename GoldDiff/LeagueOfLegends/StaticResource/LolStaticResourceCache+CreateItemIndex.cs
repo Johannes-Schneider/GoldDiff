@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using GoldDiff.Properties;
 using GoldDiff.Shared.LeagueOfLegends;
@@ -24,8 +25,10 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
                 progressViewController.Model.CurrentStepProgress = currentItemIndex++ / (double) numberOfItems;
 
                 var item = ToItem(itemJson, gameVersion, staticResourceRootDirectory);
-                ItemIdToNameIndex.AddOrUpdate(item.Id, _ => item.Name, (key, _) => item.Name);
-                Items.AddOrUpdate(item.Name, _ => item, (key, _) => item);
+                if (!Items.TryAdd(item.Id, item))
+                {
+                    throw new Exception($"The item id {item.Id} has been defined multiple times!");
+                }
             }
         }
 

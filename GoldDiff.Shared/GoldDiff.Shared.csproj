@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="View\Resource\Font\SourceSansPro\License.txt" />
+    <Resource Include="View\Theme\Default\ApplicationIcon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="View\Resource\Font\SourceSansPro\SourceSansPro-Black.ttf" />
