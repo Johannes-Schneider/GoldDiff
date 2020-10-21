@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:view="clr-namespace:GoldDiff.View"
+                    xmlns:view="clr-namespace:GoldDiff.Shared.View"
                     xmlns:system="clr-namespace:System;assembly=mscorlib">
 
     <!-- Font -->
 
-    <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyRegular}">pack://application:,,,/GoldDiff;component/Resource/Font/SourceSansPro/#Source Sans Pro Regular</FontFamily>
-    <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyHint}">pack://application:,,,/GoldDiff;component/Resource/Font/SourceSansPro/#Source Sans Pro Italic</FontFamily>
+    <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyRegular}">pack://application:,,,/GoldDiff.Shared;component/View/Resource/Font/SourceSansPro/#Source Sans Pro Regular</FontFamily>
+    <FontFamily x:Key="{x:Static view:GoldDiffResourceKey.FontFamilyHint}">pack://application:,,,/GoldDiff.Shared;component/View/Resource/Font/SourceSansPro/#Source Sans Pro Italic</FontFamily>
 
     <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeRegular}">16</system:Double>
     <system:Double x:Key="{x:Static view:GoldDiffResourceKey.FontSizeHint}">12</system:Double>
@@ -43,5 +43,25 @@
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.ForegroundHint}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.ForegroundHintColor}}" />
 
     <!-- /Foreground -->
+    
+    <!-- Colors -->
+    
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.RedDarkColor}">#ab000d</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.RedRegularColor}">#e53935</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.RedLightColor}">#ff6f60</Color>
+
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.GreenDarkColor}">#00701a</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.GreenRegularColor}">#43a047</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.GreenLightColor}">#76d275</Color>
+
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.RedDark}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.RedDarkColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.RedRegular}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.RedRegularColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.RedLight}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.RedLightColor}}" />
+
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.GreenDark}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.GreenDarkColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.GreenRegular}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.GreenRegularColor}}" />
+    <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.GreenLight}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.GreenLightColor}}" />
+    
+    <!-- /Colors -->
 
 </ResourceDictionary>

@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace GoldDiff.View.Command
+namespace GoldDiff.Shared.View.Command
 {
     public static class Commands
     {

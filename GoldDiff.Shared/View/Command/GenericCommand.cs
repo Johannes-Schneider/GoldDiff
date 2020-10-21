@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace GoldDiff.View.Command
+namespace GoldDiff.Shared.View.Command
 {
     public class GenericCommand : ICommand
     {

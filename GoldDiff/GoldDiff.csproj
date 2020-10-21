@@ -62,20 +62,10 @@
           <AutoGen>True</AutoGen>
           <DependentUpon>MainWindowResources.resx</DependentUpon>
         </Compile>
-        <Compile Include="View\Command\Commands.cs" />
-        <Compile Include="View\Command\GenericCommand.cs" />
-        <Compile Include="View\ControlElement\IconButton.cs" />
-        <Compile Include="View\ControlElement\IconControl.cs" />
-        <Compile Include="View\ControlElement\WindowControlBar.xaml.cs">
-          <DependentUpon>WindowControlBar.xaml</DependentUpon>
-        </Compile>
-        <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
-        <Compile Include="View\GoldDiffResourceKey.cs" />
         <Compile Include="View\MainWindow.xaml.cs">
           <DependentUpon>MainWindow.xaml</DependentUpon>
         </Compile>
         <Compile Include="View\Model\MainWindowViewModel.cs" />
-        <Compile Include="View\Model\ViewModel.cs" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs">
@@ -91,34 +81,16 @@
         <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
-      <Content Include="Resource\Font\SourceSansPro\License.txt" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-Black.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-BlackItalic.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-Bold.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-BoldItalic.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-ExtraLight.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-ExtraLightItalic.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-Italic.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-Light.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-LightItalic.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-Regular.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-SemiBold.ttf" />
-      <Resource Include="Resource\Font\SourceSansPro\SourceSansPro-SemiBoldItalic.ttf" />
-    </ItemGroup>
-    <ItemGroup>
-      <Page Include="Resource\VectorIcons.xaml" />
-      <Page Include="View\ControlElement\WindowControlBar.xaml" />
       <Page Include="View\MainWindow.xaml" />
-      <Page Include="View\Style\DefaultIconButtonStyle.xaml" />
-      <Page Include="View\Style\DefaultIconControlStyle.xaml" />
-      <Page Include="View\Style\DefaultWindowStyle.xaml" />
-      <Page Include="View\Theme\Default.xaml" />
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj">
         <Project>{cbec5169-a4bc-4d1b-ab20-a55496ead63b}</Project>
         <Name>GoldDiff.Shared</Name>
       </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Resource" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <Import Project="..\packages\GitInfo.2.1.2\build\GitInfo.targets" Condition="Exists('..\packages\GitInfo.2.1.2\build\GitInfo.targets')" />

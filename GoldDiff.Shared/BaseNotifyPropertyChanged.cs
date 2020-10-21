@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Windows;
 using System.Windows.Threading;
+using GoldDiff.Shared.Properties;
 
-namespace GoldDiff.View.Model
+namespace GoldDiff.Shared
 {
-    public abstract class ViewModel : INotifyPropertyChanged
+    public abstract class BaseNotifyPropertyChanged : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
+        
+        protected Dispatcher? EventDispatcher { get; }
 
-        private Dispatcher EventDispatcher { get; }
-
-        protected ViewModel()
+        protected BaseNotifyPropertyChanged(Dispatcher? eventDispatcher = null)
         {
-            EventDispatcher = Application.Current?.Dispatcher ?? throw new Exception($"Unable to get the {nameof(Dispatcher)} of the current {nameof(Application)}!");
+            EventDispatcher = eventDispatcher;
         }
-
+        
         protected bool MutateVerboseIfNotNull<TPropertyType>(ref TPropertyType property, TPropertyType value, [CallerMemberName] string? propertyName = null)
         {
             if (value == null)
@@ -40,14 +39,22 @@ namespace GoldDiff.View.Model
             return true;
         }
 
-        protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             if (PropertyChanged == null)
             {
                 return;
             }
 
-            EventDispatcher.Invoke(() => PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName)));
+            if (EventDispatcher == null)
+            {
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            else
+            {
+                EventDispatcher.Invoke(() => PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName)));
+            }
         }
     }
 }

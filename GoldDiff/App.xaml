@@ -6,11 +6,10 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/Resource/VectorIcons.xaml" />
-
-                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultWindowStyle.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultIconControlStyle.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultIconButtonStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Resource/VectorIcons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultWindowStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultIconButtonStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultIconControlStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

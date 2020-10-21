@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="GoldDiff.Shared.View.ControlElement.WindowControlBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:view="clr-namespace:GoldDiff.Shared.View"
+             xmlns:converter="clr-namespace:GoldDiff.Shared.View.Converter"
+             xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement"
+             xmlns:command="clr-namespace:GoldDiff.Shared.View.Command"
+             mc:Ignorable="d"
+
+             x:Name="This"
+
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"
+                                             TrueValue="Visible"
+                                             FalseValue="Collapsed" />
+    </UserControl.Resources>
+
+    <StackPanel HorizontalAlignment="Right"
+                Orientation="Horizontal"
+                VerticalAlignment="Center">
+
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconMinimize}}"
+                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundDark}}"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   Visibility="{Binding ElementName=This, Path=CanMinimize, Converter={StaticResource BoolToVisibilityConverter}}"
+                                   Command="{x:Static command:Commands.MinimizeWindow}"
+                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconMaximize}}"
+                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundDark}}"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   Visibility="{Binding ElementName=This, Path=CanMaximize, Converter={StaticResource BoolToVisibilityConverter}}"
+                                   Command="{x:Static command:Commands.ToggleMaximizeWindow}"
+                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconClose}}"
+                                   BackgroundWhenHovered="#e73c32"
+                                   BackgroundWhenPressed="#ad0009"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   Visibility="{Binding ElementName=This, Path=CanClose, Converter={StaticResource BoolToVisibilityConverter}}"
+                                   Command="{x:Static command:Commands.CloseWindow}"
+                                   CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
+    </StackPanel>
+</UserControl>

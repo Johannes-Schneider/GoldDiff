@@ -24,7 +24,7 @@ namespace GoldDiff
             // TODO: load theme based on user settings
             var theme = new ResourceDictionary
                         {
-                            Source = new Uri("pack://application:,,,/GoldDiff;component/View/Theme/Default.xaml"),
+                            Source = new Uri("pack://application:,,,/GoldDiff.Shared;component/View/Theme/Default.xaml"),
                         };
             Current.Resources.MergedDictionaries.Add(theme);
         }

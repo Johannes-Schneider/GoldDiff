@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace GoldDiff.View.ControlElement
+namespace GoldDiff.Shared.View.ControlElement
 {
     public class IconControl : Control
     {
@@ -13,6 +13,11 @@ namespace GoldDiff.View.ControlElement
         {
             get => GetValue(SourceProperty) as Geometry;
             set => SetValue(SourceProperty, value);
+        }
+
+        public IconControl()
+        {
+            Style = Application.Current?.Resources[GoldDiffResourceKey.DefaultIconControlStyle] as Style ?? null;
         }
     }
 }

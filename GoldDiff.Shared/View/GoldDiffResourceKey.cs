@@ -1,4 +1,4 @@
-﻿namespace GoldDiff.View
+﻿namespace GoldDiff.Shared.View
 {
     public static class GoldDiffResourceKey
     {
@@ -43,11 +43,23 @@
 
     #endregion
 
-    #region Style
+    #region Colors
 
-        public const string DefaultWindowStyle = nameof(DefaultWindowStyle);
-        public const string DefaultIconControlStyle = nameof(DefaultIconControlStyle);
-        public const string DefaultIconButtonStyle = nameof(DefaultIconButtonStyle);
+        public const string GreenDarkColor = nameof(GreenDarkColor);
+        public const string GreenRegularColor = nameof(GreenRegularColor);
+        public const string GreenLightColor = nameof(GreenLightColor);
+
+        public const string RedDarkColor = nameof(RedDarkColor);
+        public const string RedRegularColor = nameof(RedRegularColor);
+        public const string RedLightColor = nameof(RedLightColor);
+
+        public const string GreenDark = nameof(GreenDark);
+        public const string GreenRegular = nameof(GreenRegular);
+        public const string GreenLight = nameof(GreenLight);
+        
+        public const string RedDark = nameof(RedDark);
+        public const string RedRegular = nameof(RedRegular);
+        public const string RedLight = nameof(RedLight);
 
     #endregion
 
@@ -61,6 +73,14 @@
         public const string IconGitHub = nameof(IconGitHub);
 
         public const string IconCoins = nameof(IconCoins);
+
+    #endregion
+
+    #region Styles
+
+        public const string DefaultWindowStyle = nameof(DefaultWindowStyle);
+        public const string DefaultIconButtonStyle = nameof(DefaultIconButtonStyle);
+        public const string DefaultIconControlStyle = nameof(DefaultIconControlStyle);
 
     #endregion
     }

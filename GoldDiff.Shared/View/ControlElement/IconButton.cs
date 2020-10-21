@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace GoldDiff.View.ControlElement
+namespace GoldDiff.Shared.View.ControlElement
 {
     public class IconButton : Button
     {
@@ -69,6 +69,11 @@ namespace GoldDiff.View.ControlElement
         {
             get => GetValue(ForegroundWhenDisabledProperty) as Brush;
             set => SetValue(ForegroundWhenDisabledProperty, value);
+        }
+
+        public IconButton()
+        {
+            Style = Application.Current?.Resources[GoldDiffResourceKey.DefaultIconButtonStyle] as Style ?? null;
         }
     }
 }

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiff", "GoldDiff\GoldDiff.csproj", "{139ACFB3-39D8-4F28-999E-763C56D6B0BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiff.Shared", "GoldDiff.Shared\GoldDiff.Shared.csproj", "{F1491585-01B6-46A0-A72C-89E73A436DCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{139ACFB3-39D8-4F28-999E-763C56D6B0BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{139ACFB3-39D8-4F28-999E-763C56D6B0BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{139ACFB3-39D8-4F28-999E-763C56D6B0BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1491585-01B6-46A0-A72C-89E73A436DCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

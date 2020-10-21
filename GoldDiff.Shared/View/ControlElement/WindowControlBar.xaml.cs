@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GoldDiff.View.ControlElement
+namespace GoldDiff.Shared.View.ControlElement
 {
     public partial class WindowControlBar : UserControl
     {
