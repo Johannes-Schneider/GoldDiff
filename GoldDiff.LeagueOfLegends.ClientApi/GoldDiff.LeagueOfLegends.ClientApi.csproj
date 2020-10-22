@@ -46,6 +46,10 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Converter\LoLClientDragonTypeConverter.cs" />
+        <Compile Include="Converter\LoLClientEventConverter.cs" />
+        <Compile Include="Converter\LoLClientEventTypeConverter.cs" />
+        <Compile Include="Converter\LoLClientGameResultConverter.cs" />
         <Compile Include="Converter\LoLGameModeConverter.cs" />
         <Compile Include="Converter\LoLMapConverter.cs" />
         <Compile Include="Converter\LoLMapTerrainConverter.cs" />
@@ -53,6 +57,27 @@
         <Compile Include="Converter\LoLTeamConverter.cs" />
         <Compile Include="Converter\LoLTimeConverter.cs" />
         <Compile Include="Converter\ReadOnlyConverter.cs" />
+        <Compile Include="Event\LoLClientBaronKilledEvent.cs" />
+        <Compile Include="Event\LoLClientChampionKilledEvent.cs" />
+        <Compile Include="Event\LoLClientDragonKilledEvent.cs" />
+        <Compile Include="Event\LoLClientDragonType.cs" />
+        <Compile Include="Event\LoLClientEntireTeamKilledEvent.cs" />
+        <Compile Include="Event\LoLClientEvent.cs" />
+        <Compile Include="Event\LoLClientEventCollection.cs" />
+        <Compile Include="Event\LoLClientEventType.cs" />
+        <Compile Include="Event\LoLClientFirstChampionKilledEvent.cs" />
+        <Compile Include="Event\LoLClientFirstMinionWaveSpawnedEvent.cs" />
+        <Compile Include="Event\LoLClientFirstTurretKilledEvent.cs" />
+        <Compile Include="Event\LoLClientGameEndedEvent.cs" />
+        <Compile Include="Event\LoLClientGameResult.cs" />
+        <Compile Include="Event\LoLClientGameStartedEvent.cs" />
+        <Compile Include="Event\LoLClientHeraldKilledEvent.cs" />
+        <Compile Include="Event\LoLClientInhibitorKilledEvent.cs" />
+        <Compile Include="Event\LoLClientKilledEvent.cs" />
+        <Compile Include="Event\LoLClientKilledWithAssistersEvent.cs" />
+        <Compile Include="Event\LoLClientMultipleChampionsKilledEvent.cs" />
+        <Compile Include="Event\LoLClientNeutralObjectiveKilledEvent.cs" />
+        <Compile Include="Event\LoLClientTurretKilledEvent.cs" />
         <Compile Include="LoLClientEndpoint.cs" />
         <Compile Include="LoLClientGameData.cs" />
         <Compile Include="LoLClientGameStats.cs" />

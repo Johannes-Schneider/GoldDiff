@@ -17,6 +17,6 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Player
         public int MinionKills { get; set; }
         
         [JsonProperty("wardScore")]
-        public int Vision { get; set; }
+        public double Vision { get; set; }
     }
 }
