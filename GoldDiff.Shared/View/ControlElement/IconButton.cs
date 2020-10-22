@@ -22,6 +22,12 @@ namespace GoldDiff.Shared.View.ControlElement
         public static readonly DependencyProperty ForegroundWhenPressedProperty = DependencyProperty.Register(nameof(ForegroundWhenPressed), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType);
         
         public static readonly DependencyProperty ForegroundWhenDisabledProperty = DependencyProperty.Register(nameof(ForegroundWhenDisabled), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType);
+        
+        public static readonly DependencyProperty BorderBrushWhenHoveredProperty = DependencyProperty.Register(nameof(BorderBrushWhenHovered), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType);
+
+        public static readonly DependencyProperty BorderBrushWhenPressedProperty = DependencyProperty.Register(nameof(BorderBrushWhenPressed), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType);
+        
+        public static readonly DependencyProperty BorderBrushWhenDisabledProperty = DependencyProperty.Register(nameof(BorderBrushWhenDisabled), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType);
 
         public Geometry? Icon
         {
@@ -69,6 +75,24 @@ namespace GoldDiff.Shared.View.ControlElement
         {
             get => GetValue(ForegroundWhenDisabledProperty) as Brush;
             set => SetValue(ForegroundWhenDisabledProperty, value);
+        }
+
+        public Brush? BorderBrushWhenHovered
+        {
+            get => GetValue(BorderBrushWhenHoveredProperty) as Brush;
+            set => SetValue(BorderBrushWhenHoveredProperty, value);
+        }
+
+        public Brush? BorderBrushWhenPressed
+        {
+            get => GetValue(BorderBrushWhenPressedProperty) as Brush;
+            set => SetValue(BorderBrushWhenPressedProperty, value);
+        }
+
+        public Brush? BorderBrushWhenDisabled
+        {
+            get => GetValue(BorderBrushWhenDisabledProperty) as Brush;
+            set => SetValue(BorderBrushWhenDisabledProperty, value);
         }
 
         public IconButton()

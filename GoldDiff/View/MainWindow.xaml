@@ -32,8 +32,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <controlElement:WindowControlBar Grid.Column="0"
@@ -58,30 +58,85 @@
                                     Height="196"
                                     Source="{DynamicResource {x:Static view:GoldDiffResourceKey.IconCoins}}" />
 
-        <StackPanel Grid.Column="0"
-                    Grid.Row="3"
-                    Margin="0, 18, 0, 0"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Center">
-            <TextBlock VerticalAlignment="Center"
-                       Text="{x:Static data:ApplicationConstants.Version}" />
-
-            <controlElement:IconButton Margin="12, 0, 0, 0"
-                                       Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconCopy}}"
-                                       Command="{x:Static command:Commands.Copy}"
-                                       CommandParameter="{x:Static data:ApplicationConstants.Version}" />
-
-            <controlElement:IconButton Margin="12, 0, 0, 0"
-                                       Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconGitHub}}"
-                                       Command="{x:Static command:Commands.OpenUrl}"
-                                       CommandParameter="{x:Static data:ApplicationConstants.RepositoryUrl}" />
-
-        </StackPanel>
-
         <ContentPresenter Grid.Column="0"
-                          Grid.Row="4"
+                          Grid.Row="3"
                           Margin="60, 18, 60, 18"
                           VerticalAlignment="Center"
                           Content="{Binding Content, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Grid Grid.Column="0"
+              Grid.Row="4"
+              Margin="0, 18, 0, 0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Bottom"
+              Background="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Grid.Row="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       Margin="12, 3, 0, 3"
+                       Foreground="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                       FontSize="{DynamicResource {x:Static view:GoldDiffResourceKey.FontSizeHint}}">
+                <Run Text="{x:Static properties:MainWindowResources.Title}" />
+                <Run Text=" Version " />
+                <Run Text="{x:Static data:ApplicationConstants.Version}" />
+            </TextBlock>
+
+            <controlElement:IconButton Grid.Column="1"
+                                       Grid.Row="0"
+                                       Margin="12, 3, 0, 3"
+                                       BorderThickness="1"
+                                       Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconCopy}}"
+                                       Background="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                       BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                       BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                       Foreground="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                       ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       BorderBrush="Transparent"
+                                       BorderBrushWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       BorderBrushWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       Command="{x:Static command:Commands.Copy}"
+                                       CommandParameter="{x:Static data:ApplicationConstants.Version}" />
+
+            <controlElement:IconButton Grid.Column="2"
+                                       Grid.Row="0"
+                                       Margin="12, 3, 0, 3"
+                                       BorderThickness="1"
+                                       Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconGitHub}}"
+                                       Background="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                       BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                       BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
+                                       Foreground="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                       ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       BorderBrush="Transparent"
+                                       BorderBrushWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       BorderBrushWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}"
+                                       Command="{x:Static command:Commands.OpenUrl}"
+                                       CommandParameter="{x:Static data:ApplicationConstants.RepositoryUrl}" />
+
+            <TextBlock Grid.Column="4"
+                       Grid.Row="0"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       Margin="12, 3, 12, 3"
+                       Foreground="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                       FontSize="{DynamicResource {x:Static view:GoldDiffResourceKey.FontSizeHint}}">
+                <Run Text="League Patch " />
+                <Run Text="{Binding LeagueVersion, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+            </TextBlock>
+
+        </Grid>
+
     </Grid>
 </Window>

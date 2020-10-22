@@ -7,6 +7,6 @@ namespace GoldDiff.Data
     {
         public static string Version { get; } = FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(ApplicationConstants)).Location).ProductVersion;
 
-        public static string RepositoryUrl { get; } = "https://github.com/Johannes-Schneider/GoldGap"; // TODO: Update me
+        public static string RepositoryUrl { get; } = "https://github.com/Johannes-Schneider/GoldDiff";
     }
 }

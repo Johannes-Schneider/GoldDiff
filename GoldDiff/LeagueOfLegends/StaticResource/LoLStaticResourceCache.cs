@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,6 +42,12 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
 
         [JsonProperty]
         private ConcurrentDictionary<int, LoLStaticItem> Items { get; } = new ConcurrentDictionary<int, LoLStaticItem>();
+
+        [JsonIgnore]
+        public IEnumerable<int> ChampionIds => Champions.Keys;
+
+        [JsonIgnore]
+        public IEnumerable<int> ItemIds => Items.Keys;
 
         public async Task UpdateAsync(ProgressViewController? progressViewController)
         {

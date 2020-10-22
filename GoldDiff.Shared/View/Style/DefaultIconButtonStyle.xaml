@@ -9,12 +9,12 @@
         <Setter Property="Height" Value="25" />
         <Setter Property="IconSize" Value="18" />
         <Setter Property="Background" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}" />
-        <Setter Property="BackgroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundDark}}" />
-        <Setter Property="BackgroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundDark}}" />
+        <Setter Property="BackgroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
+        <Setter Property="BackgroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
         <Setter Property="BackgroundWhenDisabled" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundDisabled}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
         <Setter Property="ForegroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}" />
-        <Setter Property="ForegroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundLight}}" />
+        <Setter Property="ForegroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}" />
         <Setter Property="ForegroundWhenDisabled" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundDisabled}}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -36,14 +36,17 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BackgroundWhenHovered}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrushWhenHovered}" />
                             <Setter TargetName="Icon" Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundWhenHovered}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
                             <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BackgroundWhenPressed}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrushWhenPressed}" />
                             <Setter TargetName="Icon" Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundWhenPressed}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BackgroundWhenDisabled}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=BorderBrushWhenDisabled}" />
                             <Setter TargetName="Icon" Property="Foreground" Value="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=ForegroundWhenDisabled}" />
                         </Trigger>
                     </ControlTemplate.Triggers>

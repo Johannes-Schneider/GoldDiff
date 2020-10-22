@@ -17,9 +17,9 @@
 
     <!-- Background -->
 
-    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDarkColor}">#212121</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDarkColor}">#c9c6be</Color>
     <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundRegularColor}">#fcf9f0</Color>
-    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundLightColor}">#727272</Color>
+    <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundLightColor}">#ffffff</Color>
     <Color x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDisabledColor}">#707070</Color>
 
     <SolidColorBrush x:Key="{x:Static view:GoldDiffResourceKey.BackgroundDark}" Color="{StaticResource {x:Static view:GoldDiffResourceKey.BackgroundDarkColor}}" />
