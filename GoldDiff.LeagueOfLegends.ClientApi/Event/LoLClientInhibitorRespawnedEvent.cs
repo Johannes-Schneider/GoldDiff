@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Event
 {
-    public class LoLClientInhibitorKilledEvent : LoLClientKilledWithAssistersEvent
+    public class LoLClientInhibitorRespawnedEvent : LoLClientEvent
     {
-        [JsonProperty("InhibKilled")]
+        [JsonProperty("InhibRespawned")]
         [JsonConverter(typeof(LoLClientInhibitorConverter))]
         public LoLClientInhibitor Inhibitor { get; set; }
     }

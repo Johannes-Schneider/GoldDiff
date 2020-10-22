@@ -6,31 +6,33 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Event
     public enum LoLClientEventType
     {
         Undefined,
-        
+
         GameStarted,
-        
+
         FirstMinionWaveSpawned,
-        
+
         FirstTurretKilled,
-        
+
         TurretKilled,
-        
+
         InhibitorKilled,
-        
+
+        InhibitorRespawned,
+
         DragonKilled,
-        
+
         HeraldKilled,
-        
+
         BaronKilled,
-        
+
         FirstChampionKilled,
-        
+
         ChampionKilled,
-        
+
         MultipleChampionsKilled,
-        
+
         EntireTeamKilled,
-        
+
         GameEnded,
     }
 
@@ -43,6 +45,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Event
                                                                                                         {LoLClientEventType.FirstTurretKilled, () => new LoLClientFirstTurretKilledEvent()},
                                                                                                         {LoLClientEventType.TurretKilled, () => new LoLClientTurretKilledEvent()},
                                                                                                         {LoLClientEventType.InhibitorKilled, () => new LoLClientInhibitorKilledEvent()},
+                                                                                                        {LoLClientEventType.InhibitorRespawned, () => new LoLClientInhibitorRespawnedEvent()},
                                                                                                         {LoLClientEventType.DragonKilled, () => new LoLClientDragonKilledEvent()},
                                                                                                         {LoLClientEventType.HeraldKilled, () => new LoLClientHeraldKilledEvent()},
                                                                                                         {LoLClientEventType.BaronKilled, () => new LoLClientBaronKilledEvent()},

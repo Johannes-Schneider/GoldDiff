@@ -46,10 +46,13 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ActivePlayer\LoLClientActivePlayer.cs" />
         <Compile Include="Converter\LoLClientDragonTypeConverter.cs" />
         <Compile Include="Converter\LoLClientEventConverter.cs" />
         <Compile Include="Converter\LoLClientEventTypeConverter.cs" />
         <Compile Include="Converter\LoLClientGameResultConverter.cs" />
+        <Compile Include="Converter\LoLClientInhibitorConverter.cs" />
+        <Compile Include="Converter\LoLClientTurretConverter.cs" />
         <Compile Include="Converter\LoLGameModeConverter.cs" />
         <Compile Include="Converter\LoLMapConverter.cs" />
         <Compile Include="Converter\LoLMapTerrainConverter.cs" />
@@ -72,12 +75,17 @@
         <Compile Include="Event\LoLClientGameResult.cs" />
         <Compile Include="Event\LoLClientGameStartedEvent.cs" />
         <Compile Include="Event\LoLClientHeraldKilledEvent.cs" />
+        <Compile Include="Event\LoLClientInhibitor.cs" />
         <Compile Include="Event\LoLClientInhibitorKilledEvent.cs" />
+        <Compile Include="Event\LoLClientInhibitorRespawnedEvent.cs" />
+        <Compile Include="Event\LoLClientInhibitorTier.cs" />
         <Compile Include="Event\LoLClientKilledEvent.cs" />
         <Compile Include="Event\LoLClientKilledWithAssistersEvent.cs" />
         <Compile Include="Event\LoLClientMultipleChampionsKilledEvent.cs" />
         <Compile Include="Event\LoLClientNeutralObjectiveKilledEvent.cs" />
+        <Compile Include="Event\LoLClientTurret.cs" />
         <Compile Include="Event\LoLClientTurretKilledEvent.cs" />
+        <Compile Include="Event\LoLClientTurretTier.cs" />
         <Compile Include="LoLClientEndpoint.cs" />
         <Compile Include="LoLClientGameData.cs" />
         <Compile Include="LoLClientGameStats.cs" />
