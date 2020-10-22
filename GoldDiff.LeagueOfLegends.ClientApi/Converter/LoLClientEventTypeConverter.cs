@@ -38,6 +38,11 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 return LoLClientEventType.InhibitorKilled;
             }
             
+            if (value.Equals("InhibRespawningSoon", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return LoLClientEventType.InhibitorRespawningSoon;
+            }
+            
             if (value.Equals("InhibRespawned", StringComparison.InvariantCultureIgnoreCase))
             {
                 return LoLClientEventType.InhibitorRespawned;

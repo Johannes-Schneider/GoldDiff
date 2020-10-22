@@ -78,6 +78,7 @@
         <Compile Include="Event\LoLClientInhibitor.cs" />
         <Compile Include="Event\LoLClientInhibitorKilledEvent.cs" />
         <Compile Include="Event\LoLClientInhibitorRespawnedEvent.cs" />
+        <Compile Include="Event\LoLClientInhibitorRespawningSoonEvent.cs" />
         <Compile Include="Event\LoLClientInhibitorTier.cs" />
         <Compile Include="Event\LoLClientKilledEvent.cs" />
         <Compile Include="Event\LoLClientKilledWithAssistersEvent.cs" />

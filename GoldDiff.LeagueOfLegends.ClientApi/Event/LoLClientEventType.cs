@@ -16,6 +16,8 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Event
         TurretKilled,
 
         InhibitorKilled,
+        
+        InhibitorRespawningSoon,
 
         InhibitorRespawned,
 
@@ -45,6 +47,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Event
                                                                                                         {LoLClientEventType.FirstTurretKilled, () => new LoLClientFirstTurretKilledEvent()},
                                                                                                         {LoLClientEventType.TurretKilled, () => new LoLClientTurretKilledEvent()},
                                                                                                         {LoLClientEventType.InhibitorKilled, () => new LoLClientInhibitorKilledEvent()},
+                                                                                                        {LoLClientEventType.InhibitorRespawningSoon, () => new LoLClientInhibitorRespawningSoonEvent()},
                                                                                                         {LoLClientEventType.InhibitorRespawned, () => new LoLClientInhibitorRespawnedEvent()},
                                                                                                         {LoLClientEventType.DragonKilled, () => new LoLClientDragonKilledEvent()},
                                                                                                         {LoLClientEventType.HeraldKilled, () => new LoLClientHeraldKilledEvent()},

@@ -1,1942 +1,3541 @@
 ﻿{
-  "activePlayer": {
-    "abilities": {
-      "E": {
-        "abilityLevel": 1,
-        "displayName": "Facebreaker",
-        "id": "SettE",
-        "rawDescription": "GeneratedTip_Spell_SettE_Description",
-        "rawDisplayName": "GeneratedTip_Spell_SettE_DisplayName"
-      },
-      "Passive": {
-        "displayName": "Pit Grit",
-        "id": "SettPassive",
-        "rawDescription": "GeneratedTip_Passive_SettPassive_Description",
-        "rawDisplayName": "GeneratedTip_Passive_SettPassive_DisplayName"
-      },
-      "Q": {
-        "abilityLevel": 5,
-        "displayName": "Knuckle Down",
-        "id": "SettQ",
-        "rawDescription": "GeneratedTip_Spell_SettQ_Description",
-        "rawDisplayName": "GeneratedTip_Spell_SettQ_DisplayName"
-      },
-      "R": {
-        "abilityLevel": 2,
-        "displayName": "The Show Stopper",
-        "id": "SettR",
-        "rawDescription": "GeneratedTip_Spell_SettR_Description",
-        "rawDisplayName": "GeneratedTip_Spell_SettR_DisplayName"
-      },
-      "W": {
-        "abilityLevel": 3,
-        "displayName": "Haymaker",
-        "id": "SettW",
-        "rawDescription": "GeneratedTip_Spell_SettW_Description",
-        "rawDisplayName": "GeneratedTip_Spell_SettW_DisplayName"
-      }
-    },
-    "championStats": {
-      "abilityPower": 0.0,
-      "armor": 154.10000610351563,
-      "armorPenetrationFlat": 0.0,
-      "armorPenetrationPercent": 1.0,
-      "attackDamage": 140.5,
-      "attackRange": 125.0,
-      "attackSpeed": 0.9397266507148743,
-      "bonusArmorPenetrationPercent": 1.0,
-      "bonusMagicPenetrationPercent": 1.0,
-      "cooldownReduction": 0.0,
-      "critChance": 0.0,
-      "critDamage": 200.0,
-      "currentHealth": 0.0,
-      "healthRegenRate": 23.477500915527345,
-      "lifeSteal": 0.17399999499320985,
-      "magicLethality": 0.0,
-      "magicPenetrationFlat": 0.0,
-      "magicPenetrationPercent": 1.0,
-      "magicResist": 42.96875,
-      "maxHealth": 1921.0750732421876,
-      "moveSpeed": 385.0,
-      "physicalLethality": 0.0,
-      "resourceMax": 960.5375366210938,
-      "resourceRegenRate": 0.0,
-      "resourceType": "GNARFURY",
-      "resourceValue": 0.0032036304473876955,
-      "spellVamp": 0.0,
-      "tenacity": 0.0
-    },
-    "currentGold": 29.24077606201172,
-    "fullRunes": {
-      "generalRunes": [
-        {
-          "displayName": "Conqueror",
-          "id": 8010,
-          "rawDescription": "perk_tooltip_Conqueror",
-          "rawDisplayName": "perk_displayname_Conqueror"
-        },
-        {
-          "displayName": "Triumph",
-          "id": 9111,
-          "rawDescription": "perk_tooltip_9111",
-          "rawDisplayName": "perk_displayname_9111"
-        },
-        {
-          "displayName": "Legend: Bloodline",
-          "id": 9103,
-          "rawDescription": "perk_tooltip_9103",
-          "rawDisplayName": "perk_displayname_9103"
-        },
-        {
-          "displayName": "Coup de Grace",
-          "id": 8014,
-          "rawDescription": "perk_tooltip_CoupDeGrace",
-          "rawDisplayName": "perk_displayname_CoupDeGrace"
-        },
-        {
-          "displayName": "Hextech Flashtraption",
-          "id": 8306,
-          "rawDescription": "perk_tooltip_HextechFlashtraption",
-          "rawDisplayName": "perk_displayname_HextechFlashtraption"
-        },
-        {
-          "displayName": "Approach Velocity",
-          "id": 8410,
-          "rawDescription": "perk_tooltip_ApproachVelocity",
-          "rawDisplayName": "perk_displayname_ApproachVelocity"
-        }
-      ],
-      "keystone": {
-        "displayName": "Conqueror",
-        "id": 8010,
-        "rawDescription": "perk_tooltip_Conqueror",
-        "rawDisplayName": "perk_displayname_Conqueror"
-      },
-      "primaryRuneTree": {
-        "displayName": "Precision",
-        "id": 8000,
-        "rawDescription": "perkstyle_tooltip_7201",
-        "rawDisplayName": "perkstyle_displayname_7201"
-      },
-      "secondaryRuneTree": {
-        "displayName": "Inspiration",
-        "id": 8300,
-        "rawDescription": "perkstyle_tooltip_7203",
-        "rawDisplayName": "perkstyle_displayname_7203"
-      },
-      "statRunes": [
-        {
-          "id": 5005,
-          "rawDescription": "perk_tooltip_StatModAttackSpeed"
-        },
-        {
-          "id": 5008,
-          "rawDescription": "perk_tooltip_StatModAdaptive"
-        },
-        {
-          "id": 5002,
-          "rawDescription": "perk_tooltip_StatModArmor"
-        }
-      ]
-    },
-    "level": 11,
-    "summonerName": "OrderBottomLaner"
-  },
-  "allPlayers": [
-    {
-      "championName": "Kayle",
-      "isBot": false,
-      "isDead": true,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Wit's End",
-          "itemID": 3091,
-          "price": 880,
-          "rawDescription": "game_item_description_3091",
-          "rawDisplayName": "game_item_displayname_3091",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Sanguine Blade",
-          "itemID": 3181,
-          "price": 1000,
-          "rawDescription": "game_item_description_3181",
-          "rawDisplayName": "game_item_displayname_3181",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Berserker's Greaves",
-          "itemID": 3006,
-          "price": 500,
-          "rawDescription": "game_item_description_3006",
-          "rawDisplayName": "game_item_displayname_3006",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Manamune",
-          "itemID": 3004,
-          "price": 675,
-          "rawDescription": "game_item_description_3004",
-          "rawDisplayName": "game_item_displayname_3004",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Dagger",
-          "itemID": 1042,
-          "price": 300,
-          "rawDescription": "game_item_description_1042",
-          "rawDisplayName": "game_item_displayname_1042",
-          "slot": 4
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Farsight Alteration",
-          "itemID": 3363,
-          "price": 0,
-          "rawDescription": "game_item_description_3363",
-          "rawDisplayName": "game_item_displayname_3363",
-          "slot": 6
-        }
-      ],
-      "level": 14,
-      "position": "TOP",
-      "rawChampionName": "game_character_displayname_Kayle",
-      "rawSkinName": "game_character_skin_displayname_Kayle_8",
-      "respawnTimer": 14.547218322753907,
-      "runes": {
-        "keystone": {
-          "displayName": "Lethal Tempo",
-          "id": 8008,
-          "rawDescription": "perk_tooltip_LethalTempo",
-          "rawDisplayName": "perk_displayname_LethalTempo"
-        },
-        "primaryRuneTree": {
-          "displayName": "Precision",
-          "id": 8000,
-          "rawDescription": "perkstyle_tooltip_7201",
-          "rawDisplayName": "perkstyle_displayname_7201"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Inspiration",
-          "id": 8300,
-          "rawDescription": "perkstyle_tooltip_7203",
-          "rawDisplayName": "perkstyle_displayname_7203"
-        }
-      },
-      "scores": {
-        "assists": 1,
-        "creepScore": 200,
-        "deaths": 3,
-        "kills": 5,
-        "wardScore": 14.139822006225586
-      },
-      "skinID": 8,
-      "skinName": "Iron Inquisitor Kayle",
-      "summonerName": "OrderTopLaner",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Teleport",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        }
-      },
-      "team": "ORDER"
-    },
-    {
-      "championName": "Evelynn",
-      "isBot": false,
-      "isDead": true,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Enchantment: Runic Echoes",
-          "itemID": 1402,
-          "price": 250,
-          "rawDescription": "game_item_description_1402",
-          "rawDisplayName": "game_item_displayname_1402",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Sorcerer's Shoes",
-          "itemID": 3020,
-          "price": 800,
-          "rawDescription": "game_item_description_3020",
-          "rawDisplayName": "game_item_displayname_3020",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Lich Bane",
-          "itemID": 3100,
-          "price": 450,
-          "rawDescription": "game_item_description_3100",
-          "rawDisplayName": "game_item_displayname_3100",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Needlessly Large Rod",
-          "itemID": 1058,
-          "price": 1250,
-          "rawDescription": "game_item_description_1058",
-          "rawDisplayName": "game_item_displayname_1058",
-          "slot": 3
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Warding Totem (Trinket)",
-          "itemID": 3340,
-          "price": 0,
-          "rawDescription": "game_item_description_3340",
-          "rawDisplayName": "game_item_displayname_3340",
-          "slot": 6
-        }
-      ],
-      "level": 12,
-      "position": "JUNGLE",
-      "rawChampionName": "game_character_displayname_Evelynn",
-      "rawSkinName": "game_character_skin_displayname_Evelynn_6",
-      "respawnTimer": 15.831975936889649,
-      "runes": {
-        "keystone": {
-          "displayName": "Electrocute",
-          "id": 8112,
-          "rawDescription": "perk_tooltip_Electrocute",
-          "rawDisplayName": "perk_displayname_Electrocute"
-        },
-        "primaryRuneTree": {
-          "displayName": "Domination",
-          "id": 8100,
-          "rawDescription": "perkstyle_tooltip_7200",
-          "rawDisplayName": "perkstyle_displayname_7200"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Sorcery",
-          "id": 8200,
-          "rawDescription": "perkstyle_tooltip_7202",
-          "rawDisplayName": "perkstyle_displayname_7202"
-        }
-      },
-      "scores": {
-        "assists": 3,
-        "creepScore": 120,
-        "deaths": 6,
-        "kills": 4,
-        "wardScore": 17.652820587158204
-      },
-      "skinID": 6,
-      "skinName": "K/DA Evelynn",
-      "summonerName": "OrderJungler",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Chilling Smite",
-          "rawDescription": "GeneratedTip_SummonerSpell_S5_SummonerSmitePlayerGanker_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_S5_SummonerSmitePlayerGanker_DisplayName"
-        }
-      },
-      "team": "ORDER"
-    },
-    {
-      "championName": "Neeko",
-      "isBot": false,
-      "isDead": true,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Broken Stopwatch",
-          "itemID": 2424,
-          "price": 650,
-          "rawDescription": "game_item_description_2421",
-          "rawDisplayName": "game_item_displayname_2421",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Luden's Echo",
-          "itemID": 3285,
-          "price": 1050,
-          "rawDescription": "game_item_description_3285",
-          "rawDisplayName": "game_item_displayname_3285",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Doran's Ring",
-          "itemID": 1056,
-          "price": 400,
-          "rawDescription": "game_item_description_1056",
-          "rawDisplayName": "game_item_displayname_1056",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Ninja Tabi",
-          "itemID": 3047,
-          "price": 500,
-          "rawDescription": "game_item_description_3047",
-          "rawDisplayName": "game_item_displayname_3047",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Null-Magic Mantle",
-          "itemID": 1033,
-          "price": 450,
-          "rawDescription": "game_item_description_1033",
-          "rawDisplayName": "game_item_displayname_1033",
-          "slot": 4
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Fiendish Codex",
-          "itemID": 3108,
-          "price": 465,
-          "rawDescription": "game_item_description_3108",
-          "rawDisplayName": "game_item_displayname_3108",
-          "slot": 5
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Warding Totem (Trinket)",
-          "itemID": 3340,
-          "price": 0,
-          "rawDescription": "game_item_description_3340",
-          "rawDisplayName": "game_item_displayname_3340",
-          "slot": 6
-        }
-      ],
-      "level": 11,
-      "position": "MIDDLE",
-      "rawChampionName": "game_character_displayname_Neeko",
-      "respawnTimer": 13.144708633422852,
-      "runes": {
-        "keystone": {
-          "displayName": "Electrocute",
-          "id": 8112,
-          "rawDescription": "perk_tooltip_Electrocute",
-          "rawDisplayName": "perk_displayname_Electrocute"
-        },
-        "primaryRuneTree": {
-          "displayName": "Domination",
-          "id": 8100,
-          "rawDescription": "perkstyle_tooltip_7200",
-          "rawDisplayName": "perkstyle_displayname_7200"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Inspiration",
-          "id": 8300,
-          "rawDescription": "perkstyle_tooltip_7203",
-          "rawDisplayName": "perkstyle_displayname_7203"
-        }
-      },
-      "scores": {
-        "assists": 0,
-        "creepScore": 140,
-        "deaths": 6,
-        "kills": 1,
-        "wardScore": 15.610445976257325
-      },
-      "skinID": 0,
-      "summonerName": "OrderMidLaner",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Teleport",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
-        }
-      },
-      "team": "ORDER"
-    },
-    {
-      "championName": "Sett",
-      "isBot": false,
-      "isDead": true,
-      "items": [
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Blade of the Ruined King",
-          "itemID": 3153,
-          "price": 700,
-          "rawDescription": "game_item_description_3153",
-          "rawDisplayName": "game_item_displayname_3153",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Ninja Tabi",
-          "itemID": 3047,
-          "price": 500,
-          "rawDescription": "game_item_description_3047",
-          "rawDisplayName": "game_item_displayname_3047",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Doran's Shield",
-          "itemID": 1054,
-          "price": 450,
-          "rawDescription": "game_item_description_1054",
-          "rawDisplayName": "game_item_displayname_1054",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Sunfire Cape",
-          "itemID": 3068,
-          "price": 650,
-          "rawDescription": "game_item_description_3068",
-          "rawDisplayName": "game_item_displayname_3068",
-          "slot": 3
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Farsight Alteration",
-          "itemID": 3363,
-          "price": 0,
-          "rawDescription": "game_item_description_3363",
-          "rawDisplayName": "game_item_displayname_3363",
-          "slot": 6
-        }
-      ],
-      "level": 11,
-      "position": "BOTTOM",
-      "rawChampionName": "game_character_displayname_Sett",
-      "respawnTimer": 13.507484436035157,
-      "runes": {
-        "keystone": {
-          "displayName": "Conqueror",
-          "id": 8010,
-          "rawDescription": "perk_tooltip_Conqueror",
-          "rawDisplayName": "perk_displayname_Conqueror"
-        },
-        "primaryRuneTree": {
-          "displayName": "Precision",
-          "id": 8000,
-          "rawDescription": "perkstyle_tooltip_7201",
-          "rawDisplayName": "perkstyle_displayname_7201"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Inspiration",
-          "id": 8300,
-          "rawDescription": "perkstyle_tooltip_7203",
-          "rawDisplayName": "perkstyle_displayname_7203"
-        }
-      },
-      "scores": {
-        "assists": 3,
-        "creepScore": 140,
-        "deaths": 6,
-        "kills": 1,
-        "wardScore": 13.325421333312989
-      },
-      "skinID": 0,
-      "summonerName": "OrderBottomLaner",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Heal",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerHeal_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHeal_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Hexflash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlashPerksHextechFlashtraptionV2_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlashPerksHextechFlashtraptionV2_DisplayName"
-        }
-      },
-      "team": "ORDER"
-    },
-    {
-      "championName": "Dr. Mundo",
-      "isBot": false,
-      "isDead": false,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Sunfire Cape",
-          "itemID": 3068,
-          "price": 650,
-          "rawDescription": "game_item_description_3068",
-          "rawDisplayName": "game_item_displayname_3068",
-          "slot": 0
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Runesteel Spaulders",
-          "itemID": 3855,
-          "price": 400,
-          "rawDescription": "game_item_description_3855",
-          "rawDisplayName": "game_item_displayname_3855",
-          "slot": 1
-        },
-        {
-          "canUse": true,
-          "consumable": true,
-          "count": 1,
-          "displayName": "Control Ward",
-          "itemID": 2055,
-          "price": 75,
-          "rawDescription": "game_item_description_2055",
-          "rawDisplayName": "game_item_displayname_2055",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Boots of Swiftness",
-          "itemID": 3009,
-          "price": 600,
-          "rawDescription": "game_item_description_3009",
-          "rawDisplayName": "game_item_displayname_3009",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Null-Magic Mantle",
-          "itemID": 1033,
-          "price": 450,
-          "rawDescription": "game_item_description_1033",
-          "rawDisplayName": "game_item_displayname_1033",
-          "slot": 4
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Ruby Crystal",
-          "itemID": 1028,
-          "price": 400,
-          "rawDescription": "game_item_description_1028",
-          "rawDisplayName": "game_item_displayname_1028",
-          "slot": 5
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Warding Totem (Trinket)",
-          "itemID": 3340,
-          "price": 0,
-          "rawDescription": "game_item_description_3340",
-          "rawDisplayName": "game_item_displayname_3340",
-          "slot": 6
-        }
-      ],
-      "level": 10,
-      "position": "UTILITY",
-      "rawChampionName": "game_character_displayname_DrMundo",
-      "rawSkinName": "game_character_skin_displayname_DrMundo_3",
-      "respawnTimer": 0.0,
-      "runes": {
-        "keystone": {
-          "displayName": "Arcane Comet",
-          "id": 8229,
-          "rawDescription": "perk_tooltip_ArcaneComet",
-          "rawDisplayName": "perk_displayname_ArcaneComet"
-        },
-        "primaryRuneTree": {
-          "displayName": "Sorcery",
-          "id": 8200,
-          "rawDescription": "perkstyle_tooltip_7202",
-          "rawDisplayName": "perkstyle_displayname_7202"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Inspiration",
-          "id": 8300,
-          "rawDescription": "perkstyle_tooltip_7203",
-          "rawDisplayName": "perkstyle_displayname_7203"
-        }
-      },
-      "scores": {
-        "assists": 2,
-        "creepScore": 60,
-        "deaths": 7,
-        "kills": 0,
-        "wardScore": 13.288795471191407
-      },
-      "skinID": 3,
-      "skinName": "Corporate Mundo",
-      "summonerName": "OrderSupporter",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Ignite",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
-        }
-      },
-      "team": "ORDER"
-    },
-    {
-      "championName": "Vayne",
-      "isBot": false,
-      "isDead": false,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Doran's Shield",
-          "itemID": 1054,
-          "price": 450,
-          "rawDescription": "game_item_description_1054",
-          "rawDisplayName": "game_item_displayname_1054",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Berserker's Greaves",
-          "itemID": 3006,
-          "price": 500,
-          "rawDescription": "game_item_description_3006",
-          "rawDisplayName": "game_item_displayname_3006",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Cull",
-          "itemID": 1083,
-          "price": 450,
-          "rawDescription": "game_item_description_1083",
-          "rawDisplayName": "game_item_displayname_1083",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Frozen Mallet",
-          "itemID": 3022,
-          "price": 900,
-          "rawDescription": "game_item_description_3022",
-          "rawDisplayName": "game_item_displayname_3022",
-          "slot": 3
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Refillable Potion",
-          "itemID": 2031,
-          "price": 150,
-          "rawDescription": "game_item_description_2031",
-          "rawDisplayName": "game_item_displayname_2031",
-          "slot": 4
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Negatron Cloak",
-          "itemID": 1057,
-          "price": 270,
-          "rawDescription": "game_item_description_1057",
-          "rawDisplayName": "game_item_displayname_1057",
-          "slot": 5
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Warding Totem (Trinket)",
-          "itemID": 3340,
-          "price": 0,
-          "rawDescription": "game_item_description_3340",
-          "rawDisplayName": "game_item_displayname_3340",
-          "slot": 6
-        }
-      ],
-      "level": 13,
-      "position": "MIDDLE",
-      "rawChampionName": "game_character_displayname_Vayne",
-      "rawSkinName": "game_character_skin_displayname_Vayne_9",
-      "respawnTimer": 0.0,
-      "runes": {
-        "keystone": {
-          "displayName": "Press the Attack",
-          "id": 8005,
-          "rawDescription": "perk_tooltip_PressTheAttack",
-          "rawDisplayName": "perk_displayname_PressTheAttack"
-        },
-        "primaryRuneTree": {
-          "displayName": "Precision",
-          "id": 8000,
-          "rawDescription": "perkstyle_tooltip_7201",
-          "rawDisplayName": "perkstyle_displayname_7201"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Domination",
-          "id": 8100,
-          "rawDescription": "perkstyle_tooltip_7200",
-          "rawDisplayName": "perkstyle_displayname_7200"
-        }
-      },
-      "scores": {
-        "assists": 1,
-        "creepScore": 140,
-        "deaths": 6,
-        "kills": 3,
-        "wardScore": 11.778761863708496
-      },
-      "skinID": 9,
-      "skinName": "Dragonslayer Vayne Chaos",
-      "summonerName": "ChaosTopLaner",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Teleport",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        }
-      },
-      "team": "CHAOS"
-    },
-    {
-      "championName": "Olaf",
-      "isBot": false,
-      "isDead": false,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Null-Magic Mantle",
-          "itemID": 1033,
-          "price": 450,
-          "rawDescription": "game_item_description_1033",
-          "rawDisplayName": "game_item_displayname_1033",
-          "slot": 0
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Refillable Potion",
-          "itemID": 2031,
-          "price": 150,
-          "rawDescription": "game_item_description_2031",
-          "rawDisplayName": "game_item_displayname_2031",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Long Sword",
-          "itemID": 1036,
-          "price": 350,
-          "rawDescription": "game_item_description_1036",
-          "rawDisplayName": "game_item_displayname_1036",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Black Cleaver",
-          "itemID": 3071,
-          "price": 950,
-          "rawDescription": "game_item_description_3071",
-          "rawDisplayName": "game_item_displayname_3071",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Enchantment: Warrior",
-          "itemID": 1400,
-          "price": 525,
-          "rawDescription": "game_item_description_1400",
-          "rawDisplayName": "game_item_displayname_1400",
-          "slot": 4
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Boots of Swiftness",
-          "itemID": 3009,
-          "price": 600,
-          "rawDescription": "game_item_description_3009",
-          "rawDisplayName": "game_item_displayname_3009",
-          "slot": 5
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Oracle Lens",
-          "itemID": 3364,
-          "price": 0,
-          "rawDescription": "game_item_description_3364",
-          "rawDisplayName": "game_item_displayname_3364",
-          "slot": 6
-        }
-      ],
-      "level": 13,
-      "position": "JUNGLE",
-      "rawChampionName": "game_character_displayname_Olaf",
-      "respawnTimer": 0.0,
-      "runes": {
-        "keystone": {
-          "displayName": "Conqueror",
-          "id": 8010,
-          "rawDescription": "perk_tooltip_Conqueror",
-          "rawDisplayName": "perk_displayname_Conqueror"
-        },
-        "primaryRuneTree": {
-          "displayName": "Precision",
-          "id": 8000,
-          "rawDescription": "perkstyle_tooltip_7201",
-          "rawDisplayName": "perkstyle_displayname_7201"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Domination",
-          "id": 8100,
-          "rawDescription": "perkstyle_tooltip_7200",
-          "rawDisplayName": "perkstyle_displayname_7200"
-        }
-      },
-      "scores": {
-        "assists": 4,
-        "creepScore": 140,
-        "deaths": 2,
-        "kills": 3,
-        "wardScore": 16.228408813476564
-      },
-      "skinID": 0,
-      "summonerName": "ChaosJungler",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Chilling Smite",
-          "rawDescription": "GeneratedTip_SummonerSpell_S5_SummonerSmitePlayerGanker_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_S5_SummonerSmitePlayerGanker_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        }
-      },
-      "team": "CHAOS"
-    },
-    {
-      "championName": "LeBlanc",
-      "isBot": false,
-      "isDead": false,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Luden's Echo",
-          "itemID": 3285,
-          "price": 1050,
-          "rawDescription": "game_item_description_3285",
-          "rawDisplayName": "game_item_displayname_3285",
-          "slot": 0
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Zhonya's Hourglass",
-          "itemID": 3157,
-          "price": 250,
-          "rawDescription": "game_item_description_3157",
-          "rawDisplayName": "game_item_displayname_3157",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Mercury's Treads",
-          "itemID": 3111,
-          "price": 350,
-          "rawDescription": "game_item_description_3111",
-          "rawDisplayName": "game_item_displayname_3111",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Mejai's Soulstealer",
-          "itemID": 3041,
-          "price": 1050,
-          "rawDescription": "game_item_description_3041",
-          "rawDisplayName": "game_item_displayname_3041",
-          "slot": 4
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Oracle Lens",
-          "itemID": 3364,
-          "price": 0,
-          "rawDescription": "game_item_description_3364",
-          "rawDisplayName": "game_item_displayname_3364",
-          "slot": 6
-        }
-      ],
-      "level": 15,
-      "position": "TOP",
-      "rawChampionName": "game_character_displayname_Leblanc",
-      "rawSkinName": "game_character_skin_displayname_Leblanc_19",
-      "respawnTimer": 0.0,
-      "runes": {
-        "keystone": {
-          "displayName": "Electrocute",
-          "id": 8112,
-          "rawDescription": "perk_tooltip_Electrocute",
-          "rawDisplayName": "perk_displayname_Electrocute"
-        },
-        "primaryRuneTree": {
-          "displayName": "Domination",
-          "id": 8100,
-          "rawDescription": "perkstyle_tooltip_7200",
-          "rawDisplayName": "perkstyle_displayname_7200"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Sorcery",
-          "id": 8200,
-          "rawDescription": "perkstyle_tooltip_7202",
-          "rawDisplayName": "perkstyle_displayname_7202"
-        }
-      },
-      "scores": {
-        "assists": 9,
-        "creepScore": 180,
-        "deaths": 1,
-        "kills": 6,
-        "wardScore": 14.447941780090332
-      },
-      "skinID": 19,
-      "skinName": "iG LeBlanc",
-      "summonerName": "ChaosMidLaner",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Ignite",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
-        }
-      },
-      "team": "CHAOS"
-    },
-    {
-      "championName": "Xayah",
-      "isBot": false,
-      "isDead": false,
-      "items": [
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Doran's Blade",
-          "itemID": 1055,
-          "price": 450,
-          "rawDescription": "game_item_description_1055",
-          "rawDisplayName": "game_item_displayname_1055",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Essence Reaver",
-          "itemID": 3508,
-          "price": 100,
-          "rawDescription": "game_item_description_3508",
-          "rawDisplayName": "game_item_displayname_3508",
-          "slot": 1
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Berserker's Greaves",
-          "itemID": 3006,
-          "price": 500,
-          "rawDescription": "game_item_description_3006",
-          "rawDisplayName": "game_item_displayname_3006",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Rapid Firecannon",
-          "itemID": 3094,
-          "price": 500,
-          "rawDescription": "game_item_description_3094",
-          "rawDisplayName": "game_item_displayname_3094",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "B. F. Sword",
-          "itemID": 1038,
-          "price": 1300,
-          "rawDescription": "game_item_description_1038",
-          "rawDisplayName": "game_item_displayname_1038",
-          "slot": 4
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Pickaxe",
-          "itemID": 1037,
-          "price": 875,
-          "rawDescription": "game_item_description_1037",
-          "rawDisplayName": "game_item_displayname_1037",
-          "slot": 5
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Farsight Alteration",
-          "itemID": 3363,
-          "price": 0,
-          "rawDescription": "game_item_description_3363",
-          "rawDisplayName": "game_item_displayname_3363",
-          "slot": 6
-        }
-      ],
-      "level": 13,
-      "position": "BOTTOM",
-      "rawChampionName": "game_character_displayname_Xayah",
-      "rawSkinName": "game_character_skin_displayname_Xayah_1",
-      "respawnTimer": 0.0,
-      "runes": {
-        "keystone": {
-          "displayName": "Lethal Tempo",
-          "id": 8008,
-          "rawDescription": "perk_tooltip_LethalTempo",
-          "rawDisplayName": "perk_displayname_LethalTempo"
-        },
-        "primaryRuneTree": {
-          "displayName": "Precision",
-          "id": 8000,
-          "rawDescription": "perkstyle_tooltip_7201",
-          "rawDisplayName": "perkstyle_displayname_7201"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Inspiration",
-          "id": 8300,
-          "rawDescription": "perkstyle_tooltip_7203",
-          "rawDisplayName": "perkstyle_displayname_7203"
-        }
-      },
-      "scores": {
-        "assists": 11,
-        "creepScore": 160,
-        "deaths": 1,
-        "kills": 4,
-        "wardScore": 12.181812286376954
-      },
-      "skinID": 1,
-      "skinName": "Cosmic Dusk Xayah",
-      "summonerName": "ChaosBottomLaner",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Heal",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerHeal_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHeal_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        }
-      },
-      "team": "CHAOS"
-    },
-    {
-      "championName": "Pyke",
-      "isBot": false,
-      "isDead": false,
-      "items": [
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Pauldrons of Whiterock",
-          "itemID": 3857,
-          "price": 400,
-          "rawDescription": "game_item_description_3857",
-          "rawDisplayName": "game_item_displayname_3857",
-          "slot": 0
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Broken Stopwatch",
-          "itemID": 2421,
-          "price": 650,
-          "rawDescription": "game_item_description_2421",
-          "rawDisplayName": "game_item_displayname_2421",
-          "slot": 1
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Youmuu's Ghostblade",
-          "itemID": 3142,
-          "price": 700,
-          "rawDescription": "game_item_description_3142",
-          "rawDisplayName": "game_item_displayname_3142",
-          "slot": 2
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Umbral Glaive",
-          "itemID": 3179,
-          "price": 600,
-          "rawDescription": "game_item_description_3179",
-          "rawDisplayName": "game_item_displayname_3179",
-          "slot": 3
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Boots of Mobility",
-          "itemID": 3117,
-          "price": 700,
-          "rawDescription": "game_item_description_3117",
-          "rawDisplayName": "game_item_displayname_3117",
-          "slot": 4
-        },
-        {
-          "canUse": false,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Chain Vest",
-          "itemID": 1031,
-          "price": 500,
-          "rawDescription": "game_item_description_1031",
-          "rawDisplayName": "game_item_displayname_1031",
-          "slot": 5
-        },
-        {
-          "canUse": true,
-          "consumable": false,
-          "count": 1,
-          "displayName": "Oracle Lens",
-          "itemID": 3364,
-          "price": 0,
-          "rawDescription": "game_item_description_3364",
-          "rawDisplayName": "game_item_displayname_3364",
-          "slot": 6
-        }
-      ],
-      "level": 12,
-      "position": "UTILITY",
-      "rawChampionName": "game_character_displayname_Pyke",
-      "respawnTimer": 0.0,
-      "runes": {
-        "keystone": {
-          "displayName": "Aftershock",
-          "id": 8439,
-          "rawDescription": "perk_tooltip_VeteranAftershock",
-          "rawDisplayName": "perk_displayname_VeteranAftershock"
-        },
-        "primaryRuneTree": {
-          "displayName": "Resolve",
-          "id": 8400,
-          "rawDescription": "perkstyle_tooltip_7204",
-          "rawDisplayName": "perkstyle_displayname_7204"
-        },
-        "secondaryRuneTree": {
-          "displayName": "Domination",
-          "id": 8100,
-          "rawDescription": "perkstyle_tooltip_7200",
-          "rawDisplayName": "perkstyle_displayname_7200"
-        }
-      },
-      "scores": {
-        "assists": 2,
-        "creepScore": 30,
-        "deaths": 1,
-        "kills": 12,
-        "wardScore": 61.14141845703125
-      },
-      "skinID": 0,
-      "summonerName": "ChaosSupporter",
-      "summonerSpells": {
-        "summonerSpellOne": {
-          "displayName": "Ignite",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
-        },
-        "summonerSpellTwo": {
-          "displayName": "Flash",
-          "rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
-          "rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
-        }
-      },
-      "team": "CHAOS"
-    }
-  ],
-  "events": {
-    "Events": [
-      {
-        "EventID": 0,
-        "EventName": "GameStart",
-        "EventTime": 0.029335500672459604
-      },
-      {
-        "EventID": 1,
-        "EventName": "MinionsSpawning",
-        "EventTime": 65.0219497680664
-      },
-      {
-        "Assisters": [
-          "OrderJungler"
-        ],
-        "EventID": 2,
-        "EventName": "ChampionKill",
-        "EventTime": 245.4991912841797,
-        "KillerName": "OrderTopLaner",
-        "VictimName": "ChaosTopLaner"
-      },
-      {
-        "EventID": 3,
-        "EventName": "FirstBlood",
-        "EventTime": 245.4991912841797,
-        "Recipient": "OrderTopLaner"
-      },
-      {
-        "Assisters": [],
-        "DragonType": "Water",
-        "EventID": 4,
-        "EventName": "DragonKill",
-        "EventTime": 338.4808349609375,
-        "KillerName": "ChaosJungler",
-        "Stolen": "False"
-      },
-      {
-        "Assisters": [],
-        "EventID": 5,
-        "EventName": "ChampionKill",
-        "EventTime": 341.8805236816406,
-        "KillerName": "OrderTopLaner",
-        "VictimName": "ChaosTopLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosJungler"
-        ],
-        "EventID": 6,
-        "EventName": "ChampionKill",
-        "EventTime": 449.5986022949219,
-        "KillerName": "ChaosBottomLaner",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner",
-          "ChaosSupporter"
-        ],
-        "EventID": 7,
-        "EventName": "ChampionKill",
-        "EventTime": 452.8656005859375,
-        "KillerName": "ChaosJungler",
-        "VictimName": "OrderBottomLaner"
-      },
-      {
-        "Assisters": [
-          "OrderTopLaner"
-        ],
-        "EventID": 8,
-        "EventName": "ChampionKill",
-        "EventTime": 479.494873046875,
-        "KillerName": "OrderJungler",
-        "VictimName": "ChaosTopLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 9,
-        "EventName": "ChampionKill",
-        "EventTime": 533.1958618164063,
-        "KillerName": "ChaosMidLaner",
-        "VictimName": "OrderMidLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "EventID": 10,
-        "EventName": "ChampionKill",
-        "EventTime": 627.4634399414063,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "EventID": 11,
-        "EventName": "ChampionKill",
-        "EventTime": 642.3330078125,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderBottomLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 12,
-        "EventName": "HeraldKill",
-        "EventTime": 662.2352905273438,
-        "KillerName": "OrderJungler",
-        "Stolen": "False"
-      },
-      {
-        "Assisters": [],
-        "DragonType": "Air",
-        "EventID": 13,
-        "EventName": "DragonKill",
-        "EventTime": 675.9837036132813,
-        "KillerName": "ChaosJungler",
-        "Stolen": "False"
-      },
-      {
-        "Assisters": [
-          "OrderJungler"
-        ],
-        "EventID": 14,
-        "EventName": "ChampionKill",
-        "EventTime": 687.3786010742188,
-        "KillerName": "OrderTopLaner",
-        "VictimName": "ChaosTopLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 15,
-        "EventName": "ChampionKill",
-        "EventTime": 697.9022827148438,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderTopLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 16,
-        "EventName": "ChampionKill",
-        "EventTime": 707.7373657226563,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderJungler"
-      },
-      {
-        "EventID": 17,
-        "EventName": "Multikill",
-        "EventTime": 707.7373657226563,
-        "KillStreak": 2,
-        "KillerName": "ChaosSupporter"
-      },
-      {
-        "Assisters": [
-          "OrderBottomLaner",
-          "OrderSupporter"
-        ],
-        "EventID": 18,
-        "EventName": "TurretKilled",
-        "EventTime": 783.8515014648438,
-        "KillerName": "OrderJungler",
-        "TurretKilled": "Turret_T2_R_03_A"
-      },
-      {
-        "EventID": 19,
-        "EventName": "FirstBrick",
-        "EventTime": 783.8515014648438,
-        "KillerName": "OrderJungler"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "EventID": 20,
-        "EventName": "ChampionKill",
-        "EventTime": 795.2133178710938,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderBottomLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "EventID": 21,
-        "EventName": "ChampionKill",
-        "EventTime": 802.252685546875,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderJungler"
-      },
-      {
-        "EventID": 22,
-        "EventName": "Multikill",
-        "EventTime": 802.252685546875,
-        "KillStreak": 2,
-        "KillerName": "ChaosSupporter"
-      },
-      {
-        "Assisters": [],
-        "EventID": 23,
-        "EventName": "ChampionKill",
-        "EventTime": 811.3317260742188,
-        "KillerName": "ChaosMidLaner",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner"
-        ],
-        "EventID": 24,
-        "EventName": "ChampionKill",
-        "EventTime": 834.1992797851563,
-        "KillerName": "ChaosJungler",
-        "VictimName": "OrderMidLaner"
-      },
-      {
-        "Assisters": [
-          "OrderJungler",
-          "OrderBottomLaner"
-        ],
-        "EventID": 25,
-        "EventName": "ChampionKill",
-        "EventTime": 893.769775390625,
-        "KillerName": "OrderMidLaner",
-        "VictimName": "ChaosBottomLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 26,
-        "EventName": "ChampionKill",
-        "EventTime": 895.353759765625,
-        "KillerName": "ChaosMidLaner",
-        "VictimName": "OrderJungler"
-      },
-      {
-        "Assisters": [],
-        "EventID": 27,
-        "EventName": "ChampionKill",
-        "EventTime": 925.0197143554688,
-        "KillerName": "OrderTopLaner",
-        "VictimName": "ChaosJungler"
-      },
-      {
-        "Assisters": [
-          "ChaosJungler"
-        ],
-        "EventID": 28,
-        "EventName": "ChampionKill",
-        "EventTime": 928.222412109375,
-        "KillerName": "ChaosTopLaner",
-        "VictimName": "OrderTopLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner"
-        ],
-        "EventID": 29,
-        "EventName": "ChampionKill",
-        "EventTime": 951.08447265625,
-        "KillerName": "ChaosBottomLaner",
-        "VictimName": "OrderBottomLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner"
-        ],
-        "EventID": 30,
-        "EventName": "ChampionKill",
-        "EventTime": 951.8126831054688,
-        "KillerName": "ChaosBottomLaner",
-        "VictimName": "OrderMidLaner"
-      },
-      {
-        "EventID": 31,
-        "EventName": "Multikill",
-        "EventTime": 951.8126831054688,
-        "KillStreak": 2,
-        "KillerName": "ChaosBottomLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner",
-          "ChaosBottomLaner"
-        ],
-        "EventID": 32,
-        "EventName": "ChampionKill",
-        "EventTime": 955.94921875,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner"
-        ],
-        "EventID": 33,
-        "EventName": "TurretKilled",
-        "EventTime": 965.4554443359375,
-        "KillerName": "ChaosBottomLaner",
-        "TurretKilled": "Turret_T1_C_05_A"
-      },
-      {
-        "Assisters": [],
-        "EventID": 34,
-        "EventName": "ChampionKill",
-        "EventTime": 971.5748291015625,
-        "KillerName": "OrderJungler",
-        "VictimName": "ChaosTopLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "DragonType": "Earth",
-        "EventID": 35,
-        "EventName": "DragonKill",
-        "EventTime": 997.005615234375,
-        "KillerName": "ChaosJungler",
-        "Stolen": "False"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner"
-        ],
-        "EventID": 36,
-        "EventName": "ChampionKill",
-        "EventTime": 1031.114990234375,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner"
-        ],
-        "EventID": 37,
-        "EventName": "ChampionKill",
-        "EventTime": 1055.2869873046876,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderMidLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 38,
-        "EventName": "HeraldKill",
-        "EventTime": 1068.7532958984376,
-        "KillerName": "ChaosJungler",
-        "Stolen": "False"
-      },
-      {
-        "Assisters": [
-          "OrderBottomLaner"
-        ],
-        "EventID": 39,
-        "EventName": "ChampionKill",
-        "EventTime": 1069.1663818359376,
-        "KillerName": "OrderJungler",
-        "VictimName": "ChaosMidLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 40,
-        "EventName": "ChampionKill",
-        "EventTime": 1079.5506591796876,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderJungler"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "EventID": 41,
-        "EventName": "ChampionKill",
-        "EventTime": 1105.9796142578126,
-        "KillerName": "ChaosJungler",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "OrderBottomLaner",
-          "OrderSupporter"
-        ],
-        "EventID": 42,
-        "EventName": "ChampionKill",
-        "EventTime": 1108.1395263671876,
-        "KillerName": "OrderTopLaner",
-        "VictimName": "ChaosJungler"
-      },
-      {
-        "Assisters": [],
-        "EventID": 43,
-        "EventName": "ChampionKill",
-        "EventTime": 1262.639404296875,
-        "KillerName": "OrderJungler",
-        "VictimName": "ChaosTopLaner"
-      },
-      {
-        "Assisters": [
-          "OrderTopLaner"
-        ],
-        "EventID": 44,
-        "EventName": "TurretKilled",
-        "EventTime": 1281.7330322265626,
-        "KillerName": "OrderJungler",
-        "TurretKilled": "Turret_T2_L_03_A"
-      },
-      {
-        "Assisters": [],
-        "EventID": 45,
-        "EventName": "ChampionKill",
-        "EventTime": 1295.2650146484376,
-        "KillerName": "ChaosMidLaner",
-        "VictimName": "OrderSupporter"
-      },
-      {
-        "Assisters": [
-          "OrderSupporter"
-        ],
-        "EventID": 46,
-        "EventName": "ChampionKill",
-        "EventTime": 1302.9278564453126,
-        "KillerName": "OrderBottomLaner",
-        "VictimName": "ChaosSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosSupporter"
-        ],
-        "EventID": 47,
-        "EventName": "ChampionKill",
-        "EventTime": 1303.6751708984376,
-        "KillerName": "ChaosMidLaner",
-        "VictimName": "OrderBottomLaner"
-      },
-      {
-        "EventID": 48,
-        "EventName": "Multikill",
-        "EventTime": 1303.6751708984376,
-        "KillStreak": 2,
-        "KillerName": "ChaosMidLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 49,
-        "EventName": "TurretKilled",
-        "EventTime": 1308.6201171875,
-        "KillerName": "Minion_T100L2S41N0256",
-        "TurretKilled": "Turret_T2_L_02_A"
-      },
-      {
-        "Assisters": [
-          "OrderMidLaner",
-          "ChaosBottomLaner"
-        ],
-        "DragonType": "Earth",
-        "EventID": 50,
-        "EventName": "DragonKill",
-        "EventTime": 1323.91162109375,
-        "KillerName": "ChaosJungler",
-        "Stolen": "False"
-      },
-      {
-        "Assisters": [
-          "ChaosJungler"
-        ],
-        "EventID": 51,
-        "EventName": "ChampionKill",
-        "EventTime": 1326.403076171875,
-        "KillerName": "ChaosBottomLaner",
-        "VictimName": "OrderMidLaner"
-      },
-      {
-        "Assisters": [],
-        "EventID": 52,
-        "EventName": "ChampionKill",
-        "EventTime": 1328.9736328125,
-        "KillerName": "ChaosMidLaner",
-        "VictimName": "OrderJungler"
-      },
-      {
-        "Assisters": [],
-        "EventID": 53,
-        "EventName": "TurretKilled",
-        "EventTime": 1402.6142578125,
-        "KillerName": "Minion_T200L2S43N0272",
-        "TurretKilled": "Turret_T1_L_03_A"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner",
-          "ChaosBottomLaner"
-        ],
-        "EventID": 54,
-        "EventName": "ChampionKill",
-        "EventTime": 1422.1741943359376,
-        "KillerName": "ChaosTopLaner",
-        "VictimName": "OrderTopLaner"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner",
-          "ChaosTopLaner",
-          "ChaosBottomLaner"
-        ],
-        "EventID": 55,
-        "EventName": "ChampionKill",
-        "EventTime": 1428.793701171875,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderJungler"
-      },
-      {
-        "Assisters": [
-          "ChaosBottomLaner"
-        ],
-        "EventID": 56,
-        "EventName": "ChampionKill",
-        "EventTime": 1428.793701171875,
-        "KillerName": "ChaosSupporter",
-        "VictimName": "OrderMidLaner"
-      },
-      {
-        "EventID": 57,
-        "EventName": "Multikill",
-        "EventTime": 1428.793701171875,
-        "KillStreak": 2,
-        "KillerName": "ChaosSupporter"
-      },
-      {
-        "Assisters": [
-          "ChaosMidLaner",
-          "ChaosJungler",
-          "ChaosBottomLaner"
-        ],
-        "EventID": 58,
-        "EventName": "ChampionKill",
-        "EventTime": 1429.1546630859376,
-        "KillerName": "ChaosTopLaner",
-        "VictimName": "OrderBottomLaner"
-      },
-      {
-        "EventID": 59,
-        "EventName": "Multikill",
-        "EventTime": 1429.1546630859376,
-        "KillStreak": 2,
-        "KillerName": "ChaosTopLaner"
-      },
-      {
-        "EventID": 60,
-        "EventName": "GameEnd",
-        "EventTime": 1447.0321044921876,
-        "Result": "Lose"
-      }
-    ]
-  },
-  "gameData": {
-    "gameMode": "CLASSIC",
-    "gameTime": 1453.270751953125,
-    "mapName": "Map11",
-    "mapNumber": 11,
-    "mapTerrain": "Mountain"
-  }
+	"activePlayer": {
+		"abilities": {
+			"E": {
+				"abilityLevel": 5,
+				"displayName": "Valor",
+				"id": "RivenFeint",
+				"rawDescription": "GeneratedTip_Spell_RivenFeint_Description",
+				"rawDisplayName": "GeneratedTip_Spell_RivenFeint_DisplayName"
+			},
+			"Passive": {
+				"displayName": "Runic Blade",
+				"id": "RivenPassive",
+				"rawDescription": "GeneratedTip_Passive_RivenPassive_Description",
+				"rawDisplayName": "GeneratedTip_Passive_RivenPassive_DisplayName"
+			},
+			"Q": {
+				"abilityLevel": 5,
+				"displayName": "Broken Wings",
+				"id": "RivenTriCleave",
+				"rawDescription": "GeneratedTip_Spell_RivenTriCleave_Description",
+				"rawDisplayName": "GeneratedTip_Spell_RivenTriCleave_DisplayName"
+			},
+			"R": {
+				"abilityLevel": 3,
+				"displayName": "Blade of the Exile",
+				"id": "RivenFengShuiEngine",
+				"rawDescription": "GeneratedTip_Spell_RivenFengShuiEngine_Description",
+				"rawDisplayName": "GeneratedTip_Spell_RivenFengShuiEngine_DisplayName"
+			},
+			"W": {
+				"abilityLevel": 5,
+				"displayName": "Ki Burst",
+				"id": "RivenMartyr",
+				"rawDescription": "GeneratedTip_Spell_RivenMartyr_Description",
+				"rawDisplayName": "GeneratedTip_Spell_RivenMartyr_DisplayName"
+			}
+		},
+		"championStats": {
+			"abilityPower": 0.0,
+			"armor": 130.80401611328126,
+			"armorPenetrationFlat": 0.0,
+			"armorPenetrationPercent": 1.0,
+			"attackDamage": 481.83197021484377,
+			"attackRange": 125.0,
+			"attackSpeed": 0.9968750476837158,
+			"bonusArmorPenetrationPercent": 1.0,
+			"bonusMagicPenetrationPercent": 1.0,
+			"cooldownReduction": -0.4000000059604645,
+			"critChance": 0.0,
+			"critDamage": 200.0,
+			"currentHealth": 2507.068115234375,
+			"healthRegenRate": 6.800000190734863,
+			"lifeSteal": 0.18000000715255738,
+			"magicLethality": 0.0,
+			"magicPenetrationFlat": 0.0,
+			"magicPenetrationPercent": 1.0,
+			"magicResist": 167.8509979248047,
+			"maxHealth": 3172.0,
+			"moveSpeed": 421.79998779296877,
+			"physicalLethality": 0.0,
+			"resourceMax": 0.0,
+			"resourceRegenRate": 0.0,
+			"resourceType": "NONE",
+			"resourceValue": 0.0,
+			"spellVamp": 0.0,
+			"tenacity": 0.0
+		},
+		"currentGold": 16034.798828125,
+		"fullRunes": {
+			"generalRunes": [
+				{
+					"displayName": "Conqueror",
+					"id": 8010,
+					"rawDescription": "perk_tooltip_Conqueror",
+					"rawDisplayName": "perk_displayname_Conqueror"
+				},
+				{
+					"displayName": "Triumph",
+					"id": 9111,
+					"rawDescription": "perk_tooltip_9111",
+					"rawDisplayName": "perk_displayname_9111"
+				},
+				{
+					"displayName": "Legend: Tenacity",
+					"id": 9105,
+					"rawDescription": "perk_tooltip_9105",
+					"rawDisplayName": "perk_displayname_9105"
+				},
+				{
+					"displayName": "Coup de Grace",
+					"id": 8014,
+					"rawDescription": "perk_tooltip_CoupDeGrace",
+					"rawDisplayName": "perk_displayname_CoupDeGrace"
+				},
+				{
+					"displayName": "Transcendence",
+					"id": 8210,
+					"rawDescription": "perk_tooltip_Transcendence",
+					"rawDisplayName": "perk_displayname_Transcendence"
+				},
+				{
+					"displayName": "Gathering Storm",
+					"id": 8236,
+					"rawDescription": "perk_tooltip_GatheringStorm",
+					"rawDisplayName": "perk_displayname_GatheringStorm"
+				}
+			],
+			"keystone": {
+				"displayName": "Conqueror",
+				"id": 8010,
+				"rawDescription": "perk_tooltip_Conqueror",
+				"rawDisplayName": "perk_displayname_Conqueror"
+			},
+			"primaryRuneTree": {
+				"displayName": "Precision",
+				"id": 8000,
+				"rawDescription": "perkstyle_tooltip_7201",
+				"rawDisplayName": "perkstyle_displayname_7201"
+			},
+			"secondaryRuneTree": {
+				"displayName": "Sorcery",
+				"id": 8200,
+				"rawDescription": "perkstyle_tooltip_7202",
+				"rawDisplayName": "perkstyle_displayname_7202"
+			},
+			"statRunes": [
+				{
+					"id": 5008,
+					"rawDescription": "perk_tooltip_StatModAdaptive"
+				},
+				{
+					"id": 5008,
+					"rawDescription": "perk_tooltip_StatModAdaptive"
+				},
+				{
+					"id": 5002,
+					"rawDescription": "perk_tooltip_StatModArmor"
+				}
+			]
+		},
+		"level": 18,
+		"summonerName": "HumanSummoner"
+	},
+	"allPlayers": [
+		{
+			"championName": "Blitzcrank",
+			"isBot": true,
+			"isDead": false,
+			"items": [
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Pauldrons of Whiterock",
+					"itemID": 3857,
+					"price": 400,
+					"rawDescription": "game_item_description_3857",
+					"rawDisplayName": "game_item_displayname_3857",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Boots of Mobility",
+					"itemID": 3117,
+					"price": 700,
+					"rawDescription": "game_item_description_3117",
+					"rawDisplayName": "game_item_displayname_3117",
+					"slot": 1
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Zeke's Convergence",
+					"itemID": 3050,
+					"price": 250,
+					"rawDescription": "game_item_description_3050",
+					"rawDisplayName": "game_item_displayname_3050",
+					"slot": 2
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Knight's Vow",
+					"itemID": 3109,
+					"price": 600,
+					"rawDescription": "game_item_description_3109",
+					"rawDisplayName": "game_item_displayname_3109",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Glacial Shroud",
+					"itemID": 3024,
+					"price": 250,
+					"rawDescription": "game_item_description_3024",
+					"rawDisplayName": "game_item_displayname_3024",
+					"slot": 4
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Crystalline Bracer",
+					"itemID": 3801,
+					"price": 100,
+					"rawDescription": "game_item_description_3801",
+					"rawDisplayName": "game_item_displayname_3801",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 16,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Blitzcrank",
+			"respawnTimer": 0.0,
+			"runes": {
+				"keystone": {
+					"displayName": "Grasp of the Undying",
+					"id": 8437,
+					"rawDescription": "perk_tooltip_GraspOfTheUndying",
+					"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+				},
+				"primaryRuneTree": {
+					"displayName": "Resolve",
+					"id": 8400,
+					"rawDescription": "perkstyle_tooltip_7204",
+					"rawDisplayName": "perkstyle_displayname_7204"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 4,
+				"creepScore": 70,
+				"deaths": 11,
+				"kills": 1,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Blitzcrank Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Ghost",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerHaste_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHaste_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Teleport",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+				}
+			},
+			"team": "ORDER"
+		},
+		{
+			"championName": "Miss Fortune",
+			"isBot": true,
+			"isDead": true,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Blade",
+					"itemID": 1055,
+					"price": 450,
+					"rawDescription": "game_item_description_1055",
+					"rawDisplayName": "game_item_displayname_1055",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Essence Reaver",
+					"itemID": 3508,
+					"price": 100,
+					"rawDescription": "game_item_description_3508",
+					"rawDisplayName": "game_item_displayname_3508",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Berserker's Greaves",
+					"itemID": 3006,
+					"price": 500,
+					"rawDescription": "game_item_description_3006",
+					"rawDisplayName": "game_item_displayname_3006",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Infinity Edge",
+					"itemID": 3031,
+					"price": 425,
+					"rawDescription": "game_item_description_3031",
+					"rawDisplayName": "game_item_displayname_3031",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Kircheis Shard",
+					"itemID": 2015,
+					"price": 400,
+					"rawDescription": "game_item_description_2015",
+					"rawDisplayName": "game_item_displayname_2015",
+					"slot": 4
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 16,
+			"position": "",
+			"rawChampionName": "game_character_displayname_MissFortune",
+			"respawnTimer": 34.19261169433594,
+			"runes": {
+				"keystone": {
+					"displayName": "Press the Attack",
+					"id": 8005,
+					"rawDescription": "perk_tooltip_PressTheAttack",
+					"rawDisplayName": "perk_displayname_PressTheAttack"
+				},
+				"primaryRuneTree": {
+					"displayName": "Precision",
+					"id": 8000,
+					"rawDescription": "perkstyle_tooltip_7201",
+					"rawDisplayName": "perkstyle_displayname_7201"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 12,
+				"creepScore": 90,
+				"deaths": 19,
+				"kills": 0,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Miss Fortune Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Ignite",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Exhaust",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerExhaust_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerExhaust_DisplayName"
+				}
+			},
+			"team": "ORDER"
+		},
+		{
+			"championName": "Riven",
+			"isBot": false,
+			"isDead": false,
+			"items": [
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Ravenous Hydra",
+					"itemID": 3074,
+					"price": 400,
+					"rawDescription": "game_item_description_3074",
+					"rawDisplayName": "game_item_displayname_3074",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Death's Dance",
+					"itemID": 3812,
+					"price": 500,
+					"rawDescription": "game_item_description_3812",
+					"rawDisplayName": "game_item_displayname_3812",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Black Cleaver",
+					"itemID": 3071,
+					"price": 950,
+					"rawDescription": "game_item_description_3071",
+					"rawDisplayName": "game_item_displayname_3071",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Mercury's Treads",
+					"itemID": 3111,
+					"price": 350,
+					"rawDescription": "game_item_description_3111",
+					"rawDisplayName": "game_item_displayname_3111",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Maw of Malmortius",
+					"itemID": 3156,
+					"price": 850,
+					"rawDescription": "game_item_description_3156",
+					"rawDisplayName": "game_item_displayname_3156",
+					"slot": 4
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Sterak's Gage",
+					"itemID": 3053,
+					"price": 725,
+					"rawDescription": "game_item_description_3053",
+					"rawDisplayName": "game_item_displayname_3053",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Oracle Lens",
+					"itemID": 3364,
+					"price": 0,
+					"rawDescription": "game_item_description_3364",
+					"rawDisplayName": "game_item_displayname_3364",
+					"slot": 6
+				}
+			],
+			"level": 18,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Riven",
+			"rawSkinName": "game_character_skin_displayname_Riven_16",
+			"respawnTimer": 0.0,
+			"runes": {
+				"keystone": {
+					"displayName": "Conqueror",
+					"id": 8010,
+					"rawDescription": "perk_tooltip_Conqueror",
+					"rawDisplayName": "perk_displayname_Conqueror"
+				},
+				"primaryRuneTree": {
+					"displayName": "Precision",
+					"id": 8000,
+					"rawDescription": "perkstyle_tooltip_7201",
+					"rawDisplayName": "perkstyle_displayname_7201"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 3,
+				"creepScore": 360,
+				"deaths": 4,
+				"kills": 65,
+				"wardScore": 11.835966110229493
+			},
+			"skinID": 16,
+			"skinName": "Dawnbringer Riven",
+			"summonerName": "HumanSummoner",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Teleport",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				}
+			},
+			"team": "ORDER"
+		},
+		{
+			"championName": "Trundle",
+			"isBot": true,
+			"isDead": false,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Shield",
+					"itemID": 1054,
+					"price": 450,
+					"rawDescription": "game_item_description_1054",
+					"rawDisplayName": "game_item_displayname_1054",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Trinity Force",
+					"itemID": 3078,
+					"price": 333,
+					"rawDescription": "game_item_description_3078",
+					"rawDisplayName": "game_item_displayname_3078",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Ninja Tabi",
+					"itemID": 3047,
+					"price": 500,
+					"rawDescription": "game_item_description_3047",
+					"rawDisplayName": "game_item_displayname_3047",
+					"slot": 2
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Tiamat",
+					"itemID": 3077,
+					"price": 475,
+					"rawDescription": "game_item_description_3077",
+					"rawDisplayName": "game_item_displayname_3077",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Jaurim's Fist",
+					"itemID": 3052,
+					"price": 450,
+					"rawDescription": "game_item_description_3052",
+					"rawDisplayName": "game_item_displayname_3052",
+					"slot": 4
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 17,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Trundle",
+			"respawnTimer": 0.0,
+			"runes": {
+				"keystone": {
+					"displayName": "Grasp of the Undying",
+					"id": 8437,
+					"rawDescription": "perk_tooltip_GraspOfTheUndying",
+					"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+				},
+				"primaryRuneTree": {
+					"displayName": "Resolve",
+					"id": 8400,
+					"rawDescription": "perkstyle_tooltip_7204",
+					"rawDisplayName": "perkstyle_displayname_7204"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 13,
+				"creepScore": 40,
+				"deaths": 18,
+				"kills": 1,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Trundle Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Teleport",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Ghost",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerHaste_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerHaste_DisplayName"
+				}
+			},
+			"team": "ORDER"
+		},
+		{
+			"championName": "Sivir",
+			"isBot": true,
+			"isDead": false,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Blade",
+					"itemID": 1055,
+					"price": 450,
+					"rawDescription": "game_item_description_1055",
+					"rawDisplayName": "game_item_displayname_1055",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Essence Reaver",
+					"itemID": 3508,
+					"price": 100,
+					"rawDescription": "game_item_description_3508",
+					"rawDisplayName": "game_item_displayname_3508",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Berserker's Greaves",
+					"itemID": 3006,
+					"price": 500,
+					"rawDescription": "game_item_description_3006",
+					"rawDisplayName": "game_item_displayname_3006",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Phantom Dancer",
+					"itemID": 3046,
+					"price": 900,
+					"rawDescription": "game_item_description_3046",
+					"rawDisplayName": "game_item_displayname_3046",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Pickaxe",
+					"itemID": 1037,
+					"price": 875,
+					"rawDescription": "game_item_description_1037",
+					"rawDisplayName": "game_item_displayname_1037",
+					"slot": 4
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Cloak of Agility",
+					"itemID": 1018,
+					"price": 800,
+					"rawDescription": "game_item_description_1018",
+					"rawDisplayName": "game_item_displayname_1018",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 16,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Sivir",
+			"respawnTimer": 0.0,
+			"runes": {
+				"keystone": {
+					"displayName": "Press the Attack",
+					"id": 8005,
+					"rawDescription": "perk_tooltip_PressTheAttack",
+					"rawDisplayName": "perk_displayname_PressTheAttack"
+				},
+				"primaryRuneTree": {
+					"displayName": "Precision",
+					"id": 8000,
+					"rawDescription": "perkstyle_tooltip_7201",
+					"rawDisplayName": "perkstyle_displayname_7201"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 13,
+				"creepScore": 100,
+				"deaths": 14,
+				"kills": 3,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Sivir Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Ignite",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Exhaust",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerExhaust_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerExhaust_DisplayName"
+				}
+			},
+			"team": "ORDER"
+		},
+		{
+			"championName": "Cassiopeia",
+			"isBot": true,
+			"isDead": true,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Ring",
+					"itemID": 1056,
+					"price": 400,
+					"rawDescription": "game_item_description_1056",
+					"rawDisplayName": "game_item_displayname_1056",
+					"slot": 0
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Seraph's Embrace",
+					"itemID": 3040,
+					"price": 3200,
+					"rawDescription": "game_item_description_3040",
+					"rawDisplayName": "game_item_displayname_3040",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Liandry's Torment",
+					"itemID": 3151,
+					"price": 750,
+					"rawDescription": "game_item_description_3151",
+					"rawDisplayName": "game_item_displayname_3151",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Rylai's Crystal Scepter",
+					"itemID": 3116,
+					"price": 915,
+					"rawDescription": "game_item_description_3116",
+					"rawDisplayName": "game_item_displayname_3116",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Void Staff",
+					"itemID": 3135,
+					"price": 1365,
+					"rawDescription": "game_item_description_3135",
+					"rawDisplayName": "game_item_displayname_3135",
+					"slot": 4
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 18,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Cassiopeia",
+			"respawnTimer": 44.62983703613281,
+			"runes": {
+				"keystone": {
+					"displayName": "Arcane Comet",
+					"id": 8229,
+					"rawDescription": "perk_tooltip_ArcaneComet",
+					"rawDisplayName": "perk_displayname_ArcaneComet"
+				},
+				"primaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Domination",
+					"id": 8100,
+					"rawDescription": "perkstyle_tooltip_7200",
+					"rawDisplayName": "perkstyle_displayname_7200"
+				}
+			},
+			"scores": {
+				"assists": 27,
+				"creepScore": 70,
+				"deaths": 14,
+				"kills": 23,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Cassiopeia Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Ignite",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				}
+			},
+			"team": "CHAOS"
+		},
+		{
+			"championName": "Veigar",
+			"isBot": true,
+			"isDead": true,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Banshee's Veil",
+					"itemID": 3102,
+					"price": 800,
+					"rawDescription": "game_item_description_3102",
+					"rawDisplayName": "game_item_displayname_3102",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Sorcerer's Shoes",
+					"itemID": 3020,
+					"price": 800,
+					"rawDescription": "game_item_description_3020",
+					"rawDisplayName": "game_item_displayname_3020",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Luden's Echo",
+					"itemID": 3285,
+					"price": 1050,
+					"rawDescription": "game_item_description_3285",
+					"rawDisplayName": "game_item_displayname_3285",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Rabadon's Deathcap",
+					"itemID": 3089,
+					"price": 1100,
+					"rawDescription": "game_item_description_3089",
+					"rawDisplayName": "game_item_displayname_3089",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Morellonomicon",
+					"itemID": 3165,
+					"price": 550,
+					"rawDescription": "game_item_description_3165",
+					"rawDisplayName": "game_item_displayname_3165",
+					"slot": 4
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Void Staff",
+					"itemID": 3135,
+					"price": 1365,
+					"rawDescription": "game_item_description_3135",
+					"rawDisplayName": "game_item_displayname_3135",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 18,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Veigar",
+			"respawnTimer": 41.40972900390625,
+			"runes": {
+				"keystone": {
+					"displayName": "Arcane Comet",
+					"id": 8229,
+					"rawDescription": "perk_tooltip_ArcaneComet",
+					"rawDisplayName": "perk_displayname_ArcaneComet"
+				},
+				"primaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Domination",
+					"id": 8100,
+					"rawDescription": "perkstyle_tooltip_7200",
+					"rawDisplayName": "perkstyle_displayname_7200"
+				}
+			},
+			"scores": {
+				"assists": 20,
+				"creepScore": 170,
+				"deaths": 10,
+				"kills": 24,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Veigar Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Ignite",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				}
+			},
+			"team": "CHAOS"
+		},
+		{
+			"championName": "Wukong",
+			"isBot": true,
+			"isDead": true,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Shield",
+					"itemID": 1054,
+					"price": 450,
+					"rawDescription": "game_item_description_1054",
+					"rawDisplayName": "game_item_displayname_1054",
+					"slot": 0
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Tiamat",
+					"itemID": 3077,
+					"price": 475,
+					"rawDescription": "game_item_description_3077",
+					"rawDisplayName": "game_item_displayname_3077",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Mercury's Treads",
+					"itemID": 3111,
+					"price": 350,
+					"rawDescription": "game_item_description_3111",
+					"rawDisplayName": "game_item_displayname_3111",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Trinity Force",
+					"itemID": 3078,
+					"price": 333,
+					"rawDescription": "game_item_description_3078",
+					"rawDisplayName": "game_item_displayname_3078",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Aegis of the Legion",
+					"itemID": 3105,
+					"price": 350,
+					"rawDescription": "game_item_description_3105",
+					"rawDisplayName": "game_item_displayname_3105",
+					"slot": 4
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Vampiric Scepter",
+					"itemID": 1053,
+					"price": 550,
+					"rawDescription": "game_item_description_1053",
+					"rawDisplayName": "game_item_displayname_1053",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 17,
+			"position": "",
+			"rawChampionName": "game_character_displayname_MonkeyKing",
+			"respawnTimer": 19.278030395507814,
+			"runes": {
+				"keystone": {
+					"displayName": "Grasp of the Undying",
+					"id": 8437,
+					"rawDescription": "perk_tooltip_GraspOfTheUndying",
+					"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+				},
+				"primaryRuneTree": {
+					"displayName": "Resolve",
+					"id": 8400,
+					"rawDescription": "perkstyle_tooltip_7204",
+					"rawDisplayName": "perkstyle_displayname_7204"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 24,
+				"creepScore": 90,
+				"deaths": 18,
+				"kills": 5,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Wukong Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Ignite",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerDot_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerDot_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				}
+			},
+			"team": "CHAOS"
+		},
+		{
+			"championName": "Ziggs",
+			"isBot": true,
+			"isDead": true,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Doran's Ring",
+					"itemID": 1056,
+					"price": 400,
+					"rawDescription": "game_item_description_1056",
+					"rawDisplayName": "game_item_displayname_1056",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Sorcerer's Shoes",
+					"itemID": 3020,
+					"price": 800,
+					"rawDescription": "game_item_description_3020",
+					"rawDisplayName": "game_item_displayname_3020",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Luden's Echo",
+					"itemID": 3285,
+					"price": 1050,
+					"rawDescription": "game_item_description_3285",
+					"rawDisplayName": "game_item_displayname_3285",
+					"slot": 2
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Lich Bane",
+					"itemID": 3100,
+					"price": 450,
+					"rawDescription": "game_item_description_3100",
+					"rawDisplayName": "game_item_displayname_3100",
+					"slot": 3
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Morellonomicon",
+					"itemID": 3165,
+					"price": 550,
+					"rawDescription": "game_item_description_3165",
+					"rawDisplayName": "game_item_displayname_3165",
+					"slot": 4
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Blasting Wand",
+					"itemID": 1026,
+					"price": 850,
+					"rawDescription": "game_item_description_1026",
+					"rawDisplayName": "game_item_displayname_1026",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 17,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Ziggs",
+			"respawnTimer": 2.6071739196777345,
+			"runes": {
+				"keystone": {
+					"displayName": "Arcane Comet",
+					"id": 8229,
+					"rawDescription": "perk_tooltip_ArcaneComet",
+					"rawDisplayName": "perk_displayname_ArcaneComet"
+				},
+				"primaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Domination",
+					"id": 8100,
+					"rawDescription": "perkstyle_tooltip_7200",
+					"rawDisplayName": "perkstyle_displayname_7200"
+				}
+			},
+			"scores": {
+				"assists": 33,
+				"creepScore": 140,
+				"deaths": 15,
+				"kills": 11,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Ziggs Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Barrier",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerBarrier_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerBarrier_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Flash",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerFlash_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerFlash_DisplayName"
+				}
+			},
+			"team": "CHAOS"
+		},
+		{
+			"championName": "Taric",
+			"isBot": true,
+			"isDead": true,
+			"items": [
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Forbidden Idol",
+					"itemID": 3114,
+					"price": 550,
+					"rawDescription": "game_item_description_3114",
+					"rawDisplayName": "game_item_displayname_3114",
+					"slot": 0
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Catalyst of Aeons",
+					"itemID": 3010,
+					"price": 350,
+					"rawDescription": "game_item_description_3010",
+					"rawDisplayName": "game_item_displayname_3010",
+					"slot": 1
+				},
+				{
+					"canUse": false,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Boots of Mobility",
+					"itemID": 3117,
+					"price": 700,
+					"rawDescription": "game_item_description_3117",
+					"rawDisplayName": "game_item_displayname_3117",
+					"slot": 2
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Zeke's Convergence",
+					"itemID": 3050,
+					"price": 250,
+					"rawDescription": "game_item_description_3050",
+					"rawDisplayName": "game_item_displayname_3050",
+					"slot": 3
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Knight's Vow",
+					"itemID": 3109,
+					"price": 600,
+					"rawDescription": "game_item_description_3109",
+					"rawDisplayName": "game_item_displayname_3109",
+					"slot": 4
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Locket of the Iron Solari",
+					"itemID": 3190,
+					"price": 650,
+					"rawDescription": "game_item_description_3190",
+					"rawDisplayName": "game_item_displayname_3190",
+					"slot": 5
+				},
+				{
+					"canUse": true,
+					"consumable": false,
+					"count": 1,
+					"displayName": "Warding Totem (Trinket)",
+					"itemID": 3340,
+					"price": 0,
+					"rawDescription": "game_item_description_3340",
+					"rawDisplayName": "game_item_displayname_3340",
+					"slot": 6
+				}
+			],
+			"level": 18,
+			"position": "",
+			"rawChampionName": "game_character_displayname_Taric",
+			"respawnTimer": 30.448509216308595,
+			"runes": {
+				"keystone": {
+					"displayName": "Grasp of the Undying",
+					"id": 8437,
+					"rawDescription": "perk_tooltip_GraspOfTheUndying",
+					"rawDisplayName": "perk_displayname_GraspOfTheUndying"
+				},
+				"primaryRuneTree": {
+					"displayName": "Resolve",
+					"id": 8400,
+					"rawDescription": "perkstyle_tooltip_7204",
+					"rawDisplayName": "perkstyle_displayname_7204"
+				},
+				"secondaryRuneTree": {
+					"displayName": "Sorcery",
+					"id": 8200,
+					"rawDescription": "perkstyle_tooltip_7202",
+					"rawDisplayName": "perkstyle_displayname_7202"
+				}
+			},
+			"scores": {
+				"assists": 43,
+				"creepScore": 50,
+				"deaths": 13,
+				"kills": 3,
+				"wardScore": 0.0
+			},
+			"skinID": 0,
+			"summonerName": "Taric Bot",
+			"summonerSpells": {
+				"summonerSpellOne": {
+					"displayName": "Teleport",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerTeleport_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerTeleport_DisplayName"
+				},
+				"summonerSpellTwo": {
+					"displayName": "Exhaust",
+					"rawDescription": "GeneratedTip_SummonerSpell_SummonerExhaust_Description",
+					"rawDisplayName": "GeneratedTip_SummonerSpell_SummonerExhaust_DisplayName"
+				}
+			},
+			"team": "CHAOS"
+		}
+	],
+	"events": {
+		"Events": [
+			{
+				"EventID": 0,
+				"EventName": "GameStart",
+				"EventTime": 0.016428500413894655
+			},
+			{
+				"EventID": 1,
+				"EventName": "MinionsSpawning",
+				"EventTime": 65.03854370117188
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot"
+				],
+				"EventID": 2,
+				"EventName": "ChampionKill",
+				"EventTime": 243.90573120117188,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"EventID": 3,
+				"EventName": "FirstBlood",
+				"EventTime": 243.90573120117188,
+				"Recipient": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 4,
+				"EventName": "ChampionKill",
+				"EventTime": 266.6701354980469,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 5,
+				"EventName": "ChampionKill",
+				"EventTime": 320.8542785644531,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot"
+				],
+				"EventID": 6,
+				"EventName": "ChampionKill",
+				"EventTime": 361.1811218261719,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 7,
+				"EventName": "ChampionKill",
+				"EventTime": 366.0448303222656,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot"
+				],
+				"EventID": 8,
+				"EventName": "ChampionKill",
+				"EventTime": 367.1012878417969,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 9,
+				"EventName": "ChampionKill",
+				"EventTime": 433.7098083496094,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [
+					"Taric Bot"
+				],
+				"EventID": 10,
+				"EventName": "ChampionKill",
+				"EventTime": 457.8138427734375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 11,
+				"EventName": "ChampionKill",
+				"EventTime": 504.3880920410156,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot"
+				],
+				"EventID": 12,
+				"EventName": "ChampionKill",
+				"EventTime": 506.1198425292969,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot"
+				],
+				"EventID": 13,
+				"EventName": "ChampionKill",
+				"EventTime": 514.3598022460938,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 14,
+				"EventName": "ChampionKill",
+				"EventTime": 548.3512573242188,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 15,
+				"EventName": "ChampionKill",
+				"EventTime": 619.19775390625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 16,
+				"EventName": "ChampionKill",
+				"EventTime": 620.6124267578125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 17,
+				"EventName": "Multikill",
+				"EventTime": 620.6124267578125,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 18,
+				"EventName": "TurretKilled",
+				"EventTime": 636.4154052734375,
+				"KillerName": "HumanSummoner",
+				"TurretKilled": "Turret_T2_C_05_A"
+			},
+			{
+				"EventID": 19,
+				"EventName": "FirstBrick",
+				"EventTime": 636.4154052734375,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"DragonType": "Earth",
+				"EventID": 20,
+				"EventName": "DragonKill",
+				"EventTime": 692.4383544921875,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"Assisters": [],
+				"EventID": 21,
+				"EventName": "ChampionKill",
+				"EventTime": 708.6914672851563,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 22,
+				"EventName": "ChampionKill",
+				"EventTime": 718.4895629882813,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 23,
+				"EventName": "ChampionKill",
+				"EventTime": 719.5529174804688,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 24,
+				"EventName": "ChampionKill",
+				"EventTime": 726.0,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 25,
+				"EventName": "Multikill",
+				"EventTime": 726.0,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 26,
+				"EventName": "ChampionKill",
+				"EventTime": 780.4744262695313,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 27,
+				"EventName": "TurretKilled",
+				"EventTime": 844.4703979492188,
+				"KillerName": "Ziggs Bot",
+				"TurretKilled": "Turret_T1_C_05_A"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Trundle Bot"
+				],
+				"EventID": 28,
+				"EventName": "ChampionKill",
+				"EventTime": 846.5324096679688,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 29,
+				"EventName": "ChampionKill",
+				"EventTime": 891.2916259765625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 30,
+				"EventName": "ChampionKill",
+				"EventTime": 899.9437255859375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 31,
+				"EventName": "Multikill",
+				"EventTime": 899.9437255859375,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 32,
+				"EventName": "ChampionKill",
+				"EventTime": 903.414794921875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 33,
+				"EventName": "Multikill",
+				"EventTime": 903.414794921875,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 34,
+				"EventName": "ChampionKill",
+				"EventTime": 920.6954956054688,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 35,
+				"EventName": "HeraldKill",
+				"EventTime": 949.497314453125,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"Assisters": [],
+				"EventID": 36,
+				"EventName": "TurretKilled",
+				"EventTime": 971.0368041992188,
+				"KillerName": "Wukong Bot",
+				"TurretKilled": "Turret_T1_C_04_A"
+			},
+			{
+				"Assisters": [],
+				"EventID": 37,
+				"EventName": "ChampionKill",
+				"EventTime": 996.0958251953125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 38,
+				"EventName": "ChampionKill",
+				"EventTime": 998.142333984375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"EventID": 39,
+				"EventName": "Multikill",
+				"EventTime": 998.142333984375,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot"
+				],
+				"EventID": 40,
+				"EventName": "ChampionKill",
+				"EventTime": 998.3078002929688,
+				"KillerName": "Taric Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 41,
+				"EventName": "ChampionKill",
+				"EventTime": 999.663818359375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"EventID": 42,
+				"EventName": "Multikill",
+				"EventTime": 999.663818359375,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 43,
+				"EventName": "ChampionKill",
+				"EventTime": 1000.1016845703125,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 44,
+				"EventName": "ChampionKill",
+				"EventTime": 1006.4971923828125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 45,
+				"EventName": "Multikill",
+				"EventTime": 1006.4971923828125,
+				"KillStreak": 4,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 46,
+				"EventName": "ChampionKill",
+				"EventTime": 1024.3057861328126,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [],
+				"DragonType": "Fire",
+				"EventID": 47,
+				"EventName": "DragonKill",
+				"EventTime": 1042.316162109375,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"Assisters": [],
+				"EventID": 48,
+				"EventName": "TurretKilled",
+				"EventTime": 1050.4443359375,
+				"KillerName": "Minion_T100L2S31N0196",
+				"TurretKilled": "Turret_T2_L_03_A"
+			},
+			{
+				"Assisters": [],
+				"EventID": 49,
+				"EventName": "ChampionKill",
+				"EventTime": 1067.9957275390626,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 50,
+				"EventName": "ChampionKill",
+				"EventTime": 1079.354736328125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 51,
+				"EventName": "TurretKilled",
+				"EventTime": 1084.5372314453126,
+				"KillerName": "Sivir Bot",
+				"TurretKilled": "Turret_T2_R_03_A"
+			},
+			{
+				"Assisters": [],
+				"EventID": 52,
+				"EventName": "ChampionKill",
+				"EventTime": 1106.738037109375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [
+					"Taric Bot"
+				],
+				"EventID": 53,
+				"EventName": "ChampionKill",
+				"EventTime": 1110.845703125,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 54,
+				"EventName": "ChampionKill",
+				"EventTime": 1121.1512451171876,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 55,
+				"EventName": "ChampionKill",
+				"EventTime": 1140.8294677734376,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 56,
+				"EventName": "ChampionKill",
+				"EventTime": 1141.29150390625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"EventID": 57,
+				"EventName": "Multikill",
+				"EventTime": 1141.29150390625,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 58,
+				"EventName": "ChampionKill",
+				"EventTime": 1147.3134765625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"EventID": 59,
+				"EventName": "Multikill",
+				"EventTime": 1147.3134765625,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Miss Fortune Bot"
+				],
+				"EventID": 60,
+				"EventName": "ChampionKill",
+				"EventTime": 1181.2952880859376,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot"
+				],
+				"EventID": 61,
+				"EventName": "ChampionKill",
+				"EventTime": 1191.336181640625,
+				"KillerName": "Taric Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Taric Bot"
+				],
+				"EventID": 62,
+				"EventName": "ChampionKill",
+				"EventTime": 1197.8453369140626,
+				"KillerName": "Wukong Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 63,
+				"EventName": "ChampionKill",
+				"EventTime": 1201.1168212890626,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [
+					"Miss Fortune Bot"
+				],
+				"EventID": 64,
+				"EventName": "TurretKilled",
+				"EventTime": 1202.642822265625,
+				"KillerName": "HumanSummoner",
+				"TurretKilled": "Turret_T2_C_04_A"
+			},
+			{
+				"Assisters": [],
+				"EventID": 65,
+				"EventName": "TurretKilled",
+				"EventTime": 1214.63720703125,
+				"KillerName": "Miss Fortune Bot",
+				"TurretKilled": "Turret_T2_C_03_A"
+			},
+			{
+				"Assisters": [],
+				"EventID": 66,
+				"EventName": "ChampionKill",
+				"EventTime": 1225.014404296875,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Miss Fortune Bot"
+				],
+				"EventID": 67,
+				"EventName": "ChampionKill",
+				"EventTime": 1237.0325927734376,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 68,
+				"EventName": "ChampionKill",
+				"EventTime": 1239.905029296875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 69,
+				"EventName": "Multikill",
+				"EventTime": 1239.905029296875,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 70,
+				"EventName": "ChampionKill",
+				"EventTime": 1248.897216796875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"EventID": 71,
+				"EventName": "Multikill",
+				"EventTime": 1248.897216796875,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 72,
+				"EventName": "ChampionKill",
+				"EventTime": 1248.897216796875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 73,
+				"EventName": "Multikill",
+				"EventTime": 1248.897216796875,
+				"KillStreak": 4,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 74,
+				"EventName": "TurretKilled",
+				"EventTime": 1251.1759033203126,
+				"KillerName": "Minion_T200L2S38N0240",
+				"TurretKilled": "Turret_T1_L_03_A"
+			},
+			{
+				"Assisters": [
+					"HumanSummoner"
+				],
+				"EventID": 75,
+				"EventName": "InhibKilled",
+				"EventTime": 1261.4940185546876,
+				"InhibKilled": "Barracks_T2_C1",
+				"KillerName": "Minion_T100L1S39N0245"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 76,
+				"EventName": "ChampionKill",
+				"EventTime": 1299.1934814453126,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 77,
+				"EventName": "ChampionKill",
+				"EventTime": 1301.579833984375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 78,
+				"EventName": "ChampionKill",
+				"EventTime": 1305.1395263671876,
+				"KillerName": "Wukong Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 79,
+				"EventName": "ChampionKill",
+				"EventTime": 1306.5926513671876,
+				"KillerName": "Wukong Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"EventID": 80,
+				"EventName": "Multikill",
+				"EventTime": 1306.5926513671876,
+				"KillStreak": 2,
+				"KillerName": "Wukong Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 81,
+				"EventName": "ChampionKill",
+				"EventTime": 1309.3460693359376,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Acer": "Cassiopeia Bot",
+				"AcingTeam": "CHAOS",
+				"EventID": 82,
+				"EventName": "Ace",
+				"EventTime": 1309.3460693359376
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Taric Bot"
+				],
+				"EventID": 83,
+				"EventName": "ChampionKill",
+				"EventTime": 1355.8245849609376,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 84,
+				"EventName": "ChampionKill",
+				"EventTime": 1356.885986328125,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"EventID": 85,
+				"EventName": "Multikill",
+				"EventTime": 1356.885986328125,
+				"KillStreak": 2,
+				"KillerName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 86,
+				"EventName": "ChampionKill",
+				"EventTime": 1364.5894775390626,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 87,
+				"EventName": "ChampionKill",
+				"EventTime": 1366.7255859375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Miss Fortune Bot"
+				],
+				"EventID": 88,
+				"EventName": "ChampionKill",
+				"EventTime": 1367.2576904296876,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"EventID": 89,
+				"EventName": "Multikill",
+				"EventTime": 1367.2576904296876,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot"
+				],
+				"EventID": 90,
+				"EventName": "ChampionKill",
+				"EventTime": 1368.50830078125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"EventID": 91,
+				"EventName": "Multikill",
+				"EventTime": 1368.50830078125,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 92,
+				"EventName": "ChampionKill",
+				"EventTime": 1373.303466796875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 93,
+				"EventName": "Multikill",
+				"EventTime": 1373.303466796875,
+				"KillStreak": 4,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot"
+				],
+				"EventID": 94,
+				"EventName": "ChampionKill",
+				"EventTime": 1374.886474609375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 95,
+				"EventName": "Multikill",
+				"EventTime": 1374.886474609375,
+				"KillStreak": 5,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Acer": "HumanSummoner",
+				"AcingTeam": "ORDER",
+				"EventID": 96,
+				"EventName": "Ace",
+				"EventTime": 1374.886474609375
+			},
+			{
+				"Assisters": [],
+				"EventID": 97,
+				"EventName": "TurretKilled",
+				"EventTime": 1376.66455078125,
+				"KillerName": "Minion_T200L0S43N0274",
+				"TurretKilled": "Turret_T1_R_03_A"
+			},
+			{
+				"Assisters": [],
+				"DragonType": "Air",
+				"EventID": 98,
+				"EventName": "DragonKill",
+				"EventTime": 1414.9910888671876,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 99,
+				"EventName": "ChampionKill",
+				"EventTime": 1430.5838623046876,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 100,
+				"EventName": "ChampionKill",
+				"EventTime": 1445.72412109375,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot"
+				],
+				"EventID": 101,
+				"EventName": "ChampionKill",
+				"EventTime": 1457.095703125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 102,
+				"EventName": "ChampionKill",
+				"EventTime": 1457.88525390625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"EventID": 103,
+				"EventName": "Multikill",
+				"EventTime": 1457.88525390625,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 104,
+				"EventName": "ChampionKill",
+				"EventTime": 1463.8516845703126,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 105,
+				"EventName": "Multikill",
+				"EventTime": 1463.8516845703126,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 106,
+				"EventName": "ChampionKill",
+				"EventTime": 1465.8311767578126,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"EventID": 107,
+				"EventName": "Multikill",
+				"EventTime": 1465.8311767578126,
+				"KillStreak": 4,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 108,
+				"EventName": "ChampionKill",
+				"EventTime": 1466.627197265625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 109,
+				"EventName": "Multikill",
+				"EventTime": 1466.627197265625,
+				"KillStreak": 5,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Acer": "HumanSummoner",
+				"AcingTeam": "ORDER",
+				"EventID": 110,
+				"EventName": "Ace",
+				"EventTime": 1466.627197265625
+			},
+			{
+				"Assisters": [],
+				"EventID": 111,
+				"EventName": "TurretKilled",
+				"EventTime": 1504.5257568359376,
+				"KillerName": "Minion_T100L1S47N0302",
+				"TurretKilled": "Turret_T2_C_01_A"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Taric Bot"
+				],
+				"EventID": 112,
+				"EventName": "ChampionKill",
+				"EventTime": 1512.0909423828126,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Taric Bot"
+				],
+				"EventID": 113,
+				"EventName": "ChampionKill",
+				"EventTime": 1514.833740234375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"EventID": 114,
+				"EventName": "Multikill",
+				"EventTime": 1514.833740234375,
+				"KillStreak": 2,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 115,
+				"EventName": "ChampionKill",
+				"EventTime": 1525.0499267578126,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 116,
+				"EventName": "ChampionKill",
+				"EventTime": 1535.2806396484376,
+				"KillerName": "Wukong Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"EventID": 117,
+				"EventName": "InhibRespawningSoon",
+				"EventTime": 1546.493896484375,
+				"InhibRespawningSoon": "Barracks_T2_C1"
+			},
+			{
+				"Assisters": [],
+				"EventID": 118,
+				"EventName": "TurretKilled",
+				"EventTime": 1557.416015625,
+				"KillerName": "HumanSummoner",
+				"TurretKilled": "Turret_T2_L_02_A"
+			},
+			{
+				"EventID": 119,
+				"EventName": "InhibRespawned",
+				"EventTime": 1561.5443115234376,
+				"InhibRespawned": "Barracks_T2_C1"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Wukong Bot"
+				],
+				"EventID": 120,
+				"EventName": "ChampionKill",
+				"EventTime": 1579.2525634765626,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 121,
+				"EventName": "TurretKilled",
+				"EventTime": 1591.37548828125,
+				"KillerName": "HumanSummoner",
+				"TurretKilled": "Turret_T2_L_01_A"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Wukong Bot"
+				],
+				"EventID": 122,
+				"EventName": "ChampionKill",
+				"EventTime": 1595.9736328125,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 123,
+				"EventName": "ChampionKill",
+				"EventTime": 1619.2337646484376,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 124,
+				"EventName": "ChampionKill",
+				"EventTime": 1629.9725341796876,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot"
+				],
+				"EventID": 125,
+				"EventName": "ChampionKill",
+				"EventTime": 1632.0196533203126,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot"
+				],
+				"EventID": 126,
+				"EventName": "ChampionKill",
+				"EventTime": 1633.8712158203126,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 127,
+				"EventName": "InhibKilled",
+				"EventTime": 1645.8233642578126,
+				"InhibKilled": "Barracks_T2_L1",
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 128,
+				"EventName": "InhibKilled",
+				"EventTime": 1679.1875,
+				"InhibKilled": "Barracks_T2_C1",
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Ziggs Bot"
+				],
+				"EventID": 129,
+				"EventName": "ChampionKill",
+				"EventTime": 1681.218505859375,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot"
+				],
+				"EventID": 130,
+				"EventName": "ChampionKill",
+				"EventTime": 1707.12255859375,
+				"KillerName": "Wukong Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Wukong Bot",
+					"Ziggs Bot"
+				],
+				"EventID": 131,
+				"EventName": "ChampionKill",
+				"EventTime": 1710.085205078125,
+				"KillerName": "Taric Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 132,
+				"EventName": "ChampionKill",
+				"EventTime": 1711.406494140625,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [],
+				"DragonType": "Air",
+				"EventID": 133,
+				"EventName": "DragonKill",
+				"EventTime": 1729.0614013671876,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"Assisters": [
+					"Ziggs Bot"
+				],
+				"EventID": 134,
+				"EventName": "TurretKilled",
+				"EventTime": 1747.9798583984376,
+				"KillerName": "Veigar Bot",
+				"TurretKilled": "Turret_T1_C_03_A"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Wukong Bot"
+				],
+				"EventID": 135,
+				"EventName": "InhibKilled",
+				"EventTime": 1753.7569580078126,
+				"InhibKilled": "Barracks_T1_C1",
+				"KillerName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Ziggs Bot"
+				],
+				"EventID": 136,
+				"EventName": "ChampionKill",
+				"EventTime": 1761.3031005859376,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Ziggs Bot"
+				],
+				"EventID": 137,
+				"EventName": "ChampionKill",
+				"EventTime": 1791.6231689453126,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot"
+				],
+				"EventID": 138,
+				"EventName": "ChampionKill",
+				"EventTime": 1791.6610107421876,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 139,
+				"EventName": "ChampionKill",
+				"EventTime": 1793.95263671875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 140,
+				"EventName": "ChampionKill",
+				"EventTime": 1794.3021240234376,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"EventID": 141,
+				"EventName": "Multikill",
+				"EventTime": 1794.3021240234376,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 142,
+				"EventName": "ChampionKill",
+				"EventTime": 1794.3487548828126,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"EventID": 143,
+				"EventName": "Multikill",
+				"EventTime": 1794.3487548828126,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 144,
+				"EventName": "TurretKilled",
+				"EventTime": 1803.3837890625,
+				"KillerName": "Minion_T100L2S56N0359",
+				"TurretKilled": "Turret_T2_C_02_A"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 145,
+				"EventName": "ChampionKill",
+				"EventTime": 1850.8602294921876,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 146,
+				"EventName": "ChampionKill",
+				"EventTime": 1866.8719482421876,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 147,
+				"EventName": "ChampionKill",
+				"EventTime": 1883.2496337890626,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 148,
+				"EventName": "ChampionKill",
+				"EventTime": 1886.0723876953126,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 149,
+				"EventName": "BaronKill",
+				"EventTime": 1918.79833984375,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"EventID": 150,
+				"EventName": "InhibRespawningSoon",
+				"EventTime": 1930.816162109375,
+				"InhibRespawningSoon": "Barracks_T2_L1"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 151,
+				"EventName": "ChampionKill",
+				"EventTime": 1941.669677734375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Taric Bot"
+				],
+				"EventID": 152,
+				"EventName": "ChampionKill",
+				"EventTime": 1941.669677734375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"EventID": 153,
+				"EventName": "Multikill",
+				"EventTime": 1941.669677734375,
+				"KillStreak": 2,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 154,
+				"EventName": "ChampionKill",
+				"EventTime": 1942.767333984375,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"EventID": 155,
+				"EventName": "InhibRespawned",
+				"EventTime": 1945.8699951171876,
+				"InhibRespawned": "Barracks_T2_L1"
+			},
+			{
+				"Assisters": [],
+				"EventID": 156,
+				"EventName": "ChampionKill",
+				"EventTime": 1946.105712890625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 157,
+				"EventName": "ChampionKill",
+				"EventTime": 1947.5606689453126,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"EventID": 158,
+				"EventName": "Multikill",
+				"EventTime": 1947.5606689453126,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 159,
+				"EventName": "ChampionKill",
+				"EventTime": 1948.20361328125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"EventID": 160,
+				"EventName": "Multikill",
+				"EventTime": 1948.20361328125,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 161,
+				"EventName": "ChampionKill",
+				"EventTime": 1952.015625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"EventID": 162,
+				"EventName": "Multikill",
+				"EventTime": 1952.015625,
+				"KillStreak": 4,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"EventID": 163,
+				"EventName": "InhibRespawningSoon",
+				"EventTime": 1964.1805419921876,
+				"InhibRespawningSoon": "Barracks_T2_C1"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 164,
+				"EventName": "ChampionKill",
+				"EventTime": 1969.0382080078126,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 165,
+				"EventName": "Multikill",
+				"EventTime": 1969.0382080078126,
+				"KillStreak": 5,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Acer": "HumanSummoner",
+				"AcingTeam": "ORDER",
+				"EventID": 166,
+				"EventName": "Ace",
+				"EventTime": 1969.0382080078126
+			},
+			{
+				"EventID": 167,
+				"EventName": "InhibRespawned",
+				"EventTime": 1979.2347412109376,
+				"InhibRespawned": "Barracks_T2_C1"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 168,
+				"EventName": "InhibKilled",
+				"EventTime": 2005.8990478515626,
+				"InhibKilled": "Barracks_T2_C1",
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 169,
+				"EventName": "ChampionKill",
+				"EventTime": 2011.890380859375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Taric Bot"
+				],
+				"EventID": 170,
+				"EventName": "ChampionKill",
+				"EventTime": 2017.8297119140626,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Taric Bot"
+				],
+				"EventID": 171,
+				"EventName": "ChampionKill",
+				"EventTime": 2018.7681884765626,
+				"KillerName": "Ziggs Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"EventID": 172,
+				"EventName": "Multikill",
+				"EventTime": 2018.7681884765626,
+				"KillStreak": 2,
+				"KillerName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 173,
+				"EventName": "ChampionKill",
+				"EventTime": 2023.1502685546876,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 174,
+				"EventName": "ChampionKill",
+				"EventTime": 2026.2874755859376,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"Acer": "Veigar Bot",
+				"AcingTeam": "CHAOS",
+				"EventID": 175,
+				"EventName": "Ace",
+				"EventTime": 2026.2874755859376
+			},
+			{
+				"EventID": 176,
+				"EventName": "InhibRespawningSoon",
+				"EventTime": 2038.7879638671876,
+				"InhibRespawningSoon": "Barracks_T1_C1"
+			},
+			{
+				"EventID": 177,
+				"EventName": "InhibRespawned",
+				"EventTime": 2053.84912109375,
+				"InhibRespawned": "Barracks_T1_C1"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Veigar Bot",
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 178,
+				"EventName": "InhibKilled",
+				"EventTime": 2068.984130859375,
+				"InhibKilled": "Barracks_T1_C1",
+				"KillerName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 179,
+				"EventName": "ChampionKill",
+				"EventTime": 2090.904052734375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"HumanSummoner",
+					"Blitzcrank Bot",
+					"Trundle Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 180,
+				"EventName": "ChampionKill",
+				"EventTime": 2092.087158203125,
+				"KillerName": "Sivir Bot",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 181,
+				"EventName": "ChampionKill",
+				"EventTime": 2093.01708984375,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 182,
+				"EventName": "ChampionKill",
+				"EventTime": 2094.17333984375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"EventID": 183,
+				"EventName": "Multikill",
+				"EventTime": 2094.17333984375,
+				"KillStreak": 2,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 184,
+				"EventName": "ChampionKill",
+				"EventTime": 2095.9658203125,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"EventID": 185,
+				"EventName": "Multikill",
+				"EventTime": 2095.9658203125,
+				"KillStreak": 2,
+				"KillerName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 186,
+				"EventName": "ChampionKill",
+				"EventTime": 2098.034912109375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"EventID": 187,
+				"EventName": "Multikill",
+				"EventTime": 2098.034912109375,
+				"KillStreak": 3,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Acer": "Veigar Bot",
+				"AcingTeam": "CHAOS",
+				"EventID": 188,
+				"EventName": "Ace",
+				"EventTime": 2098.034912109375
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 189,
+				"EventName": "TurretKilled",
+				"EventTime": 2136.340087890625,
+				"KillerName": "Cassiopeia Bot",
+				"TurretKilled": "Turret_T1_C_01_A"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Trundle Bot"
+				],
+				"EventID": 190,
+				"EventName": "ChampionKill",
+				"EventTime": 2164.4921875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Blitzcrank Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 191,
+				"EventName": "ChampionKill",
+				"EventTime": 2165.490966796875,
+				"KillerName": "Trundle Bot",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot"
+				],
+				"EventID": 192,
+				"EventName": "ChampionKill",
+				"EventTime": 2172.583740234375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"EventID": 193,
+				"EventName": "Multikill",
+				"EventTime": 2172.583740234375,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 194,
+				"EventName": "ChampionKill",
+				"EventTime": 2178.716064453125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"EventID": 195,
+				"EventName": "Multikill",
+				"EventTime": 2178.716064453125,
+				"KillStreak": 3,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [],
+				"EventID": 196,
+				"EventName": "ChampionKill",
+				"EventTime": 2190.45556640625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Acer": "HumanSummoner",
+				"AcingTeam": "ORDER",
+				"EventID": 197,
+				"EventName": "Ace",
+				"EventTime": 2190.45556640625
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Taric Bot"
+				],
+				"EventID": 198,
+				"EventName": "ChampionKill",
+				"EventTime": 2235.322265625,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Trundle Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Taric Bot"
+				],
+				"EventID": 199,
+				"EventName": "ChampionKill",
+				"EventTime": 2235.454833984375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"EventID": 200,
+				"EventName": "Multikill",
+				"EventTime": 2235.454833984375,
+				"KillStreak": 2,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Veigar Bot",
+					"Taric Bot"
+				],
+				"EventID": 201,
+				"EventName": "ChampionKill",
+				"EventTime": 2236.009033203125,
+				"KillerName": "Cassiopeia Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Taric Bot"
+				],
+				"EventID": 202,
+				"EventName": "ChampionKill",
+				"EventTime": 2237.697998046875,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"EventID": 203,
+				"EventName": "Multikill",
+				"EventTime": 2237.697998046875,
+				"KillStreak": 3,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Assisters": [],
+				"DragonType": "Elder",
+				"EventID": 204,
+				"EventName": "DragonKill",
+				"EventTime": 2243.212158203125,
+				"KillerName": "HumanSummoner",
+				"Stolen": "False"
+			},
+			{
+				"Assisters": [],
+				"EventID": 205,
+				"EventName": "ChampionKill",
+				"EventTime": 2265.2890625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 206,
+				"EventName": "ChampionKill",
+				"EventTime": 2266.013671875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"EventID": 207,
+				"EventName": "Multikill",
+				"EventTime": 2266.013671875,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot",
+					"Wukong Bot",
+					"Ziggs Bot",
+					"Taric Bot"
+				],
+				"EventID": 208,
+				"EventName": "ChampionKill",
+				"EventTime": 2266.193603515625,
+				"KillerName": "Veigar Bot",
+				"VictimName": "HumanSummoner"
+			},
+			{
+				"Acer": "Veigar Bot",
+				"AcingTeam": "CHAOS",
+				"EventID": 209,
+				"EventName": "Ace",
+				"EventTime": 2266.202392578125
+			},
+			{
+				"EventID": 210,
+				"EventName": "InhibRespawningSoon",
+				"EventTime": 2290.896728515625,
+				"InhibRespawningSoon": "Barracks_T2_C1"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 211,
+				"EventName": "ChampionKill",
+				"EventTime": 2298.885009765625,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 212,
+				"EventName": "ChampionKill",
+				"EventTime": 2300.27978515625,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Blitzcrank Bot"
+			},
+			{
+				"EventID": 213,
+				"EventName": "Multikill",
+				"EventTime": 2300.27978515625,
+				"KillStreak": 2,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot",
+					"Taric Bot"
+				],
+				"EventID": 214,
+				"EventName": "ChampionKill",
+				"EventTime": 2302.18896484375,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Sivir Bot"
+			},
+			{
+				"EventID": 215,
+				"EventName": "Multikill",
+				"EventTime": 2302.18896484375,
+				"KillStreak": 3,
+				"KillerName": "Veigar Bot"
+			},
+			{
+				"EventID": 216,
+				"EventName": "InhibRespawned",
+				"EventTime": 2305.9482421875,
+				"InhibRespawned": "Barracks_T2_C1"
+			},
+			{
+				"Assisters": [
+					"Wukong Bot"
+				],
+				"EventID": 217,
+				"EventName": "TurretKilled",
+				"EventTime": 2315.992431640625,
+				"KillerName": "Minion_T200L1S74N0482",
+				"TurretKilled": "Turret_T1_C_02_A"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 218,
+				"EventName": "ChampionKill",
+				"EventTime": 2335.69580078125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 219,
+				"EventName": "TurretKilled",
+				"EventTime": 2335.7783203125,
+				"KillerName": "Minion_T200L0S75N0489",
+				"TurretKilled": "Turret_T1_R_02_A"
+			},
+			{
+				"Assisters": [
+					"Trundle Bot"
+				],
+				"EventID": 220,
+				"EventName": "ChampionKill",
+				"EventTime": 2340.056640625,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"EventID": 221,
+				"EventName": "Multikill",
+				"EventTime": 2340.056640625,
+				"KillStreak": 2,
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"EventID": 222,
+				"EventName": "InhibRespawningSoon",
+				"EventTime": 2353.981201171875,
+				"InhibRespawningSoon": "Barracks_T1_C1"
+			},
+			{
+				"Assisters": [
+					"HumanSummoner",
+					"Trundle Bot"
+				],
+				"EventID": 223,
+				"EventName": "ChampionKill",
+				"EventTime": 2358.578857421875,
+				"KillerName": "Blitzcrank Bot",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 224,
+				"EventName": "ChampionKill",
+				"EventTime": 2366.9375,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"EventID": 225,
+				"EventName": "InhibRespawned",
+				"EventTime": 2369.014892578125,
+				"InhibRespawned": "Barracks_T1_C1"
+			},
+			{
+				"Assisters": [],
+				"EventID": 226,
+				"EventName": "ChampionKill",
+				"EventTime": 2398.985107421875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Ziggs Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 227,
+				"EventName": "ChampionKill",
+				"EventTime": 2415.572998046875,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Wukong Bot"
+			},
+			{
+				"Assisters": [],
+				"EventID": 228,
+				"EventName": "InhibKilled",
+				"EventTime": 2422.50146484375,
+				"InhibKilled": "Barracks_T2_C1",
+				"KillerName": "HumanSummoner"
+			},
+			{
+				"Assisters": [
+					"Blitzcrank Bot",
+					"Trundle Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 229,
+				"EventName": "ChampionKill",
+				"EventTime": 2423.72802734375,
+				"KillerName": "Sivir Bot",
+				"VictimName": "Taric Bot"
+			},
+			{
+				"Assisters": [
+					"HumanSummoner",
+					"Blitzcrank Bot",
+					"Trundle Bot",
+					"Miss Fortune Bot"
+				],
+				"EventID": 230,
+				"EventName": "InhibKilled",
+				"EventTime": 2428.214111328125,
+				"InhibKilled": "Barracks_T2_L1",
+				"KillerName": "Sivir Bot"
+			},
+			{
+				"Assisters": [
+					"Cassiopeia Bot"
+				],
+				"EventID": 231,
+				"EventName": "ChampionKill",
+				"EventTime": 2433.375732421875,
+				"KillerName": "Veigar Bot",
+				"VictimName": "Miss Fortune Bot"
+			},
+			{
+				"Assisters": [
+					"HumanSummoner",
+					"Trundle Bot"
+				],
+				"EventID": 232,
+				"EventName": "ChampionKill",
+				"EventTime": 2434.632080078125,
+				"KillerName": "Sivir Bot",
+				"VictimName": "Veigar Bot"
+			},
+			{
+				"Assisters": [
+					"Sivir Bot",
+					"Blitzcrank Bot",
+					"Trundle Bot"
+				],
+				"EventID": 233,
+				"EventName": "ChampionKill",
+				"EventTime": 2437.835205078125,
+				"KillerName": "HumanSummoner",
+				"VictimName": "Cassiopeia Bot"
+			},
+			{
+				"Acer": "HumanSummoner",
+				"AcingTeam": "ORDER",
+				"EventID": 234,
+				"EventName": "Ace",
+				"EventTime": 2437.835205078125
+			},
+			{
+				"EventID": 235,
+				"EventName": "GameEnd",
+				"EventTime": 2448.640869140625,
+				"Result": "Win"
+			}
+		]
+	},
+	"gameData": {
+		"gameMode": "CLASSIC",
+		"gameTime": 2455.747802734375,
+		"mapName": "Map11",
+		"mapNumber": 11,
+		"mapTerrain": "Cloud"
+	}
 }

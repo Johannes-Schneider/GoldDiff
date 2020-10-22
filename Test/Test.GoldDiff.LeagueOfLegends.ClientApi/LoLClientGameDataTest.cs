@@ -19,7 +19,7 @@ namespace Test.GoldDiff.LeagueOfLegends.ClientApi
         {
             var gameData = JsonConvert.DeserializeObject<LoLClientGameData>(File.ReadAllText(FullGameAsJsonPath));
             
-            Assert.AreEqual(61, gameData.EventCollection.Events.Count);
+            Assert.AreEqual(236, gameData.EventCollection.Events.Count);
             Assert.AreEqual(LoLClientEventType.GameStarted, gameData.EventCollection.Events.First().EventType);
             Assert.AreEqual(LoLClientEventType.GameEnded, gameData.EventCollection.Events.Last().EventType);
             
