@@ -13,6 +13,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
         private void CreateItemIndex(ProgressViewController progressViewController, LoLVersion gameVersion, string staticResourceRootDirectory)
         {
             progressViewController.StartNextStep(LoLStaticResourceCacheResources.CreateItemIndexProgressStepDescription);
+            Items.Clear();
             
             var itemCollectionFile = Path.Combine(staticResourceRootDirectory, gameVersion.ToString(), "data", "en_US", "item.json");
             var itemCollectionFileText = File.ReadAllText(itemCollectionFile);

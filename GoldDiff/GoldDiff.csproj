@@ -80,6 +80,7 @@
     <Compile Include="LeagueOfLegends\Game\LoLItem.cs" />
     <Compile Include="LeagueOfLegends\Game\LoLPlayer.cs" />
     <Compile Include="LeagueOfLegends\Game\LoLTeam.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLTeamFactory.cs" />
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticChampion.cs" />
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticItem.cs" />
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache+CreateChampionIndex.cs" />

@@ -16,6 +16,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
 {
     public sealed partial class LoLStaticResourceCache
     {
+        private const int LatestImplementationVersion = 1;
         private static string RootDirectory { get; } = Path.Combine(Environment.CurrentDirectory, nameof(LoLStaticResourceCache));
         private static string StorageLocation { get; } = Path.Combine(RootDirectory, $"{nameof(LoLStaticResourceCache)}.json");
 
@@ -36,6 +37,9 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
 
         [JsonProperty]
         public LoLVersion CurrentVersion { get; private set; }
+        
+        [JsonProperty]
+        private ConcurrentDictionary<string, int> ChampionNameToIdIndex { get; } = new ConcurrentDictionary<string, int>();
 
         [JsonProperty]
         private ConcurrentDictionary<int, LoLStaticChampion> Champions { get; } = new ConcurrentDictionary<int, LoLStaticChampion>();
@@ -49,6 +53,9 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
         [JsonIgnore]
         public IEnumerable<int> ItemIds => Items.Keys;
 
+        [JsonProperty]
+        private int ImplementationVersion { get; set; }
+
         public async Task UpdateAsync(ProgressViewController? progressViewController)
         {
             if (progressViewController == null)
@@ -57,17 +64,21 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             }
 
             progressViewController.Model.Title = LoLStaticResourceCacheResources.UpdateProgressTitle;
-            progressViewController.Model.TotalNumberOfSteps = 4;
+            progressViewController.Model.TotalNumberOfSteps = 3;
 
             progressViewController.StartNextStep(LoLStaticResourceCacheResources.CheckForUpdatesProgressStepDescription);
             var latestGameVersion = await LoLRemoteEndpoint.Get.GetLatestVersionAsync();
-            if (CurrentVersion >= latestGameVersion)
+            if (CurrentVersion >= latestGameVersion && ImplementationVersion >= LatestImplementationVersion)
             {
                 progressViewController.Done();
                 return;
             }
-
-            await DeleteOldStaticResourcesAsync(progressViewController, CurrentVersion);
+            
+            if (CurrentVersion < latestGameVersion)
+            {
+                progressViewController.Model.TotalNumberOfSteps += 1;
+                await DeleteOldStaticResourcesAsync(progressViewController, CurrentVersion);
+            }
 
             var resourceRootDirectory = StaticResourceRootDirectory(latestGameVersion);
             if (!Directory.Exists(StaticResourceRootDirectory(latestGameVersion)))
@@ -85,6 +96,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
 
             progressViewController.Done();
             CurrentVersion = latestGameVersion;
+            ImplementationVersion = LatestImplementationVersion;
 
             try
             {
@@ -169,6 +181,11 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
         private string StaticResourceRootDirectory(LoLVersion gameVersion)
         {
             return Path.Combine(RootDirectory, gameVersion.ToString());
+        }
+
+        public LoLStaticChampion GetChampion(string? name)
+        {
+            return GetChampion(ChampionNameToIdIndex[name ?? throw new ArgumentNullException(nameof(name))]);
         }
 
         public LoLStaticChampion GetChampion(int id)

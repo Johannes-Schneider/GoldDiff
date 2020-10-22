@@ -13,6 +13,8 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
         private void CreateChampionIndex(ProgressViewController progressViewController, LoLVersion gameVersion, string staticResourceRootDirectory)
         {
             progressViewController.StartNextStep(LoLStaticResourceCacheResources.CreateChampionIndexProgressStepDescription);
+            Champions.Clear();
+            ChampionNameToIdIndex.Clear();
 
             var championCollectionFile = Path.Combine(staticResourceRootDirectory, gameVersion.ToString(), "data", "en_US", "champion.json");
             var championCollectionFileText = File.ReadAllText(championCollectionFile);
@@ -28,6 +30,11 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
                 if (!Champions.TryAdd(champion.Id, champion))
                 {
                     throw new Exception($"The champion id {champion.Id} has been defined multiple times!");
+                }
+
+                if (!ChampionNameToIdIndex.TryAdd(champion.Name, champion.Id))
+                {
+                    throw new Exception($"The champion name {champion.Name} has been defined multiple times!");
                 }
             }
         }
