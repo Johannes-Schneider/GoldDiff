@@ -10,35 +10,35 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
         {
             if (!(reader.Value is string value))
             {
-                return LoLMapTerrain.Undefined;
+                return LoLMapTerrainType.Undefined;
             }
 
             if (value.Equals("DEFAULT", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLMapTerrain.Default;
+                return LoLMapTerrainType.Default;
             }
 
             if (value.Equals("FIRE", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLMapTerrain.Fire;
+                return LoLMapTerrainType.Fire;
             }
 
             if (value.Equals("WATER", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLMapTerrain.Water;
+                return LoLMapTerrainType.Water;
             }
 
             if (value.Equals("AIR", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLMapTerrain.Wind;
+                return LoLMapTerrainType.Wind;
             }
 
             if (value.Equals("MOUNTAIN", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLMapTerrain.Earth;
+                return LoLMapTerrainType.Earth;
             }
 
-            return LoLMapTerrain.Undefined;
+            return LoLMapTerrainType.Undefined;
         }
     }
 }

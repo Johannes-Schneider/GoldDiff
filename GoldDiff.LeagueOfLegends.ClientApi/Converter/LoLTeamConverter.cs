@@ -10,20 +10,20 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
         {
             if (!(reader.Value is string value))
             {
-                return LoLTeam.Undefined;
+                return LoLTeamType.Undefined;
             }
 
             if (value.Equals("ORDER", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLTeam.BlueSide;
+                return LoLTeamType.BlueSide;
             }
 
             if (value.Equals("CHAOS", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLTeam.RedSide;
+                return LoLTeamType.RedSide;
             }
 
-            return LoLTeam.Undefined;
+            return LoLTeamType.Undefined;
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿namespace GoldDiff.Shared.LeagueOfLegends
 {
-    public enum LoLTeam
+    public enum LoLMapType
     {
         Undefined,
         
-        BlueSide,
-        
-        RedSide,
+        SummonersRift,
     }
 }

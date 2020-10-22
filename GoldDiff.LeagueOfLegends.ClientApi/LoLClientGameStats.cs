@@ -13,14 +13,14 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
         
         [JsonProperty("gameMode")]
         [JsonConverter(typeof(LoLGameModeConverter))]
-        public LoLGameMode GameMode { get; set; }
+        public LoLGameModeType GameMode { get; set; }
         
         [JsonProperty("mapNumber")]
         [JsonConverter(typeof(LoLMapConverter))]
-        public LoLMap Map { get; set; }
+        public LoLMapType Map { get; set; }
         
         [JsonProperty("mapTerrain")]
         [JsonConverter(typeof(LoLMapTerrainConverter))]
-        public LoLMapTerrain MapTerrain { get; set; }
+        public LoLMapTerrainType MapTerrain { get; set; }
     }
 }

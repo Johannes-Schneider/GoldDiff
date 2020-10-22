@@ -11,6 +11,6 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Event
         
         [JsonProperty("AcingTeam")]
         [JsonConverter(typeof(LoLTeamConverter))]
-        public LoLTeam KillerSummonerTeam { get; set; }
+        public LoLTeamType KillerSummonerTeam { get; set; }
     }
 }

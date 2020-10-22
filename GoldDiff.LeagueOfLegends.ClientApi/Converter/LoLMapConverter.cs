@@ -10,13 +10,13 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
         {
             if (!(reader.Value is int value))
             {
-                return LoLMap.Undefined;
+                return LoLMapType.Undefined;
             }
 
             return value switch
                    {
-                       11 => LoLMap.SummonersRift,
-                       _ => LoLMap.Undefined,
+                       11 => LoLMapType.SummonersRift,
+                       _ => LoLMapType.Undefined,
                    };
         }
     }

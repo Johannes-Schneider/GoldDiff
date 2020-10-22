@@ -10,35 +10,35 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
         {
             if (!(reader.Value is string value))
             {
-                return LoLPosition.Undefined;
+                return LoLPositionType.Undefined;
             }
             
             if (value.Equals("TOP", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLPosition.Top;
+                return LoLPositionType.Top;
             }
 
             if (value.Equals("JUNGLE", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLPosition.Jungle;
+                return LoLPositionType.Jungle;
             }
 
             if (value.Equals("MIDDLE", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLPosition.Middle;
+                return LoLPositionType.Middle;
             }
 
             if (value.Equals("BOTTOM", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLPosition.Bottom;
+                return LoLPositionType.Bottom;
             }
 
             if (value.Equals("UTILITY", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLPosition.Support;
+                return LoLPositionType.Support;
             }
             
-            return LoLPosition.Undefined;
+            return LoLPositionType.Undefined;
         }
     }
 }

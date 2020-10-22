@@ -1,17 +1,17 @@
 ﻿namespace GoldDiff.Shared.LeagueOfLegends
 {
-    public enum LoLPosition
+    public enum LoLMapTerrainType
     {
         Undefined,
         
-        Top,
+        Default,
         
-        Jungle,
+        Fire,
         
-        Middle,
+        Water,
         
-        Bottom,
+        Wind,
         
-        Support,
+        Earth,
     }
 }

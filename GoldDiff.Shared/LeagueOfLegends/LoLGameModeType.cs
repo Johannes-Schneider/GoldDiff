@@ -1,6 +1,6 @@
 ﻿namespace GoldDiff.Shared.LeagueOfLegends
 {
-    public enum LoLGameMode
+    public enum LoLGameModeType
     {
         Undefined,
         

@@ -5,7 +5,7 @@ using GoldDiff.LeagueOfLegends.ClientApi;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
-    public sealed class GameDataPollService : IDisposable
+    public sealed class LoLClientDataPollService : IDisposable
     {
         public event EventHandler<LoLClientGameData>? GameDataReceived;
 
@@ -15,7 +15,7 @@ namespace GoldDiff.LeagueOfLegends.Game
         private Task? _pollTask;
         private bool _isDisposed;
 
-        public GameDataPollService(TimeSpan pollInterval)
+        public LoLClientDataPollService(TimeSpan pollInterval)
         {
             PollInterval = pollInterval;
         }
@@ -60,7 +60,7 @@ namespace GoldDiff.LeagueOfLegends.Game
             GC.SuppressFinalize(this);
         }
 
-        ~GameDataPollService()
+        ~LoLClientDataPollService()
         {
             Dispose(false);
         }

@@ -10,15 +10,15 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
         {
             if (!(reader.Value is string value))
             {
-                return LoLGameMode.Undefined;
+                return LoLGameModeType.Undefined;
             }
 
             if (value.Equals("CLASSIC", StringComparison.InvariantCultureIgnoreCase))
             {
-                return LoLGameMode.Classic5X5;
+                return LoLGameModeType.Classic5X5;
             }
 
-            return LoLGameMode.Undefined;
+            return LoLGameModeType.Undefined;
         }
     }
 }

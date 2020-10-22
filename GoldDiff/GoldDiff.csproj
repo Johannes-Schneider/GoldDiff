@@ -71,7 +71,15 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\ApplicationConstants.cs" />
-    <Compile Include="LeagueOfLegends\Game\GameDataPollService.cs" />
+    <Compile Include="LeagueOfLegends\Game\ILoLClientGameDataConsumer.cs" />
+    <Compile Include="LeagueOfLegends\Game\ILoLGoldOwner.cs" />
+    <Compile Include="LeagueOfLegends\Game\ILoLItemOwner.cs" />
+    <Compile Include="LeagueOfLegends\Game\ILoLScoreOwner.cs" />
+    <Compile Include="LeagueOfLegends\Game\ItemsChangedEventArguments.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLClientDataPollService.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLItem.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLPlayer.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLTeam.cs" />
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticChampion.cs" />
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticItem.cs" />
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache+CreateChampionIndex.cs" />

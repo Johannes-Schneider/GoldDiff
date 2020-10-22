@@ -23,11 +23,11 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Player
         
         [JsonProperty("position")]
         [JsonConverter(typeof(LoLPositionConverter))]
-        public LoLPosition Position { get; set; }
+        public LoLPositionType Position { get; set; }
         
         [JsonProperty("team")]
         [JsonConverter(typeof(LoLTeamConverter))]
-        public LoLTeam Team { get; set; }
+        public LoLTeamType Team { get; set; }
         
         [JsonProperty("items")]
         public List<LoLClientItem> Items { get; set; }

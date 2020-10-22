@@ -24,8 +24,8 @@ namespace Test.GoldDiff.LeagueOfLegends.ClientApi
             Assert.AreEqual(LoLClientEventType.GameEnded, gameData.EventCollection.Events.Last().EventType);
             
             Assert.AreEqual(10, gameData.Players.Count);
-            Assert.AreEqual(5, gameData.Players.Count(player => player.Team == LoLTeam.BlueSide));
-            Assert.AreEqual(5, gameData.Players.Count(player => player.Team == LoLTeam.RedSide));
+            Assert.AreEqual(5, gameData.Players.Count(player => player.Team == LoLTeamType.BlueSide));
+            Assert.AreEqual(5, gameData.Players.Count(player => player.Team == LoLTeamType.RedSide));
         }
     }
 }
