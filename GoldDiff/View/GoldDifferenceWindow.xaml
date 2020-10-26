@@ -28,6 +28,7 @@
             <GradientStop Offset="0.45" Color="Transparent" />
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnRedSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
+            <GradientStop Offset="0" Color="Transparent" />
             <GradientStop Offset="0.55" Color="Transparent" />
             <GradientStop Offset="1" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLActivePlayerRegularColor}}" />
         </LinearGradientBrush>

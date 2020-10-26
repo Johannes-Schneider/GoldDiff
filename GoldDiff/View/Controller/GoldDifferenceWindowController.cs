@@ -66,22 +66,22 @@ namespace GoldDiff.View.Controller
                 Model.TopPlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
-            if (Model.JunglePlayerBlueSide?.IsActivePlayer == true || Model.JunglePlayerRedSide?.IsActivePlayer == true)
+            if (Model.JunglePlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.JunglePlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
-            if (Model.MiddlePlayerBlueSide?.IsActivePlayer == true || Model.MiddlePlayerRedSide?.IsActivePlayer == true)
+            if (Model.MiddlePlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.MiddlePlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
-            if (Model.BottomPlayerBlueSide?.IsActivePlayer == true || Model.BottomPlayerRedSide?.IsActivePlayer == true)
+            if (Model.BottomPlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.BottomPlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
-            if (Model.SupportPlayerBlueSide?.IsActivePlayer == true || Model.SupportPlayerRedSide?.IsActivePlayer == true)
+            if (Model.SupportPlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.SupportPlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
@@ -91,22 +91,22 @@ namespace GoldDiff.View.Controller
                 Model.TopPlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
-            if (Model.JunglePlayerRedSide?.IsActivePlayer == true || Model.JunglePlayerRedSide?.IsActivePlayer == true)
+            if (Model.JunglePlayerRedSide?.IsActivePlayer == true)
             {
                 Model.JunglePlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
-            if (Model.MiddlePlayerRedSide?.IsActivePlayer == true || Model.MiddlePlayerRedSide?.IsActivePlayer == true)
+            if (Model.MiddlePlayerRedSide?.IsActivePlayer == true)
             {
                 Model.MiddlePlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
-            if (Model.BottomPlayerRedSide?.IsActivePlayer == true || Model.BottomPlayerRedSide?.IsActivePlayer == true)
+            if (Model.BottomPlayerRedSide?.IsActivePlayer == true)
             {
                 Model.BottomPlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
-            if (Model.SupportPlayerRedSide?.IsActivePlayer == true || Model.SupportPlayerRedSide?.IsActivePlayer == true)
+            if (Model.SupportPlayerRedSide?.IsActivePlayer == true)
             {
                 Model.SupportPlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
