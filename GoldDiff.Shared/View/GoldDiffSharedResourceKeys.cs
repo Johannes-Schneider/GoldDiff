@@ -101,11 +101,11 @@
 
         public const string IconCoins = nameof(IconCoins);
 
-        public const string IconLoLTopPosition = nameof(IconLoLTopPosition);
-        public const string IconLoLMiddlePosition = nameof(IconLoLMiddlePosition);
-        public const string IconLoLBottomPosition = nameof(IconLoLBottomPosition);
-        public const string IconLoLSupportPosition = nameof(IconLoLSupportPosition);
-        public const string IconLoLJunglePosition = nameof(IconLoLJunglePosition);
+        public const string IconLoLTurret = nameof(IconLoLTurret);
+        public const string IconLoLInhibitor = nameof(IconLoLInhibitor);
+        public const string IconLoLKills = nameof(IconLoLKills);
+        public const string IconLoLDeaths = nameof(IconLoLDeaths);
+        public const string IconLoLAssists = nameof(IconLoLAssists);
 
         public const string IconArrowLeft1 = nameof(IconArrowLeft1);
         public const string IconArrowLeft2 = nameof(IconArrowLeft2);

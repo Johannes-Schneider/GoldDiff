@@ -11,41 +11,161 @@
              x:Name="This"
 
              d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <StreamGeometry x:Key="TopIconFull">
+            M5,15.465L5 5 15.465 5 20.465 0 5 0 0 0 0 5 0 20.465 z
+        </StreamGeometry>
+
+        <StreamGeometry x:Key="TopIconSmall">
+            M5,12.636L5 5 12.636 5 17.637 0 5 0 0 0 0 5 0 17.636 z
+        </StreamGeometry>
+
+        <StreamGeometry x:Key="MiddleIconFull">
+            M20.464,0L0 20.464 0 24 3.535 24 24 3.535 24 0 z
+        </StreamGeometry>
+
+        <RectangleGeometry x:Key="MiddleIconSmall" Rect="7.5, 7.5, 9, 9" />
+
+        <StreamGeometry x:Key="BottomIconFull">
+            M19,8.535L19 19 8.535 19 3.535 24 19 24 24 24 24 19 24 3.535 z
+        </StreamGeometry>
+
+        <StreamGeometry x:Key="BottomIconSmall">
+            M19,11.364L19 19 11.364 19 6.364 24 19 24 24 24 24 19 24 6.363 z
+        </StreamGeometry>
+
+        <CombinedGeometry x:Key="SupportIconFull">
+            <CombinedGeometry.Geometry1>
+                <CombinedGeometry>
+                    <CombinedGeometry.Geometry1>
+                        <StreamGeometry>
+                            M12,9.625c-1.229,0-1.591,0.996-1.591,2.225l-1.262,8.744c0,1.228,1.625,2.223,2.853,2.223 c1.228,0,2.853-0.995,2.853-2.223L13.59,11.85C13.59,10.621,13.228,9.625,12,9.625z
+                        </StreamGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <StreamGeometry>
+                            M12,7.158c1.771,0,2.292-0.451,2.292-1.007l0.914-3.96c0-0.558-1.436-1.008-3.206-1.008 c-1.77,0-3.206,0.45-3.206,1.008l0.914,3.96C9.708,6.707,10.23,7.158,12,7.158z
+                        </StreamGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </CombinedGeometry.Geometry1>
+            <CombinedGeometry.Geometry2>
+                <CombinedGeometry>
+                    <CombinedGeometry.Geometry1>
+                        <StreamGeometry>
+                            M6.269,6.039H3.782C1.693,6.039,0,7.732,0,9.821h5.025c0,2.089-3.333,3.781-1.244,3.781h2.487 c2.089,0,3.782-1.692,3.782-3.781S8.357,6.039,6.269,6.039z
+                        </StreamGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <StreamGeometry>
+                            M24,9.821c0-2.089-1.692-3.782-3.783-3.782h-2.484c-2.09,0-3.783,1.693-3.783,3.782 s1.693,3.781,3.783,3.781h2.484c2.091,0-1.241-1.692-1.241-3.781H24z
+                        </StreamGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </CombinedGeometry.Geometry2>
+        </CombinedGeometry>
+
+        <CombinedGeometry x:Key="JungleIconFull">
+            <CombinedGeometry.Geometry1>
+                <CombinedGeometry>
+                    <CombinedGeometry.Geometry1>
+                        <StreamGeometry>
+                            M24,5.653c0,0-5.23,3.213-7.535,7.452c-2.256,4.146-1.895,9.206-1.895,9.206l1.175-0.009 c0.63-0.437,0.247-2.009,2.861-2.622c0,0-0.383-2.418-0.208-4.369C18.842,10.329,24,5.653,24,5.653z
+                        </StreamGeometry>
+                    </CombinedGeometry.Geometry1>
+                    <CombinedGeometry.Geometry2>
+                        <StreamGeometry>
+                            M15.696,9.622c0.428-4.89,5.379-7.934,5.379-7.934s-7.21,3.164-8.957,6.024 c0.955,1.706,1.785,3.6,2.207,5.554c0.054,0.245,0.094,0.479,0.136,0.716c0.4-0.58,0.84-1.158,1.321-1.735 C15.771,11.738,15.582,10.929,15.696,9.622z
+                        </StreamGeometry>
+                    </CombinedGeometry.Geometry2>
+                </CombinedGeometry>
+            </CombinedGeometry.Geometry1>
+            <CombinedGeometry.Geometry2>
+                <StreamGeometry>
+                    M6.688,1.911c0-0.001,2.818,5.606,1.762,12.312c-0.373,0.007-0.272-0.336-2.196-2.116 C4.33,10.327,0,9.296,0,9.296s1.948,2.501,2.766,4.834s0.673,4.667,1.154,5.244c0.481,0.577,4.453,2.929,4.453,2.929h4.642 c0,0,1.633-3.266,0.36-9.164S6.688,1.911,6.688,1.911z
+                </StreamGeometry>
+            </CombinedGeometry.Geometry2>
+        </CombinedGeometry>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        
-        <controlElement:IconControl x:Name="TopPositionIcon"
-                                    Grid.Column="0"
-                                    Width="{Binding ElementName=This, Path=Width}"
-                                    Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTopPosition}}" />
 
-        <controlElement:IconControl x:Name="MiddlePositionIcon"
-                                    Grid.Column="0"
-                                    Width="{Binding ElementName=This, Path=Width}"
-                                    Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLMiddlePosition}}" />
+        <Grid x:Name="TopPositionIcon"
+              Grid.Column="0">
 
-        <controlElement:IconControl x:Name="BottomPositionIcon"
-                                    Grid.Column="0"
-                                    Width="{Binding ElementName=This, Path=Width}"
-                                    Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLBottomPosition}}" />
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource TopIconFull}"
+                                        Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource MiddleIconSmall}"
+                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource BottomIconFull}"
+                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+
+        </Grid>
+
+        <Grid x:Name="MiddlePositionIcon"
+              Grid.Column="0">
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}"
+                                        Source="{StaticResource TopIconSmall}"
+                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource MiddleIconFull}"
+                                        Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource BottomIconSmall}"
+                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+
+        </Grid>
+
+        <Grid x:Name="BottomPositionIcon"
+              Grid.Column="0">
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource TopIconFull}"
+                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource MiddleIconSmall}"
+                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+
+            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
+                                        Height="{Binding ElementName=This, Path=Height}" 
+                                        Source="{StaticResource BottomIconFull}"
+                                        Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+
+        </Grid>
 
         <controlElement:IconControl x:Name="JunglePositionIcon"
                                     Grid.Column="0"
                                     Width="{Binding ElementName=This, Path=Width}"
                                     Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLJunglePosition}}"
+                                    Source="{StaticResource JungleIconFull}"
                                     Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
 
         <controlElement:IconControl x:Name="SupportPositionIcon"
                                     Grid.Column="0"
                                     Width="{Binding ElementName=This, Path=Width}"
                                     Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLSupportPosition}}"
+                                    Source="{StaticResource SupportIconFull}"
                                     Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
     </Grid>
 </UserControl>

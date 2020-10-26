@@ -76,7 +76,7 @@
                        FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
                        DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                        Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
-
+            
         </Grid>
 
         <!-- /Total Gold Blue Side -->

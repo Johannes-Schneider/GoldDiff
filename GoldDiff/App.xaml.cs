@@ -117,7 +117,7 @@ namespace GoldDiff
             _clientDataPollService.GameDataReceived += ClientDataPollService_OnGameDataReceived;
 
             _game = new LoLGame(LoLResourceCache);
-            _game.GameDataReceived += Game_OnGameDataReceived;
+            _game.Initialized += Game_OnInitialized;
             _clientDataPollService.Start();
         }
 
@@ -126,13 +126,8 @@ namespace GoldDiff
             _game?.Consume(e);
         }
 
-        private void Game_OnGameDataReceived(object sender, LoLClientGameData e)
+        private void Game_OnInitialized(object sender, EventArgs e)
         {
-            if (_game != null)
-            {
-                _game.GameDataReceived -= Game_OnGameDataReceived;
-            }
-
             Current.Dispatcher.Invoke(() =>
                                       {
                                           _goldDifferenceWindow?.Close();

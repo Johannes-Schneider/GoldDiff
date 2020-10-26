@@ -10,8 +10,9 @@ namespace GoldDiff.LeagueOfLegends.Game
 {
     public class LoLGame : ViewModel, ILoLClientGameDataConsumer
     {
-        public event EventHandler<LoLClientGameData>? GameDataReceived; 
-        
+        public event EventHandler? Initialized;
+        public event EventHandler<LoLClientGameData>? GameDataReceived;
+
         private LoLGameStateType _state = LoLGameStateType.Undefined;
 
         public LoLGameStateType State
@@ -43,8 +44,25 @@ namespace GoldDiff.LeagueOfLegends.Game
             get => _teamRedSide;
             set => MutateVerboseIfNotNull(ref _teamRedSide, value);
         }
-        
+
+        private bool _isInitialized = false;
+
+        public bool IsInitialized
+        {
+            get => _isInitialized;
+            private set => MutateVerbose(ref _isInitialized, value);
+        }
+
+        private TimeSpan _time = TimeSpan.Zero;
+
+        public TimeSpan Time
+        {
+            get => _time;
+            private set => MutateVerbose(ref _time, value);
+        }
+
         public LoLStaticResourceCache StaticResourceCache { get; }
+
 
         public LoLGame(LoLStaticResourceCache? staticResourceCache)
         {
@@ -57,27 +75,61 @@ namespace GoldDiff.LeagueOfLegends.Game
             {
                 throw new ArgumentNullException(nameof(gameData));
             }
+
+            var invokeInitializedEvent = false;
+            if (!IsInitialized)
+            {
+                if (!Initialize(gameData))
+                {
+                    return;
+                }
+
+                invokeInitializedEvent = true;
+            }
+
+            Time = gameData.Stats.GameTime;
+            UpdateState(gameData);
+            
+            TeamBlueSide!.Consume(gameData);
+            TeamRedSide!.Consume(gameData);
+
+            if (invokeInitializedEvent && Initialized != null)
+            {
+                EventDispatcher!.Invoke(() => Initialized.Invoke(this, EventArgs.Empty));
+            }
+            EventDispatcher!.Invoke(() => GameDataReceived?.Invoke(this, gameData));
+        }
+
+        private bool Initialize(LoLClientGameData gameData)
+        {
+            if (IsInitialized)
+            {
+                return true;
+            }
             
             Mode = gameData.Stats.GameMode;
             if (Mode != LoLGameModeType.Classic5X5)
             {
                 // We do support only classic 5v5 games right now
                 State = LoLGameStateType.Undefined;
-                return;
+                return false;
             }
             
-            if (State == LoLGameStateType.Undefined)
-            {
-                var teams = LoLTeamFactory.ExtractTeams(gameData, StaticResourceCache).ToList();
-                TeamBlueSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.BlueSide);
-                TeamRedSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.RedSide);
-            }
-
+            var teams = LoLTeamFactory.ExtractTeams(gameData, StaticResourceCache).ToList();
+            TeamBlueSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.BlueSide);
+            TeamRedSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.RedSide);
+            
             if (TeamBlueSide == null || TeamRedSide == null)
             {
-                return;
+                return false;
             }
 
+            IsInitialized = true;
+            return true;
+        }
+
+        private void UpdateState(LoLClientGameData gameData)
+        {
             if (gameData.EventCollection.Events.LastOrDefault()?.EventType == LoLClientEventType.GameEnded)
             {
                 State = LoLGameStateType.Ended;
@@ -86,11 +138,10 @@ namespace GoldDiff.LeagueOfLegends.Game
             {
                 State = LoLGameStateType.Started;
             }
-            
-            TeamBlueSide.Consume(gameData);
-            TeamRedSide.Consume(gameData);
-
-            EventDispatcher!.Invoke(() => GameDataReceived?.Invoke(this, gameData));
+            else
+            {
+                State = LoLGameStateType.PreStart;
+            }
         }
     }
 }

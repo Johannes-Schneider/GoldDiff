@@ -17,7 +17,15 @@
         Title="MainWindow" Height="350" Width="525">
     <StackPanel>
 
-        <controlElement:PlayerGoldDifferenceView Position="Bottom" ></controlElement:PlayerGoldDifferenceView>
+        <controlElement:LoLPositionView Position="Top"></controlElement:LoLPositionView>
+        <controlElement:LoLPositionView Position="Jungle"></controlElement:LoLPositionView>
+        <controlElement:LoLPositionView Position="Middle"></controlElement:LoLPositionView>
+        <controlElement:LoLPositionView Position="Bottom"></controlElement:LoLPositionView>
+        <controlElement:LoLPositionView Position="Support"></controlElement:LoLPositionView>
+        
+        <sharedControlElements:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}"></sharedControlElements:IconControl>
+        <sharedControlElements:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}"></sharedControlElements:IconControl>
+        <sharedControlElements:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}"></sharedControlElements:IconControl>
 
     </StackPanel>
 </Window>

@@ -52,72 +52,47 @@ namespace GoldDiff.View.ControlElement
 
         private void OnPositionChanged()
         {
+            if (Position == LoLPositionType.Undefined)
+            {
+                Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            Visibility = Visibility.Visible;
+            TopPositionIcon.Visibility = Visibility.Collapsed;
+            MiddlePositionIcon.Visibility = Visibility.Collapsed;
+            BottomPositionIcon.Visibility = Visibility.Collapsed;
+            JunglePositionIcon.Visibility = Visibility.Collapsed;
+            SupportPositionIcon.Visibility = Visibility.Collapsed;
+            
             switch (Position)
             {
                 case LoLPositionType.Top:
                 {
-                    ShowLanePositions();
-                    TopPositionIcon.Foreground = ActivePositionForeground;
-                    MiddlePositionIcon.Foreground = InactivePositionForeground;
-                    BottomPositionIcon.Foreground = InactivePositionForeground;
+                    TopPositionIcon.Visibility = Visibility.Visible;
                     break;
                 }
                 case LoLPositionType.Middle:
                 {
-                    ShowLanePositions();
-                    TopPositionIcon.Foreground = InactivePositionForeground;
-                    MiddlePositionIcon.Foreground = ActivePositionForeground;
-                    BottomPositionIcon.Foreground = InactivePositionForeground;
+                    MiddlePositionIcon.Visibility = Visibility.Visible;
                     break;
                 }
                 case LoLPositionType.Bottom:
                 {
-                    ShowLanePositions();
-                    TopPositionIcon.Foreground = InactivePositionForeground;
-                    MiddlePositionIcon.Foreground = InactivePositionForeground;
-                    BottomPositionIcon.Foreground = ActivePositionForeground;
+                    BottomPositionIcon.Visibility = Visibility.Visible;
                     break;
                 }
                 case LoLPositionType.Jungle:
                 {
-                    ShowJunglePosition();
+                    JunglePositionIcon.Visibility = Visibility.Visible;
                     break;
                 }
                 case LoLPositionType.Support:
                 {
-                    ShowSupportPosition();
+                    SupportPositionIcon.Visibility = Visibility.Visible;
                     break;
                 }
             }
-
-            Visibility = Position == LoLPositionType.Undefined ? Visibility.Collapsed : Visibility.Visible;
-        }
-
-        private void ShowLanePositions()
-        {
-            TopPositionIcon.Visibility = Visibility.Visible;
-            MiddlePositionIcon.Visibility = Visibility.Visible;
-            BottomPositionIcon.Visibility = Visibility.Visible;
-            JunglePositionIcon.Visibility = Visibility.Collapsed;
-            SupportPositionIcon.Visibility = Visibility.Collapsed;
-        }
-
-        private void ShowJunglePosition()
-        {
-            TopPositionIcon.Visibility = Visibility.Collapsed;
-            MiddlePositionIcon.Visibility = Visibility.Collapsed;
-            BottomPositionIcon.Visibility = Visibility.Collapsed;
-            JunglePositionIcon.Visibility = Visibility.Visible;
-            SupportPositionIcon.Visibility = Visibility.Collapsed;
-        }
-
-        private void ShowSupportPosition()
-        {
-            TopPositionIcon.Visibility = Visibility.Collapsed;
-            MiddlePositionIcon.Visibility = Visibility.Collapsed;
-            BottomPositionIcon.Visibility = Visibility.Collapsed;
-            JunglePositionIcon.Visibility = Visibility.Collapsed;
-            SupportPositionIcon.Visibility = Visibility.Visible;
         }
     }
 }

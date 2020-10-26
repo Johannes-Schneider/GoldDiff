@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.View.Model;
@@ -35,7 +34,15 @@ namespace GoldDiff.View.Controller
             Model.PropertyChanged += ModelOnPropertyChanged;
 
             Game = game ?? throw new ArgumentNullException(nameof(game));
-            Game.GameDataReceived += Game_OnGameDataReceived;
+            if (Game.IsInitialized)
+            {
+                InitializeBlueSidePlayers();
+                InitializeRedSidePlayers();
+            }
+            else
+            {
+                Game.Initialized += Game_OnInitialized;
+            }
         }
 
         private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -45,7 +52,7 @@ namespace GoldDiff.View.Controller
                 UpdateActivePlayerBackground();
             }
         }
-        
+
         private void UpdateActivePlayerBackground()
         {
             Model.TopPlayerBackground = Model.InactivePlayerBackground;
@@ -106,26 +113,20 @@ namespace GoldDiff.View.Controller
             }
         }
 
-        private void Game_OnGameDataReceived(object sender, LoLClientGameData e)
+        private void Game_OnInitialized(object sender, EventArgs e)
         {
-            if (Game.TeamBlueSide == null || Game.TeamRedSide == null)
-            {
-                return;
-            }
-
-            Game.GameDataReceived -= Game_OnGameDataReceived;
-            InitializeBlueSidePlayers(e);
-            InitializeRedSidePlayers(e);
+            InitializeBlueSidePlayers();
+            InitializeRedSidePlayers();
         }
 
-        private void InitializeBlueSidePlayers(LoLClientGameData gameData)
+        private void InitializeBlueSidePlayers()
         {
             if (Game.TeamBlueSide == null)
             {
                 return;
             }
 
-            var orderedPlayers = OrderPlayers(Game.TeamBlueSide, gameData);
+            var orderedPlayers = OrderPlayers(Game.TeamBlueSide);
             if (orderedPlayers.TryGetValue(LoLPositionType.Top, out var topPlayer))
             {
                 Model.TopPlayerBlueSide = topPlayer;
@@ -152,14 +153,14 @@ namespace GoldDiff.View.Controller
             }
         }
 
-        private void InitializeRedSidePlayers(LoLClientGameData gameData)
+        private void InitializeRedSidePlayers()
         {
             if (Game.TeamRedSide == null)
             {
                 return;
             }
 
-            var orderedPlayers = OrderPlayers(Game.TeamRedSide, gameData);
+            var orderedPlayers = OrderPlayers(Game.TeamRedSide);
             if (orderedPlayers.TryGetValue(LoLPositionType.Top, out var topPlayer))
             {
                 Model.TopPlayerRedSide = topPlayer;
@@ -186,16 +187,14 @@ namespace GoldDiff.View.Controller
             }
         }
 
-        private Dictionary<LoLPositionType, LoLPlayer> OrderPlayers(LoLTeam team, LoLClientGameData gameData)
+        private Dictionary<LoLPositionType, LoLPlayer> OrderPlayers(LoLTeam team)
         {
             var unfilledPositions = new List<LoLPositionType> {LoLPositionType.Top, LoLPositionType.Jungle, LoLPositionType.Middle, LoLPositionType.Bottom, LoLPositionType.Support};
             var result = new Dictionary<LoLPositionType, LoLPlayer>();
 
             foreach (var player in team.Players)
             {
-                var position = gameData.Players.FirstOrDefault(p => p.SummonerName.Equals(player.SummonerName))?.Position
-                               ?? throw new Exception($"Unable to find the {nameof(LoLPlayer)} named {player.SummonerName} in the given {nameof(LoLClientGameData)}!");
-
+                var position = player.AssignedPosition;
                 if (position == LoLPositionType.Undefined)
                 {
                     position = unfilledPositions.First();
