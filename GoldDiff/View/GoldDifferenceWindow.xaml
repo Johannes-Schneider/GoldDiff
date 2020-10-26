@@ -14,7 +14,6 @@
         x:Name="This"
         Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultWindowStyle}}"
 
-        Title="{x:Static properties:GoldDifferenceWindowResources.Title}"
         MinWidth="500"
         MinHeight="350"
         Height="400"
@@ -53,7 +52,8 @@
 
             <controlElement:PlayerGoldDifferenceView Position="Top"
                                                      PlayerBlueSide="{Binding TopPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                     PlayerRedSide="{Binding TopPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                     PlayerRedSide="{Binding TopPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
         </Border>
 
         <Border Grid.Row="1"
@@ -64,7 +64,8 @@
 
             <controlElement:PlayerGoldDifferenceView Position="Jungle"
                                                      PlayerBlueSide="{Binding JunglePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                     PlayerRedSide="{Binding JunglePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                     PlayerRedSide="{Binding JunglePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
 
         </Border>
 
@@ -76,7 +77,8 @@
 
             <controlElement:PlayerGoldDifferenceView Position="Middle"
                                                      PlayerBlueSide="{Binding MiddlePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                     PlayerRedSide="{Binding MiddlePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                     PlayerRedSide="{Binding MiddlePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
 
         </Border>
 
@@ -88,7 +90,8 @@
 
             <controlElement:PlayerGoldDifferenceView Position="Bottom"
                                                      PlayerBlueSide="{Binding BottomPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                     PlayerRedSide="{Binding BottomPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                     PlayerRedSide="{Binding BottomPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
 
         </Border>
 
@@ -100,7 +103,8 @@
 
             <controlElement:PlayerGoldDifferenceView Position="Support"
                                                      PlayerBlueSide="{Binding SupportPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                     PlayerRedSide="{Binding SupportPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                                                     PlayerRedSide="{Binding SupportPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
 
         </Border>
     </Grid>

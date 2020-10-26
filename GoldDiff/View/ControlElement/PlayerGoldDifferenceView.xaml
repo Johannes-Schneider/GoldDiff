@@ -44,8 +44,13 @@
         <Image Grid.Column="1"
                Margin="0, 0, 12, 0"
                VerticalAlignment="Center"
+               AllowDrop="{Binding ElementName=This, Path=CanSwapPlayers}"
                DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
-               Source="{Binding Path=Champion.SmallTileImage}" />
+               Source="{Binding Path=Champion.SmallTileImage}"
+               MouseLeftButtonDown="ChampionTileBlueSide_OnMouseLeftButtonDown"
+               DragEnter="ChampionTileBlueSide_OnDragOver"
+               DragOver="ChampionTileBlueSide_OnDragOver"
+               Drop="ChampionTileBlueSide_OnDrop" />
 
         <!-- /Champion Tile Blue Side -->
 
@@ -122,8 +127,13 @@
         <Image Grid.Column="5"
                Margin="12, 0, 0, 0"
                VerticalAlignment="Center"
+               AllowDrop="{Binding ElementName=This, Path=CanSwapPlayers}"
                DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
-               Source="{Binding Path=Champion.SmallTileImage}" />
+               Source="{Binding Path=Champion.SmallTileImage}"
+               MouseLeftButtonDown="ChampionTileRedSide_OnMouseLeftButtonDown"
+               DragEnter="ChampionTileRedSide_OnDragOver"
+               DragOver="ChampionTileRedSide_OnDragOver"
+               Drop="ChampionTileRedSide_OnDrop" />
 
         <!-- /Champion Tile Red Side -->
 

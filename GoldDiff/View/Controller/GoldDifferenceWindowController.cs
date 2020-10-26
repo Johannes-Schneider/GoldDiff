@@ -40,7 +40,7 @@ namespace GoldDiff.View.Controller
 
         private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (PlayerPropertyNames.Contains(e.PropertyName))
+            if (string.IsNullOrEmpty(e.PropertyName) || PlayerPropertyNames.Contains(e.PropertyName))
             {
                 UpdateActivePlayerBackground();
             }
@@ -207,7 +207,5 @@ namespace GoldDiff.View.Controller
 
             return result;
         }
-
-        
     }
 }

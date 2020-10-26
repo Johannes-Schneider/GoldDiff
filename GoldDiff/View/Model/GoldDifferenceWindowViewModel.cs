@@ -1,95 +1,141 @@
-﻿using System.Windows.Media;
+﻿using System.Collections.Generic;
+using System.Windows.Media;
 using GoldDiff.LeagueOfLegends.Game;
+using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.Shared.View.Model;
 
 namespace GoldDiff.View.Model
 {
     public class GoldDifferenceWindowViewModel : ViewModel
     {
+        private Dictionary<LoLTeamType, Dictionary<LoLPositionType, LoLPlayer?>> Players { get; } = new Dictionary<LoLTeamType, Dictionary<LoLPositionType, LoLPlayer?>>
+                                                                                                    {
+                                                                                                        {
+                                                                                                            LoLTeamType.BlueSide, new Dictionary<LoLPositionType, LoLPlayer?>
+                                                                                                                                  {
+                                                                                                                                      {LoLPositionType.Top, null},
+                                                                                                                                      {LoLPositionType.Jungle, null},
+                                                                                                                                      {LoLPositionType.Middle, null},
+                                                                                                                                      {LoLPositionType.Bottom, null},
+                                                                                                                                      {LoLPositionType.Support, null},
+                                                                                                                                  }
+                                                                                                        },
+                                                                                                        {
+                                                                                                            LoLTeamType.RedSide, new Dictionary<LoLPositionType, LoLPlayer?>
+                                                                                                                                 {
+                                                                                                                                     {LoLPositionType.Top, null},
+                                                                                                                                     {LoLPositionType.Jungle, null},
+                                                                                                                                     {LoLPositionType.Middle, null},
+                                                                                                                                     {LoLPositionType.Bottom, null},
+                                                                                                                                     {LoLPositionType.Support, null},
+                                                                                                                                 }
+                                                                                                        },
+                                                                                                    };
+        
     #region Blue Side
-
-        private LoLPlayer? _topPlayerBlueSide;
-
+        
         public LoLPlayer? TopPlayerBlueSide
         {
-            get => _topPlayerBlueSide;
-            set => MutateVerbose(ref _topPlayerBlueSide, value);
+            get => Players[LoLTeamType.BlueSide][LoLPositionType.Top];
+            set
+            {
+                Players[LoLTeamType.BlueSide][LoLPositionType.Top] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _middlePlayerBlueSide;
-
+        
         public LoLPlayer? MiddlePlayerBlueSide
         {
-            get => _middlePlayerBlueSide;
-            set => MutateVerboseIfNotNull(ref _middlePlayerBlueSide, value);
+            get => Players[LoLTeamType.BlueSide][LoLPositionType.Middle];
+            set
+            {
+                Players[LoLTeamType.BlueSide][LoLPositionType.Middle] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _bottomPlayerBlueSide;
-
+        
         public LoLPlayer? BottomPlayerBlueSide
         {
-            get => _bottomPlayerBlueSide;
-            set => MutateVerboseIfNotNull(ref _bottomPlayerBlueSide, value);
+            get => Players[LoLTeamType.BlueSide][LoLPositionType.Bottom];
+            set
+            {
+                Players[LoLTeamType.BlueSide][LoLPositionType.Bottom] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _junglePlayerBlueSide;
-
+        
         public LoLPlayer? JunglePlayerBlueSide
         {
-            get => _junglePlayerBlueSide;
-            set => MutateVerboseIfNotNull(ref _junglePlayerBlueSide, value);
+            get => Players[LoLTeamType.BlueSide][LoLPositionType.Jungle];
+            set
+            {
+                Players[LoLTeamType.BlueSide][LoLPositionType.Jungle] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _supportPlayerBlueSide;
-
+        
         public LoLPlayer? SupportPlayerBlueSide
         {
-            get => _supportPlayerBlueSide;
-            set => MutateVerboseIfNotNull(ref _supportPlayerBlueSide, value);
+            get => Players[LoLTeamType.BlueSide][LoLPositionType.Support];
+            set
+            {
+                Players[LoLTeamType.BlueSide][LoLPositionType.Support] = value;
+                OnPropertyChanged();
+            }
         }
 
     #endregion
         
     #region Red Side
 
-        private LoLPlayer? _topPlayerRedSide;
-
         public LoLPlayer? TopPlayerRedSide
         {
-            get => _topPlayerRedSide;
-            set => MutateVerbose(ref _topPlayerRedSide, value);
+            get => Players[LoLTeamType.RedSide][LoLPositionType.Top];
+            set
+            {
+                Players[LoLTeamType.RedSide][LoLPositionType.Top] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _middlePlayerRedSide;
-
+        
         public LoLPlayer? MiddlePlayerRedSide
         {
-            get => _middlePlayerRedSide;
-            set => MutateVerboseIfNotNull(ref _middlePlayerRedSide, value);
+            get => Players[LoLTeamType.RedSide][LoLPositionType.Middle];
+            set
+            {
+                Players[LoLTeamType.RedSide][LoLPositionType.Middle] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _bottomPlayerRedSide;
-
+        
         public LoLPlayer? BottomPlayerRedSide
         {
-            get => _bottomPlayerRedSide;
-            set => MutateVerboseIfNotNull(ref _bottomPlayerRedSide, value);
+            get => Players[LoLTeamType.RedSide][LoLPositionType.Bottom];
+            set
+            {
+                Players[LoLTeamType.RedSide][LoLPositionType.Bottom] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _junglePlayerRedSide;
-
+        
         public LoLPlayer? JunglePlayerRedSide
         {
-            get => _junglePlayerRedSide;
-            set => MutateVerboseIfNotNull(ref _junglePlayerRedSide, value);
+            get => Players[LoLTeamType.RedSide][LoLPositionType.Jungle];
+            set
+            {
+                Players[LoLTeamType.RedSide][LoLPositionType.Jungle] = value;
+                OnPropertyChanged();
+            }
         }
-
-        private LoLPlayer? _supportPlayerRedSide;
-
+        
         public LoLPlayer? SupportPlayerRedSide
         {
-            get => _supportPlayerRedSide;
-            set => MutateVerboseIfNotNull(ref _supportPlayerRedSide, value);
+            get => Players[LoLTeamType.RedSide][LoLPositionType.Support];
+            set
+            {
+                Players[LoLTeamType.RedSide][LoLPositionType.Support] = value;
+                OnPropertyChanged();
+            }
         }
 
     #endregion
@@ -158,5 +204,10 @@ namespace GoldDiff.View.Model
             set => MutateVerbose(ref _supportPlayerBackground, value);
         }
 
+        public void SwapPlayers(LoLTeamType team, LoLPositionType positionA, LoLPositionType positionB)
+        {
+            (Players[team][positionA], Players[team][positionB]) = (Players[team][positionB], Players[team][positionA]);
+            OnPropertyChanged(string.Empty);
+        }
     }
 }

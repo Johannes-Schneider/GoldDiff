@@ -3,6 +3,8 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Media;
 using GoldDiff.LeagueOfLegends.Game;
+using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.View.ControlElement;
 using GoldDiff.View.Controller;
 using GoldDiff.View.Model;
 
@@ -39,6 +41,16 @@ namespace GoldDiff.View
             Controller = new GoldDifferenceWindowController(Model, game);
 
             PrivateModel = Model;
+        }
+
+        private void PlayerGoldDifferenceView_OnSwapPlayers(object sender, PlayerGoldDifferenceView.SwapPlayersEventArguments e)
+        {
+            if (e.PositionA == e.PositionB)
+            {
+                return;
+            }
+            
+            Model.SwapPlayers(e.Team, e.PositionA, e.PositionB);
         }
     }
 }
