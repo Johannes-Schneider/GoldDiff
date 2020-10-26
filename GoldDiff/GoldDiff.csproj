@@ -91,11 +91,6 @@
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache.cs" />
     <Compile Include="OperatingSystem\ProcessEventEventArguments.cs" />
     <Compile Include="OperatingSystem\ProcessEventWatcher.cs" />
-    <Compile Include="Properties\GoldDifferenceWindowResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>GoldDifferenceWindowResources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\LoLStaticResourceCacheResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -115,6 +110,9 @@
     <Compile Include="View\ControlElement\PlayerGoldDifferenceView.xaml.cs">
       <DependentUpon>PlayerGoldDifferenceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ControlElement\TeamGoldDifferenceView.xaml.cs">
+      <DependentUpon>TeamGoldDifferenceView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Controller\GoldDifferenceWindowController.cs" />
     <Compile Include="View\Converter\IntToLoLGoldValueConverter.cs" />
     <Compile Include="View\GoldDifferenceWindow.xaml.cs">
@@ -130,10 +128,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="Properties\GoldDifferenceWindowResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>GoldDifferenceWindowResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\LoLStaticResourceCacheResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoLStaticResourceCacheResources.Designer.cs</LastGenOutput>
@@ -152,6 +146,7 @@
     <Page Include="View\ControlElement\GoldDifferenceView.xaml" />
     <Page Include="View\ControlElement\LoLPositionView.xaml" />
     <Page Include="View\ControlElement\PlayerGoldDifferenceView.xaml" />
+    <Page Include="View\ControlElement\TeamGoldDifferenceView.xaml" />
     <Page Include="View\GoldDifferenceWindow.xaml" />
     <Page Include="View\MainWindow.xaml" />
     <Page Include="View\Style\DefaultGoldDifferenceStyle.xaml" />

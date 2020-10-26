@@ -33,7 +33,15 @@ namespace GoldDiff.View.Model
                                                                                                     };
         
     #region Blue Side
-        
+
+        private LoLTeam? _teamBlueSide;
+
+        public LoLTeam? TeamBlueSide
+        {
+            get => _teamBlueSide;
+            set => MutateVerbose(ref _teamBlueSide, value);
+        }
+
         public LoLPlayer? TopPlayerBlueSide
         {
             get => Players[LoLTeamType.BlueSide][LoLPositionType.Top];
@@ -88,6 +96,14 @@ namespace GoldDiff.View.Model
         
     #region Red Side
 
+        private LoLTeam? _teamRedSide;
+
+        public LoLTeam? TeamRedSide
+        {
+            get => _teamRedSide;
+            set => MutateVerbose(ref _teamRedSide, value);
+        }
+        
         public LoLPlayer? TopPlayerRedSide
         {
             get => Players[LoLTeamType.RedSide][LoLPositionType.Top];

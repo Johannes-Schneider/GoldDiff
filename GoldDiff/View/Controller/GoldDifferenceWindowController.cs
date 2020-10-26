@@ -126,6 +126,8 @@ namespace GoldDiff.View.Controller
                 return;
             }
 
+            Model.TeamBlueSide = Game.TeamBlueSide;
+
             var orderedPlayers = OrderPlayers(Game.TeamBlueSide);
             if (orderedPlayers.TryGetValue(LoLPositionType.Top, out var topPlayer))
             {
@@ -159,6 +161,8 @@ namespace GoldDiff.View.Controller
             {
                 return;
             }
+
+            Model.TeamRedSide = Game.TeamRedSide;
 
             var orderedPlayers = OrderPlayers(Game.TeamRedSide);
             if (orderedPlayers.TryGetValue(LoLPositionType.Top, out var topPlayer))

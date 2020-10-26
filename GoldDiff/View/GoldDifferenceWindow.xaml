@@ -7,8 +7,6 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
         xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
-        xmlns:controlElement1="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
-        xmlns:properties="clr-namespace:GoldDiff.Properties"
         mc:Ignorable="d"
 
         x:Name="This"
@@ -27,10 +25,10 @@
         <system:Double x:Key="RowMinimumHeight">48</system:Double>
         <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnBlueSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
             <GradientStop Offset="0" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLActivePlayerRegularColor}}" />
-            <GradientStop Offset="1" Color="Transparent" />
+            <GradientStop Offset="0.45" Color="Transparent" />
         </LinearGradientBrush>
         <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnRedSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
-            <GradientStop Offset="0" Color="Transparent" />
+            <GradientStop Offset="0.55" Color="Transparent" />
             <GradientStop Offset="1" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLActivePlayerRegularColor}}" />
         </LinearGradientBrush>
     </Window.Resources>
@@ -42,9 +40,29 @@
             <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
             <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
             <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0"
+                Padding="18, 6, 18, 6"
+                BorderThickness="0, 0, 0, 1"
+                BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}">
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
+                    <GradientStop Offset="0" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLBlueSideTeamRegularColor}}" />
+                    <GradientStop Offset="0.45" Color="Transparent" />
+                    <GradientStop Offset="0.55" Color="Transparent" />
+                    <GradientStop Offset="1" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLRedSideTeamRegularColor}}" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <controlElement:TeamGoldDifferenceView TeamBlueSide="{Binding Path=TeamBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                   TeamRedSide="{Binding Path=TeamRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </Border>
+
+        <Border Grid.Row="1"
                 Padding="18, 6, 18, 6"
                 BorderThickness="0, 0, 0, 1"
                 BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
@@ -56,7 +74,7 @@
                                                      SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
         </Border>
 
-        <Border Grid.Row="1"
+        <Border Grid.Row="2"
                 Padding="18, 6, 18, 6"
                 BorderThickness="0, 0, 0, 1"
                 BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
@@ -69,7 +87,7 @@
 
         </Border>
 
-        <Border Grid.Row="2"
+        <Border Grid.Row="3"
                 Padding="18, 6, 18, 6"
                 BorderThickness="0, 0, 0, 1"
                 BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
@@ -82,7 +100,7 @@
 
         </Border>
 
-        <Border Grid.Row="3"
+        <Border Grid.Row="4"
                 Padding="18, 6, 18, 6"
                 BorderThickness="0, 0, 0, 1"
                 BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
@@ -95,7 +113,7 @@
 
         </Border>
 
-        <Border Grid.Row="4"
+        <Border Grid.Row="5"
                 Padding="18, 6, 18, 6"
                 BorderThickness="0"
                 BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
