@@ -77,6 +77,9 @@
     <Compile Include="LeagueOfLegends\Game\ILoLScoreOwner.cs" />
     <Compile Include="LeagueOfLegends\Game\ItemsChangedEventArguments.cs" />
     <Compile Include="LeagueOfLegends\Game\LoLClientDataPollService.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLConstants.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLGame.cs" />
+    <Compile Include="LeagueOfLegends\Game\LoLGameStateType.cs" />
     <Compile Include="LeagueOfLegends\Game\LoLItem.cs" />
     <Compile Include="LeagueOfLegends\Game\LoLPlayer.cs" />
     <Compile Include="LeagueOfLegends\Game\LoLTeam.cs" />
@@ -88,6 +91,11 @@
     <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache.cs" />
     <Compile Include="OperatingSystem\ProcessEventEventArguments.cs" />
     <Compile Include="OperatingSystem\ProcessEventWatcher.cs" />
+    <Compile Include="Properties\GoldDifferenceWindowResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GoldDifferenceWindowResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\LoLStaticResourceCacheResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -98,15 +106,34 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MainWindowResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="View\ControlElement\GoldDifferenceView.xaml.cs">
+      <DependentUpon>GoldDifferenceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlElement\LoLPositionView.xaml.cs">
+      <DependentUpon>LoLPositionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ControlElement\PlayerGoldDifferenceView.xaml.cs">
+      <DependentUpon>PlayerGoldDifferenceView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controller\GoldDifferenceWindowController.cs" />
+    <Compile Include="View\Converter\IntToLoLGoldValueConverter.cs" />
+    <Compile Include="View\GoldDifferenceWindow.xaml.cs">
+      <DependentUpon>GoldDifferenceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Model\GoldDifferenceWindowViewModel.cs" />
     <Compile Include="View\Model\MainWindowViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EmbeddedResource Include="Properties\GoldDifferenceWindowResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GoldDifferenceWindowResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\LoLStaticResourceCacheResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>LoLStaticResourceCacheResources.Designer.cs</LastGenOutput>
@@ -122,7 +149,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="View\ControlElement\GoldDifferenceView.xaml" />
+    <Page Include="View\ControlElement\LoLPositionView.xaml" />
+    <Page Include="View\ControlElement\PlayerGoldDifferenceView.xaml" />
+    <Page Include="View\GoldDifferenceWindow.xaml" />
     <Page Include="View\MainWindow.xaml" />
+    <Page Include="View\Style\DefaultGoldDifferenceStyle.xaml" />
+    <Page Include="View\Style\DefaultLoLPositionStyle.xaml" />
+    <Page Include="View\Style\DefaultPlayerGoldDifferenceStyle.xaml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoldDiff.LeagueOfLegends.ClientApi\GoldDiff.LeagueOfLegends.ClientApi.csproj">

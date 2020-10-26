@@ -1,0 +1,22 @@
+﻿<Application x:Class="GoldDiff.Playground.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:GoldDiff.Playground"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Theme/Default.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Resource/VectorIcons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultWindowStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultIconButtonStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultIconControlStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultProgressBarStyle.xaml" />
+                
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultGoldDifferenceStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultLoLPositionStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultPlayerGoldDifferenceStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

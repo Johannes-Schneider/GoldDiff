@@ -30,7 +30,8 @@ namespace GoldDiff.LeagueOfLegends.Game
             return gameData.Players.Select(clientPlayer => new LoLPlayer(staticResourceCache,
                                                                          clientPlayer.SummonerName,
                                                                          clientPlayer.Team,
-                                                                         staticResourceCache.GetChampion(clientPlayer.ChampionName)));
+                                                                         staticResourceCache.GetChampion(clientPlayer.ChampionName),
+                                                                         gameData.ActivePlayer.SummonerName.Equals(clientPlayer.SummonerName)));
         }
     }
 }

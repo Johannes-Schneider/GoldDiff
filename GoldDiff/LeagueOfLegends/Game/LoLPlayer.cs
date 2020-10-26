@@ -136,7 +136,7 @@ namespace GoldDiff.LeagueOfLegends.Game
         private LoLStaticResourceCache StaticResourceCache { get; }
         private List<LoLItem> MutableItems { get; set; } = new List<LoLItem>();
 
-        public LoLPlayer(LoLStaticResourceCache? staticResourceCache, string? summonerName, LoLTeamType team, LoLStaticChampion? champion, bool isActivePlayer = false)
+        public LoLPlayer(LoLStaticResourceCache? staticResourceCache, string? summonerName, LoLTeamType team, LoLStaticChampion? champion, bool isActivePlayer)
         {
             if (string.IsNullOrEmpty(summonerName))
             {
@@ -157,7 +157,7 @@ namespace GoldDiff.LeagueOfLegends.Game
                 throw new ArgumentNullException(nameof(gameData));
             }
 
-            var clientPlayer = gameData.Players.FirstOrDefault(player => player.SummonerName.Equals(SummonerName));
+            var clientPlayer = gameData.Players.FirstOrDefault(player => player.SummonerName.Equals(SummonerName) && player.Team == Team);
             if (clientPlayer == null)
             {
                 throw new Exception($"Unable to find the {nameof(LoLClientPlayer)} named {SummonerName} in the given {nameof(LoLClientGameData)}!");

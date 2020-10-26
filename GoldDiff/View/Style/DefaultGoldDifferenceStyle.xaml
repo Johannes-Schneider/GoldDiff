@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
+                    xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared">
+
+    <Style TargetType="{x:Type controlElement:GoldDifferenceView}">
+        <Setter Property="BlueSideForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLBlueSideTeamRegular}}" />
+        <Setter Property="RedSideForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLRedSideTeamRegular}}" />
+        <Setter Property="NoDifferenceForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
+    </Style>
+
+</ResourceDictionary>

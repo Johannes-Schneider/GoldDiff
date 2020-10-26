@@ -17,7 +17,7 @@ namespace GoldDiff.Shared.View.ControlElement
 
         public IconControl()
         {
-            Style = Application.Current?.Resources[GoldDiffResourceKey.DefaultIconControlStyle] as Style ?? null;
+            Style = Application.Current?.Resources[GoldDiffSharedResourceKeys.DefaultIconControlStyle] as Style ?? null;
         }
     }
 }

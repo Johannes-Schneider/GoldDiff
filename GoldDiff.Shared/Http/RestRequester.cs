@@ -11,12 +11,18 @@ namespace GoldDiff.Shared.Http
 
         public RestRequester()
         {
-            Client = new HttpClient();
+            Client = new HttpClient
+                     {
+                         Timeout = TimeSpan.FromMilliseconds(500),
+                     };
         }
 
         public RestRequester(HttpClientHandler clientHandler)
         {
-            Client = new HttpClient(clientHandler ?? throw new ArgumentNullException(nameof(clientHandler)));
+            Client = new HttpClient(clientHandler ?? throw new ArgumentNullException(nameof(clientHandler)))
+                     {
+                         Timeout = TimeSpan.FromMilliseconds(500),
+                     };
         }
 
         public async Task<TResultType> GetAsync<TResultType>(string url)

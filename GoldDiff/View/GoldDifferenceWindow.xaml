@@ -1,0 +1,107 @@
+﻿<Window x:Class="GoldDiff.View.GoldDifferenceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:GoldDiff.View"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
+        xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
+        xmlns:controlElement1="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
+        xmlns:properties="clr-namespace:GoldDiff.Properties"
+        mc:Ignorable="d"
+
+        x:Name="This"
+        Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultWindowStyle}}"
+
+        Title="{x:Static properties:GoldDifferenceWindowResources.Title}"
+        MinWidth="500"
+        MinHeight="350"
+        Height="400"
+        Width="600">
+
+    <Window.DataContext>
+        <Binding ElementName="This" Path="PrivateModel" />
+    </Window.DataContext>
+
+    <Window.Resources>
+        <system:Double x:Key="RowMinimumHeight">48</system:Double>
+        <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnBlueSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
+            <GradientStop Offset="0" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLActivePlayerRegularColor}}" />
+            <GradientStop Offset="1" Color="Transparent" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnRedSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
+            <GradientStop Offset="0" Color="Transparent" />
+            <GradientStop Offset="1" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLActivePlayerRegularColor}}" />
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0"
+                Padding="18, 6, 18, 6"
+                BorderThickness="0, 0, 0, 1"
+                BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                Background="{Binding TopPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+
+            <controlElement:PlayerGoldDifferenceView Position="Top"
+                                                     PlayerBlueSide="{Binding TopPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     PlayerRedSide="{Binding TopPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        </Border>
+
+        <Border Grid.Row="1"
+                Padding="18, 6, 18, 6"
+                BorderThickness="0, 0, 0, 1"
+                BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                Background="{Binding JunglePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+
+            <controlElement:PlayerGoldDifferenceView Position="Jungle"
+                                                     PlayerBlueSide="{Binding JunglePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     PlayerRedSide="{Binding JunglePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </Border>
+
+        <Border Grid.Row="2"
+                Padding="18, 6, 18, 6"
+                BorderThickness="0, 0, 0, 1"
+                BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                Background="{Binding MiddlePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+
+            <controlElement:PlayerGoldDifferenceView Position="Middle"
+                                                     PlayerBlueSide="{Binding MiddlePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     PlayerRedSide="{Binding MiddlePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </Border>
+
+        <Border Grid.Row="3"
+                Padding="18, 6, 18, 6"
+                BorderThickness="0, 0, 0, 1"
+                BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                Background="{Binding BottomPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+
+            <controlElement:PlayerGoldDifferenceView Position="Bottom"
+                                                     PlayerBlueSide="{Binding BottomPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     PlayerRedSide="{Binding BottomPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </Border>
+
+        <Border Grid.Row="4"
+                Padding="18, 6, 18, 6"
+                BorderThickness="0"
+                BorderBrush="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                Background="{Binding SupportPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+
+            <controlElement:PlayerGoldDifferenceView Position="Support"
+                                                     PlayerBlueSide="{Binding SupportPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                     PlayerRedSide="{Binding SupportPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        </Border>
+    </Grid>
+</Window>

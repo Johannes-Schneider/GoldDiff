@@ -23,29 +23,29 @@
                 Orientation="Horizontal"
                 VerticalAlignment="Center">
 
-        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconMinimize}}"
-                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
-                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundDark}}"
-                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
-                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconMinimize}}"
+                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundDark}}"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
                                    Visibility="{Binding ElementName=This, Path=CanMinimize, Converter={StaticResource BoolToVisibilityConverter}}"
                                    Command="{x:Static command:Commands.MinimizeWindow}"
                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
 
-        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconMaximize}}"
-                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}"
-                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundDark}}"
-                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
-                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconMaximize}}"
+                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundDark}}"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
                                    Visibility="{Binding ElementName=This, Path=CanMaximize, Converter={StaticResource BoolToVisibilityConverter}}"
                                    Command="{x:Static command:Commands.ToggleMaximizeWindow}"
                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
 
-        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffResourceKey.IconClose}}"
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconClose}}"
                                    BackgroundWhenHovered="#e73c32"
                                    BackgroundWhenPressed="#ad0009"
-                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
-                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
                                    Visibility="{Binding ElementName=This, Path=CanClose, Converter={StaticResource BoolToVisibilityConverter}}"
                                    Command="{x:Static command:Commands.CloseWindow}"
                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />

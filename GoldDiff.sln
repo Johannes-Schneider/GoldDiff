@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.GoldDiff.LeagueOfLegen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.GoldDiff.Shared", "Test\Test.GoldDiff.Shared\Test.GoldDiff.Shared.csproj", "{6B419FDF-0830-4FDC-8D22-D3DB5C739C55}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldDiff.Playground", "GoldDiff.Playground\GoldDiff.Playground.csproj", "{93E6339B-6A08-4EEE-B448-74CA734A420C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test.GoldDiff", "Test\Test.GoldDiff\Test.GoldDiff.csproj", "{9E040F5C-ECC7-4810-A0FF-7F4DA9915099}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,9 +48,18 @@ Global
 		{6B419FDF-0830-4FDC-8D22-D3DB5C739C55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B419FDF-0830-4FDC-8D22-D3DB5C739C55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B419FDF-0830-4FDC-8D22-D3DB5C739C55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93E6339B-6A08-4EEE-B448-74CA734A420C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E6339B-6A08-4EEE-B448-74CA734A420C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E6339B-6A08-4EEE-B448-74CA734A420C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E6339B-6A08-4EEE-B448-74CA734A420C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E040F5C-ECC7-4810-A0FF-7F4DA9915099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E040F5C-ECC7-4810-A0FF-7F4DA9915099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E040F5C-ECC7-4810-A0FF-7F4DA9915099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E040F5C-ECC7-4810-A0FF-7F4DA9915099}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E946904D-5FE3-479E-A9BB-99DEDC41D46F} = {CD54C186-F170-48A7-82F6-56F2D9CA17FE}
 		{6B419FDF-0830-4FDC-8D22-D3DB5C739C55} = {CD54C186-F170-48A7-82F6-56F2D9CA17FE}
+		{9E040F5C-ECC7-4810-A0FF-7F4DA9915099} = {CD54C186-F170-48A7-82F6-56F2D9CA17FE}
 	EndGlobalSection
 EndGlobal

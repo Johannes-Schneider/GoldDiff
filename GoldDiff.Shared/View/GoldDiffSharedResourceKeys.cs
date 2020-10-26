@@ -1,6 +1,6 @@
 ﻿namespace GoldDiff.Shared.View
 {
-    public static class GoldDiffResourceKey
+    public static class GoldDiffSharedResourceKeys
     {
     #region Font
 
@@ -62,6 +62,30 @@
         public const string RedRegular = nameof(RedRegular);
         public const string RedLight = nameof(RedLight);
 
+        public const string LoLRedSideTeamDarkColor = nameof(LoLRedSideTeamDarkColor);
+        public const string LoLRedSideTeamRegularColor = nameof(LoLRedSideTeamRegularColor);
+        public const string LoLRedSideTeamLightColor = nameof(LoLRedSideTeamLightColor);
+
+        public const string LoLBlueSideTeamDarkColor = nameof(LoLBlueSideTeamDarkColor);
+        public const string LoLBlueSideTeamRegularColor = nameof(LoLBlueSideTeamRegularColor);
+        public const string LoLBlueSideTeamLightColor = nameof(LoLBlueSideTeamLightColor);
+        
+        public const string LoLRedSideTeamDark = nameof(LoLRedSideTeamDark);
+        public const string LoLRedSideTeamRegular = nameof(LoLRedSideTeamRegular);
+        public const string LoLRedSideTeamLight = nameof(LoLRedSideTeamLight);
+
+        public const string LoLBlueSideTeamDark = nameof(LoLBlueSideTeamDark);
+        public const string LoLBlueSideTeamRegular = nameof(LoLBlueSideTeamRegular);
+        public const string LoLBlueSideTeamLight = nameof(LoLBlueSideTeamLight);
+
+        public const string LoLActivePlayerDarkColor = nameof(LoLActivePlayerDarkColor);
+        public const string LoLActivePlayerRegularColor = nameof(LoLActivePlayerRegularColor);
+        public const string LoLActivePlayerLightColor = nameof(LoLActivePlayerLightColor);
+        
+        public const string LoLActivePlayerDark = nameof(LoLActivePlayerDark);
+        public const string LoLActivePlayerRegular = nameof(LoLActivePlayerRegular);
+        public const string LoLActivePlayerLight = nameof(LoLActivePlayerLight);
+        
     #endregion
 
     #region Icons
@@ -76,6 +100,22 @@
         public const string IconGitHub = nameof(IconGitHub);
 
         public const string IconCoins = nameof(IconCoins);
+
+        public const string IconLoLTopPosition = nameof(IconLoLTopPosition);
+        public const string IconLoLMiddlePosition = nameof(IconLoLMiddlePosition);
+        public const string IconLoLBottomPosition = nameof(IconLoLBottomPosition);
+        public const string IconLoLSupportPosition = nameof(IconLoLSupportPosition);
+        public const string IconLoLJunglePosition = nameof(IconLoLJunglePosition);
+
+        public const string IconArrowLeft1 = nameof(IconArrowLeft1);
+        public const string IconArrowLeft2 = nameof(IconArrowLeft2);
+        public const string IconArrowLeft3 = nameof(IconArrowLeft3);
+        public const string IconArrowLeft4 = nameof(IconArrowLeft4);
+        
+        public const string IconArrowRight1 = nameof(IconArrowRight1);
+        public const string IconArrowRight2 = nameof(IconArrowRight2);
+        public const string IconArrowRight3 = nameof(IconArrowRight3);
+        public const string IconArrowRight4 = nameof(IconArrowRight4);
 
     #endregion
 

@@ -10,9 +10,9 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
     public sealed class LoLClientEndpoint : IDisposable
     {
         private const string ClientCertificateThumbprint = "8259aafd8f71a809d2b154dd1cdb492981e448bd";
-        private const string Host = "https://127.0.0.1:2999";
+        private const string Host = "https://127.0.0.1:2999/liveclientdata";
 
-        private static string GameDataUrl { get; } = Host + "/liveclientdata";
+        private static string GameDataUrl { get; } = Host + "/allgamedata";
 
         private static LoLClientEndpoint? _instance;
 

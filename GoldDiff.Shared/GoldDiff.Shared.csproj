@@ -79,7 +79,8 @@
     </Compile>
     <Compile Include="View\Controller\ProgressViewController.cs" />
     <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
-    <Compile Include="View\GoldDiffResourceKey.cs" />
+    <Compile Include="View\Converter\MultiplyDoubleConverter.cs" />
+    <Compile Include="View\GoldDiffSharedResourceKeys.cs" />
     <Compile Include="View\Model\ProgressViewViewModel.cs" />
     <Compile Include="View\Model\ViewModel.cs" />
   </ItemGroup>

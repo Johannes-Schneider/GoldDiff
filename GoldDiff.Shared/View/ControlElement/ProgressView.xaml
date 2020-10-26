@@ -31,7 +31,7 @@
                    Grid.Row="0"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Center"
-                   FontSize="{DynamicResource {x:Static view:GoldDiffResourceKey.FontSizeHeadline}}"
+                   FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeHeadline}}"
                    Text="{Binding Title, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- /Title -->
@@ -63,7 +63,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Center"
                      Margin="0, 6, 0, 0"
-                     Style="{DynamicResource {x:Static view:GoldDiffResourceKey.DefaultProgressBarStyle}}"
+                     Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultProgressBarStyle}}"
                      Value="{Binding CurrentStepProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
         <!-- /Current Step -->
@@ -75,7 +75,7 @@
                      HorizontalAlignment="Stretch"
                      VerticalAlignment="Center"
                      Margin="0, 3, 0, 0"
-                     Style="{DynamicResource {x:Static view:GoldDiffResourceKey.DefaultProgressBarStyle}}"
+                     Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultProgressBarStyle}}"
                      Value="{Binding TotalProgress, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
         
         <TextBlock Grid.Column="0"

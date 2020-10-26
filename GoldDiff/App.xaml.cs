@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
+using GoldDiff.LeagueOfLegends.ClientApi;
+using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.OperatingSystem;
 using GoldDiff.Shared;
@@ -15,20 +17,26 @@ namespace GoldDiff
     /// </summary>
     public partial class App
     {
-        private const string TargetProcessName = "League of Legends.exe";
-        
+        private const string TargetProcessName = "League of Legends";
+
+        // private const string TargetProcessName = "notepad";
+        private static TimeSpan ClientDataPollInterval { get; } = TimeSpan.FromMilliseconds(500);
+
         private ApplicationSettings ApplicationSettings { get; } = ApplicationSettings.Load();
         private MainWindow MyMainWindow { get; set; } = null!;
         private LoLStaticResourceCache LoLResourceCache { get; } = LoLStaticResourceCache.Load();
         private ProcessEventWatcher ProcessEventWatcher { get; } = new ProcessEventWatcher();
 
         private Process? _targetProcess;
-        
+        private LoLClientDataPollService? _clientDataPollService;
+        private LoLGame? _game;
+        private GoldDifferenceWindow? _goldDifferenceWindow;
+
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
             InitializeUserInterface();
             await UpdateResourceCacheAsync();
-            
+
             ProcessEventWatcher.ProcessStarted += ProcessEventWatcher_OnProcessStarted;
             ProcessEventWatcher.ProcessStopped += ProcessEventWatcher_OnProcessStopped;
         }
@@ -40,26 +48,33 @@ namespace GoldDiff
                             Source = new Uri(ApplicationSettings.ThemeLocation),
                         };
             Current.Resources.MergedDictionaries.Add(theme);
-            
+
             MyMainWindow = new MainWindow();
             MyMainWindow.Model.LeagueVersion = LoLResourceCache.CurrentVersion;
-            
+
             MainWindow = MyMainWindow;
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             MainWindow.Show();
+
+            var processes = Process.GetProcessesByName(TargetProcessName);
+            if (processes.Length > 0)
+            {
+                _targetProcess = processes[0];
+                TargetProcessStarted();
+            }
         }
 
         private async Task UpdateResourceCacheAsync()
         {
             var progressView = new ProgressView();
             MyMainWindow.Model.Content = progressView;
-            
+
             await LoLResourceCache!.UpdateAsync(progressView.Controller);
 
             MyMainWindow.Model.Content = null;
             MyMainWindow.Model.LeagueVersion = LoLResourceCache.CurrentVersion;
         }
-        
+
         private void ProcessEventWatcher_OnProcessStarted(object sender, ProcessEventEventArguments e)
         {
             if (_targetProcess != null)
@@ -97,17 +112,45 @@ namespace GoldDiff
 
         private void TargetProcessStarted()
         {
-            // TODO: Start game
+            _clientDataPollService?.Dispose();
+            _clientDataPollService = new LoLClientDataPollService(ClientDataPollInterval);
+            _clientDataPollService.GameDataReceived += ClientDataPollService_OnGameDataReceived;
+
+            _game = new LoLGame(LoLResourceCache);
+            _game.GameDataReceived += Game_OnGameDataReceived;
+            _clientDataPollService.Start();
+        }
+
+        private void ClientDataPollService_OnGameDataReceived(object sender, LoLClientGameData e)
+        {
+            _game?.Consume(e);
+        }
+
+        private void Game_OnGameDataReceived(object sender, LoLClientGameData e)
+        {
+            if (_game != null)
+            {
+                _game.GameDataReceived -= Game_OnGameDataReceived;
+            }
+
+            Current.Dispatcher.Invoke(() =>
+                                      {
+                                          _goldDifferenceWindow?.Close();
+
+                                          _goldDifferenceWindow = new GoldDifferenceWindow(_game);
+                                          _goldDifferenceWindow.Show();
+                                      });
         }
 
         private void TargetProcessStopped()
         {
-            // TODO: Stop game
+            _clientDataPollService?.Dispose();
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
             ProcessEventWatcher.Dispose();
+            _clientDataPollService?.Dispose();
             base.OnExit(e);
         }
     }

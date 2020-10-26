@@ -3,19 +3,19 @@
                     xmlns:view="clr-namespace:GoldDiff.Shared.View"
                     xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement">
 
-    <Style TargetType="{x:Type controlElement:IconButton}" x:Key="{x:Static view:GoldDiffResourceKey.DefaultIconButtonStyle}">
+    <Style TargetType="{x:Type controlElement:IconButton}" x:Key="{x:Static view:GoldDiffSharedResourceKeys.DefaultIconButtonStyle}">
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Width" Value="45" />
         <Setter Property="Height" Value="25" />
         <Setter Property="IconSize" Value="18" />
-        <Setter Property="Background" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}" />
-        <Setter Property="BackgroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
-        <Setter Property="BackgroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
-        <Setter Property="BackgroundWhenDisabled" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundDisabled}}" />
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
-        <Setter Property="ForegroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundRegular}}" />
-        <Setter Property="ForegroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.BackgroundLight}}" />
-        <Setter Property="ForegroundWhenDisabled" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundDisabled}}" />
+        <Setter Property="Background" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}" />
+        <Setter Property="BackgroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
+        <Setter Property="BackgroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
+        <Setter Property="BackgroundWhenDisabled" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundDisabled}}" />
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
+        <Setter Property="ForegroundWhenHovered" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}" />
+        <Setter Property="ForegroundWhenPressed" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundLight}}" />
+        <Setter Property="ForegroundWhenDisabled" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundDisabled}}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="Template">
@@ -27,7 +27,7 @@
                             BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness}">
 
                         <controlElement:IconControl x:Name="Icon"
-                                                    Style="{DynamicResource {x:Static view:GoldDiffResourceKey.DefaultIconControlStyle}}"
+                                                    Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultIconControlStyle}}"
                                                     Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"
                                                     Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
                                                     Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IconSize}"

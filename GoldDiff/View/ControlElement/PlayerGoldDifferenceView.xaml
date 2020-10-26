@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="GoldDiff.View.ControlElement.PlayerGoldDifferenceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
+             xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
+             xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
+             xmlns:converter="clr-namespace:GoldDiff.View.Converter"
+             xmlns:game="clr-namespace:GoldDiff.LeagueOfLegends.Game"
+             mc:Ignorable="d"
+
+             x:Name="This"
+
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <converter:IntToLoLGoldValueConverter x:Key="IntToLoLGoldValueConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" MinWidth="32" MaxWidth="96" />
+            <ColumnDefinition Width="1*" MinWidth="32" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="1*" MinWidth="32" />
+            <ColumnDefinition Width="*" MinWidth="32" MaxWidth="96" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Role Icon Blue Side -->
+
+        <local:LoLPositionView Grid.Column="0"
+                               Margin="0, 0, 12, 0"
+                               MaxWidth="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                               MaxHeight="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                               Position="{Binding ElementName=This, Path=Position}" />
+
+        <!-- /Role Icon Blue Side -->
+
+        <!-- Champion Tile Blue Side -->
+
+        <Image Grid.Column="1"
+               Margin="0, 0, 12, 0"
+               VerticalAlignment="Center"
+               DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
+               Source="{Binding Path=Champion.SmallTileImage}" />
+
+        <!-- /Champion Tile Blue Side -->
+
+        <!-- Total Gold Blue Side -->
+
+        <Grid Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <controlElement:IconControl Grid.Column="0"
+                                        Margin="0, 0, 12, 0"
+                                        VerticalAlignment="Center"
+                                        Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                                        Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                                        Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+
+            <TextBlock Grid.Column="1"
+                       Margin="0, 0, 12, 0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                       DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
+                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+
+        </Grid>
+
+        <!-- /Total Gold Blue Side -->
+
+        <!-- Gold Difference -->
+
+        <local:GoldDifferenceView Grid.Column="3"
+                                  HorizontalAlignment="Center"
+                                  VerticalAlignment="Center"
+                                  MinorGoldDifference="{x:Static game:LoLConstants.MinorPlayerGoldDifference}"
+                                  MediocreGoldDifference="{x:Static game:LoLConstants.MediocrePlayerGoldDifference}"
+                                  LargeGoldDifference="{x:Static game:LoLConstants.LargePlayerGoldDifference}"
+                                  GoldOwnerBlueSide="{Binding ElementName=This, Path=PlayerBlueSide, Mode=OneWay}"
+                                  GoldOwnerRedSide="{Binding ElementName=This, Path=PlayerRedSide, Mode=OneWay}" />
+
+        <!-- /Gold Difference -->
+
+        <!-- Total Gold Red Side -->
+
+        <Grid Grid.Column="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Margin="12, 0, 0, 0"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                       DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
+                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+
+            <controlElement:IconControl Grid.Column="1"
+                                        Margin="12, 0, 0, 0"
+                                        VerticalAlignment="Center"
+                                        Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                                        Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                                        Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+
+
+        </Grid>
+
+        <!-- /Total Gold Red Side -->
+
+        <!-- Champion Tile Red Side -->
+
+        <Image Grid.Column="5"
+               Margin="12, 0, 0, 0"
+               VerticalAlignment="Center"
+               DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
+               Source="{Binding Path=Champion.SmallTileImage}" />
+
+        <!-- /Champion Tile Red Side -->
+
+        <!-- Role Icon Red Side -->
+
+        <local:LoLPositionView Grid.Column="6"
+                               Margin="12, 0, 0, 0"
+                               MaxWidth="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                               MaxHeight="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                               Position="{Binding ElementName=This, Path=Position}" />
+
+
+        <!-- /Role Icon Red Side -->
+
+    </Grid>
+</UserControl>

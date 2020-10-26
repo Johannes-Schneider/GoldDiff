@@ -39,7 +39,7 @@ namespace GoldDiff.LeagueOfLegends.Game
                     var gameData = await LoLClientEndpoint.Get.GetGameDataAsync();
                     if (gameData == null || _isDisposed)
                     {
-                        return;
+                        continue;
                     }
 
                     GameDataReceived?.Invoke(this, gameData);

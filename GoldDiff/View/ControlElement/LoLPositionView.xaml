@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="GoldDiff.View.ControlElement.LoLPositionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
+             xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
+             xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
+             mc:Ignorable="d"
+
+             x:Name="This"
+
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        
+        <controlElement:IconControl x:Name="TopPositionIcon"
+                                    Grid.Column="0"
+                                    Width="{Binding ElementName=This, Path=Width}"
+                                    Height="{Binding ElementName=This, Path=Height}"
+                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTopPosition}}" />
+
+        <controlElement:IconControl x:Name="MiddlePositionIcon"
+                                    Grid.Column="0"
+                                    Width="{Binding ElementName=This, Path=Width}"
+                                    Height="{Binding ElementName=This, Path=Height}"
+                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLMiddlePosition}}" />
+
+        <controlElement:IconControl x:Name="BottomPositionIcon"
+                                    Grid.Column="0"
+                                    Width="{Binding ElementName=This, Path=Width}"
+                                    Height="{Binding ElementName=This, Path=Height}"
+                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLBottomPosition}}" />
+
+        <controlElement:IconControl x:Name="JunglePositionIcon"
+                                    Grid.Column="0"
+                                    Width="{Binding ElementName=This, Path=Width}"
+                                    Height="{Binding ElementName=This, Path=Height}"
+                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLJunglePosition}}"
+                                    Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+
+        <controlElement:IconControl x:Name="SupportPositionIcon"
+                                    Grid.Column="0"
+                                    Width="{Binding ElementName=This, Path=Width}"
+                                    Height="{Binding ElementName=This, Path=Height}"
+                                    Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLSupportPosition}}"
+                                    Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+    </Grid>
+</UserControl>

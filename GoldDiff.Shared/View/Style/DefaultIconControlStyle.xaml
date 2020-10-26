@@ -3,8 +3,8 @@
                     xmlns:view="clr-namespace:GoldDiff.Shared.View"
                     xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement">
 
-    <Style TargetType="{x:Type controlElement:IconControl}" x:Key="{x:Static view:GoldDiffResourceKey.DefaultIconControlStyle}">
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffResourceKey.ForegroundRegular}}" />
+    <Style TargetType="{x:Type controlElement:IconControl}" x:Key="{x:Static view:GoldDiffSharedResourceKeys.DefaultIconControlStyle}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="Width" Value="18" />
         <Setter Property="Height" Value="18" />
@@ -20,8 +20,7 @@
                                  Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}">
                             <Canvas MinWidth="24"
                                     MinHeight="24">
-                                <Path SnapsToDevicePixels="True"
-                                      Stretch="None"
+                                <Path Stretch="None"
                                       Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
                                       Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Source}" />
                             </Canvas>
