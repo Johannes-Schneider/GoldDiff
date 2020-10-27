@@ -130,11 +130,26 @@ namespace GoldDiff
         {
             Current.Dispatcher.Invoke(() =>
                                       {
-                                          _goldDifferenceWindow?.Close();
-
-                                          _goldDifferenceWindow = new GoldDifferenceWindow(_game);
-                                          _goldDifferenceWindow.Show();
+                                          if (_goldDifferenceWindow != null)
+                                          {
+                                              _goldDifferenceWindow.Model.Game = _game;
+                                              if (_goldDifferenceWindow.WindowState == WindowState.Minimized)
+                                              {
+                                                  _goldDifferenceWindow.WindowState = WindowState.Normal;
+                                              }
+                                          }
+                                          else
+                                          {
+                                              _goldDifferenceWindow = new GoldDifferenceWindow(_game);
+                                              _goldDifferenceWindow.Closed += GoldDifferenceWindow_OnClosed;
+                                              _goldDifferenceWindow.Show();
+                                          }
                                       });
+        }
+
+        private void GoldDifferenceWindow_OnClosed(object sender, EventArgs e)
+        {
+            _goldDifferenceWindow = null;
         }
 
         private void TargetProcessStopped()

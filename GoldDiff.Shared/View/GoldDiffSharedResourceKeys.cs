@@ -128,6 +128,7 @@
         public const string DefaultProgressBarStyle = nameof(DefaultProgressBarStyle);
         public const string DefaultGoldDiffCheckBoxStyle = nameof(DefaultGoldDiffCheckBoxStyle);
         public const string DefaultDialogStyle = nameof(DefaultDialogStyle);
+        public const string DefaultGroupBoxStyle = nameof(DefaultGroupBoxStyle);
 
     #endregion
     }

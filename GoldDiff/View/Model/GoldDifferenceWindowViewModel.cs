@@ -31,6 +31,14 @@ namespace GoldDiff.View.Model
                                                                                                                                  }
                                                                                                         },
                                                                                                     };
+
+        private LoLGame? _game;
+
+        public LoLGame? Game
+        {
+            get => _game;
+            set => MutateVerboseIfNotNull(ref _game, value);
+        }
         
     #region Blue Side
 

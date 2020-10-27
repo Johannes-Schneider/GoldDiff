@@ -34,11 +34,12 @@ namespace GoldDiff.View
 
             Model = new GoldDifferenceWindowViewModel
                     {
+                        Game = game,
                         ActivePlayerOnBlueSideBackground = Resources[ActivePlayerOnBlueSideBackground] as Brush,
                         ActivePlayerOnRedSideBackground = Resources[ActivePlayerOnRedSideBackground] as Brush,
                         InactivePlayerBackground = null,
                     };
-            Controller = new GoldDifferenceWindowController(Model, game);
+            Controller = new GoldDifferenceWindowController(Model);
 
             PrivateModel = Model;
         }

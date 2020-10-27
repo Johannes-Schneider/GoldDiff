@@ -27,7 +27,8 @@
                                                 Margin="0, 0, 0, 12"
                                                 CanClose="True"
                                                 CanMaximize="True"
-                                                CanMinimize="True" />
+                                                CanMinimize="True"
+                                                CanOpenSettings="True"/>
 
         <StackPanel Grid.Row="1">
 

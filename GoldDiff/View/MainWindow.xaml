@@ -40,7 +40,8 @@
                                          Grid.Row="0"
                                          CanClose="True"
                                          CanMinimize="True"
-                                         CanMaximize="False" />
+                                         CanMaximize="False"
+                                         CanOpenSettings="True" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"

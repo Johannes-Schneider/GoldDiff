@@ -22,6 +22,15 @@
     <StackPanel HorizontalAlignment="Right"
                 Orientation="Horizontal"
                 VerticalAlignment="Center">
+        
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconSettings}}"
+                                   BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"
+                                   BackgroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundDark}}"
+                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
+                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
+                                   Visibility="{Binding ElementName=This, Path=CanOpenSettings, Converter={StaticResource BoolToVisibilityConverter}}"
+                                   Command="{Binding ElementName=This, Path=OpenSettingsCommand}"
+                                   CommandParameter="{Binding ElementName=This, Path=OpenSettingsCommandParameter}" />
 
         <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconMinimize}}"
                                    BackgroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}"

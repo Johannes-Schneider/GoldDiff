@@ -25,31 +25,42 @@ namespace GoldDiff.View.Controller
                                                                    };
         
         public GoldDifferenceWindowViewModel Model { get; }
-        
-        public LoLGame Game { get; }
 
-        public GoldDifferenceWindowController(GoldDifferenceWindowViewModel? model, LoLGame? game)
+        public GoldDifferenceWindowController(GoldDifferenceWindowViewModel? model)
         {
             Model = model ?? throw new ArgumentNullException(nameof(model));
             Model.PropertyChanged += ModelOnPropertyChanged;
+            
+            TryInitializeModel();
+        }
 
-            Game = game ?? throw new ArgumentNullException(nameof(game));
-            if (Game.IsInitialized)
+        private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(nameof(Model.Game)))
+            {
+                TryInitializeModel();
+            }
+            else if (string.IsNullOrEmpty(e.PropertyName) || PlayerPropertyNames.Contains(e.PropertyName))
+            {
+                UpdateActivePlayerBackground();
+            }
+        }
+
+        private void TryInitializeModel()
+        {
+            if (Model.Game == null)
+            {
+                return;
+            }
+
+            if (Model.Game.IsInitialized)
             {
                 InitializeBlueSidePlayers();
                 InitializeRedSidePlayers();
             }
             else
             {
-                Game.Initialized += Game_OnInitialized;
-            }
-        }
-
-        private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (string.IsNullOrEmpty(e.PropertyName) || PlayerPropertyNames.Contains(e.PropertyName))
-            {
-                UpdateActivePlayerBackground();
+                Model.Game.Initialized += Game_OnInitialized;
             }
         }
 
@@ -121,14 +132,14 @@ namespace GoldDiff.View.Controller
 
         private void InitializeBlueSidePlayers()
         {
-            if (Game.TeamBlueSide == null)
+            if (Model.Game?.TeamBlueSide == null)
             {
                 return;
             }
 
-            Model.TeamBlueSide = Game.TeamBlueSide;
+            Model.TeamBlueSide = Model.Game.TeamBlueSide;
 
-            var orderedPlayers = OrderPlayers(Game.TeamBlueSide);
+            var orderedPlayers = OrderPlayers(Model.TeamBlueSide);
             if (orderedPlayers.TryGetValue(LoLPositionType.Top, out var topPlayer))
             {
                 Model.TopPlayerBlueSide = topPlayer;
@@ -157,14 +168,14 @@ namespace GoldDiff.View.Controller
 
         private void InitializeRedSidePlayers()
         {
-            if (Game.TeamRedSide == null)
+            if (Model.Game?.TeamRedSide == null)
             {
                 return;
             }
 
-            Model.TeamRedSide = Game.TeamRedSide;
+            Model.TeamRedSide = Model.Game.TeamRedSide;
 
-            var orderedPlayers = OrderPlayers(Game.TeamRedSide);
+            var orderedPlayers = OrderPlayers(Model.TeamRedSide);
             if (orderedPlayers.TryGetValue(LoLPositionType.Top, out var topPlayer))
             {
                 Model.TopPlayerRedSide = topPlayer;
