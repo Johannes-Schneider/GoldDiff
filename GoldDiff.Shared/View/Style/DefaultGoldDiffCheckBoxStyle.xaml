@@ -1,0 +1,97 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:view="clr-namespace:GoldDiff.Shared.View"
+                    xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement"
+                    xmlns:converter="clr-namespace:GoldDiff.Shared.View.Converter">
+
+    <Style TargetType="{x:Type controlElement:GoldDiffCheckBox}" x:Key="{x:Static view:GoldDiffSharedResourceKeys.DefaultGoldDiffCheckBoxStyle}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        
+        <Setter Property="NotCheckedBackground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
+        <Setter Property="NotCheckedIconBackground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}" />
+        <Setter Property="NotCheckedIconForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
+        <Setter Property="NotCheckedIcon" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCross}}" />
+        
+        <Setter Property="CheckedBackground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}" />
+        <Setter Property="CheckedIconBackground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}" />
+        <Setter Property="CheckedIconForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}" />
+        <Setter Property="CheckedIcon" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCheck}}" />
+        
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controlElement:GoldDiffCheckBox}">
+
+                    <ControlTemplate.Resources>
+                        <converter:MultiplyDoubleConverter x:Key="HalfOf"
+                                                           Factor="0.5" />
+                        <converter:MultiplyDoubleConverter x:Key="ButtonWidthConverter"
+                                                           Factor="0.45" />
+                        <converter:BoolToVisibilityConverter x:Key="TrueToVisible"
+                                                             FalseValue="Collapsed"
+                                                             TrueValue="Visible" />
+                        <converter:BoolToVisibilityConverter x:Key="FalseToVisible"
+                                                             FalseValue="Visible"
+                                                             TrueValue="Collapsed" />
+                    </ControlTemplate.Resources>
+
+                    <Border x:Name="Border"
+                            Width="44"
+                            Height="22"
+                            HorizontalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HorizontalAlignment}"
+                            VerticalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=VerticalAlignment}"
+                            Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NotCheckedBackground}"
+                            BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderBrush}"
+                            BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness}"
+                            CornerRadius="11">
+
+                        <Grid>
+                            <Border Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center"
+                                    CornerRadius="9"
+                                    Margin="2"
+                                    Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NotCheckedIconBackground}"
+                                    Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Converter={StaticResource FalseToVisible}}">
+
+                                <controlElement:IconControl Width="16"
+                                                            Height="16"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center" 
+                                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NotCheckedIcon}"
+                                                            Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NotCheckedIconForeground}" />
+
+                            </Border>
+
+                            <Border Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Right"
+                                    VerticalAlignment="Center"
+                                    CornerRadius="9"
+                                    Margin="2"
+                                    Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedIconBackground}"
+                                    Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=IsChecked, Converter={StaticResource TrueToVisible}}">
+
+                                <controlElement:IconControl Width="16"
+                                                            Height="16"
+                                                            HorizontalAlignment="Center"
+                                                            VerticalAlignment="Center"
+                                                            Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedIcon}"
+                                                            Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedIconForeground}" />
+
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CheckedBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

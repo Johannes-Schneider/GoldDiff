@@ -41,7 +41,7 @@
                                    Command="{x:Static command:Commands.ToggleMaximizeWindow}"
                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
 
-        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconClose}}"
+        <controlElement:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCross}}"
                                    BackgroundWhenHovered="#e73c32"
                                    BackgroundWhenPressed="#ad0009"
                                    ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"

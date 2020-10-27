@@ -1,4 +1,6 @@
-﻿using GoldDiff.LeagueOfLegends.Game;
+﻿using System.Windows;
+using System.Windows.Input;
+using GoldDiff.LeagueOfLegends.Game;
 
 namespace GoldDiff.Playground
 {
@@ -10,6 +12,21 @@ namespace GoldDiff.Playground
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+            DragMove();
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dialog = new Dialog()
+                         {
+                             Owner = this,
+                         };
+            dialog.ShowDialog();
         }
     }
 }

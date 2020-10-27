@@ -11,21 +11,31 @@
         mc:Ignorable="d"
 
         x:Name="This"
-
         Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultWindowStyle}}"
+        WindowStyle="None"
+        ResizeMode="NoResize"
 
         Title="MainWindow" Height="350" Width="525">
-    <StackPanel>
 
-        <controlElement:LoLPositionView Position="Top"></controlElement:LoLPositionView>
-        <controlElement:LoLPositionView Position="Jungle"></controlElement:LoLPositionView>
-        <controlElement:LoLPositionView Position="Middle"></controlElement:LoLPositionView>
-        <controlElement:LoLPositionView Position="Bottom"></controlElement:LoLPositionView>
-        <controlElement:LoLPositionView Position="Support"></controlElement:LoLPositionView>
-        
-        <sharedControlElements:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}"></sharedControlElements:IconControl>
-        <sharedControlElements:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}"></sharedControlElements:IconControl>
-        <sharedControlElements:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}"></sharedControlElements:IconControl>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
-    </StackPanel>
+        <sharedControlElements:WindowControlBar Grid.Row="0"
+                                                Margin="0, 0, 0, 12"
+                                                CanClose="True"
+                                                CanMaximize="True"
+                                                CanMinimize="True" />
+
+        <StackPanel Grid.Row="1">
+
+            <sharedControlElements:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}"
+                                              Click="ButtonBase_OnClick" />
+
+        </StackPanel>
+    </Grid>
+
+
 </Window>

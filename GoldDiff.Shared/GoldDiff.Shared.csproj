@@ -69,6 +69,7 @@
     <Compile Include="Utility\MultiSet.cs" />
     <Compile Include="View\Command\Commands.cs" />
     <Compile Include="View\Command\GenericCommand.cs" />
+    <Compile Include="View\ControlElement\GoldDiffCheckBox.cs" />
     <Compile Include="View\ControlElement\IconButton.cs" />
     <Compile Include="View\ControlElement\IconControl.cs" />
     <Compile Include="View\ControlElement\ProgressView.xaml.cs">
@@ -80,6 +81,7 @@
     <Compile Include="View\Controller\ProgressViewController.cs" />
     <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
     <Compile Include="View\Converter\MultiplyDoubleConverter.cs" />
+    <Compile Include="View\GoldDiffDialog.cs" />
     <Compile Include="View\GoldDiffSharedResourceKeys.cs" />
     <Compile Include="View\Model\ProgressViewViewModel.cs" />
     <Compile Include="View\Model\ViewModel.cs" />
@@ -91,6 +93,8 @@
     </Page>
     <Page Include="View\ControlElement\WindowControlBar.xaml" />
     <Page Include="View\Resource\VectorIcons.xaml" />
+    <Page Include="View\Style\DefaultDialogStyle.xaml" />
+    <Page Include="View\Style\DefaultGoldDiffCheckBoxStyle.xaml" />
     <Page Include="View\Style\DefaultIconButtonStyle.xaml" />
     <Page Include="View\Style\DefaultIconControlStyle.xaml" />
     <Page Include="View\Style\DefaultProgressBarStyle.xaml" />

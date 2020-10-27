@@ -97,7 +97,7 @@ namespace GoldDiff.Shared.View.ControlElement
 
         public IconButton()
         {
-            Style = Application.Current?.Resources[GoldDiffSharedResourceKeys.DefaultIconButtonStyle] as Style ?? null;
+            Style = Application.Current?.Resources[GoldDiffSharedResourceKeys.DefaultIconButtonStyle] as Style;
         }
     }
 }

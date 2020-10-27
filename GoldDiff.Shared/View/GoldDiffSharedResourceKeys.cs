@@ -92,7 +92,8 @@
 
         public const string ApplicationIcon = nameof(ApplicationIcon);
 
-        public const string IconClose = nameof(IconClose);
+        public const string IconCross = nameof(IconCross);
+        public const string IconCheck = nameof(IconCheck);
         public const string IconMinimize = nameof(IconMinimize);
         public const string IconMaximize = nameof(IconMaximize);
         public const string IconSettings = nameof(IconSettings);
@@ -125,6 +126,8 @@
         public const string DefaultIconButtonStyle = nameof(DefaultIconButtonStyle);
         public const string DefaultIconControlStyle = nameof(DefaultIconControlStyle);
         public const string DefaultProgressBarStyle = nameof(DefaultProgressBarStyle);
+        public const string DefaultGoldDiffCheckBoxStyle = nameof(DefaultGoldDiffCheckBoxStyle);
+        public const string DefaultDialogStyle = nameof(DefaultDialogStyle);
 
     #endregion
     }
