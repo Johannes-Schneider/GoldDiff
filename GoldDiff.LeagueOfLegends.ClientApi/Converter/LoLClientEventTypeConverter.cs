@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Reflection;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
+using log4net;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
     internal sealed class LoLClientEventTypeConverter : ReadOnlyConverter<string>
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (!(reader.Value is string value))
             {
+                Log.Error($"Unable to convert {reader.Value} ({reader.ValueType?.Name}) to {nameof(LoLClientEventType)}!");
                 return LoLClientEventType.Undefined;
             }
 
@@ -88,6 +93,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 return LoLClientEventType.GameEnded;
             }
 
+            Log.Error($"Unable to convert {value} to {nameof(LoLClientEventType)}!");
             return LoLClientEventType.Undefined;
         }
     }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using GoldDiff.LeagueOfLegends.ClientApi;
@@ -9,6 +11,7 @@ using GoldDiff.OperatingSystem;
 using GoldDiff.Shared;
 using GoldDiff.Shared.View.ControlElement;
 using GoldDiff.View;
+using log4net;
 
 namespace GoldDiff
 {
@@ -17,6 +20,8 @@ namespace GoldDiff
     /// </summary>
     public partial class App
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private const string TargetProcessName = "League of Legends";
 
         // private const string TargetProcessName = "notepad";
@@ -34,6 +39,8 @@ namespace GoldDiff
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
+            Log.Debug($"Application started.");
+
             InitializeUserInterface();
             await UpdateResourceCacheAsync();
 
@@ -69,7 +76,7 @@ namespace GoldDiff
             var progressView = new ProgressView();
             MyMainWindow.Model.Content = progressView;
 
-            await LoLResourceCache!.UpdateAsync(progressView.Controller);
+            await LoLResourceCache.UpdateAsync(progressView.Controller);
 
             MyMainWindow.Model.Content = null;
             MyMainWindow.Model.LeagueVersion = LoLResourceCache.CurrentVersion;
@@ -112,6 +119,8 @@ namespace GoldDiff
 
         private void TargetProcessStarted()
         {
+            Log.Info($"Target process ({TargetProcessName}) started.");
+
             _clientDataPollService?.Dispose();
             _clientDataPollService = new LoLClientDataPollService(ClientDataPollInterval);
             _clientDataPollService.GameDataReceived += ClientDataPollService_OnGameDataReceived;
@@ -128,6 +137,8 @@ namespace GoldDiff
 
         private void Game_OnInitialized(object sender, EventArgs e)
         {
+            Log.Info($"{nameof(LoLGame)} initialized.");
+
             Current.Dispatcher.Invoke(() =>
                                       {
                                           if (_goldDifferenceWindow != null)
@@ -154,6 +165,8 @@ namespace GoldDiff
 
         private void TargetProcessStopped()
         {
+            Log.Info($"Target process ({TargetProcessName}) stopped.");
+            
             _clientDataPollService?.Dispose();
         }
 

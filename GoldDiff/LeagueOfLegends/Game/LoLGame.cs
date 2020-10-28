@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.Shared.View.Model;
+using log4net;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
     public class LoLGame : ViewModel, ILoLClientGameDataConsumer
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        
         public event EventHandler? Initialized;
         public event EventHandler<LoLClientGameData>? GameDataReceived;
 
@@ -18,7 +22,16 @@ namespace GoldDiff.LeagueOfLegends.Game
         public LoLGameStateType State
         {
             get => _state;
-            private set => MutateVerbose(ref _state, value);
+            private set
+            {
+                var oldState = State;
+                if (!MutateVerbose(ref _state, value))
+                {
+                    return;
+                }
+                
+                Log.Info($"{nameof(State)} changed from {oldState} to {State}!");
+            }
         }
 
         private LoLGameModeType _mode = LoLGameModeType.Undefined;

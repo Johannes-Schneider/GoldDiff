@@ -147,7 +147,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <Resource Include="log4net.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <None Include="packages.config" />
   </ItemGroup>

@@ -1,15 +1,20 @@
 ﻿using System;
+using System.Reflection;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
+using log4net;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
     internal sealed class LoLClientDragonTypeConverter : ReadOnlyConverter<string>
     {
+        private static ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (!(reader.Value is string value))
             {
+                Log.Error($"Unable to convert {reader.Value} ({reader.ValueType?.Name}) to {nameof(LoLClientDragonType)}!");
                 return LoLClientDragonType.Undefined;
             }
 
@@ -38,6 +43,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 return LoLClientDragonType.Elder;
             }
 
+            Log.Error($"Unable to convert {value} to {nameof(LoLClientDragonType)}!");
             return LoLClientDragonType.Undefined;
         }
     }

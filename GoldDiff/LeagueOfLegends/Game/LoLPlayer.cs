@@ -75,7 +75,7 @@ namespace GoldDiff.LeagueOfLegends.Game
                 {
                     return;
                 }
-                KillsSinceLastItemAcquisition = Kills - _killsAtLastItemAcquisition;
+                KillsSinceLastItemAcquisition = Kills - KillsAtLastItemAcquisition;
             }
         }
 
@@ -95,7 +95,7 @@ namespace GoldDiff.LeagueOfLegends.Game
                 {
                     return;
                 }
-                KillsSinceLastItemAcquisition = Kills - KillsSinceLastItemAcquisition;
+                KillsSinceLastItemAcquisition = Kills - KillsAtLastItemAcquisition;
             }
         }
 
@@ -131,7 +131,7 @@ namespace GoldDiff.LeagueOfLegends.Game
                 {
                     return;
                 }
-                DeathsSinceLastItemAcquisition = Deaths - DeathsSinceLastItemAcquisition;
+                DeathsSinceLastItemAcquisition = Deaths - DeathsAtLastItemAcquisition;
             }
         }
 
