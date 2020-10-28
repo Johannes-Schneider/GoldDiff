@@ -80,7 +80,11 @@
     </Compile>
     <Compile Include="View\Controller\ProgressViewController.cs" />
     <Compile Include="View\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="View\Converter\GreaterThanZeroToVisibilityConverter.cs" />
     <Compile Include="View\Converter\MultiplyDoubleConverter.cs" />
+    <Compile Include="View\Converter\NullToVisibilityConverter.cs" />
+    <Compile Include="View\Effect\Acrylic\AcrylicEffect.cs" />
+    <Compile Include="View\Effect\Acrylic\WindowBlur.cs" />
     <Compile Include="View\GoldDiffDialog.cs" />
     <Compile Include="View\GoldDiffSharedResourceKeys.cs" />
     <Compile Include="View\Model\ProgressViewViewModel.cs" />
@@ -103,6 +107,9 @@
     <Page Include="View\Theme\Default.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="View\Effect\Acrylic\Noise.png" />
+    <Resource Include="View\Effect\Acrylic\Shader.fx" />
+    <Resource Include="View\Effect\Acrylic\Shader.ps" />
     <Content Include="View\Resource\Font\SourceSansPro\License.txt" />
     <Resource Include="View\Theme\Default\ApplicationIcon.ico" />
   </ItemGroup>

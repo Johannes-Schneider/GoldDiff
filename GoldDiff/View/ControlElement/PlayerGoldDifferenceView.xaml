@@ -8,6 +8,7 @@
              xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
              xmlns:converter="clr-namespace:GoldDiff.View.Converter"
              xmlns:game="clr-namespace:GoldDiff.LeagueOfLegends.Game"
+             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
              mc:Ignorable="d"
 
              x:Name="This"
@@ -54,32 +55,51 @@
 
         <!-- /Champion Tile Blue Side -->
 
-        <!-- Total Gold Blue Side -->
+        <!-- Stats Blue Side -->
 
         <Grid Grid.Column="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Total Gold -->
 
             <controlElement:IconControl Grid.Column="0"
+                                        Grid.Row="1"
                                         Margin="0, 0, 12, 0"
-                                        VerticalAlignment="Center"
-                                        Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                        Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
                                         Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
 
             <TextBlock Grid.Column="1"
+                       Grid.Row="1"
                        Margin="0, 0, 12, 0"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
                        DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                        Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
-            
+
+            <!-- /Total Gold -->
+
+            <!-- KDA -->
+
+            <local:PlayerKdaView Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Grid.Row="2"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 Player="{Binding ElementName=This, Path=PlayerBlueSide}" />
+
+            <!-- /KDA -->
+
         </Grid>
 
-        <!-- /Total Gold Blue Side -->
+        <!-- /Stats Blue Side -->
 
         <!-- Gold Difference -->
 
@@ -94,15 +114,24 @@
 
         <!-- /Gold Difference -->
 
-        <!-- Total Gold Red Side -->
+        <!-- Stats Red Side -->
 
         <Grid Grid.Column="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            
+            <!-- Total Gold -->
 
             <TextBlock Grid.Column="0"
+                       Grid.Row="1"
                        Margin="12, 0, 0, 0"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
@@ -111,16 +140,26 @@
                        Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
             <controlElement:IconControl Grid.Column="1"
+                                        Grid.Row="1"
                                         Margin="12, 0, 0, 0"
-                                        VerticalAlignment="Center"
-                                        Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                        Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
                                         Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+            
+            <!-- /Total Gold -->
+            
+            <!-- KDA -->
 
+            <local:PlayerKdaView Grid.Column="0"
+                                 Grid.ColumnSpan="2"
+                                 Grid.Row="2"
+                                 HorizontalAlignment="Right"
+                                 VerticalAlignment="Center"
+                                 Player="{Binding ElementName=This, Path=PlayerRedSide}" />
+
+            <!-- /KDA -->
 
         </Grid>
 
-        <!-- /Total Gold Red Side -->
+        <!-- /Stats Red Side -->
 
         <!-- Champion Tile Red Side -->
 

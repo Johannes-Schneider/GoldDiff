@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,12 +11,6 @@ namespace GoldDiff.View.ControlElement
 {
     public partial class PlayerGoldDifferenceView : UserControl
     {
-        private class DragDropData
-        {
-            public LoLTeamType Team;
-            public LoLPositionType Position;
-        }
-
         public class SwapPlayersEventArguments
         {
             public LoLTeamType Team { get; }
@@ -32,16 +27,53 @@ namespace GoldDiff.View.ControlElement
             }
         }
 
-        public event EventHandler<SwapPlayersEventArguments>? SwapPlayers; 
-        
+        public event EventHandler<SwapPlayersEventArguments>? SwapPlayers;
+
+    #region public DepProps
+
         public static readonly DependencyProperty PositionProperty = DependencyProperty.Register(nameof(Position), typeof(LoLPositionType), MethodBase.GetCurrentMethod().DeclaringType);
         
-        public static readonly DependencyProperty PlayerBlueSideProperty = DependencyProperty.Register(nameof(PlayerBlueSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType);
-        
-        public static readonly DependencyProperty PlayerRedSideProperty = DependencyProperty.Register(nameof(PlayerRedSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType);
-        
+        public static readonly DependencyProperty PlayerBlueSideProperty = DependencyProperty.Register(nameof(PlayerBlueSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType,
+                                                                                                       new PropertyMetadata(PropertyChangedCallback));
+
+        public static readonly DependencyProperty PlayerRedSideProperty = DependencyProperty.Register(nameof(PlayerRedSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType,
+                                                                                                      new PropertyMetadata(PropertyChangedCallback));
+
         public static readonly DependencyProperty CanSwapPlayersProperty  = DependencyProperty.Register(nameof(CanSwapPlayers), typeof(bool), MethodBase.GetCurrentMethod().DeclaringType);
-        
+
+        private static void PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is PlayerGoldDifferenceView playerGoldDifferenceView))
+            {
+                return;
+            }
+
+            if (e.Property.Name.Equals(nameof(PlayerBlueSide)))
+            {
+                if (e.OldValue is LoLPlayer oldPlayer)
+                {
+                    oldPlayer.PropertyChanged -= playerGoldDifferenceView.PlayerBlueSide_OnPropertyChanged;
+                }
+
+                if (e.NewValue is LoLPlayer newPlayer)
+                {
+                    newPlayer.PropertyChanged += playerGoldDifferenceView.PlayerBlueSide_OnPropertyChanged;
+                }
+            }
+            else if (e.Property.Name.Equals(nameof(PlayerRedSide)))
+            {
+                if (e.OldValue is LoLPlayer oldPlayer)
+                {
+                    oldPlayer.PropertyChanged -= playerGoldDifferenceView.PlayerRedSide_OnPropertyChanged;
+                }
+
+                if (e.NewValue is LoLPlayer newPlayer)
+                {
+                    newPlayer.PropertyChanged += playerGoldDifferenceView.PlayerRedSide_OnPropertyChanged;
+                }
+            }
+        }
+
         public LoLPositionType Position
         {
             get => (LoLPositionType) GetValue(PositionProperty);
@@ -51,13 +83,39 @@ namespace GoldDiff.View.ControlElement
         public LoLPlayer? PlayerBlueSide
         {
             get => GetValue(PlayerBlueSideProperty) as LoLPlayer;
-            set => SetValue(PlayerBlueSideProperty, value);
+            set 
+            {
+                if (PlayerBlueSide != null)
+                {
+                    PlayerBlueSide.PropertyChanged -= PlayerBlueSide_OnPropertyChanged;
+                }
+                
+                SetValue(PlayerBlueSideProperty, value);
+
+                if (value != null)
+                {
+                    value.PropertyChanged += PlayerBlueSide_OnPropertyChanged;
+                }
+            }
         }
         
         public LoLPlayer? PlayerRedSide
         {
             get => GetValue(PlayerRedSideProperty) as LoLPlayer;
-            set => SetValue(PlayerRedSideProperty, value);
+            set
+            {
+                if (PlayerRedSide != null)
+                {
+                    PlayerRedSide.PropertyChanged -= PlayerRedSide_OnPropertyChanged;
+                }
+                
+                SetValue(PlayerRedSideProperty, value);
+
+                if (value != null)
+                {
+                    value.PropertyChanged += PlayerRedSide_OnPropertyChanged;
+                }
+            }
         }
 
         public bool CanSwapPlayers
@@ -66,9 +124,42 @@ namespace GoldDiff.View.ControlElement
             set => SetValue(CanSwapPlayersProperty, value);
         }
 
+    #endregion
+
+
+    #region private DepProps
+
+        private static readonly DependencyProperty BlueSidePlayerKillsSinceLastItemAcquisitionProperty = DependencyProperty.Register(nameof(BlueSidePlayerKillsSinceLastItemAcquisition), typeof(int), MethodBase.GetCurrentMethod().DeclaringType);
+        
+        private int BlueSidePlayerKillsSinceLastItemAcquisition
+        {
+            get => (int) GetValue(BlueSidePlayerKillsSinceLastItemAcquisitionProperty);
+            set => SetValue(BlueSidePlayerKillsSinceLastItemAcquisitionProperty, value);
+        }
+
+    #endregion
+
         public PlayerGoldDifferenceView()
         {
             InitializeComponent();
+        }
+
+        private void PlayerBlueSide_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            
+        }
+        
+        private void PlayerRedSide_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            
+        }
+
+    #region Swap Players (Drag & Drop)
+        
+        private class DragDropData
+        {
+            public LoLTeamType Team;
+            public LoLPositionType Position;
         }
 
         private void ChampionTileBlueSide_OnMouseLeftButtonDown(object sender, MouseEventArgs e)
@@ -160,5 +251,8 @@ namespace GoldDiff.View.ControlElement
             }
             return true;
         }
+
+    #endregion
+        
     }
 }

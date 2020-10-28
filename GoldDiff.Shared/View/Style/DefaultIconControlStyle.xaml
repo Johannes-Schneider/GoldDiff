@@ -6,10 +6,11 @@
     <Style TargetType="{x:Type controlElement:IconControl}" x:Key="{x:Static view:GoldDiffSharedResourceKeys.DefaultIconControlStyle}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Width" Value="18" />
-        <Setter Property="Height" Value="18" />
+        <Setter Property="Width" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}" />
+        <Setter Property="Height" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type controlElement:IconControl}">
@@ -19,7 +20,9 @@
                         <Viewbox Width="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Width}"
                                  Height="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Height}">
                             <Canvas MinWidth="24"
-                                    MinHeight="24">
+                                    MinHeight="24"
+                                    HorizontalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HorizontalAlignment}"
+                                    VerticalAlignment="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=VerticalAlignment}">
                                 <Path Stretch="None"
                                       Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
                                       Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Source}" />

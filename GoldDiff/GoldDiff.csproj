@@ -110,6 +110,9 @@
     <Compile Include="View\ControlElement\PlayerGoldDifferenceView.xaml.cs">
       <DependentUpon>PlayerGoldDifferenceView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ControlElement\PlayerKdaView.xaml.cs">
+      <DependentUpon>PlayerKdaView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ControlElement\TeamGoldDifferenceView.xaml.cs">
       <DependentUpon>TeamGoldDifferenceView.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,7 @@
     <Page Include="View\ControlElement\GoldDifferenceView.xaml" />
     <Page Include="View\ControlElement\LoLPositionView.xaml" />
     <Page Include="View\ControlElement\PlayerGoldDifferenceView.xaml" />
+    <Page Include="View\ControlElement\PlayerKdaView.xaml" />
     <Page Include="View\ControlElement\TeamGoldDifferenceView.xaml" />
     <Page Include="View\GoldDifferenceWindow.xaml" />
     <Page Include="View\MainWindow.xaml" />

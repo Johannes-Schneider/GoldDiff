@@ -63,5 +63,35 @@ namespace GoldDiff.Shared.View.Command
 
                                                                          Process.Start(stringParameter);
                                                                      });
+        
+        public static ICommand DialogOkay { get; } = new GenericCommand(parameter => parameter is Window,
+                                                                        parameter =>
+                                                                        {
+                                                                            if (!(parameter is Window window))
+                                                                            {
+                                                                                return;
+                                                                            }
+
+                                                                            window.Dispatcher.Invoke(() =>
+                                                                                                     {
+                                                                                                         window.DialogResult = true;
+                                                                                                         window.Close();
+                                                                                                     });
+                                                                        });
+        
+        public static ICommand DialogCancel { get; } = new GenericCommand(parameter => parameter is Window,
+                                                                          parameter =>
+                                                                          {
+                                                                              if (!(parameter is Window window))
+                                                                              {
+                                                                                  return;
+                                                                              }
+
+                                                                              window.Dispatcher.Invoke(() =>
+                                                                                                       {
+                                                                                                           window.DialogResult = false;
+                                                                                                           window.Close();
+                                                                                                       });
+                                                                          });
     }
 }
