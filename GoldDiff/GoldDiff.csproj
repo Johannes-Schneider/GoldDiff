@@ -43,16 +43,22 @@
     <ApplicationIcon>Resources\ApplicationIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a">
+      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
@@ -110,9 +116,6 @@
     <Compile Include="View\ControlElement\PlayerGoldDifferenceView.xaml.cs">
       <DependentUpon>PlayerGoldDifferenceView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\ControlElement\PlayerKdaView.xaml.cs">
-      <DependentUpon>PlayerKdaView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ControlElement\TeamGoldDifferenceView.xaml.cs">
       <DependentUpon>TeamGoldDifferenceView.xaml</DependentUpon>
     </Compile>
@@ -143,13 +146,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Resource Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="View\ControlElement\GoldDifferenceView.xaml" />
     <Page Include="View\ControlElement\LoLPositionView.xaml" />
     <Page Include="View\ControlElement\PlayerGoldDifferenceView.xaml" />
-    <Page Include="View\ControlElement\PlayerKdaView.xaml" />
     <Page Include="View\ControlElement\TeamGoldDifferenceView.xaml" />
     <Page Include="View\GoldDifferenceWindow.xaml" />
     <Page Include="View\MainWindow.xaml" />

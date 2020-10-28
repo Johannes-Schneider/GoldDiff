@@ -17,6 +17,9 @@
 
     <UserControl.Resources>
         <converter:IntToLoLGoldValueConverter x:Key="IntToLoLGoldValueConverter" />
+        <sharedConverter:GreaterThanZeroToVisibilityConverter x:Key="GreaterThanZeroToVisibilityConverter"
+                                                              TrueValue="Visible"
+                                                              FalseValue="Collapsed" />
     </UserControl.Resources>
 
     <Grid>
@@ -73,12 +76,12 @@
 
             <controlElement:IconControl Grid.Column="0"
                                         Grid.Row="1"
-                                        Margin="0, 0, 12, 0"
+                                        Margin="0, 0, 6, 0"
                                         Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
 
             <TextBlock Grid.Column="1"
                        Grid.Row="1"
-                       Margin="0, 0, 12, 0"
+                       Margin="0, 0, 6, 0"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
                        DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
@@ -88,14 +91,67 @@
 
             <!-- KDA -->
 
-            <local:PlayerKdaView Grid.Column="0"
-                                 Grid.ColumnSpan="2"
-                                 Grid.Row="2"
-                                 HorizontalAlignment="Left"
-                                 VerticalAlignment="Center"
-                                 Player="{Binding ElementName=This, Path=PlayerBlueSide}" />
+            <StackPanel Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        DataContext="{Binding ElementName=This, Path=PlayerBlueSide}">
 
-            <!-- /KDA -->
+                <!-- Kills -->
+
+                <controlElement:IconControl Margin="0, 0, 6, 0"
+                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                    <Run Text="(+" />
+                    <Run Text="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text=")" />
+                </TextBlock>
+
+                <!-- /Kills -->
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="/" />
+
+                <!-- Deaths -->
+
+                <controlElement:IconControl Margin="0, 0, 6, 0"
+                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- /Deaths -->
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="/" />
+
+                <!-- Assists -->
+
+                <controlElement:IconControl Margin="0, 0, 6, 0"
+                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                    <Run Text="(+" />
+                    <Run Text="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text=")" />
+                </TextBlock>
+
+                <!-- /Assists -->
+
+            </StackPanel>
 
         </Grid>
 
@@ -127,12 +183,12 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            
+
             <!-- Total Gold -->
 
             <TextBlock Grid.Column="0"
                        Grid.Row="1"
-                       Margin="12, 0, 0, 0"
+                       Margin="6, 0, 0, 0"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
@@ -141,21 +197,76 @@
 
             <controlElement:IconControl Grid.Column="1"
                                         Grid.Row="1"
-                                        Margin="12, 0, 0, 0"
+                                        Margin="6, 0, 0, 0"
                                         Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
-            
+
             <!-- /Total Gold -->
-            
+
             <!-- KDA -->
 
-            <local:PlayerKdaView Grid.Column="0"
-                                 Grid.ColumnSpan="2"
-                                 Grid.Row="2"
-                                 HorizontalAlignment="Right"
-                                 VerticalAlignment="Center"
-                                 Player="{Binding ElementName=This, Path=PlayerRedSide}" />
+            <StackPanel Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        DataContext="{Binding ElementName=This, Path=PlayerRedSide}">
 
-            <!-- /KDA -->
+                <!-- Kills -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                    <Run Text="(+" />
+                    <Run Text="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text=")" />
+                </TextBlock>
+
+                <controlElement:IconControl Margin="6, 0, 0, 0"
+                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+
+
+                <!-- /Kills -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="/" />
+
+                <!-- Deaths -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <controlElement:IconControl Margin="6, 0, 0, 0"
+                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+
+                <!-- /Deaths -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="/" />
+
+                <!-- Assists -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                    <Run Text="(+" />
+                    <Run Text="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text=")" />
+                </TextBlock>
+
+                <controlElement:IconControl Margin="6, 0, 0, 0"
+                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+
+
+                <!-- /Assists -->
+
+            </StackPanel>
 
         </Grid>
 

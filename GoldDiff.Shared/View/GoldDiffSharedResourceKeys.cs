@@ -107,6 +107,7 @@
         public const string IconLoLKills = nameof(IconLoLKills);
         public const string IconLoLDeaths = nameof(IconLoLDeaths);
         public const string IconLoLAssists = nameof(IconLoLAssists);
+        public const string IconLoLMinion = nameof(IconLoLMinion);
 
         public const string IconArrowLeft1 = nameof(IconArrowLeft1);
         public const string IconArrowLeft2 = nameof(IconArrowLeft2);

@@ -87,6 +87,10 @@
     <StreamGeometry x:Key="{x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}">
         M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z
     </StreamGeometry>
+    
+    <StreamGeometry x:Key="{x:Static view:GoldDiffSharedResourceKeys.IconLoLMinion}">
+        M12-0.125c6.696,0,12.125,4.823,12.125,10.778S16.042,24.125,12,24.125c-4.042,0-12.125-7.518-12.125-13.472 S5.304-0.125,12-0.125 M9.723,10.559c-1.374-2.209-3.826-3.166-5.47-2.143c-1.644,1.024-1.859,3.651-0.485,5.86 c1.388,2.21,3.84,3.166,5.483,2.142C10.896,15.368,11.098,12.769,9.723,10.559 M14.276,10.559c-1.374,2.21-1.171,4.81,0.472,5.859 c1.644,1.024,4.096,0.068,5.482-2.142c1.375-2.209,1.16-4.836-0.484-5.86C18.102,7.393,15.651,8.349,14.276,10.559
+    </StreamGeometry>
 
     <StreamGeometry x:Key="{x:Static view:GoldDiffSharedResourceKeys.IconArrowLeft1}">
         M15.705,16.58L11.125,12l4.58-4.59L14.295,6l-6,6l6,6L15.705,16.58z

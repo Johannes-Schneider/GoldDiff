@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
+using log4net.Config;
 
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
@@ -10,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("GoldDiff")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright © Johannes Schneider 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -55,3 +56,4 @@ using System.Windows;
                                         ThisAssembly.Git.SemVer.Patch + "-" +
                                         ThisAssembly.Git.Branch + "+" +
                                         ThisAssembly.Git.Commit)]
+[assembly: XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]

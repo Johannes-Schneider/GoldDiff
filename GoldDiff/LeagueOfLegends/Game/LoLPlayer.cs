@@ -71,7 +71,47 @@ namespace GoldDiff.LeagueOfLegends.Game
                     throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
-                MutateVerbose(ref _kills, value);
+                if (!MutateVerbose(ref _kills, value))
+                {
+                    return;
+                }
+                KillsSinceLastItemAcquisition = Kills - _killsAtLastItemAcquisition;
+            }
+        }
+
+        private int _killsAtLastItemAcquisition;
+
+        public int KillsAtLastItemAcquisition
+        {
+            get => _killsAtLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                if (!MutateVerbose(ref _killsAtLastItemAcquisition, value))
+                {
+                    return;
+                }
+                KillsSinceLastItemAcquisition = Kills - KillsSinceLastItemAcquisition;
+            }
+        }
+
+        private int _killsSinceLastItemAcquisition;
+
+        public int KillsSinceLastItemAcquisition
+        {
+            get => _killsSinceLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                MutateVerbose(ref _killsSinceLastItemAcquisition, value);
             }
         }
 
@@ -87,7 +127,47 @@ namespace GoldDiff.LeagueOfLegends.Game
                     throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
-                MutateVerbose(ref _deaths, value);
+                if (!MutateVerbose(ref _deaths, value))
+                {
+                    return;
+                }
+                DeathsSinceLastItemAcquisition = Deaths - DeathsSinceLastItemAcquisition;
+            }
+        }
+
+        private int _deathsAtLastItemAcquisition;
+
+        public int DeathsAtLastItemAcquisition
+        {
+            get => _deathsAtLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                if (!MutateVerbose(ref _deathsAtLastItemAcquisition, value))
+                {
+                    return;
+                }
+                DeathsSinceLastItemAcquisition = Deaths - DeathsAtLastItemAcquisition;
+            }
+        }
+
+        private int _deathsSinceLastItemAcquisition;
+
+        public int DeathsSinceLastItemAcquisition
+        {
+            get => _deathsSinceLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                MutateVerbose(ref _deathsSinceLastItemAcquisition, value);
             }
         }
 
@@ -103,7 +183,103 @@ namespace GoldDiff.LeagueOfLegends.Game
                     throw new ArgumentOutOfRangeException(nameof(value));
                 }
 
-                MutateVerbose(ref _assists, value);
+                if (!MutateVerbose(ref _assists, value))
+                {
+                    return;
+                }
+                AssistsSinceLastItemAcquisition = Assists - AssistsAtLastItemAcquisition;
+            }
+        }
+
+        private int _assistsAtLastItemAcquisition;
+
+        public int AssistsAtLastItemAcquisition
+        {
+            get => _assistsAtLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                if (!MutateVerbose(ref _assistsAtLastItemAcquisition, value))
+                {
+                    return;
+                }
+                AssistsSinceLastItemAcquisition = Assists - AssistsAtLastItemAcquisition;
+            }
+        }
+
+        private int _assistsSinceLastItemAcquisition;
+
+        public int AssistsSinceLastItemAcquisition
+        {
+            get => _assistsSinceLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                MutateVerbose(ref _assistsSinceLastItemAcquisition, value);
+            }
+        }
+
+        private int _minionKills;
+
+        public int MinionKills
+        {
+            get => _minionKills;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                if (!MutateVerbose(ref _minionKills, value))
+                {
+                    return;
+                }
+                MinionKillsSinceLastItemAcquisition = MinionKills - MinionKillsAtLastItemAcquisition;
+            }
+        }
+
+        private int _minionKillsAtLastItemAcquisition;
+
+        public int MinionKillsAtLastItemAcquisition
+        {
+            get => _minionKillsAtLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                if (!MutateVerbose(ref _minionKillsAtLastItemAcquisition, value))
+                {
+                    return;
+                }
+                MinionKillsSinceLastItemAcquisition = MinionKills - MinionKillsAtLastItemAcquisition;
+            }
+        }
+
+        private int _minionKillsSinceLastItemAcquisition;
+
+        public int MinionKillsSinceLastItemAcquisition
+        {
+            get => _minionKillsSinceLastItemAcquisition;
+            private set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(value));
+                }
+
+                MutateVerbose(ref _minionKillsSinceLastItemAcquisition, value);
             }
         }
 
@@ -166,9 +342,9 @@ namespace GoldDiff.LeagueOfLegends.Game
                 throw new Exception($"Unable to find the {nameof(LoLClientPlayer)} named {SummonerName} in the given {nameof(LoLClientGameData)}!");
             }
 
+            UpdateScore(clientPlayer);
             UpdateItems(clientPlayer);
             UpdateGold(clientPlayer);
-            UpdateScore(clientPlayer);
         }
 
         private void UpdateItems(LoLClientPlayer clientPlayer)
@@ -180,8 +356,15 @@ namespace GoldDiff.LeagueOfLegends.Game
             var removedItems = MultiSet.Difference(oldItemIds, newItemIds).GroupBy(id => id).Select(group => new LoLItem(StaticResourceCache.GetItem(group.Key), group.Count()));
 
             MutableItems = clientPlayer.Items.Select(item => new LoLItem(StaticResourceCache.GetItem(item.Id), item.Amount)).ToList();
-
             EventDispatcher!.Invoke(() => ItemsChanged?.Invoke(this, new ItemsChangedEventArguments(addedItems, removedItems)));
+
+            if (addedItems.Any())
+            {
+                KillsAtLastItemAcquisition = Kills;
+                DeathsAtLastItemAcquisition = Deaths;
+                AssistsAtLastItemAcquisition = Assists;
+                MinionKillsAtLastItemAcquisition = MinionKills;
+            }
         }
 
         private void UpdateGold(LoLClientPlayer clientPlayer)
@@ -198,6 +381,7 @@ namespace GoldDiff.LeagueOfLegends.Game
             Deaths = clientPlayer.Score.Deaths;
             Assists = clientPlayer.Score.Assists;
             Vision = clientPlayer.Score.Vision;
+            MinionKills = clientPlayer.Score.MinionKills;
         }
     }
 }
