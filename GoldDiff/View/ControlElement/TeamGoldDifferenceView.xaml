@@ -20,60 +20,121 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" MinWidth="32" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" MinWidth="32" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" MinWidth="32" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" MinWidth="32" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />           <!-- Spacing left -->
+            <ColumnDefinition Width="3*" MinWidth="32" />        <!-- Blue Side Stats -->
+            <ColumnDefinition Width="2*" MinWidth="32" />        <!-- Blue Side Total Gold -->
+            <ColumnDefinition Width="Auto" />        <!-- Gold Difference -->
+            <ColumnDefinition Width="2*" MinWidth="32" />        <!-- Red Side Total Gold -->
+            <ColumnDefinition Width="3*" MinWidth="32" />        <!-- Red Side Stats -->
+            <ColumnDefinition Width="*" />           <!-- Spacing Right -->
         </Grid.ColumnDefinitions>
 
-        <!-- Blue Side Turrets Killed -->
+        <!-- Blue Side Stats -->
 
-        <sharedControlElement:IconControl Grid.Column="1"
-                                          Margin="0, 0, 12, 0"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Center"
-                                          Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTurret}}" />
+        <Grid Grid.Column="1"
+              Margin="0, 0, 24, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <TextBlock Grid.Column="2"
-                   Margin="0, 0, 12, 0"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
-                   Text="{Binding Path=TurretsKilled}" />
+            <!-- Turret Kills -->
 
-        <!-- /Blue Side Turrets Killed -->
+            <sharedControlElement:IconControl Grid.Column="0"
+                                              Grid.Row="1"
+                                              Margin="0, 0, 6, 0"
+                                              HorizontalAlignment="Left"
+                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTurret}}" />
+
+            <TextBlock Grid.Column="1"
+                       Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
+                       Text="{Binding Path=TurretsKilled}" />
+
+            <!-- /Turret Kills -->
+
+            <!-- KDA -->
+
+            <StackPanel Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Left"
+                        DataContext="{Binding ElementName=This, Path=TeamBlueSide}">
+
+                <!-- Kills -->
+
+                <sharedControlElement:IconControl Margin="0, 0, 6, 0"
+                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- /Kills -->
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="/" />
+
+                <!-- Deaths -->
+
+                <sharedControlElement:IconControl Margin="0, 0, 6, 0"
+                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- /Deaths -->
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="/" />
+
+                <!-- Assists -->
+
+                <sharedControlElement:IconControl Margin="0, 0, 6, 0"
+                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+
+                <TextBlock Margin="0, 0, 6, 0"
+                           Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- /Assists -->
+
+            </StackPanel>
+
+        </Grid>
+
+        <!-- /Blue Side Stats -->
 
         <!-- Blue Side Total Gold -->
 
-        <sharedControlElement:IconControl Grid.Column="3"
-                                          Margin="0, 0, 12, 0"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Left"
-                                          Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+        <StackPanel Grid.Column="2"
+                    Margin="0, 0, 24, 0"
+                    Orientation="Horizontal">
 
-        <TextBlock Grid.Column="4"
-                   Margin="0, 0, 12, 0"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Left"
-                   DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
-                   Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+            <sharedControlElement:IconControl Margin="0, 0, 6, 0"
+                                              HorizontalAlignment="Left"
+                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+
+            <TextBlock VerticalAlignment="Center"
+                       HorizontalAlignment="Left"
+                       DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
+                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+
+        </StackPanel>
 
         <!-- /Blue Side Total Gold -->
 
         <!-- Gold Difference -->
 
-        <local:GoldDifferenceView Grid.Column="5"
+        <local:GoldDifferenceView Grid.Column="3"
                                   VerticalAlignment="Center"
                                   HorizontalAlignment="Center"
                                   MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamGoldDifference}"
@@ -86,41 +147,108 @@
 
         <!-- Red Side Total Gold -->
 
-        <TextBlock Grid.Column="6"
-                   Margin="12, 0, 0, 0"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Right"
-                   DataContext="{Binding ElementName=This, Path=TeamRedSide}"
-                   Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+        <StackPanel Grid.Column="4"
+                    Margin="24, 0, 0, 0"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right">
 
-        <sharedControlElement:IconControl Grid.Column="7"
-                                          Margin="12, 0, 0, 0"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Right"
-                                          Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+            <TextBlock VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       DataContext="{Binding ElementName=This, Path=TeamRedSide}"
+                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+
+            <sharedControlElement:IconControl HorizontalAlignment="Right"
+                                              Margin="6, 0, 0, 0"
+                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+
+        </StackPanel>
 
         <!-- /Red Side Total Gold -->
 
-        <!-- Red Side Turrets Killed -->
+        <!-- Red Side Stats -->
 
-        <TextBlock Grid.Column="8"
-                   Margin="12, 0, 0, 0"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Right"
-                   DataContext="{Binding ElementName=This, Path=TeamRedSide}"
-                   Text="{Binding Path=TurretsKilled}" />
+        <Grid Grid.Column="5"
+              Margin="24, 0, 0, 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        <sharedControlElement:IconControl Grid.Column="9"
-                                          Margin="12, 0, 0, 0"
-                                          VerticalAlignment="Center"
-                                          HorizontalAlignment="Right"
-                                          Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                          Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTurret}}" />
+            <!-- Turret Kills -->
 
-        <!-- /Red Side Turrets Killed -->
+            <TextBlock Grid.Column="0"
+                       Grid.Row="1"
+                       VerticalAlignment="Center"
+                       HorizontalAlignment="Right"
+                       DataContext="{Binding ElementName=This, Path=TeamRedSide}"
+                       Text="{Binding Path=TurretsKilled}" />
+
+            <sharedControlElement:IconControl Grid.Column="1"
+                                              Grid.Row="1"
+                                              Margin="6, 0, 0, 0"
+                                              HorizontalAlignment="Right"
+                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTurret}}" />
+
+            <!-- /Turret Kills -->
+
+            <!-- KDA -->
+
+            <StackPanel Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Right"
+                        DataContext="{Binding ElementName=This, Path=TeamRedSide}">
+
+                <!-- Kills -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <sharedControlElement:IconControl Margin="6, 0, 0, 0"
+                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+
+
+                <!-- /Kills -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="/" />
+
+                <!-- Deaths -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <sharedControlElement:IconControl Margin="6, 0, 0, 0"
+                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+
+                <!-- /Deaths -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="/" />
+
+                <!-- Assists -->
+
+                <TextBlock Margin="6, 0, 0, 0"
+                           Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <sharedControlElement:IconControl Margin="6, 0, 0, 0"
+                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+
+                <!-- /Assists -->
+
+            </StackPanel>
+
+        </Grid>
+
+        <!-- /Red Side Stats -->
 
     </Grid>
 </UserControl>

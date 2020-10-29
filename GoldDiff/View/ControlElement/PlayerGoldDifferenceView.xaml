@@ -24,13 +24,13 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" MinWidth="32" MaxWidth="96" />
-            <ColumnDefinition Width="1*" MinWidth="32" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="1*" MinWidth="32" />
-            <ColumnDefinition Width="*" MinWidth="32" MaxWidth="96" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" /> <!-- Role Icon Blue -->
+            <ColumnDefinition Width="*" MinWidth="32" MaxWidth="96" /> <!-- Champion Icon Blue -->
+            <ColumnDefinition Width="1*" MinWidth="32" /> <!-- Stats Blue -->
+            <ColumnDefinition Width="Auto" /> <!-- Gold Difference -->
+            <ColumnDefinition Width="1*" MinWidth="32" /> <!-- Stats Red -->
+            <ColumnDefinition Width="*" MinWidth="32" MaxWidth="96" /> <!-- Champion Icon Red -->
+            <ColumnDefinition Width="Auto" /> <!-- Role Icon Red -->
         </Grid.ColumnDefinitions>
 
         <!-- Role Icon Blue Side -->
