@@ -5,12 +5,18 @@
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:local="clr-namespace:GoldDiff.Playground"
                      xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
-                     xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
+                     xmlns:sharedControlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
+                     xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement;assembly=GoldDiff"
                      mc:Ignorable="d"
 
                      x:Name="This">
 
-    <Grid>
-        <controlElement:IconControl Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconSettings}}" />
-    </Grid>
+    <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Margin="18">
+        
+        <controlElement:PlayerGoldDifferenceSettingsView />
+        
+    </StackPanel>
 </view:GoldDiffDialog>

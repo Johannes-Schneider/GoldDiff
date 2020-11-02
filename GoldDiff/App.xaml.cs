@@ -11,6 +11,7 @@ using GoldDiff.OperatingSystem;
 using GoldDiff.Shared;
 using GoldDiff.Shared.View.ControlElement;
 using GoldDiff.View;
+using GoldDiff.View.Settings;
 using log4net;
 
 namespace GoldDiff
@@ -174,6 +175,7 @@ namespace GoldDiff
         {
             ProcessEventWatcher.Dispose();
             _clientDataPollService?.Dispose();
+            ViewSettings.Instance.Save();
             base.OnExit(e);
         }
     }

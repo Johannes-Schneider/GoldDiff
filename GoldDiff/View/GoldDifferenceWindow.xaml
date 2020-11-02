@@ -7,21 +7,25 @@
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
         xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
+        xmlns:converter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
         mc:Ignorable="d"
 
         x:Name="This"
         Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultWindowStyle}}"
 
-        MinWidth="500"
+        MinWidth="700"
         MinHeight="350"
         Height="400"
-        Width="600">
+        Width="700">
 
     <Window.DataContext>
         <Binding ElementName="This" Path="PrivateModel" />
     </Window.DataContext>
 
     <Window.Resources>
+        <converter:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"
+                                             TrueValue="Visible"
+                                             FalseValue="Collapsed" />
         <system:Double x:Key="RowMinimumHeight">48</system:Double>
         <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnBlueSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
             <GradientStop Offset="0" Color="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.LoLActivePlayerRegularColor}}" />

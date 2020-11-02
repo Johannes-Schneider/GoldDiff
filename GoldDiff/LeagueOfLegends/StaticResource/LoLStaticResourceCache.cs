@@ -16,9 +16,9 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
 {
     public sealed partial class LoLStaticResourceCache
     {
-        private const int LatestImplementationVersion = 1;
-        private static string RootDirectory { get; } = Path.Combine(Environment.CurrentDirectory, nameof(LoLStaticResourceCache));
-        private static string StorageLocation { get; } = Path.Combine(RootDirectory, $"{nameof(LoLStaticResourceCache)}.json");
+        private const int LatestImplementationVersion = 2;
+        private static string RootDirectory { get; } = Path.Combine(Environment.CurrentDirectory, "LeagueResources");
+        private static string StorageLocation { get; } = Path.Combine(RootDirectory, "LeagueResourceCache.json");
 
         public static LoLStaticResourceCache Load()
         {

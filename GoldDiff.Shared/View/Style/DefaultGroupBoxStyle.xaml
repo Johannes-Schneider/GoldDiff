@@ -6,7 +6,7 @@
     <Style TargetType="{x:Type GroupBox}" x:Key="{x:Static view:GoldDiffSharedResourceKeys.DefaultGroupBoxStyle}">
         <Setter Property="Background" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}" />
         <Setter Property="Foreground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundDisabled}}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GroupBox}">

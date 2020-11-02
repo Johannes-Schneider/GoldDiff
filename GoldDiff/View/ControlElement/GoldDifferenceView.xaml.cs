@@ -26,8 +26,7 @@ namespace GoldDiff.View.ControlElement
         public static readonly DependencyProperty RedSideForegroundProperty = DependencyProperty.Register(nameof(RedSideForeground), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType,
                                                                                                           new PropertyMetadata(PropertyChangedCallback));
 
-        public static readonly DependencyProperty NoDifferenceForegroundProperty = DependencyProperty.Register(nameof(NoDifferenceForeground), typeof(Brush),
-                                                                                                               MethodBase.GetCurrentMethod().DeclaringType,
+        public static readonly DependencyProperty NoDifferenceForegroundProperty = DependencyProperty.Register(nameof(NoDifferenceForeground), typeof(Brush), MethodBase.GetCurrentMethod().DeclaringType,
                                                                                                                new PropertyMetadata(PropertyChangedCallback));
 
         public static readonly DependencyProperty MinorGoldDifferenceProperty = DependencyProperty.Register(nameof(MinorGoldDifference), typeof(int), MethodBase.GetCurrentMethod().DeclaringType,
@@ -46,61 +45,28 @@ namespace GoldDiff.View.ControlElement
                 return;
             }
 
-            if (e.Property.Name.Equals(nameof(GoldOwnerBlueSide)) ||
-                e.Property.Name.Equals(nameof(GoldOwnerRedSide)))
+            if (e.Property.Name.Equals(nameof(GoldOwnerBlueSide)))
             {
-                if (e.OldValue is ILoLGoldOwner oldGoldOwner)
-                {
-                    oldGoldOwner.PropertyChanged -= goldDifferenceIndicator.GoldOwner_OnPropertyChanged;
-                }
-
-                if (e.NewValue is ILoLGoldOwner newGoldOwner)
-                {
-                    newGoldOwner.PropertyChanged += goldDifferenceIndicator.GoldOwner_OnPropertyChanged;
-                }
+                goldDifferenceIndicator.GoldComparisonHelper.GoldOwnerBlueSide = e.NewValue as ILoLGoldOwner;
             }
-
+            else if (e.Property.Name.Equals(nameof(GoldOwnerRedSide)))
+            {
+                goldDifferenceIndicator.GoldComparisonHelper.GoldOwnerRedSide = e.NewValue as ILoLGoldOwner;
+            }
+            
             goldDifferenceIndicator.UpdateGoldDifference();
         }
 
         public ILoLGoldOwner? GoldOwnerBlueSide
         {
             get => GetValue(GoldOwnerBlueSideProperty) as ILoLGoldOwner;
-            set
-            {
-                if (GoldOwnerBlueSide != null)
-                {
-                    GoldOwnerBlueSide.PropertyChanged -= GoldOwner_OnPropertyChanged;
-                }
-                
-                SetValue(GoldOwnerBlueSideProperty, value);
-
-                if (value != null)
-                {
-                    value.PropertyChanged += GoldOwner_OnPropertyChanged;
-                }
-                UpdateGoldDifference();
-            }
+            set => SetValue(GoldOwnerBlueSideProperty, value);
         }
 
         public ILoLGoldOwner? GoldOwnerRedSide
         {
             get => GetValue(GoldOwnerRedSideProperty) as ILoLGoldOwner;
-            set
-            {
-                if (GoldOwnerRedSide != null)
-                {
-                    GoldOwnerRedSide.PropertyChanged -= GoldOwner_OnPropertyChanged;
-                }
-                
-                SetValue(GoldOwnerRedSideProperty, value);
-
-                if (value != null)
-                {
-                    value.PropertyChanged += GoldOwner_OnPropertyChanged;
-                }
-                UpdateGoldDifference();
-            }
+            set => SetValue(GoldOwnerRedSideProperty, value);
         }
 
         public Brush? BlueSideForeground
@@ -145,11 +111,9 @@ namespace GoldDiff.View.ControlElement
 
         private static readonly DependencyProperty GoldDifferenceProperty = DependencyProperty.Register(nameof(GoldDifference), typeof(int), MethodBase.GetCurrentMethod().DeclaringType);
 
-        private static readonly DependencyProperty GoldAdvantageBlueSideIconProperty =
-            DependencyProperty.Register(nameof(GoldAdvantageBlueSideIcon), typeof(Geometry), MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly DependencyProperty GoldAdvantageBlueSideIconProperty = DependencyProperty.Register(nameof(GoldAdvantageBlueSideIcon), typeof(Geometry), MethodBase.GetCurrentMethod().DeclaringType);
 
-        private static readonly DependencyProperty GoldAdvantageRedSideIconProperty =
-            DependencyProperty.Register(nameof(GoldAdvantageRedSideIcon), typeof(Geometry), MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly DependencyProperty GoldAdvantageRedSideIconProperty = DependencyProperty.Register(nameof(GoldAdvantageRedSideIcon), typeof(Geometry), MethodBase.GetCurrentMethod().DeclaringType);
 
         private int GoldDifference
         {
@@ -171,14 +135,24 @@ namespace GoldDiff.View.ControlElement
 
     #endregion
 
+        private GoldComparisonHelper GoldComparisonHelper { get; }
+
         public GoldDifferenceView()
         {
+            GoldComparisonHelper = new GoldComparisonHelper();
+            GoldComparisonHelper.PropertyChanged += GoldComparisonHelper_OnPropertyChanged;
+
             InitializeComponent();
         }
 
-        private void GoldOwner_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void GoldComparisonHelper_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            UpdateGoldDifference();
+            if (string.IsNullOrEmpty(e.PropertyName)
+                || e.PropertyName.Equals(nameof(GoldComparisonHelper.GoldBlueSide)) 
+                || e.PropertyName.Equals(nameof(GoldComparisonHelper.GoldRedSide)))
+            {
+                UpdateGoldDifference();
+            }
         }
 
         private void UpdateGoldDifference()
@@ -190,8 +164,8 @@ namespace GoldDiff.View.ControlElement
             }
 
             Visibility = Visibility.Visible;
-            GoldDifference = Math.Abs(GoldOwnerBlueSide.TotalGold - GoldOwnerRedSide.TotalGold);
-            var winningSide = GoldOwnerBlueSide.TotalGold >= GoldOwnerRedSide.TotalGold ? LoLTeamType.BlueSide : LoLTeamType.RedSide;
+            GoldDifference = Math.Abs(GoldComparisonHelper.GoldBlueSide - GoldComparisonHelper.GoldRedSide);
+            var winningSide = GoldComparisonHelper.GoldBlueSide >= GoldComparisonHelper.GoldRedSide ? LoLTeamType.BlueSide : LoLTeamType.RedSide;
 
             Foreground = winningSide switch
                          {

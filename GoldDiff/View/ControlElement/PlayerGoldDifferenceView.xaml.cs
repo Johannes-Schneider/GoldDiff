@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,9 +13,9 @@ namespace GoldDiff.View.ControlElement
         public class SwapPlayersEventArguments
         {
             public LoLTeamType Team { get; }
-            
+
             public LoLPositionType PositionA { get; }
-            
+
             public LoLPositionType PositionB { get; }
 
             public SwapPlayersEventArguments(LoLTeamType team, LoLPositionType positionA, LoLPositionType positionB)
@@ -32,14 +31,14 @@ namespace GoldDiff.View.ControlElement
     #region public DepProps
 
         public static readonly DependencyProperty PositionProperty = DependencyProperty.Register(nameof(Position), typeof(LoLPositionType), MethodBase.GetCurrentMethod().DeclaringType);
-        
+
         public static readonly DependencyProperty PlayerBlueSideProperty = DependencyProperty.Register(nameof(PlayerBlueSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType,
                                                                                                        new PropertyMetadata(PropertyChangedCallback));
 
         public static readonly DependencyProperty PlayerRedSideProperty = DependencyProperty.Register(nameof(PlayerRedSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType,
                                                                                                       new PropertyMetadata(PropertyChangedCallback));
 
-        public static readonly DependencyProperty CanSwapPlayersProperty  = DependencyProperty.Register(nameof(CanSwapPlayers), typeof(bool), MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly DependencyProperty CanSwapPlayersProperty = DependencyProperty.Register(nameof(CanSwapPlayers), typeof(bool), MethodBase.GetCurrentMethod().DeclaringType);
 
         private static void PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -50,27 +49,11 @@ namespace GoldDiff.View.ControlElement
 
             if (e.Property.Name.Equals(nameof(PlayerBlueSide)))
             {
-                if (e.OldValue is LoLPlayer oldPlayer)
-                {
-                    oldPlayer.PropertyChanged -= playerGoldDifferenceView.PlayerBlueSide_OnPropertyChanged;
-                }
-
-                if (e.NewValue is LoLPlayer newPlayer)
-                {
-                    newPlayer.PropertyChanged += playerGoldDifferenceView.PlayerBlueSide_OnPropertyChanged;
-                }
+                playerGoldDifferenceView.GoldComparisonHelper.GoldOwnerBlueSide = e.NewValue as ILoLGoldOwner;
             }
             else if (e.Property.Name.Equals(nameof(PlayerRedSide)))
             {
-                if (e.OldValue is LoLPlayer oldPlayer)
-                {
-                    oldPlayer.PropertyChanged -= playerGoldDifferenceView.PlayerRedSide_OnPropertyChanged;
-                }
-
-                if (e.NewValue is LoLPlayer newPlayer)
-                {
-                    newPlayer.PropertyChanged += playerGoldDifferenceView.PlayerRedSide_OnPropertyChanged;
-                }
+                playerGoldDifferenceView.GoldComparisonHelper.GoldOwnerRedSide = e.NewValue as ILoLGoldOwner;
             }
         }
 
@@ -83,39 +66,13 @@ namespace GoldDiff.View.ControlElement
         public LoLPlayer? PlayerBlueSide
         {
             get => GetValue(PlayerBlueSideProperty) as LoLPlayer;
-            set 
-            {
-                if (PlayerBlueSide != null)
-                {
-                    PlayerBlueSide.PropertyChanged -= PlayerBlueSide_OnPropertyChanged;
-                }
-                
-                SetValue(PlayerBlueSideProperty, value);
-
-                if (value != null)
-                {
-                    value.PropertyChanged += PlayerBlueSide_OnPropertyChanged;
-                }
-            }
+            set => SetValue(PlayerBlueSideProperty, value);
         }
-        
+
         public LoLPlayer? PlayerRedSide
         {
             get => GetValue(PlayerRedSideProperty) as LoLPlayer;
-            set
-            {
-                if (PlayerRedSide != null)
-                {
-                    PlayerRedSide.PropertyChanged -= PlayerRedSide_OnPropertyChanged;
-                }
-                
-                SetValue(PlayerRedSideProperty, value);
-
-                if (value != null)
-                {
-                    value.PropertyChanged += PlayerRedSide_OnPropertyChanged;
-                }
-            }
+            set => SetValue(PlayerRedSideProperty, value);
         }
 
         public bool CanSwapPlayers
@@ -125,37 +82,17 @@ namespace GoldDiff.View.ControlElement
         }
 
     #endregion
-
-
-    #region private DepProps
-
-        private static readonly DependencyProperty BlueSidePlayerKillsSinceLastItemAcquisitionProperty = DependencyProperty.Register(nameof(BlueSidePlayerKillsSinceLastItemAcquisition), typeof(int), MethodBase.GetCurrentMethod().DeclaringType);
         
-        private int BlueSidePlayerKillsSinceLastItemAcquisition
-        {
-            get => (int) GetValue(BlueSidePlayerKillsSinceLastItemAcquisitionProperty);
-            set => SetValue(BlueSidePlayerKillsSinceLastItemAcquisitionProperty, value);
-        }
-
-    #endregion
+        public GoldComparisonHelper GoldComparisonHelper { get; }
 
         public PlayerGoldDifferenceView()
         {
+            GoldComparisonHelper = new GoldComparisonHelper();
             InitializeComponent();
         }
 
-        private void PlayerBlueSide_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            
-        }
-        
-        private void PlayerRedSide_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            
-        }
-
     #region Swap Players (Drag & Drop)
-        
+
         private class DragDropData
         {
             public LoLTeamType Team;
@@ -178,7 +115,7 @@ namespace GoldDiff.View.ControlElement
             {
                 return;
             }
-            
+
             if (player == null)
             {
                 return;
@@ -189,9 +126,9 @@ namespace GoldDiff.View.ControlElement
                 return;
             }
 
-            DragDrop.DoDragDrop(this, new DataObject(typeof(DragDropData), new DragDropData{Team = player.Team, Position = Position}), DragDropEffects.Move);
+            DragDrop.DoDragDrop(this, new DataObject(typeof(DragDropData), new DragDropData {Team = player.Team, Position = Position}), DragDropEffects.Move);
         }
-        
+
         private void ChampionTileBlueSide_OnDragOver(object sender, DragEventArgs e)
         {
             HandleDragOver(LoLTeamType.BlueSide, e);
@@ -212,7 +149,7 @@ namespace GoldDiff.View.ControlElement
         {
             HandleDrop(LoLTeamType.BlueSide, e);
         }
-        
+
         private void ChampionTileRedSide_OnDrop(object sender, DragEventArgs e)
         {
             HandleDrop(LoLTeamType.RedSide, e);
@@ -224,35 +161,35 @@ namespace GoldDiff.View.ControlElement
             {
                 return;
             }
-            
+
             if (dragDropData.Position == Position)
             {
                 return;
             }
-            
+
             SwapPlayers?.Invoke(this, new SwapPlayersEventArguments(dragDropData.Team, dragDropData.Position, Position));
         }
 
         private bool AcceptDrop(LoLTeamType acceptedTeam, DragEventArgs e, out DragDropData dragDropData)
         {
             dragDropData = null!;
-            
+
             if (!e.Data.GetDataPresent(typeof(DragDropData)))
             {
                 return false;
             }
 
             dragDropData = (e.Data.GetData(typeof(DragDropData)) as DragDropData)!;
-            
+
             // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             if (ReferenceEquals(dragDropData, null) || dragDropData.Team != acceptedTeam)
             {
                 return false;
             }
+
             return true;
         }
 
     #endregion
-        
     }
 }

@@ -9,6 +9,7 @@
              xmlns:converter="clr-namespace:GoldDiff.View.Converter"
              xmlns:game="clr-namespace:GoldDiff.LeagueOfLegends.Game"
              xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
+             xmlns:settings="clr-namespace:GoldDiff.View.Settings"
              mc:Ignorable="d"
 
              x:Name="This"
@@ -20,6 +21,9 @@
         <sharedConverter:GreaterThanZeroToVisibilityConverter x:Key="GreaterThanZeroToVisibilityConverter"
                                                               TrueValue="Visible"
                                                               FalseValue="Collapsed" />
+        <sharedConverter:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"
+                                                   TrueValue="Visible"
+                                                   FalseValue="Collapsed" />
     </UserControl.Resources>
 
     <Grid>
@@ -72,7 +76,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- Total Gold -->
+            <!-- Gold -->
 
             <controlElement:IconControl Grid.Column="0"
                                         Grid.Row="1"
@@ -84,10 +88,10 @@
                        Margin="0, 0, 6, 0"
                        HorizontalAlignment="Left"
                        VerticalAlignment="Center"
-                       DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
-                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+                       DataContext="{Binding ElementName=This, Path=GoldComparisonHelper, Mode=OneWay}"
+                       Text="{Binding Path=GoldBlueSide, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
-            <!-- /Total Gold -->
+            <!-- /Gold -->
 
             <!-- KDA -->
 
@@ -97,7 +101,8 @@
                         Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"
-                        DataContext="{Binding ElementName=This, Path=PlayerBlueSide}">
+                        DataContext="{x:Static settings:ViewSettings.Instance}"
+                        Visibility="{Binding Path=PlayerGoldDifferenceSettings.ShowStats, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
 
                 <!-- Kills -->
 
@@ -105,9 +110,11 @@
                                             Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                            Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                            Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
                            Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
@@ -126,7 +133,17 @@
                                             Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                            Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <TextBlock Margin="0, 0, 6, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
+                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
+                           Visibility="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                    <Run Text="(+" />
+                    <Run Text="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text=")" />
+                </TextBlock>
 
                 <!-- /Deaths -->
 
@@ -139,9 +156,11 @@
                                             Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                            Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                            Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
                            Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
@@ -184,7 +203,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!-- Total Gold -->
+            <!-- Gold -->
 
             <TextBlock Grid.Column="0"
                        Grid.Row="1"
@@ -192,15 +211,15 @@
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                       DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
-                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+                       DataContext="{Binding ElementName=This, Path=GoldComparisonHelper, Mode=OneWay}"
+                       Text="{Binding Path=GoldRedSide, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
             <controlElement:IconControl Grid.Column="1"
                                         Grid.Row="1"
                                         Margin="6, 0, 0, 0"
                                         Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
 
-            <!-- /Total Gold -->
+            <!-- /Gold -->
 
             <!-- KDA -->
 
@@ -210,14 +229,17 @@
                         Orientation="Horizontal"
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
-                        DataContext="{Binding ElementName=This, Path=PlayerRedSide}">
+                        DataContext="{x:Static settings:ViewSettings.Instance}"
+                        Visibility="{Binding Path=PlayerGoldDifferenceSettings.ShowStats, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
 
                 <!-- Kills -->
 
                 <TextBlock Margin="6, 0, 0, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock Margin="6, 0, 0, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
                            Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
@@ -237,7 +259,17 @@
                 <!-- Deaths -->
 
                 <TextBlock Margin="6, 0, 0, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <TextBlock Margin="6, 0, 0, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
+                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
+                           Visibility="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                    <Run Text="(+" />
+                    <Run Text="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <Run Text=")" />
+                </TextBlock>
 
                 <controlElement:IconControl Margin="6, 0, 0, 0"
                                             Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
@@ -250,10 +282,12 @@
                 <!-- Assists -->
 
                 <TextBlock Margin="6, 0, 0, 0"
+                           DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock Margin="6, 0, 0, 0"
                            Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
                     <Run Text="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />

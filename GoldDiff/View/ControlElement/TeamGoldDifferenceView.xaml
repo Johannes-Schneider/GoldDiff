@@ -113,7 +113,7 @@
 
         <!-- /Blue Side Stats -->
 
-        <!-- Blue Side Total Gold -->
+        <!-- Blue Side Gold -->
 
         <StackPanel Grid.Column="2"
                     Margin="0, 0, 24, 0"
@@ -125,12 +125,12 @@
 
             <TextBlock VerticalAlignment="Center"
                        HorizontalAlignment="Left"
-                       DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
-                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+                       DataContext="{Binding ElementName=This, Path=GoldComparisonHelper, Mode=OneWay}"
+                       Text="{Binding Path=GoldBlueSide, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
         </StackPanel>
 
-        <!-- /Blue Side Total Gold -->
+        <!-- /Blue Side Gold -->
 
         <!-- Gold Difference -->
 
@@ -154,8 +154,8 @@
 
             <TextBlock VerticalAlignment="Center"
                        HorizontalAlignment="Right"
-                       DataContext="{Binding ElementName=This, Path=TeamRedSide}"
-                       Text="{Binding Path=TotalGold, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+                       DataContext="{Binding ElementName=This, Path=GoldComparisonHelper, Mode=OneWay}"
+                       Text="{Binding Path=GoldRedSide, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
             <sharedControlElement:IconControl HorizontalAlignment="Right"
                                               Margin="6, 0, 0, 0"

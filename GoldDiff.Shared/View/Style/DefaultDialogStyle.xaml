@@ -22,14 +22,14 @@
                 <ControlTemplate TargetType="{x:Type Window}">
                     <Grid>
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="60" />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
                             <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
+                            <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
 
                         <Rectangle x:Name="PART_BlurryBackground"
@@ -45,30 +45,38 @@
                         </Rectangle>
 
                         <controlElement:IconButton Grid.Column="0"
-                                            Grid.ColumnSpan="3"
-                                            Grid.Row="0"
-                                            Grid.RowSpan="3"
-                                            VerticalAlignment="Top"
-                                            HorizontalAlignment="Right"
-                                            Background="Transparent"
-                                            BackgroundWhenHovered="Transparent"
-                                            BackgroundWhenPressed="Transparent"
-                                            Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
-                                            ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
-                                            ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedDark}}"
-                                            Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCross}}"
-                                            Command="{x:Static command:Commands.DialogCancel}"
-                                            CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
+                                                   Grid.ColumnSpan="3"
+                                                   Grid.Row="0"
+                                                   Grid.RowSpan="3"
+                                                   VerticalAlignment="Top"
+                                                   HorizontalAlignment="Right"
+                                                   Background="Transparent"
+                                                   BackgroundWhenHovered="Transparent"
+                                                   BackgroundWhenPressed="Transparent"
+                                                   Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.BackgroundRegular}}"
+                                                   ForegroundWhenHovered="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
+                                                   ForegroundWhenPressed="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedDark}}"
+                                                   Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCross}}"
+                                                   Command="{x:Static command:Commands.DialogCancel}"
+                                                   CommandParameter="{Binding RelativeSource={RelativeSource TemplatedParent}}" />
 
-                        <ScrollViewer Grid.Column="1"
-                                      Grid.Row="1"
-                                      HorizontalScrollBarVisibility="Hidden"
-                                      VerticalScrollBarVisibility="Auto"
-                                      Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}">
+                        <Border Grid.Column="1"
+                                Grid.Row="1"
+                                CornerRadius="2"
+                                Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}">
 
-                            <ContentPresenter Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" />
+                            <ScrollViewer HorizontalScrollBarVisibility="Hidden"
+                                          VerticalScrollBarVisibility="Auto"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"
+                                          Background="Transparent">
 
-                        </ScrollViewer>
+                                <ContentPresenter Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" />
+
+                            </ScrollViewer>
+                        </Border>
+
+
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
