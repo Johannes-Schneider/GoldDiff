@@ -16,7 +16,5 @@
                 VerticalAlignment="Stretch"
                 Margin="18">
         
-        <controlElement:PlayerGoldDifferenceSettingsView />
-        
     </StackPanel>
 </view:GoldDiffDialog>

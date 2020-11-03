@@ -2,7 +2,10 @@
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
+using GoldDiff.Properties;
+using GoldDiff.Shared.View.Command;
 using GoldDiff.View.Model;
+using GoldDiff.View.Settings;
 
 namespace GoldDiff.View
 {
@@ -17,14 +20,16 @@ namespace GoldDiff.View
         }
 
         public MainWindowViewModel Model { get; }
+        
+        public ICommand OpenViewSettingsCommand { get; }
 
         public MainWindow()
         {
-            InitializeComponent();
-
             Model = new MainWindowViewModel();
-
             PrivateModel = Model;
+            OpenViewSettingsCommand = new GenericCommand(_ => new ViewSettingsDialog {Owner = this}.ShowDialog());
+            
+            InitializeComponent();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)

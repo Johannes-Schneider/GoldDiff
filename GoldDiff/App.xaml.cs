@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
@@ -8,7 +7,6 @@ using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.OperatingSystem;
-using GoldDiff.Shared;
 using GoldDiff.Shared.View.ControlElement;
 using GoldDiff.View;
 using GoldDiff.View.Settings;
@@ -27,8 +25,6 @@ namespace GoldDiff
 
         // private const string TargetProcessName = "notepad";
         private static TimeSpan ClientDataPollInterval { get; } = TimeSpan.FromMilliseconds(500);
-
-        private ApplicationSettings ApplicationSettings { get; } = ApplicationSettings.Load();
         private MainWindow MyMainWindow { get; set; } = null!;
         private LoLStaticResourceCache LoLResourceCache { get; } = LoLStaticResourceCache.Load();
         private ProcessEventWatcher ProcessEventWatcher { get; } = new ProcessEventWatcher();
@@ -53,7 +49,7 @@ namespace GoldDiff
         {
             var theme = new ResourceDictionary
                         {
-                            Source = new Uri(ApplicationSettings.ThemeLocation),
+                            Source = new Uri(ViewSettings.Instance.ThemeResourceDictionaryLocation),
                         };
             Current.Resources.MergedDictionaries.Add(theme);
 
@@ -168,6 +164,7 @@ namespace GoldDiff
         {
             Log.Info($"Target process ({TargetProcessName}) stopped.");
             
+            _game?.GameClientClosed();
             _clientDataPollService?.Dispose();
         }
 

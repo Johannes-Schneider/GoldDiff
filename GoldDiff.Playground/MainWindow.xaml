@@ -34,6 +34,14 @@
 
             <sharedControlElements:IconButton Icon="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}"
                                               Click="ButtonBase_OnClick" />
+            
+            <ComboBox Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultComboBoxStyle}}">
+                <ComboBox.Items>
+                    A
+                    B
+                    C
+                </ComboBox.Items>
+            </ComboBox>
 
         </StackPanel>
     </Grid>

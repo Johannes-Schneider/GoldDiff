@@ -41,7 +41,8 @@
                                          CanClose="True"
                                          CanMinimize="True"
                                          CanMaximize="False"
-                                         CanOpenSettings="True" />
+                                         CanOpenSettings="True"
+                                         OpenSettingsCommand="{Binding ElementName=This, Path=OpenViewSettingsCommand, Mode=OneWay}" />
 
         <TextBlock Grid.Column="0"
                    Grid.Row="1"

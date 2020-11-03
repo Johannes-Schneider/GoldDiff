@@ -5,6 +5,7 @@ using System.Linq;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.View.Model;
+using GoldDiff.View.Settings;
 
 namespace GoldDiff.View.Controller
 {
@@ -30,14 +31,66 @@ namespace GoldDiff.View.Controller
         {
             Model = model ?? throw new ArgumentNullException(nameof(model));
             Model.PropertyChanged += ModelOnPropertyChanged;
+            SubscribeToPropertyChangedEvent(Model.Game, Game_OnPropertyChanged);
+            ViewSettings.Instance.PropertyChanged += ViewSettings_OnPropertyChanged;
             
             TryInitializeModel();
+            UpdateTopmost();
+        }
+
+        private void SubscribeToPropertyChangedEvent(INotifyPropertyChanged? sender, PropertyChangedEventHandler handler)
+        {
+            if (sender == null)
+            {
+                return;
+            }
+
+            sender.PropertyChanged += handler;
+        }
+
+        private void Game_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (!ReferenceEquals(sender, Model.Game))
+            {
+                return;
+            }
+            
+            if (e.PropertyName.Equals(nameof(LoLGame.State)))
+            {
+                UpdateTopmost();
+            }
+        }
+
+        private void ViewSettings_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(nameof(ViewSettings.GoldDifferenceWindowStayOnTop)))
+            {
+                UpdateTopmost();
+            }
+        }
+
+        private void UpdateTopmost()
+        {
+            Model.Topmost = ViewSettings.Instance.GoldDifferenceWindowStayOnTop switch
+                            {
+                                StayOnTopType.Off => false,
+                                StayOnTopType.DuringGame => Model.Game?.State switch
+                                                            {
+                                                                null => false,
+                                                                LoLGameStateType.Undefined => false,
+                                                                LoLGameStateType.Ended => false,
+                                                                _ => true,
+                                                            },
+                                StayOnTopType.Always => true,
+                                _ => throw new Exception($"Unknown {nameof(StayOnTopType)} {ViewSettings.Instance.GoldDifferenceWindowStayOnTop}!")
+                            };
         }
 
         private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName.Equals(nameof(Model.Game)))
             {
+                SubscribeToPropertyChangedEvent(Model.Game, Game_OnPropertyChanged);
                 TryInitializeModel();
             }
             else if (string.IsNullOrEmpty(e.PropertyName) || PlayerPropertyNames.Contains(e.PropertyName))

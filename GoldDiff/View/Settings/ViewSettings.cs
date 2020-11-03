@@ -1,14 +1,17 @@
 ﻿using System;
 using System.IO;
 using GoldDiff.Shared.View.Model;
+using GoldDiff.Shared.View.Theme;
 using Newtonsoft.Json;
 
 namespace GoldDiff.View.Settings
 {
     public class ViewSettings : ViewModel
     {
-        private static string StorageLocation { get; } = Path.Combine(Environment.CurrentDirectory, "Config" , "ViewSettings.json");
-        
+        private static string StorageLocation { get; } = Path.Combine(Environment.CurrentDirectory, "Config", "ViewSettings.json");
+
+    #region Singleton
+
         private static ViewSettings? _instance;
 
         public static ViewSettings Instance
@@ -32,9 +35,71 @@ namespace GoldDiff.View.Settings
                 return _instance;
             }
         }
-        
+
+        private ViewSettings() { }
+
+    #endregion
+
+        private ThemeType _theme = ThemeType.Light;
+
+        public ThemeType Theme
+        {
+            get => _theme;
+            set => MutateVerbose(ref _theme, value);
+        }
+
         [JsonProperty]
-        public PlayerGoldDifferenceSettings PlayerGoldDifferenceSettings { get; private set; } = new PlayerGoldDifferenceSettings();
+        public string ThemeResourceDictionaryLocation => Theme switch
+                                                         {
+                                                             ThemeType.Light => @"pack://application:,,,/GoldDiff.Shared;component/View/Theme/Light.xaml",
+                                                             ThemeType.Dark => @"pack://application:,,,/GoldDiff.Shared;component/View/Theme/Dark.xaml",
+                                                             _ => throw new Exception($"Unknown {nameof(ThemeType)} {Theme}!"),
+                                                         };
+
+        private StayOnTopType _goldDifferenceWindowStayOnTop = StayOnTopType.DuringGame;
+
+        [JsonProperty]
+        public StayOnTopType GoldDifferenceWindowStayOnTop
+        {
+            get => _goldDifferenceWindowStayOnTop;
+            set => MutateVerbose(ref _goldDifferenceWindowStayOnTop, value);
+        }
+
+        private int _goldDifferenceWindowLeft;
+
+        [JsonProperty]
+        public int GoldDifferenceWindowLeft
+        {
+            get => _goldDifferenceWindowLeft;
+            set => MutateVerbose(ref _goldDifferenceWindowLeft, value);
+        }
+
+        private int _goldDifferenceWindowTop;
+
+        [JsonProperty]
+        public int GoldDifferenceWindowTop
+        {
+            get => _goldDifferenceWindowTop;
+            set => MutateVerbose(ref _goldDifferenceWindowTop, value);
+        }
+
+        private int _goldDifferenceWindowWidth;
+
+        [JsonProperty]
+        public int GoldDifferenceWindowWidth
+        {
+            get => _goldDifferenceWindowWidth;
+            set => MutateVerbose(ref _goldDifferenceWindowWidth, value);
+        }
+
+        private int _goldDifferenceWindowHeight;
+
+        [JsonProperty]
+        public int GoldDifferenceWindowHeight
+        {
+            get => _goldDifferenceWindowHeight;
+            set => MutateVerbose(ref _goldDifferenceWindowHeight, value);
+        }
 
         private DisplayGoldType _displayGoldType = DisplayGoldType.NonConsumable;
 
@@ -45,7 +110,14 @@ namespace GoldDiff.View.Settings
             set => MutateVerbose(ref _displayGoldType, value);
         }
 
-        private ViewSettings() { }
+        private bool _displayPlayerStats = true;
+
+        [JsonProperty]
+        public bool DisplayPlayerStats
+        {
+            get => _displayPlayerStats;
+            set => MutateVerbose(ref _displayPlayerStats, value);
+        }
 
         public void Save()
         {

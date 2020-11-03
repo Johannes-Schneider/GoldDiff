@@ -40,7 +40,6 @@ namespace GoldDiff.View
                         InactivePlayerBackground = null,
                     };
             Controller = new GoldDifferenceWindowController(Model);
-
             PrivateModel = Model;
         }
 

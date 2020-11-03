@@ -119,6 +119,10 @@
         public const string IconArrowRight3 = nameof(IconArrowRight3);
         public const string IconArrowRight4 = nameof(IconArrowRight4);
 
+        public const string IconArrowUp1 = nameof(IconArrowUp1);
+        
+        public const string IconArrowDown1 = nameof(IconArrowDown1);
+
     #endregion
 
     #region Styles
@@ -130,6 +134,8 @@
         public const string DefaultGoldDiffCheckBoxStyle = nameof(DefaultGoldDiffCheckBoxStyle);
         public const string DefaultDialogStyle = nameof(DefaultDialogStyle);
         public const string DefaultGroupBoxStyle = nameof(DefaultGroupBoxStyle);
+        public const string DefaultComboBoxStyle = nameof(DefaultComboBoxStyle);
+        public const string DefaultLabelStyle = nameof(DefaultLabelStyle);
 
     #endregion
     }

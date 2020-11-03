@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="LabelTheme" xml:space="preserve">
+        <value>Theme</value>
+    </data>
+    <data name="HintRestartIsRequired" xml:space="preserve">
+        <value>Changes are applied after the next restart.</value>
+    </data>
+    <data name="LabelGoldType" xml:space="preserve">
+        <value>Display Gold</value>
+    </data>
+    <data name="LabelDisplayPlayerStats" xml:space="preserve">
+        <value>Display Player KDA</value>
+    </data>
+    <data name="LabelAppearanceSettings" xml:space="preserve">
+        <value>Appearance</value>
+    </data>
+    <data name="LabelGoldDifferenceWindowSettings" xml:space="preserve">
+        <value>Gold Difference</value>
+    </data>
+    <data name="LabelStayOnTop" xml:space="preserve">
+        <value>Stay on Top</value>
+    </data>
+</root>

@@ -102,7 +102,7 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Left"
                         DataContext="{x:Static settings:ViewSettings.Instance}"
-                        Visibility="{Binding Path=PlayerGoldDifferenceSettings.ShowStats, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
+                        Visibility="{Binding Path=DisplayPlayerStats, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
 
                 <!-- Kills -->
 
@@ -230,7 +230,7 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Right"
                         DataContext="{x:Static settings:ViewSettings.Instance}"
-                        Visibility="{Binding Path=PlayerGoldDifferenceSettings.ShowStats, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
+                        Visibility="{Binding Path=DisplayPlayerStats, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
 
                 <!-- Kills -->
 

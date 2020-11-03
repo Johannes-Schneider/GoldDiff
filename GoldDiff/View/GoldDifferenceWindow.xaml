@@ -8,6 +8,7 @@
         xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
         xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
         xmlns:converter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
+        xmlns:settings="clr-namespace:GoldDiff.View.Settings"
         mc:Ignorable="d"
 
         x:Name="This"
@@ -15,12 +16,18 @@
 
         MinWidth="700"
         MinHeight="350"
-        Height="400"
-        Width="700">
+        Height="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        Width="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        Left="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowLeft, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        Top="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
 
     <Window.DataContext>
         <Binding ElementName="This" Path="PrivateModel" />
     </Window.DataContext>
+    
+    <Window.Topmost>
+        <Binding Path="Topmost" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged" />
+    </Window.Topmost>
 
     <Window.Resources>
         <converter:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"

@@ -14,6 +14,8 @@
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultGoldDiffCheckBoxStyle.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultDialogStyle.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultGroupBoxStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultComboBoxStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/Style/DefaultLabelStyle.xaml" />
                 
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultGoldDifferenceStyle.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/GoldDiff;component/View/Style/DefaultLoLPositionStyle.xaml" />

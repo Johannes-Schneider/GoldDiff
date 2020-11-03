@@ -27,7 +27,7 @@
                                 Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
 
                         <ContentPresenter Grid.Row="1"
-                                          Margin="6" />
+                                          Margin="12" />
 
                         <Border Grid.Row="0"
                                 Margin="6, 0, 6, 0"

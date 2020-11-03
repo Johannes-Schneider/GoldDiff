@@ -81,6 +81,16 @@ namespace GoldDiff.LeagueOfLegends.Game
         {
             StaticResourceCache = staticResourceCache ?? throw new ArgumentNullException(nameof(staticResourceCache));
         }
+
+        public void GameClientClosed()
+        {
+            if (!IsInitialized)
+            {
+                return;
+            }
+
+            State = LoLGameStateType.Ended;
+        }
         
         public void Consume(LoLClientGameData? gameData)
         {

@@ -228,6 +228,14 @@ namespace GoldDiff.View.Model
             set => MutateVerbose(ref _supportPlayerBackground, value);
         }
 
+        private bool _topmost = false;
+
+        public bool Topmost
+        {
+            get => _topmost;
+            set => MutateVerbose(ref _topmost, value);
+        }
+
         public void SwapPlayers(LoLTeamType team, LoLPositionType positionA, LoLPositionType positionB)
         {
             (Players[team][positionA], Players[team][positionB]) = (Players[team][positionB], Players[team][positionA]);

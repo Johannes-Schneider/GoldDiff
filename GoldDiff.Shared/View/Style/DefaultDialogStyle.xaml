@@ -63,6 +63,7 @@
                         <Border Grid.Column="1"
                                 Grid.Row="1"
                                 CornerRadius="2"
+                                Padding="18"
                                 Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}">
 
                             <ScrollViewer HorizontalScrollBarVisibility="Hidden"
