@@ -6,9 +6,9 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Player
     {
         [JsonProperty("itemID")]
         public int Id { get; set; }
-        
+
         [JsonProperty("displayName")]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
         
         [JsonProperty("count")]
         public int Amount { get; set; }

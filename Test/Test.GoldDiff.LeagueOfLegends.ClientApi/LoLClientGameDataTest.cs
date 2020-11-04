@@ -13,6 +13,7 @@ namespace Test.GoldDiff.LeagueOfLegends.ClientApi
     public class LoLClientGameDataTest
     {
         private static string FullGameAsJsonPath { get; } = Path.Combine(Environment.CurrentDirectory, "Resources", "full-game.json");
+        private static string SpectatorGameAsJsonPath { get; } = Path.Combine(Environment.CurrentDirectory, "Resources", "spectator-game.json");
         
         [Test]
         public void TestDeserializeFullGame()
@@ -26,6 +27,14 @@ namespace Test.GoldDiff.LeagueOfLegends.ClientApi
             Assert.AreEqual(10, gameData.Players.Count);
             Assert.AreEqual(5, gameData.Players.Count(player => player.Team == LoLTeamType.BlueSide));
             Assert.AreEqual(5, gameData.Players.Count(player => player.Team == LoLTeamType.RedSide));
+        }
+
+        [Test]
+        public void TestDeserializeSpectatorGame()
+        {
+            var gameData = JsonConvert.DeserializeObject<LoLClientGameData>(File.ReadAllText(SpectatorGameAsJsonPath));
+            
+            Assert.AreEqual(string.Empty, gameData.ActivePlayer.SummonerName);
         }
     }
 }

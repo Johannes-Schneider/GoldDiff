@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using GoldDiff.LeagueOfLegends.ClientApi;
+using log4net;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
     public sealed class LoLClientDataPollService : IDisposable
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        
         public event EventHandler<LoLClientGameData>? GameDataReceived;
 
         public TimeSpan PollInterval { get; set; }
@@ -45,9 +49,9 @@ namespace GoldDiff.LeagueOfLegends.Game
                     GameDataReceived?.Invoke(this, gameData);
                     await Task.Delay(PollInterval, CancellationTokenSource.Token);
                 }
-                catch
+                catch (Exception exception)
                 {
-                    // ignore
+                    Log.Error($"Exception while polling game data!", exception);
                 }
             }
         }

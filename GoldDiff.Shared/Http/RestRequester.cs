@@ -27,14 +27,21 @@ namespace GoldDiff.Shared.Http
 
         public async Task<TResultType> GetAsync<TResultType>(string url)
         {
-            var response = await Client.GetAsync(url).ConfigureAwait(false);
-            if (!response.IsSuccessStatusCode)
+            try
+            {
+                var response = await Client.GetAsync(url).ConfigureAwait(false);
+                if (!response.IsSuccessStatusCode)
+                {
+                    return default!;
+                }
+
+                var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                return JsonConvert.DeserializeObject<TResultType>(json);
+            }
+            catch (TaskCanceledException)
             {
                 return default!;
             }
-
-            var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            return JsonConvert.DeserializeObject<TResultType>(json);
         }
 
     #region IDisposable
