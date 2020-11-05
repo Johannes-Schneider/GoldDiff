@@ -40,9 +40,7 @@ namespace GoldDiff
 
             InitializeUserInterface();
             await UpdateResourceCacheAsync();
-
-            ProcessEventWatcher.ProcessStarted += ProcessEventWatcher_OnProcessStarted;
-            ProcessEventWatcher.ProcessStopped += ProcessEventWatcher_OnProcessStopped;
+            StartWaitingForTargetProcess();
         }
 
         private void InitializeUserInterface()
@@ -59,13 +57,6 @@ namespace GoldDiff
             MainWindow = MyMainWindow;
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             MainWindow.Show();
-
-            var processes = Process.GetProcessesByName(TargetProcessName);
-            if (processes.Length > 0)
-            {
-                _targetProcess = processes[0];
-                TargetProcessStarted();
-            }
         }
 
         private async Task UpdateResourceCacheAsync()
@@ -77,6 +68,19 @@ namespace GoldDiff
 
             MyMainWindow.Model.Content = null;
             MyMainWindow.Model.LeagueVersion = LoLResourceCache.CurrentVersion;
+        }
+
+        private void StartWaitingForTargetProcess()
+        {
+            ProcessEventWatcher.ProcessStarted += ProcessEventWatcher_OnProcessStarted;
+            ProcessEventWatcher.ProcessStopped += ProcessEventWatcher_OnProcessStopped;
+            
+            var processes = Process.GetProcessesByName(TargetProcessName);
+            if (processes.Length > 0)
+            {
+                _targetProcess = processes[0];
+                TargetProcessStarted();
+            }
         }
 
         private void ProcessEventWatcher_OnProcessStarted(object sender, ProcessEventEventArguments e)
@@ -163,7 +167,7 @@ namespace GoldDiff
         private void TargetProcessStopped()
         {
             Log.Info($"Target process ({TargetProcessName}) stopped.");
-            
+
             _game?.GameClientClosed();
             _clientDataPollService?.Dispose();
         }
