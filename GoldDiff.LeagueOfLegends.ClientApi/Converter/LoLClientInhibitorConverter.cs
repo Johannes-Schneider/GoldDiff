@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.Shared.LeagueOfLegends;
@@ -9,23 +10,35 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
     internal sealed class LoLClientInhibitorConverter : ReadOnlyConverter<string>
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        
         private static string[] TokenSeparator { get; } = {"_"};
 
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (!(reader.Value is string value))
             {
-                throw ConversionFailed(reader.Value);
+                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientInhibitor)}!");
+                return new LoLClientInhibitor
+                       {
+                           Team = LoLTeamType.Undefined,
+                           Tier = LoLClientInhibitorTier.Undefined,
+                       };
             }
 
             var tokens = value.Split(TokenSeparator, StringSplitOptions.None);
             if (tokens.Length != 3)
             {
-                throw ConversionFailed(reader.Value);
+                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientInhibitor)}!");
+                return new LoLClientInhibitor
+                       {
+                           Team = LoLTeamType.Undefined,
+                           Tier = LoLClientInhibitorTier.Undefined,
+                       };
             }
 
-            var team = GetTeam(reader.Value, tokens[1]);
-            var tier = GetTier(reader.Value, tokens[2]);
+            var team = GetTeam(tokens[1]);
+            var tier = GetTier(tokens[2]);
             return new LoLClientInhibitor
                    {
                        Team = team,
@@ -33,7 +46,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                    };
         }
 
-        private LoLTeamType GetTeam(object? readerValue, string token)
+        private LoLTeamType GetTeam(string token)
         {
             if (token.Equals("T1", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -45,10 +58,10 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 return LoLTeamType.RedSide;
             }
 
-            throw ConversionFailed(readerValue);
+            return LoLTeamType.Undefined;
         }
 
-        private LoLClientInhibitorTier GetTier(object? readerValue, string token)
+        private LoLClientInhibitorTier GetTier(string token)
         {
             if (token.Equals("L1", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -65,12 +78,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 return LoLClientInhibitorTier.Bottom;
             }
 
-            throw ConversionFailed(readerValue);
-        }
-
-        private Exception ConversionFailed(object? readerValue)
-        {
-            return new Exception($"Unable to convert {readerValue} tp {nameof(LoLClientInhibitor)}!");
+            return LoLClientInhibitorTier.Undefined;
         }
     }
 }

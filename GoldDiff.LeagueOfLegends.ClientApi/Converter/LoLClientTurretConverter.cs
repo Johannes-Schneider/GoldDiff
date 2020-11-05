@@ -1,38 +1,52 @@
 ﻿using System;
+using System.Reflection;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.Shared.LeagueOfLegends;
+using log4net;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
     internal sealed class LoLClientTurretConverter : ReadOnlyConverter<string>
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private static string[] TokenSeparator { get; } = {"_"};
 
         public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (!(reader.Value is string value))
             {
-                throw ConversionFailed(reader.Value);
+                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientTurret)}!");
+                return new LoLClientTurret
+                       {
+                           Team = LoLTeamType.Undefined,
+                           Tier = LoLClientTurretTier.Undefined,
+                       };
             }
 
             var tokens = value.Split(TokenSeparator, StringSplitOptions.None);
             if (tokens.Length != 5)
             {
-                throw ConversionFailed(reader.Value);
+                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientTurret)}!");
+                return new LoLClientTurret
+                       {
+                           Team = LoLTeamType.Undefined,
+                           Tier = LoLClientTurretTier.Undefined,
+                       };
             }
 
-            var team = GetTeam(reader.Value, tokens[1]);
-            var tier = GetTurretTier(reader.Value, tokens[2], tokens[3], team);
+            var team = GetTeam(tokens[1]);
+            var tier = GetTurretTier(tokens[2], tokens[3], team);
 
             return new LoLClientTurret
                    {
-                       Team = team, 
+                       Team = team,
                        Tier = tier,
                    };
         }
 
-        private LoLTeamType GetTeam(object? readerValue, string token)
+        private LoLTeamType GetTeam(string token)
         {
             if (token.Equals("T1", StringComparison.InvariantCultureIgnoreCase))
             {
@@ -44,10 +58,10 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 return LoLTeamType.RedSide;
             }
 
-            throw ConversionFailed(readerValue);
+            return LoLTeamType.Undefined;
         }
 
-        private LoLClientTurretTier GetTurretTier(object? readerValue, string relativeLane, string tier, LoLTeamType team)
+        private LoLClientTurretTier GetTurretTier(string relativeLane, string tier, LoLTeamType team)
         {
             switch (team)
             {
@@ -187,12 +201,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
                 }
             }
 
-            throw ConversionFailed(readerValue);
-        }
-
-        private Exception ConversionFailed(object? readerValue)
-        {
-            return new Exception($"Unable to convert {readerValue} tp {nameof(LoLClientTurret)}!");
+            return LoLClientTurretTier.Undefined;
         }
     }
 }
