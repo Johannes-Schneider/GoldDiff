@@ -1,0 +1,72 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon">
+
+    <BitmapImage options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.WindowIcon}" UriSource="pack://application:,,,/GoldDiff.Shared;component/View/SharedIcon/ApplicationIcon.ico" />
+
+    <CombinedGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}">
+        <CombinedGeometry.Geometry1>
+            <CombinedGeometry>
+                <CombinedGeometry.Geometry1>
+                    <StreamGeometry>
+                        M20.847,8.202c0.173,0.759,0.273,1.546,0.273,2.358c0,5.833-4.728,10.56-10.56,10.56 c-0.812,0-1.599-0.101-2.358-0.273c1.532,1.203,3.458,1.927,5.558,1.927c4.979,0,9.014-4.035,9.014-9.014 C22.773,11.661,22.05,9.734,20.847,8.202z
+                    </StreamGeometry>
+                </CombinedGeometry.Geometry1>
+                <CombinedGeometry.Geometry2>
+                    <StreamGeometry>
+                        M19.854,5.545c0.333,0.616,0.604,1.27,0.811,1.951c1.504,1.657,2.429,3.85,2.429,6.264 c0,5.155-4.179,9.334-9.334,9.334c-2.414,0-4.607-0.925-6.264-2.429c-0.682-0.207-1.335-0.478-1.951-0.811 C7.411,22.365,10.391,24,13.76,24C19.415,24,24,19.415,24,13.76C24,10.391,22.365,7.411,19.854,5.545z
+                    </StreamGeometry>
+                </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+        </CombinedGeometry.Geometry1>
+        <CombinedGeometry.Geometry2>
+            <CombinedGeometry>
+                <CombinedGeometry.Geometry1>
+                    <StreamGeometry>
+                        M10.56,0.32c-5.655,0-10.24,4.585-10.24,10.24c0,5.656,4.585,10.24,10.24,10.24 c5.656,0,10.24-4.584,10.24-10.24C20.8,4.905,16.216,0.32,10.56,0.32z M10.56,19.894c-5.155,0-9.333-4.179-9.333-9.333 s4.179-9.333,9.333-9.333s9.333,4.179,9.333,9.333S15.715,19.894,10.56,19.894z
+                    </StreamGeometry>
+                </CombinedGeometry.Geometry1>
+                <CombinedGeometry.Geometry2>
+                    <EllipseGeometry Center="10.56, 10.56" RadiusX="9.013" RadiusY="9.013" />
+                </CombinedGeometry.Geometry2>
+            </CombinedGeometry>
+        </CombinedGeometry.Geometry2>
+    </CombinedGeometry>
+    
+    <StreamGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.LoLTurret}">
+        M5,20H19V22H5V20M17,2V5H15V2H13V5H11V2H9V5H7V2H5V8H7V18H17V8H19V2H17Z
+    </StreamGeometry>
+
+    <CombinedGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.LoLInhibitor}">
+        <CombinedGeometry.Geometry1>
+            <StreamGeometry>
+                M12,0C5.373,0,0,5.373,0,12c0,6.627,5.373,12,12,12c6.627,0,12-5.373,12-12C24,5.373,18.627,0,12,0z M12,21 c-4.971,0-9-4.029-9-9s4.029-9,9-9s9,4.029,9,9S16.971,21,12,21z
+            </StreamGeometry>
+        </CombinedGeometry.Geometry1>
+        <CombinedGeometry.Geometry2>
+            <RectangleGeometry Rect="6, 6, 12, 12">
+                <RectangleGeometry.Transform>
+                    <RotateTransform CenterX="12" CenterY="12" Angle="45" />
+                </RectangleGeometry.Transform>
+            </RectangleGeometry>
+        </CombinedGeometry.Geometry2>
+    </CombinedGeometry>
+    
+    <StreamGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}">
+        M6.2,2.44L18.1,14.34L20.22,12.22L21.63,13.63L19.16,16.1L22.34,19.28C22.73,19.67 22.73,20.3 22.34,20.69L21.63,21.4C21.24,21.79 20.61,21.79 20.22,21.4L17,18.23L14.56,20.7L13.15,19.29L15.27,17.17L3.37,5.27V2.44H6.2M15.89,10L20.63,5.26V2.44H17.8L13.06,7.18L15.89,10M10.94,15L8.11,12.13L5.9,14.34L3.78,12.22L2.37,13.63L4.84,16.1L1.66,19.29C1.27,19.68 1.27,20.31 1.66,20.7L2.37,21.41C2.76,21.8 3.39,21.8 3.78,21.41L7,18.23L9.44,20.7L10.85,19.29L8.73,17.17L10.94,15Z
+    </StreamGeometry>
+    
+    <StreamGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}">
+        M12,2A9,9 0 0,0 3,11C3,14.03 4.53,16.82 7,18.47V22H9V19H11V22H13V19H15V22H17V18.46C19.47,16.81 21,14 21,11A9,9 0 0,0 12,2M8,11A2,2 0 0,1 10,13A2,2 0 0,1 8,15A2,2 0 0,1 6,13A2,2 0 0,1 8,11M16,11A2,2 0 0,1 18,13A2,2 0 0,1 16,15A2,2 0 0,1 14,13A2,2 0 0,1 16,11M12,14L13.5,17H10.5L12,14Z
+    </StreamGeometry>
+    
+    <StreamGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}">
+        M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z
+    </StreamGeometry>
+    
+    <StreamGeometry options:Freeze="True" x:Key="{x:Static sharedIcon:GoldDiffSharedIconKeys.LoLMinion}">
+        M12-0.125c6.696,0,12.125,4.823,12.125,10.778S16.042,24.125,12,24.125c-4.042,0-12.125-7.518-12.125-13.472 S5.304-0.125,12-0.125 M9.723,10.559c-1.374-2.209-3.826-3.166-5.47-2.143c-1.644,1.024-1.859,3.651-0.485,5.86 c1.388,2.21,3.84,3.166,5.483,2.142C10.896,15.368,11.098,12.769,9.723,10.559 M14.276,10.559c-1.374,2.21-1.171,4.81,0.472,5.859 c1.644,1.024,4.096,0.068,5.482-2.142c1.375-2.209,1.16-4.836-0.484-5.86C18.102,7.393,15.651,8.349,14.276,10.559
+    </StreamGeometry>
+
+</ResourceDictionary>

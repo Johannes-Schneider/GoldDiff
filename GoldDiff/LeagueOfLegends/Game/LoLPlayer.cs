@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using FlatXaml.Model;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.ClientApi.Player;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.Shared.Utility;
-using GoldDiff.Shared.View.Model;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
@@ -312,7 +312,7 @@ namespace GoldDiff.LeagueOfLegends.Game
         public LoLPositionType AssignedPosition { get; }
 
         private LoLStaticResourceCache StaticResourceCache { get; }
-        private List<LoLItem> MutableItems { get; set; } = new List<LoLItem>();
+        private List<LoLItem> MutableItems { get; set; } = new();
 
         public LoLPlayer(LoLStaticResourceCache? staticResourceCache, string? summonerName, LoLTeamType team, LoLPositionType assignedPosition, LoLStaticChampion? champion, bool isActivePlayer)
         {

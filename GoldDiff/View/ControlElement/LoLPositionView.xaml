@@ -3,9 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
-             xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
-             xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
+             xmlns:flat="clr-namespace:FlatXaml.View;assembly=FlatXaml"
              mc:Ignorable="d"
 
              x:Name="This"
@@ -97,75 +95,75 @@
         <Grid x:Name="TopPositionIcon"
               Grid.Column="0">
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource TopIconFull}"
-                                        Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource TopIconFull}"
+                           Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource MiddleIconSmall}"
-                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource MiddleIconSmall}"
+                           Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource BottomIconFull}"
-                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource BottomIconFull}"
+                           Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
 
         </Grid>
 
         <Grid x:Name="MiddlePositionIcon"
               Grid.Column="0">
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}"
-                                        Source="{StaticResource TopIconSmall}"
-                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource TopIconSmall}"
+                           Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource MiddleIconFull}"
-                                        Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource MiddleIconFull}"
+                           Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource BottomIconSmall}"
-                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource BottomIconSmall}"
+                           Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
 
         </Grid>
 
         <Grid x:Name="BottomPositionIcon"
               Grid.Column="0">
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource TopIconFull}"
-                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource TopIconFull}"
+                           Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource MiddleIconSmall}"
-                                        Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource MiddleIconSmall}"
+                           Foreground="{Binding ElementName=This, Path=InactivePositionForeground}" />
 
-            <controlElement:IconControl Width="{Binding ElementName=This, Path=Width}"
-                                        Height="{Binding ElementName=This, Path=Height}" 
-                                        Source="{StaticResource BottomIconFull}"
-                                        Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+            <flat:FlatIcon Width="{Binding ElementName=This, Path=Width}"
+                           Height="{Binding ElementName=This, Path=Height}"
+                           Source="{StaticResource BottomIconFull}"
+                           Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
 
         </Grid>
 
-        <controlElement:IconControl x:Name="JunglePositionIcon"
-                                    Grid.Column="0"
-                                    Width="{Binding ElementName=This, Path=Width}"
-                                    Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{StaticResource JungleIconFull}"
-                                    Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+        <flat:FlatIcon x:Name="JunglePositionIcon"
+                       Grid.Column="0"
+                       Width="{Binding ElementName=This, Path=Width}"
+                       Height="{Binding ElementName=This, Path=Height}"
+                       Source="{StaticResource JungleIconFull}"
+                       Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
 
-        <controlElement:IconControl x:Name="SupportPositionIcon"
-                                    Grid.Column="0"
-                                    Width="{Binding ElementName=This, Path=Width}"
-                                    Height="{Binding ElementName=This, Path=Height}"
-                                    Source="{StaticResource SupportIconFull}"
-                                    Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
+        <flat:FlatIcon x:Name="SupportPositionIcon"
+                       Grid.Column="0"
+                       Width="{Binding ElementName=This, Path=Width}"
+                       Height="{Binding ElementName=This, Path=Height}"
+                       Source="{StaticResource SupportIconFull}"
+                       Foreground="{Binding ElementName=This, Path=ActivePositionForeground}" />
     </Grid>
 </UserControl>

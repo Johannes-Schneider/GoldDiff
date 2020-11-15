@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
              xmlns:converter="clr-namespace:GoldDiff.View.Converter"
-             xmlns:sharedControlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
              xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
              xmlns:game="clr-namespace:GoldDiff.LeagueOfLegends.Game"
+             xmlns:flat="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+             xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
              mc:Ignorable="d"
 
              x:Name="This"
@@ -46,11 +47,11 @@
 
             <!-- Turret Kills -->
 
-            <sharedControlElement:IconControl Grid.Column="0"
-                                              Grid.Row="1"
-                                              Margin="0, 0, 6, 0"
-                                              HorizontalAlignment="Left"
-                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTurret}}" />
+            <flat:FlatIcon Grid.Column="0"
+                           Grid.Row="1"
+                           Margin="0, 0, 6, 0"
+                           HorizontalAlignment="Left"
+                           Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLTurret}}" />
 
             <TextBlock Grid.Column="1"
                        Grid.Row="1"
@@ -73,8 +74,8 @@
 
                 <!-- Kills -->
 
-                <sharedControlElement:IconControl Margin="0, 0, 6, 0"
-                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+                <flat:FlatIcon Margin="0, 0, 6, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
                            Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -86,8 +87,8 @@
 
                 <!-- Deaths -->
 
-                <sharedControlElement:IconControl Margin="0, 0, 6, 0"
-                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+                <flat:FlatIcon Margin="0, 0, 6, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
                            Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -99,8 +100,8 @@
 
                 <!-- Assists -->
 
-                <sharedControlElement:IconControl Margin="0, 0, 6, 0"
-                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+                <flat:FlatIcon Margin="0, 0, 6, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
                            Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -119,9 +120,9 @@
                     Margin="0, 0, 24, 0"
                     Orientation="Horizontal">
 
-            <sharedControlElement:IconControl Margin="0, 0, 6, 0"
-                                              HorizontalAlignment="Left"
-                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+            <flat:FlatIcon Margin="0, 0, 6, 0"
+                           HorizontalAlignment="Left"
+                           Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}" />
 
             <TextBlock VerticalAlignment="Center"
                        HorizontalAlignment="Left"
@@ -157,9 +158,9 @@
                        DataContext="{Binding ElementName=This, Path=GoldComparisonHelper, Mode=OneWay}"
                        Text="{Binding Path=GoldRedSide, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
-            <sharedControlElement:IconControl HorizontalAlignment="Right"
-                                              Margin="6, 0, 0, 0"
-                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+            <flat:FlatIcon HorizontalAlignment="Right"
+                           Margin="6, 0, 0, 0"
+                           Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}" />
 
         </StackPanel>
 
@@ -189,11 +190,11 @@
                        DataContext="{Binding ElementName=This, Path=TeamRedSide}"
                        Text="{Binding Path=TurretsKilled}" />
 
-            <sharedControlElement:IconControl Grid.Column="1"
-                                              Grid.Row="1"
-                                              Margin="6, 0, 0, 0"
-                                              HorizontalAlignment="Right"
-                                              Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLTurret}}" />
+            <flat:FlatIcon Grid.Column="1"
+                           Grid.Row="1"
+                           Margin="6, 0, 0, 0"
+                           HorizontalAlignment="Right"
+                           Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLTurret}}" />
 
             <!-- /Turret Kills -->
 
@@ -212,8 +213,8 @@
                 <TextBlock Margin="6, 0, 0, 0"
                            Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <sharedControlElement:IconControl Margin="6, 0, 0, 0"
-                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+                <flat:FlatIcon Margin="6, 0, 0, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}}" />
 
 
                 <!-- /Kills -->
@@ -226,8 +227,8 @@
                 <TextBlock Margin="6, 0, 0, 0"
                            Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <sharedControlElement:IconControl Margin="6, 0, 0, 0"
-                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+                <flat:FlatIcon Margin="6, 0, 0, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}}" />
 
                 <!-- /Deaths -->
 
@@ -239,8 +240,8 @@
                 <TextBlock Margin="6, 0, 0, 0"
                            Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                <sharedControlElement:IconControl Margin="6, 0, 0, 0"
-                                                  Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+                <flat:FlatIcon Margin="6, 0, 0, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}}" />
 
                 <!-- /Assists -->
 

@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using GoldDiff.Shared.Http;
 using GoldDiff.Shared.LeagueOfLegends;
 
-namespace GoldDiff.LeagueOfLegends.Api
+namespace GoldDiff.LeagueOfLegends.RemoteApi
 {
-    public class LoLRemoteEndpoint : IDisposable
+    public sealed class LoLRemoteEndpoint : IDisposable
     {
+        private static TimeSpan RequestTimeout { get; } = TimeSpan.FromSeconds(2);
         private const string VersionsUrl = "https://ddragon.leagueoflegends.com/api/versions.json";
 
         private static LoLRemoteEndpoint? _instance;
@@ -22,7 +23,7 @@ namespace GoldDiff.LeagueOfLegends.Api
 
         private LoLRemoteEndpoint()
         {
-            Requester = new RestRequester();
+            Requester = new RestRequester(RequestTimeout);
         }
 
         public async Task<List<LoLVersion>?> GetVersionsAsync()

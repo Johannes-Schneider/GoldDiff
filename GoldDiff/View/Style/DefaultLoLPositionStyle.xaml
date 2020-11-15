@@ -1,12 +1,12 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
-                    xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared">
+                    xmlns:theme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml">
 
     <Style TargetType="{x:Type controlElement:LoLPositionView}">
         <Setter Property="Position" Value="Top" />
-        <Setter Property="ActivePositionForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundRegular}}" />
-        <Setter Property="InactivePositionForeground" Value="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.ForegroundDisabled}}" />
+        <Setter Property="ActivePositionForeground" Value="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}" />
+        <Setter Property="InactivePositionForeground" Value="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundDisabled}}" />
     </Style>
 
 </ResourceDictionary>

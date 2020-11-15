@@ -4,12 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
-             xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
              xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
              xmlns:converter="clr-namespace:GoldDiff.View.Converter"
              xmlns:game="clr-namespace:GoldDiff.LeagueOfLegends.Game"
-             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
              xmlns:settings="clr-namespace:GoldDiff.View.Settings"
+             xmlns:converter1="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
+             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.SharedConverter;assembly=GoldDiff.Shared"
+             xmlns:theme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml"
+             xmlns:flat="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+             xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
              mc:Ignorable="d"
 
              x:Name="This"
@@ -21,9 +24,9 @@
         <sharedConverter:GreaterThanZeroToVisibilityConverter x:Key="GreaterThanZeroToVisibilityConverter"
                                                               TrueValue="Visible"
                                                               FalseValue="Collapsed" />
-        <sharedConverter:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"
-                                                   TrueValue="Visible"
-                                                   FalseValue="Collapsed" />
+        <converter1:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"
+                                              TrueValue="Visible"
+                                              FalseValue="Collapsed" />
     </UserControl.Resources>
 
     <Grid>
@@ -41,8 +44,8 @@
 
         <local:LoLPositionView Grid.Column="0"
                                Margin="0, 0, 12, 0"
-                               MaxWidth="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                               MaxHeight="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                               MaxWidth="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
+                               MaxHeight="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
                                Position="{Binding ElementName=This, Path=Position}" />
 
         <!-- /Role Icon Blue Side -->
@@ -78,10 +81,10 @@
 
             <!-- Gold -->
 
-            <controlElement:IconControl Grid.Column="0"
-                                        Grid.Row="1"
-                                        Margin="0, 0, 6, 0"
-                                        Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+            <flat:FlatIcon Grid.Column="0"
+                           Grid.Row="1"
+                           Margin="0, 0, 6, 0"
+                           Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}" />
 
             <TextBlock Grid.Column="1"
                        Grid.Row="1"
@@ -106,8 +109,8 @@
 
                 <!-- Kills -->
 
-                <controlElement:IconControl Margin="0, 0, 6, 0"
-                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+                <flat:FlatIcon Margin="0, 0, 6, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
@@ -115,7 +118,7 @@
 
                 <TextBlock Margin="0, 0, 6, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
-                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.PositiveRegular}}"
                            Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
                     <Run Text="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -129,16 +132,16 @@
 
                 <!-- Deaths -->
 
-                <controlElement:IconControl Margin="0, 0, 6, 0"
-                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+                <flat:FlatIcon Margin="0, 0, 6, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
                            Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                
+
                 <TextBlock Margin="0, 0, 6, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
-                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
+                           Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.NegativeRegular}}"
                            Visibility="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
                     <Run Text="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -152,8 +155,8 @@
 
                 <!-- Assists -->
 
-                <controlElement:IconControl Margin="0, 0, 6, 0"
-                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+                <flat:FlatIcon Margin="0, 0, 6, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}}" />
 
                 <TextBlock Margin="0, 0, 6, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
@@ -161,7 +164,7 @@
 
                 <TextBlock Margin="0, 0, 6, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerBlueSide}"
-                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.PositiveRegular}}"
                            Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
                     <Run Text="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
@@ -210,14 +213,13 @@
                        Margin="6, 0, 0, 0"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
                        DataContext="{Binding ElementName=This, Path=GoldComparisonHelper, Mode=OneWay}"
                        Text="{Binding Path=GoldRedSide, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
-            <controlElement:IconControl Grid.Column="1"
-                                        Grid.Row="1"
-                                        Margin="6, 0, 0, 0"
-                                        Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconCoins}}" />
+            <flat:FlatIcon Grid.Column="1"
+                           Grid.Row="1"
+                           Margin="6, 0, 0, 0"
+                           Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}" />
 
             <!-- /Gold -->
 
@@ -240,15 +242,15 @@
 
                 <TextBlock Margin="6, 0, 0, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
-                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.PositiveRegular}}"
                            Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
                     <Run Text="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                     <Run Text=")" />
                 </TextBlock>
 
-                <controlElement:IconControl Margin="6, 0, 0, 0"
-                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLKills}}" />
+                <flat:FlatIcon Margin="6, 0, 0, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}}" />
 
 
                 <!-- /Kills -->
@@ -261,18 +263,18 @@
                 <TextBlock Margin="6, 0, 0, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
-                
+
                 <TextBlock Margin="6, 0, 0, 0"
                            DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
-                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
+                           Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.NegativeRegular}}"
                            Visibility="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
                     <Run Text="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
                     <Run Text=")" />
                 </TextBlock>
 
-                <controlElement:IconControl Margin="6, 0, 0, 0"
-                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLDeaths}}" />
+                <flat:FlatIcon Margin="6, 0, 0, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}}" />
 
                 <!-- /Deaths -->
 
@@ -286,7 +288,7 @@
                            Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <TextBlock Margin="6, 0, 0, 0"
-                           Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.GreenRegular}}"
+                           Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.PositiveRegular}}"
                            DataContext="{Binding ElementName=This, Path=PlayerRedSide}"
                            Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
                     <Run Text="(+" />
@@ -294,8 +296,8 @@
                     <Run Text=")" />
                 </TextBlock>
 
-                <controlElement:IconControl Margin="6, 0, 0, 0"
-                                            Source="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.IconLoLAssists}}" />
+                <flat:FlatIcon Margin="6, 0, 0, 0"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}}" />
 
 
                 <!-- /Assists -->
@@ -325,8 +327,8 @@
 
         <local:LoLPositionView Grid.Column="6"
                                Margin="12, 0, 0, 0"
-                               MaxWidth="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                               MaxHeight="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
+                               MaxWidth="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
+                               MaxHeight="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
                                Position="{Binding ElementName=This, Path=Position}" />
 
 

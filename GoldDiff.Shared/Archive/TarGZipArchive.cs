@@ -2,7 +2,7 @@
 using System.IO;
 using System.IO.Compression;
 using System.Text;
-using GoldDiff.Shared.View.Model;
+using FlatXaml.Model;
 
 namespace GoldDiff.Shared.Archive
 {
@@ -11,7 +11,7 @@ namespace GoldDiff.Shared.Archive
     {
         private static int ChunkSize { get; } = 4096;
 
-        public static void ExtractToDirectory(FileInfo? archive, DirectoryInfo? outputDirectory, ProgressViewViewModel? progress)
+        public static void ExtractToDirectory(FileInfo? archive, DirectoryInfo? outputDirectory, Progression? progress)
         {
             if (archive == null)
             {
@@ -44,7 +44,7 @@ namespace GoldDiff.Shared.Archive
             progress.CurrentStepProgress = 1.0d;
         }
 
-        private static void Extract(Stream stream, DirectoryInfo outputDirectory, ProgressViewViewModel progress)
+        private static void Extract(Stream stream, DirectoryInfo outputDirectory, Progression progress)
         {
             // A GZipStream is not seekable, so copy it first to a MemoryStream
             using var gzip = new GZipStream(stream, CompressionMode.Decompress);
@@ -65,7 +65,7 @@ namespace GoldDiff.Shared.Archive
             ExtractTar(memStr, outputDirectory, progress);
         }
 
-        private static void ExtractTar(Stream stream, DirectoryInfo outputDirectory, ProgressViewViewModel progress)
+        private static void ExtractTar(Stream stream, DirectoryInfo outputDirectory, Progression progress)
         {
             var fileBuffer = new byte[ChunkSize];
             var buffer = new byte[100];

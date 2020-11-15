@@ -15,14 +15,14 @@ namespace GoldDiff.View
         public const string ActivePlayerOnBlueSideBackground = nameof(ActivePlayerOnBlueSideBackground);
         public const string ActivePlayerOnRedSideBackground = nameof(ActivePlayerOnRedSideBackground);
 
-        private static readonly DependencyProperty PrivateModelProperty =
-            DependencyProperty.Register(nameof(PrivateModel), typeof(GoldDifferenceWindowViewModel), MethodBase.GetCurrentMethod().DeclaringType);
-
         private GoldDifferenceWindowViewModel PrivateModel
         {
             get => GetValue(PrivateModelProperty) as GoldDifferenceWindowViewModel ?? throw new NullReferenceException($"{nameof(PrivateModel)} must not be {null}!");
             set => SetValue(PrivateModelProperty, value ?? throw new ArgumentNullException(nameof(value)));
         }
+
+        private static readonly DependencyProperty PrivateModelProperty =
+            DependencyProperty.Register(nameof(PrivateModel), typeof(GoldDifferenceWindowViewModel), MethodBase.GetCurrentMethod().DeclaringType);
 
         public GoldDifferenceWindowViewModel Model { get; }
 

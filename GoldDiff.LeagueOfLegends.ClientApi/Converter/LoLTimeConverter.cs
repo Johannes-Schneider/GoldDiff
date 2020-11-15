@@ -3,16 +3,16 @@ using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
-    internal sealed class LoLTimeConverter : ReadOnlyConverter<double>
+    internal sealed class LoLTimeConverter : JsonConverter<TimeSpan>
     {
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, TimeSpan value, JsonSerializer serializer)
         {
-            if (reader.Value is double value)
-            {
-                return TimeSpan.FromSeconds(value);
-            }
-            
-            throw new Exception($"Unable to convert {reader.Value} to {nameof(TimeSpan)}!");
+            writer.WriteValue(value.TotalSeconds);
+        }
+
+        public override TimeSpan ReadJson(JsonReader reader, Type objectType, TimeSpan existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            return TimeSpan.FromSeconds(reader.Value as double? ?? 0.0d);
         }
     }
 }

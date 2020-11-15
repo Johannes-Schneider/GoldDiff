@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.Diagnostics;
-using System.Reflection;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using FlatXaml.View;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.OperatingSystem;
-using GoldDiff.Shared.View.ControlElement;
+using GoldDiff.Shared.View.SharedTheme;
 using GoldDiff.View;
 using GoldDiff.View.Settings;
-using log4net;
 
 namespace GoldDiff
 {
@@ -19,15 +22,13 @@ namespace GoldDiff
     /// </summary>
     public partial class App
     {
-        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
         private const string TargetProcessName = "League of Legends";
 
         // private const string TargetProcessName = "notepad";
         private static TimeSpan ClientDataPollInterval { get; } = TimeSpan.FromMilliseconds(500);
         private MainWindow MyMainWindow { get; set; } = null!;
         private LoLStaticResourceCache LoLResourceCache { get; } = LoLStaticResourceCache.Load();
-        private ProcessEventWatcher ProcessEventWatcher { get; } = new ProcessEventWatcher();
+        private ProcessEventWatcher ProcessEventWatcher { get; } = new();
 
         private Process? _targetProcess;
         private LoLClientDataPollService? _clientDataPollService;
@@ -36,8 +37,6 @@ namespace GoldDiff
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
-            Log.Debug($"Application started.");
-
             InitializeUserInterface();
             await UpdateResourceCacheAsync();
             StartWaitingForTargetProcess();
@@ -45,11 +44,10 @@ namespace GoldDiff
 
         private void InitializeUserInterface()
         {
-            var theme = new ResourceDictionary
-                        {
-                            Source = new Uri(ViewSettings.Instance.ThemeResourceDictionaryLocation),
-                        };
-            Current.Resources.MergedDictionaries.Add(theme);
+            foreach (var themePart in ThemeSettings.Instance.LoadTheme())
+            {
+                Current.Resources.MergedDictionaries.Add(themePart);
+            }
 
             MyMainWindow = new MainWindow();
             MyMainWindow.Model.LeagueVersion = LoLResourceCache.CurrentVersion;
@@ -61,10 +59,10 @@ namespace GoldDiff
 
         private async Task UpdateResourceCacheAsync()
         {
-            var progressView = new ProgressView();
+            var progressView = new FlatProgression();
             MyMainWindow.Model.Content = progressView;
 
-            await LoLResourceCache.UpdateAsync(progressView.Controller);
+            await LoLResourceCache.UpdateAsync(progressView.Progression);
 
             MyMainWindow.Model.Content = null;
             MyMainWindow.Model.LeagueVersion = LoLResourceCache.CurrentVersion;
@@ -120,8 +118,6 @@ namespace GoldDiff
 
         private void TargetProcessStarted()
         {
-            Log.Info($"Target process ({TargetProcessName}) started.");
-
             _clientDataPollService?.Dispose();
             _clientDataPollService = new LoLClientDataPollService(ClientDataPollInterval);
             _clientDataPollService.GameDataReceived += ClientDataPollService_OnGameDataReceived;
@@ -138,8 +134,6 @@ namespace GoldDiff
 
         private void Game_OnInitialized(object sender, EventArgs e)
         {
-            Log.Info($"{nameof(LoLGame)} initialized.");
-
             Current.Dispatcher.Invoke(() =>
                                       {
                                           if (_goldDifferenceWindow != null)
@@ -166,8 +160,6 @@ namespace GoldDiff
 
         private void TargetProcessStopped()
         {
-            Log.Info($"Target process ({TargetProcessName}) stopped.");
-
             _game?.GameClientClosed();
             _clientDataPollService?.Dispose();
         }
@@ -177,6 +169,7 @@ namespace GoldDiff
             ProcessEventWatcher.Dispose();
             _clientDataPollService?.Dispose();
             ViewSettings.Instance.Save();
+            ThemeSettings.Instance.Save();
             base.OnExit(e);
         }
     }

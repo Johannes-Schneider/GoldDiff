@@ -3,20 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
-             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
-             xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
-             xmlns:system="clr-namespace:System;assembly=mscorlib"
-             xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
              xmlns:converter="clr-namespace:GoldDiff.View.Converter"
+             xmlns:flatConverter="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
+             xmlns:flat="clr-namespace:FlatXaml.View;assembly=FlatXaml"
              mc:Ignorable="d"
 
              x:Name="This"
 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
-        <sharedConverter:MultiplyDoubleConverter x:Key="HalfOf"
-                                                 Factor="0.5" />
+        <flatConverter:MultiplyDoubleConverter x:Key="HalfOf"
+                                               Factor="0.5" />
         <converter:IntToLoLGoldValueConverter x:Key="IntToLoLGoldValueConverter" />
     </UserControl.Resources>
 
@@ -31,28 +28,22 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <controlElement:IconControl Grid.Column="0"
-                                        Margin="3, 0, 3, 0"
-                                        Foreground="{Binding ElementName=This, Path=BlueSideForeground, Mode=OneWay}"
-                                        Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                        Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                        Source="{Binding ElementName=This, Path=GoldAdvantageBlueSideIcon, Mode=OneWay}" />
+            <flat:FlatIcon Grid.Column="0"
+                           Margin="3, 0, 3, 0"
+                           Foreground="{Binding ElementName=This, Path=BlueSideForeground, Mode=OneWay}"
+                           Source="{Binding ElementName=This, Path=GoldAdvantageBlueSideIcon, Mode=OneWay}" />
 
             <TextBlock Grid.Column="0"
                        Grid.ColumnSpan="3"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
-                       FontFamily="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontFamilyRegular}}"
-                       FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
                        Foreground="{Binding ElementName=This, Path=Foreground, Mode=OneWay}"
                        Text="{Binding ElementName=This, Path=GoldDifference, Converter={StaticResource IntToLoLGoldValueConverter}}" />
 
-            <controlElement:IconControl Grid.Column="2"
-                                        Margin="3, 0, 3, 0"
-                                        Foreground="{Binding ElementName=This, Path=RedSideForeground, Mode=OneWay}"
-                                        Width="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                        Height="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeRegular}}"
-                                        Source="{Binding ElementName=This, Path=GoldAdvantageRedSideIcon, Mode=OneWay}" />
+            <flat:FlatIcon Grid.Column="2"
+                           Margin="3, 0, 3, 0"
+                           Foreground="{Binding ElementName=This, Path=RedSideForeground, Mode=OneWay}"
+                           Source="{Binding ElementName=This, Path=GoldAdvantageRedSideIcon, Mode=OneWay}" />
         </Grid>
 
     </Border>

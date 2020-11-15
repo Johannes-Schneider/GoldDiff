@@ -1,14 +1,13 @@
-﻿using System.Reflection;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using GoldDiff.Shared.View;
-using GoldDiff.Shared.View.Theme;
+using FlatXaml.View;
+using GoldDiff.Shared.View.SharedTheme;
 
 namespace GoldDiff.View.Settings
 {
-    public partial class ViewSettingsDialog : GoldDiffDialog
+    public partial class ViewSettingsDialog : FlatDialog
     {
-        private static readonly DependencyProperty ThemeHasChangedProperty = DependencyProperty.Register(nameof(ThemeHasBeenChanged), typeof(bool), MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly DependencyProperty ThemeHasChangedProperty = DependencyProperty.Register(nameof(ThemeHasBeenChanged), typeof(bool), typeof(ViewSettingsDialog));
 
         private bool ThemeHasBeenChanged
         {
@@ -20,14 +19,14 @@ namespace GoldDiff.View.Settings
 
         public ViewSettingsDialog()
         {
-            InitialThemeValue = ViewSettings.Instance.Theme;
+            InitialThemeValue = ThemeSettings.Instance.Theme;
 
             InitializeComponent();
         }
 
         private void SelectTheme_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ThemeHasBeenChanged = ViewSettings.Instance.Theme != InitialThemeValue;
+            ThemeHasBeenChanged = ThemeSettings.Instance.Theme != InitialThemeValue;
         }
     }
 }

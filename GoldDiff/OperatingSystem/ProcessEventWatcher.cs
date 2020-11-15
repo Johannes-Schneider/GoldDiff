@@ -8,7 +8,7 @@ namespace GoldDiff.OperatingSystem
     {
         public event EventHandler<ProcessEventEventArguments>? ProcessStarted;
         public event EventHandler<ProcessEventEventArguments>? ProcessStopped;
-        
+
         private ManagementEventWatcher ProcessStartedEventWatcher { get; }
         private ManagementEventWatcher ProcessStoppedEventWatcher { get; }
 
@@ -55,7 +55,7 @@ namespace GoldDiff.OperatingSystem
 
             Task.Run(() => InvokeProcessEvent(e, ProcessStopped));
         }
-        
+
         private void InvokeProcessEvent(EventArrivedEventArgs eventArgs, EventHandler<ProcessEventEventArguments> eventHandler)
         {
             var processId = GetProcessIdFromManagementEvent(eventArgs);
@@ -91,7 +91,7 @@ namespace GoldDiff.OperatingSystem
         }
 
         private bool _isDisposed;
-        
+
         private void Dispose(bool disposing)
         {
             if (_isDisposed)

@@ -1,42 +1,41 @@
-﻿<view:GoldDiffDialog x:Class="GoldDiff.View.Settings.ViewSettingsDialog"
-                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                     xmlns:local="clr-namespace:GoldDiff.View.Settings"
-                     xmlns:view="clr-namespace:GoldDiff.Shared.View;assembly=GoldDiff.Shared"
-                     xmlns:properties="clr-namespace:GoldDiff.Properties"
-                     xmlns:markupExtension="clr-namespace:GoldDiff.Shared.View.MarkupExtension;assembly=GoldDiff.Shared"
-                     xmlns:theme="clr-namespace:GoldDiff.Shared.View.Theme;assembly=GoldDiff.Shared"
-                     xmlns:sharedProperties="clr-namespace:GoldDiff.Shared.Properties;assembly=GoldDiff.Shared"
-                     xmlns:converter="clr-namespace:GoldDiff.Shared.View.Converter;assembly=GoldDiff.Shared"
-                     xmlns:controlElement="clr-namespace:GoldDiff.Shared.View.ControlElement;assembly=GoldDiff.Shared"
-                     mc:Ignorable="d"
+﻿<flat:FlatDialog x:Class="GoldDiff.View.Settings.ViewSettingsDialog"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:local="clr-namespace:GoldDiff.View.Settings"
+                 xmlns:flat="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+                 xmlns:resource="clr-namespace:GoldDiff.View.Resource"
+                 xmlns:flatConverter="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
+                 xmlns:markupExtension="clr-namespace:FlatXaml.MarkupExtension;assembly=FlatXaml"
+                 xmlns:theme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml"
+                 xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme;assembly=GoldDiff.Shared"
+                 xmlns:sharedResource="clr-namespace:GoldDiff.Shared.View.SharedResource;assembly=GoldDiff.Shared"
+                 mc:Ignorable="d"
 
-                     x:Name="This">
+                 x:Name="This">
 
-    <view:GoldDiffDialog.Resources>
-        <converter:EnumerationToStringConverter x:Key="ThemeTypeToStringConverter"
-                                                EnumerationType="{x:Type theme:ThemeType}"
-                                                Localization="{x:Static sharedProperties:ThemeTypeResources.ResourceManager}" />
-        <converter:EnumerationToStringConverter x:Key="DisplayGoldTypeToStringConverter"
-                                                EnumerationType="{x:Type local:DisplayGoldType}"
-                                                Localization="{x:Static properties:DisplayGoldTypeResources.ResourceManager}" />
-        <converter:EnumerationToStringConverter x:Key="StayOnTopTypeToStringConverter"
-                                                EnumerationType="{x:Type local:StayOnTopType}"
-                                                Localization="{x:Static properties:StayOnTopTypeResources.ResourceManager}" />
-        <converter:BoolToVisibilityConverter x:Key="TrueToVisible"
-                                             TrueValue="Visible"
-                                             FalseValue="Collapsed" />
-    </view:GoldDiffDialog.Resources>
+    <Window.Resources>
+        <flatConverter:EnumerationToStringConverter x:Key="ThemeTypeToStringConverter"
+                                                    Enumeration="{x:Type sharedTheme:ThemeType}"
+                                                    Localization="{x:Static sharedResource:ThemeTypeResources.ResourceManager}" />
+        <flatConverter:EnumerationToStringConverter x:Key="DisplayGoldTypeToStringConverter"
+                                                    Enumeration="{x:Type local:DisplayGoldType}"
+                                                    Localization="{x:Static resource:DisplayGoldTypeResources.ResourceManager}" />
+        <flatConverter:EnumerationToStringConverter x:Key="StayOnTopTypeToStringConverter"
+                                                    Enumeration="{x:Type local:StayOnTopType}"
+                                                    Localization="{x:Static resource:StayOnTopTypeResources.ResourceManager}" />
+        <flatConverter:BoolToVisibilityConverter x:Key="TrueToVisible"
+                                                 TrueValue="Visible"
+                                                 FalseValue="Collapsed" />
+    </Window.Resources>
 
     <StackPanel Orientation="Vertical">
 
         <!-- General Settings -->
 
-        <GroupBox Margin="0, 0, 0, 0"
-                  Header="{Binding Source={x:Static properties:ViewSettingsDialogResources.LabelAppearanceSettings}}"
-                  Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultGroupBoxStyle}}">
+        <flat:FlatGroupBox Margin="0, 0, 0, 0"
+                           Header="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelAppearanceSettings}}">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -49,29 +48,27 @@
 
                 <!-- Theme -->
 
-                <Label Grid.Column="0"
-                       Grid.Row="0"
-                       Margin="0, 0, 0, 0"
-                       Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultLabelStyle}}"
-                       Content="{Binding Source={x:Static properties:ViewSettingsDialogResources.LabelTheme}}"
-                       Target="{Binding ElementName=SelectTheme}" />
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="0"
+                                Margin="0, 0, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelTheme}}"
+                                Target="{Binding ElementName=SelectTheme}" />
 
                 <StackPanel Grid.Column="1"
                             Grid.Row="0"
                             Margin="12, 0, 0, 0"
                             Orientation="Vertical">
 
-                    <ComboBox x:Name="SelectTheme"
-                              Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultComboBoxStyle}}"
-                              ItemsSource="{markupExtension:Enumeration EnumerationType={x:Type theme:ThemeType}, Localization={x:Static sharedProperties:ThemeTypeResources.ResourceManager}}"
-                              DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
-                              SelectedItem="{Binding Theme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ThemeTypeToStringConverter}}"
-                              SelectionChanged="SelectTheme_OnSelectionChanged" />
+                    <flat:FlatComboBox x:Name="SelectTheme"
+                                       ItemsSource="{markupExtension:Enumeration Enumeration={x:Type sharedTheme:ThemeType}, Localization={x:Static sharedResource:ThemeTypeResources.ResourceManager}}"
+                                       DataContext="{Binding Source={x:Static sharedTheme:ThemeSettings.Instance}}"
+                                       SelectedItem="{Binding Theme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ThemeTypeToStringConverter}}"
+                                       SelectionChanged="SelectTheme_OnSelectionChanged" />
 
                     <TextBlock Margin="0, 6, 0, 0"
-                               Foreground="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.RedRegular}}"
-                               FontSize="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.FontSizeHint}}"
-                               Text="{Binding Source={x:Static properties:ViewSettingsDialogResources.HintRestartIsRequired}}"
+                               Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.NegativeRegular}}"
+                               FontSize="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeHint}}"
+                               Text="{Binding Source={x:Static resource:ViewSettingsDialogResources.HintRestartIsRequired}}"
                                Visibility="{Binding ElementName=This, Path=ThemeHasBeenChanged, Converter={StaticResource TrueToVisible}}" />
 
                 </StackPanel>
@@ -79,15 +76,14 @@
                 <!-- /Theme -->
 
             </Grid>
-        </GroupBox>
+        </flat:FlatGroupBox>
 
         <!-- /General Settings -->
 
         <!-- Gold Difference Window Settings -->
 
-        <GroupBox Margin="0, 12, 0, 0"
-                  Header="{Binding Source={x:Static properties:ViewSettingsDialogResources.LabelGoldDifferenceWindowSettings}}"
-                  Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultGroupBoxStyle}}">
+        <flat:FlatGroupBox Margin="0, 12, 0, 0"
+                           Header="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelGoldDifferenceWindowSettings}}">
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -102,69 +98,63 @@
 
                 <!-- Stay On Top -->
 
-                <Label Grid.Column="0"
-                       Grid.Row="0"
-                       Margin="0, 0, 0, 0"
-                       Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultLabelStyle}}"
-                       Content="{Binding Source={x:Static properties:ViewSettingsDialogResources.LabelStayOnTop}}"
-                       Target="{Binding ElementName=SelectStayOnTop}" />
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="0"
+                                Margin="0, 0, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelStayOnTop}}"
+                                Target="{Binding ElementName=SelectStayOnTop}" />
 
-                <ComboBox x:Name="SelectStayOnTop"
-                          Grid.Column="1"
-                          Grid.Row="0"
-                          Margin="12, 0, 0, 0"
-                          Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultComboBoxStyle}}"
-                          ItemsSource="{markupExtension:Enumeration EnumerationType={x:Type local:StayOnTopType}, Localization={x:Static properties:StayOnTopTypeResources.ResourceManager}}"
-                          DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
-                          SelectedItem="{Binding GoldDifferenceWindowStayOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StayOnTopTypeToStringConverter}}" />
+                <flat:FlatComboBox x:Name="SelectStayOnTop"
+                                   Grid.Column="1"
+                                   Grid.Row="0"
+                                   Margin="12, 0, 0, 0"
+                                   ItemsSource="{markupExtension:Enumeration Enumeration={x:Type local:StayOnTopType}, Localization={x:Static resource:StayOnTopTypeResources.ResourceManager}}"
+                                   DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                   SelectedItem="{Binding GoldDifferenceWindowStayOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StayOnTopTypeToStringConverter}}" />
 
                 <!-- /Stay On Top -->
 
                 <!-- Gold Type -->
 
-                <Label Grid.Column="0"
-                       Grid.Row="1"
-                       Margin="0, 12, 0, 0"
-                       Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultLabelStyle}}"
-                       Content="{Binding Source={x:Static properties:ViewSettingsDialogResources.LabelGoldType}}"
-                       Target="{Binding ElementName=SelectGoldType}" />
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="1"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelGoldType}}"
+                                Target="{Binding ElementName=SelectGoldType}" />
 
-                <ComboBox x:Name="SelectGoldType"
-                          Grid.Column="1"
-                          Grid.Row="1"
-                          Margin="12, 12, 0, 0"
-                          Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultComboBoxStyle}}"
-                          ItemsSource="{markupExtension:Enumeration EnumerationType={x:Type local:DisplayGoldType}, Localization={x:Static properties:DisplayGoldTypeResources.ResourceManager}}"
-                          DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
-                          SelectedItem="{Binding DisplayGoldType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DisplayGoldTypeToStringConverter}}" />
+                <flat:FlatComboBox x:Name="SelectGoldType"
+                                   Grid.Column="1"
+                                   Grid.Row="1"
+                                   Margin="12, 12, 0, 0"
+                                   ItemsSource="{markupExtension:Enumeration Enumeration={x:Type local:DisplayGoldType}, Localization={x:Static resource:DisplayGoldTypeResources.ResourceManager}}"
+                                   DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                   SelectedItem="{Binding DisplayGoldType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DisplayGoldTypeToStringConverter}}" />
 
                 <!-- /Gold Type -->
 
                 <!-- Display Player Stats -->
 
-                <Label Grid.Column="0"
-                       Grid.Row="2"
-                       Margin="0, 12, 0, 0"
-                       Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultLabelStyle}}"
-                       Content="{Binding Source={x:Static properties:ViewSettingsDialogResources.LabelDisplayPlayerStats}}"
-                       Target="{Binding ElementName=SelectDisplayPlayerStats}" />
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="2"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayPlayerStats}}"
+                                Target="{Binding ElementName=SelectDisplayPlayerStats}" />
 
-                <controlElement:GoldDiffCheckBox x:Name="SelectDisplayPlayerStats"
-                                                 Grid.Column="1"
-                                                 Grid.Row="2"
-                                                 Margin="12, 12, 0, 0"
-                                                 HorizontalAlignment="Left"
-                                                 Style="{DynamicResource {x:Static view:GoldDiffSharedResourceKeys.DefaultGoldDiffCheckBoxStyle}}"
-                                                 DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
-                                                 IsChecked="{Binding DisplayPlayerStats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <flat:FlatIconCheckBox x:Name="SelectDisplayPlayerStats"
+                                       Grid.Column="1"
+                                       Grid.Row="2"
+                                       Margin="12, 12, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                       IsChecked="{Binding DisplayPlayerStats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <!-- /Display Player Stats -->
 
             </Grid>
 
-        </GroupBox>
+        </flat:FlatGroupBox>
 
         <!-- /Gold Difference Window Settings -->
 
     </StackPanel>
-</view:GoldDiffDialog>
+</flat:FlatDialog>
