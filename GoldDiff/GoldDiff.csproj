@@ -5,7 +5,7 @@
         <TargetFramework>net5.0-windows</TargetFramework>
         <UseWPF>true</UseWPF>
         <Nullable>enable</Nullable>
-        <PackageIcon>..\GoldDiff.Shared\View\SharedIcon\ApplicationIcon.ico</PackageIcon>
+        <ApplicationIcon>..\GoldDiff.Shared\View\SharedIcon\ApplicationIcon.ico</ApplicationIcon>
         <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
 
