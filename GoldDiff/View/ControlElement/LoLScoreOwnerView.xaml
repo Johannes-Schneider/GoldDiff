@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="GoldDiff.View.ControlElement.LoLScoreOwnerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
+             xmlns:settings="clr-namespace:GoldDiff.View.Settings"
+             xmlns:view="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+             xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
+             xmlns:theme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml"
+             xmlns:converter="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
+             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.SharedConverter;assembly=GoldDiff.Shared"
+             xmlns:leagueOfLegends="clr-namespace:GoldDiff.Shared.LeagueOfLegends;assembly=GoldDiff.Shared"
+             mc:Ignorable="d"
+
+             x:Name="This"
+             
+             VerticalAlignment="Center"
+
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <converter:BoolToVisibilityConverter x:Key="TrueToVisible"
+                                             TrueValue="Visible"
+                                             FalseValue="Collapsed" />
+        <converter:EqualityToVisibilityConverter x:Key="BlueSideTeamToVisible"
+                                                 TrueValue="Visible"
+                                                 FalseValue="Collapsed"
+                                                 CompareTo="{x:Static Member=leagueOfLegends:LoLTeamType.BlueSide}" />
+        <converter:EqualityToVisibilityConverter x:Key="RedSideTeamToVisible"
+                                                 TrueValue="Visible"
+                                                 FalseValue="Collapsed"
+                                                 CompareTo="{x:Static Member=leagueOfLegends:LoLTeamType.RedSide}" />
+        <sharedConverter:GreaterThanZeroToVisibilityConverter x:Key="GreaterThanZeroToVisibilityConverter"
+                                                              TrueValue="Visible"
+                                                              FalseValue="Collapsed" />
+    </UserControl.Resources>
+
+    <StackPanel Orientation="Horizontal"
+                VerticalAlignment="{Binding ElementName=This, Path=VerticalAlignment}"
+                HorizontalAlignment="{Binding ElementName=This, Path=HorizontalAlignment}">
+
+        <!-- Kills -->
+
+        <view:FlatIcon Margin="0, 0, 6, 0" 
+                       Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}}"
+                       Visibility="{Binding ElementName=This, Path=ScoreOwnerTeam, Converter={StaticResource BlueSideTeamToVisible}}" />
+
+        <TextBlock Margin="0, 0, 6, 0"
+                   DataContext="{Binding ElementName=This, Path=ScoreOwner}"
+                   Text="{Binding Path=Kills, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Border Visibility="{Binding ElementName=This, Path=DisplayScoresSinceLastItemAcquisition, Converter={StaticResource TrueToVisible}}">
+            <TextBlock Margin="0, 0, 6, 0"
+                       DataContext="{Binding ElementName=This, Path=ScoreOwner}"
+                       Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.PositiveRegular}}"
+                       Visibility="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                <Run Text="(+" />
+                <Run Text="{Binding Path=KillsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Run Text=")" />
+            </TextBlock>
+        </Border>
+
+        <view:FlatIcon Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLKills}}"
+                       Visibility="{Binding ElementName=This, Path=ScoreOwnerTeam, Converter={StaticResource RedSideTeamToVisible}}" />
+
+        <!-- /Kills -->
+
+        <TextBlock Margin="0, 0, 6, 0"
+                   Text="/" />
+
+        <!-- Deaths -->
+
+        <view:FlatIcon Margin="0, 0, 6, 0" 
+                       Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}}"
+                       Visibility="{Binding ElementName=This, Path=ScoreOwnerTeam, Converter={StaticResource BlueSideTeamToVisible}}" />
+
+        <TextBlock Margin="0, 0, 6, 0"
+                   DataContext="{Binding ElementName=This, Path=ScoreOwner}"
+                   Text="{Binding Path=Deaths, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Border Visibility="{Binding ElementName=This, Path=DisplayScoresSinceLastItemAcquisition, Converter={StaticResource TrueToVisible}}">
+            <TextBlock Margin="0, 0, 6, 0"
+                       DataContext="{Binding ElementName=This, Path=ScoreOwner}"
+                       Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.NegativeRegular}}"
+                       Visibility="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                <Run Text="(+" />
+                <Run Text="{Binding Path=DeathsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Run Text=")" />
+            </TextBlock>
+        </Border>
+
+        <view:FlatIcon Margin="0, 0, 6, 0" 
+                       Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDeaths}}"
+                       Visibility="{Binding ElementName=This, Path=ScoreOwnerTeam, Converter={StaticResource RedSideTeamToVisible}}" />
+
+        <!-- /Deaths -->
+
+        <TextBlock Margin="0, 0, 6, 0"
+                   Text="/" />
+
+        <!-- Assists -->
+
+        <view:FlatIcon Margin="0, 0, 6, 0" 
+                       Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}}"
+                       Visibility="{Binding ElementName=This, Path=ScoreOwnerTeam, Converter={StaticResource BlueSideTeamToVisible}}" />
+
+        <TextBlock Margin="0, 0, 6, 0"
+                   DataContext="{Binding ElementName=This, Path=ScoreOwner}"
+                   Text="{Binding Path=Assists, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
+        <Border Visibility="{Binding ElementName=This, Path=DisplayScoresSinceLastItemAcquisition, Converter={StaticResource TrueToVisible}}">
+            <TextBlock Margin="0, 0, 6, 0"
+                       DataContext="{Binding ElementName=This, Path=ScoreOwner}"
+                       Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.PositiveRegular}}"
+                       Visibility="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource GreaterThanZeroToVisibilityConverter}}">
+                <Run Text="(+" />
+                <Run Text="{Binding Path=AssistsSinceLastItemAcquisition, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Run Text=")" />
+            </TextBlock>
+        </Border>
+
+        <view:FlatIcon Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLAssists}}"
+                       Visibility="{Binding ElementName=This, Path=ScoreOwnerTeam, Converter={StaticResource RedSideTeamToVisible}}" />
+
+        <!-- /Assists -->
+
+    </StackPanel>
+</UserControl>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,7 +7,7 @@ using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.View.ControlElement
 {
-    public partial class PlayerGoldDifferenceView : UserControl
+    public partial class LoLPlayerGoldDifferenceView : UserControl
     {
         public class SwapPlayersEventArguments
         {
@@ -30,32 +29,13 @@ namespace GoldDiff.View.ControlElement
 
     #region public DepProps
 
-        public static readonly DependencyProperty PositionProperty = DependencyProperty.Register(nameof(Position), typeof(LoLPositionType), MethodBase.GetCurrentMethod().DeclaringType);
+        public static readonly DependencyProperty PositionProperty = DependencyProperty.Register(nameof(Position), typeof(LoLPositionType), typeof(LoLPlayerGoldDifferenceView));
 
-        public static readonly DependencyProperty PlayerBlueSideProperty = DependencyProperty.Register(nameof(PlayerBlueSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType,
-                                                                                                       new PropertyMetadata(PropertyChangedCallback));
+        public static readonly DependencyProperty PlayerBlueSideProperty = DependencyProperty.Register(nameof(PlayerBlueSide), typeof(LoLPlayer), typeof(LoLPlayerGoldDifferenceView));
 
-        public static readonly DependencyProperty PlayerRedSideProperty = DependencyProperty.Register(nameof(PlayerRedSide), typeof(LoLPlayer), MethodBase.GetCurrentMethod().DeclaringType,
-                                                                                                      new PropertyMetadata(PropertyChangedCallback));
+        public static readonly DependencyProperty PlayerRedSideProperty = DependencyProperty.Register(nameof(PlayerRedSide), typeof(LoLPlayer), typeof(LoLPlayerGoldDifferenceView));
 
-        public static readonly DependencyProperty CanSwapPlayersProperty = DependencyProperty.Register(nameof(CanSwapPlayers), typeof(bool), MethodBase.GetCurrentMethod().DeclaringType);
-
-        private static void PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (!(d is PlayerGoldDifferenceView playerGoldDifferenceView))
-            {
-                return;
-            }
-
-            if (e.Property.Name.Equals(nameof(PlayerBlueSide)))
-            {
-                playerGoldDifferenceView.GoldComparisonHelper.GoldOwnerBlueSide = e.NewValue as ILoLGoldOwner;
-            }
-            else if (e.Property.Name.Equals(nameof(PlayerRedSide)))
-            {
-                playerGoldDifferenceView.GoldComparisonHelper.GoldOwnerRedSide = e.NewValue as ILoLGoldOwner;
-            }
-        }
+        public static readonly DependencyProperty CanSwapPlayersProperty = DependencyProperty.Register(nameof(CanSwapPlayers), typeof(bool), typeof(LoLPlayerGoldDifferenceView));
 
         public LoLPositionType Position
         {
@@ -82,12 +62,9 @@ namespace GoldDiff.View.ControlElement
         }
 
     #endregion
-        
-        public GoldComparisonHelper GoldComparisonHelper { get; }
 
-        public PlayerGoldDifferenceView()
+        public LoLPlayerGoldDifferenceView()
         {
-            GoldComparisonHelper = new GoldComparisonHelper();
             InitializeComponent();
         }
 

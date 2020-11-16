@@ -4,7 +4,7 @@
                     xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme;assembly=GoldDiff.Shared"
                     xmlns:flatTheme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml">
 
-    <Style TargetType="{x:Type controlElement:GoldDifferenceView}">
+    <Style TargetType="{x:Type controlElement:LoLGoldOwnerGoldDifferenceView}">
         <Setter Property="BlueSideForeground" Value="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegular}}" />
         <Setter Property="RedSideForeground" Value="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegular}}" />
         <Setter Property="NoDifferenceForeground" Value="{DynamicResource {x:Static flatTheme:FlatThemeKeys.ForegroundRegular}}" />

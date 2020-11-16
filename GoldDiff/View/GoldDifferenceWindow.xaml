@@ -69,7 +69,7 @@
                 </LinearGradientBrush>
             </Border.Background>
 
-            <controlElement:TeamGoldDifferenceView TeamBlueSide="{Binding Path=TeamBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+            <controlElement:LoLTeamGoldDifferenceView TeamBlueSide="{Binding Path=TeamBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                    TeamRedSide="{Binding Path=TeamRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
         </Border>
@@ -80,7 +80,7 @@
                 BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                 Background="{Binding TopPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-            <controlElement:PlayerGoldDifferenceView Position="Top"
+            <controlElement:LoLPlayerGoldDifferenceView Position="Top"
                                                      PlayerBlueSide="{Binding TopPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      PlayerRedSide="{Binding TopPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
@@ -92,7 +92,7 @@
                 BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                 Background="{Binding JunglePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-            <controlElement:PlayerGoldDifferenceView Position="Jungle"
+            <controlElement:LoLPlayerGoldDifferenceView Position="Jungle"
                                                      PlayerBlueSide="{Binding JunglePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      PlayerRedSide="{Binding JunglePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
@@ -105,7 +105,7 @@
                 BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                 Background="{Binding MiddlePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-            <controlElement:PlayerGoldDifferenceView Position="Middle"
+            <controlElement:LoLPlayerGoldDifferenceView Position="Middle"
                                                      PlayerBlueSide="{Binding MiddlePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      PlayerRedSide="{Binding MiddlePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
@@ -118,7 +118,7 @@
                 BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                 Background="{Binding BottomPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-            <controlElement:PlayerGoldDifferenceView Position="Bottom"
+            <controlElement:LoLPlayerGoldDifferenceView Position="Bottom"
                                                      PlayerBlueSide="{Binding BottomPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      PlayerRedSide="{Binding BottomPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
@@ -131,7 +131,7 @@
                 BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                 Background="{Binding SupportPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-            <controlElement:PlayerGoldDifferenceView Position="Support"
+            <controlElement:LoLPlayerGoldDifferenceView Position="Support"
                                                      PlayerBlueSide="{Binding SupportPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      PlayerRedSide="{Binding SupportPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                                      SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />

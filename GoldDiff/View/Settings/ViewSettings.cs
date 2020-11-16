@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.AccessControl;
 using FlatXaml.Model;
 using Newtonsoft.Json;
 
@@ -38,6 +39,8 @@ namespace GoldDiff.View.Settings
         private ViewSettings() { }
 
     #endregion
+
+    #region GoldDifferenceWindow settings
 
         private StayOnTopType _goldDifferenceWindowStayOnTop = StayOnTopType.DuringGame;
 
@@ -86,6 +89,10 @@ namespace GoldDiff.View.Settings
 
         private DisplayGoldType _displayGoldType = DisplayGoldType.NonConsumable;
 
+    #endregion
+
+    #region ILoLGoldOwner settings
+
         [JsonProperty]
         public DisplayGoldType DisplayGoldType
         {
@@ -93,14 +100,48 @@ namespace GoldDiff.View.Settings
             set => MutateVerbose(ref _displayGoldType, value);
         }
 
-        private bool _displayPlayerStats = true;
+    #endregion
+
+    #region ILoLScoreOwnerSettings
+
+        private bool _displayPlayerScores = true;
 
         [JsonProperty]
-        public bool DisplayPlayerStats
+        public bool DisplayPlayerScores
         {
-            get => _displayPlayerStats;
-            set => MutateVerbose(ref _displayPlayerStats, value);
+            get => _displayPlayerScores;
+            set => MutateVerbose(ref _displayPlayerScores, value);
         }
+
+        private bool _displayPlayerScoresSinceLastItemAcquisition = true;
+
+        [JsonProperty]
+        public bool DisplayPlayerScoresSinceLastItemAcquisition
+        {
+            get => _displayPlayerScoresSinceLastItemAcquisition;
+            set => MutateVerbose(ref _displayPlayerScoresSinceLastItemAcquisition, value);
+        }
+
+        private bool _displayTeamScores = true;
+
+        [JsonProperty]
+        public bool DisplayTeamScores
+        {
+            get => _displayTeamScores;
+            set => MutateVerbose(ref _displayTeamScores, value);
+        }
+
+        private bool _displayTeamScoresSinceLastItemAcquisition = true;
+
+        [JsonProperty]
+        public bool DisplayTeamScoresSinceLastItemAcquisition
+        {
+            get => _displayTeamScoresSinceLastItemAcquisition;
+            set => MutateVerbose(ref _displayTeamScoresSinceLastItemAcquisition, value);
+        }
+
+    #endregion
+
 
         public void Save()
         {

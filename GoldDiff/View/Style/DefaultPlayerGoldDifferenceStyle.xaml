@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement">
 
-    <Style TargetType="{x:Type controlElement:PlayerGoldDifferenceView}">
+    <Style TargetType="{x:Type controlElement:LoLPlayerGoldDifferenceView}">
         <Setter Property="CanSwapPlayers" Value="True" />
     </Style>
 

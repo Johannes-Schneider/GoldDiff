@@ -22,7 +22,7 @@ namespace GoldDiff.View
         }
 
         private static readonly DependencyProperty PrivateModelProperty =
-            DependencyProperty.Register(nameof(PrivateModel), typeof(GoldDifferenceWindowViewModel), MethodBase.GetCurrentMethod().DeclaringType);
+            DependencyProperty.Register(nameof(PrivateModel), typeof(GoldDifferenceWindowViewModel), typeof(GoldDifferenceWindow));
 
         public GoldDifferenceWindowViewModel Model { get; }
 
@@ -43,7 +43,7 @@ namespace GoldDiff.View
             PrivateModel = Model;
         }
 
-        private void PlayerGoldDifferenceView_OnSwapPlayers(object sender, PlayerGoldDifferenceView.SwapPlayersEventArguments e)
+        private void PlayerGoldDifferenceView_OnSwapPlayers(object sender, LoLPlayerGoldDifferenceView.SwapPlayersEventArguments e)
         {
             if (e.PositionA == e.PositionB)
             {
