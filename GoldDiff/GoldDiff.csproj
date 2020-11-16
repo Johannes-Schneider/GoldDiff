@@ -1,226 +1,49 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{139ACFB3-39D8-4F28-999E-763C56D6B0BB}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
-    <RootNamespace>GoldDiff</RootNamespace>
-    <AssemblyName>GoldDiff</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Nullable>enable</Nullable>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <Win32Resource>
-    </Win32Resource>
-  </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>Resources\ApplicationIcon.ico</ApplicationIcon>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="log4net, Version=2.0.12.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a">
-      <HintPath>..\packages\log4net.2.0.12\lib\net45\log4net.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Management" />
-    <Reference Include="System.Management.Instrumentation" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xaml">
-      <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Data\ApplicationConstants.cs" />
-    <Compile Include="LeagueOfLegends\Game\ILoLClientGameDataConsumer.cs" />
-    <Compile Include="LeagueOfLegends\Game\ILoLGoldOwner.cs" />
-    <Compile Include="LeagueOfLegends\Game\ILoLItemOwner.cs" />
-    <Compile Include="LeagueOfLegends\Game\ILoLScoreOwner.cs" />
-    <Compile Include="LeagueOfLegends\Game\ItemsChangedEventArguments.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLClientDataPollService.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLConstants.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLGame.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLGameStateType.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLItem.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLPlayer.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLTeam.cs" />
-    <Compile Include="LeagueOfLegends\Game\LoLTeamFactory.cs" />
-    <Compile Include="LeagueOfLegends\StaticResource\LoLStaticChampion.cs" />
-    <Compile Include="LeagueOfLegends\StaticResource\LoLStaticItem.cs" />
-    <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache+CreateChampionIndex.cs" />
-    <Compile Include="LeagueOfLegends\StaticResource\LolStaticResourceCache+CreateItemIndex.cs" />
-    <Compile Include="LeagueOfLegends\StaticResource\LoLStaticResourceCache.cs" />
-    <Compile Include="OperatingSystem\ProcessEventEventArguments.cs" />
-    <Compile Include="OperatingSystem\ProcessEventWatcher.cs" />
-    <Compile Include="Properties\Annotations.cs" />
-    <Compile Include="Properties\DisplayGoldTypeResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>DisplayGoldTypeResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\LoLStaticResourceCacheResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>LoLStaticResourceCacheResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\MainWindowResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>MainWindowResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\StayOnTopTypeResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>StayOnTopTypeResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\ViewSettingsDialogResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ViewSettingsDialogResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="View\ControlElement\GoldComparisonHelper.cs" />
-    <Compile Include="View\ControlElement\GoldDifferenceView.xaml.cs">
-      <DependentUpon>GoldDifferenceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ControlElement\LoLPositionView.xaml.cs">
-      <DependentUpon>LoLPositionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ControlElement\PlayerGoldDifferenceView.xaml.cs">
-      <DependentUpon>PlayerGoldDifferenceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ControlElement\TeamGoldDifferenceView.xaml.cs">
-      <DependentUpon>TeamGoldDifferenceView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Controller\GoldDifferenceWindowController.cs" />
-    <Compile Include="View\Converter\IntToLoLGoldValueConverter.cs" />
-    <Compile Include="View\GoldDifferenceWindow.xaml.cs">
-      <DependentUpon>GoldDifferenceWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Model\GoldDifferenceWindowViewModel.cs" />
-    <Compile Include="View\Model\MainWindowViewModel.cs" />
-    <Compile Include="View\Settings\DisplayGoldType.cs" />
-    <Compile Include="View\Settings\StayOnTopType.cs" />
-    <Compile Include="View\Settings\ViewSettings.cs" />
-    <Compile Include="View\Settings\ViewSettingsDialog.xaml.cs">
-      <DependentUpon>ViewSettingsDialog.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <EmbeddedResource Include="Properties\DisplayGoldTypeResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>DisplayGoldTypeResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\LoLStaticResourceCacheResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoLStaticResourceCacheResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\MainWindowResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainWindowResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx" />
-    <EmbeddedResource Include="Properties\StayOnTopTypeResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StayOnTopTypeResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\ViewSettingsDialogResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>ViewSettingsDialogResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <Resource Include="log4net.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="View\ControlElement\GoldDifferenceView.xaml" />
-    <Page Include="View\ControlElement\LoLPositionView.xaml" />
-    <Page Include="View\ControlElement\PlayerGoldDifferenceView.xaml" />
-    <Page Include="View\ControlElement\TeamGoldDifferenceView.xaml" />
-    <Page Include="View\GoldDifferenceWindow.xaml" />
-    <Page Include="View\MainWindow.xaml" />
-    <Page Include="View\Settings\ViewSettingsDialog.xaml" />
-    <Page Include="View\Style\DefaultGoldDifferenceStyle.xaml" />
-    <Page Include="View\Style\DefaultLoLPositionStyle.xaml" />
-    <Page Include="View\Style\DefaultPlayerGoldDifferenceStyle.xaml" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GoldDiff.LeagueOfLegends.ClientApi\GoldDiff.LeagueOfLegends.ClientApi.csproj">
-      <Project>{60ccb9f2-29d2-4204-a516-528cd98ca894}</Project>
-      <Name>GoldDiff.LeagueOfLegends.ClientApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoldDiff.LeagueOfLegends.RemoteApi\GoldDiff.LeagueOfLegends.RemoteApi.csproj">
-      <Project>{1a3da65e-5bf1-4625-8bf4-f90de94b65c5}</Project>
-      <Name>GoldDiff.LeagueOfLegends.RemoteApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj">
-      <Project>{cbec5169-a4bc-4d1b-ab20-a55496ead63b}</Project>
-      <Name>GoldDiff.Shared</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ApplicationIcon.ico" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\GitInfo.2.1.2\build\GitInfo.targets" Condition="Exists('..\packages\GitInfo.2.1.2\build\GitInfo.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105.The missing file is {0}.</ErrorText>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <Nullable>enable</Nullable>
+        <ApplicationIcon>..\GoldDiff.Shared\View\SharedIcon\ApplicationIcon.ico</ApplicationIcon>
+        <NeutralLanguage>en</NeutralLanguage>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\GitInfo.2.1.2\build\GitInfo.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitInfo.2.1.2\build\GitInfo.targets'))" />
-  </Target>
+
+    <PropertyGroup>
+      <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FlatXaml\FlatXaml\FlatXaml.csproj" />
+      <ProjectReference Include="..\GoldDiff.LeagueOfLegends.ClientApi\GoldDiff.LeagueOfLegends.ClientApi.csproj" />
+      <ProjectReference Include="..\GoldDiff.LeagueOfLegends.RemoteApi\GoldDiff.LeagueOfLegends.RemoteApi.csproj" />
+      <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="GitInfo" Version="2.1.2">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="System.Management" Version="5.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="View\Resource\DisplayGoldTypeResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="View\Resource\LoLStaticResourceCacheResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="View\Resource\MainWindowResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="View\Resource\StayOnTopTypeResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="View\Resource\ViewSettingsDialogResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+      </EmbeddedResource>
+    </ItemGroup>
+
 </Project>

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using FlatXaml.Model;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.Shared.LeagueOfLegends;
-using GoldDiff.Shared.View.Model;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {

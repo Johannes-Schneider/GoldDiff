@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
+using FlatXaml.Model;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.Shared.LeagueOfLegends;
-using GoldDiff.Shared.View.Model;
 
 namespace GoldDiff.View.Model
 {

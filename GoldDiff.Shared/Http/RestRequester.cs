@@ -7,21 +7,23 @@ namespace GoldDiff.Shared.Http
 {
     public class RestRequester : IDisposable
     {
+        public static TimeSpan DefaultRequestTimeout { get; } = TimeSpan.FromMilliseconds(500);
+        
         private HttpClient Client { get; }
 
-        public RestRequester()
+        public RestRequester(TimeSpan requestTimeout)
         {
             Client = new HttpClient
                      {
-                         Timeout = TimeSpan.FromMilliseconds(500),
+                         Timeout = requestTimeout,
                      };
         }
 
-        public RestRequester(HttpClientHandler clientHandler)
+        public RestRequester(HttpClientHandler clientHandler, TimeSpan requestTimeout)
         {
             Client = new HttpClient(clientHandler ?? throw new ArgumentNullException(nameof(clientHandler)))
                      {
-                         Timeout = TimeSpan.FromMilliseconds(500),
+                         Timeout = requestTimeout,
                      };
         }
 

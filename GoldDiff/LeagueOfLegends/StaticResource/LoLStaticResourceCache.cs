@@ -4,12 +4,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using GoldDiff.LeagueOfLegends.Api;
-using GoldDiff.Properties;
+using FlatXaml.Model;
+using GoldDiff.View.Resource;
+using GoldDiff.LeagueOfLegends.RemoteApi;
 using GoldDiff.Shared.Archive;
 using GoldDiff.Shared.Http;
 using GoldDiff.Shared.LeagueOfLegends;
-using GoldDiff.Shared.View.Controller;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.StaticResource
@@ -37,7 +37,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
 
         [JsonProperty]
         public LoLVersion CurrentVersion { get; private set; }
-        
+
         [JsonProperty]
         private ConcurrentDictionary<string, int> ChampionNameToIdIndex { get; } = new ConcurrentDictionary<string, int>();
 
@@ -56,45 +56,45 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
         [JsonProperty]
         private int ImplementationVersion { get; set; }
 
-        public async Task UpdateAsync(ProgressViewController? progressViewController)
+        public async Task UpdateAsync(Progression? progression)
         {
-            if (progressViewController == null)
+            if (progression == null)
             {
-                throw new ArgumentNullException(nameof(progressViewController));
+                throw new ArgumentNullException(nameof(progression));
             }
 
-            progressViewController.Model.Title = LoLStaticResourceCacheResources.UpdateProgressTitle;
-            progressViewController.Model.TotalNumberOfSteps = 3;
+            progression.TotalNumberOfSteps = 3;
 
-            progressViewController.StartNextStep(LoLStaticResourceCacheResources.CheckForUpdatesProgressStepDescription);
+            progression.Headline = LoLStaticResourceCacheResources.UpdateProgressTitle;
+            progression.StartNextStep(LoLStaticResourceCacheResources.CheckForUpdatesProgressStepDescription);
             var latestGameVersion = await LoLRemoteEndpoint.Get.GetLatestVersionAsync();
             if (CurrentVersion >= latestGameVersion && ImplementationVersion >= LatestImplementationVersion)
             {
-                progressViewController.Done();
+                progression.Done();
                 return;
             }
-            
+
             if (CurrentVersion < latestGameVersion)
             {
-                progressViewController.Model.TotalNumberOfSteps += 1;
-                await DeleteOldStaticResourcesAsync(progressViewController, CurrentVersion);
+                progression.TotalNumberOfSteps += 1;
+                await DeleteOldStaticResourcesAsync(progression, CurrentVersion);
             }
 
             var resourceRootDirectory = StaticResourceRootDirectory(latestGameVersion);
             if (!Directory.Exists(StaticResourceRootDirectory(latestGameVersion)))
             {
-                progressViewController.Model.TotalNumberOfSteps += 3;
-                var resourceArchiveFile = await DownloadStaticResourcesAsync(progressViewController, latestGameVersion).ConfigureAwait(false);
-                await ExtractStaticResourcesAsync(progressViewController, latestGameVersion, resourceArchiveFile).ConfigureAwait(false);
-                
-                progressViewController.StartNextStep(LoLStaticResourceCacheResources.DeleteResourceArchiveProgressStepDescription);
+                progression.TotalNumberOfSteps += 3;
+                var resourceArchiveFile = await DownloadStaticResourcesAsync(progression, latestGameVersion).ConfigureAwait(false);
+                await ExtractStaticResourcesAsync(progression, latestGameVersion, resourceArchiveFile).ConfigureAwait(false);
+
+                progression.StartNextStep(LoLStaticResourceCacheResources.DeleteResourceArchiveProgressStepDescription);
                 await Task.Run(() => File.Delete(resourceArchiveFile)).ConfigureAwait(false);
             }
 
-            await Task.Run(() => CreateChampionIndex(progressViewController, latestGameVersion, resourceRootDirectory)).ConfigureAwait(false);
-            await Task.Run(() => CreateItemIndex(progressViewController, latestGameVersion, resourceRootDirectory)).ConfigureAwait(false);
+            await Task.Run(() => CreateChampionIndex(progression, latestGameVersion, resourceRootDirectory)).ConfigureAwait(false);
+            await Task.Run(() => CreateItemIndex(progression, latestGameVersion, resourceRootDirectory)).ConfigureAwait(false);
 
-            progressViewController.Done();
+            progression.Done();
             CurrentVersion = latestGameVersion;
             ImplementationVersion = LatestImplementationVersion;
 
@@ -113,9 +113,9 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             }
         }
 
-        private async Task DeleteOldStaticResourcesAsync(ProgressViewController progressViewController, LoLVersion gameVersion)
+        private async Task DeleteOldStaticResourcesAsync(Progression progression, LoLVersion gameVersion)
         {
-            progressViewController.StartNextStep(LoLStaticResourceCacheResources.DeleteOldStatisResourcesProgressStepDescription);
+            progression.StartNextStep(LoLStaticResourceCacheResources.DeleteOldStatisResourcesProgressStepDescription);
 
             var oldResourceRoot = Path.Combine(RootDirectory, gameVersion.ToString());
             if (Directory.Exists(oldResourceRoot))
@@ -123,7 +123,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
                 await Task.Run(() => Directory.Delete(oldResourceRoot, true)).ConfigureAwait(false);
             }
 
-            progressViewController.Model.CurrentStepProgress = 0.5d;
+            progression.CurrentStepProgress = 0.5d;
             if (File.Exists(Path.Combine(RootDirectory, $"{gameVersion}.tgz")))
             {
                 await Task.Run(() => File.Delete(Path.Combine(RootDirectory, $"{gameVersion}.tgz"))).ConfigureAwait(false);
@@ -133,12 +133,12 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
                 await Task.Run(() => File.Delete(Path.Combine(RootDirectory, $"{gameVersion}.zip"))).ConfigureAwait(false);
             }
 
-            progressViewController.Model.CurrentStepProgress = 1.0d;
+            progression.CurrentStepProgress = 1.0d;
         }
 
-        private async Task<string> DownloadStaticResourcesAsync(ProgressViewController progressViewController, LoLVersion gameVersion)
+        private async Task<string> DownloadStaticResourcesAsync(Progression progression, LoLVersion gameVersion)
         {
-            progressViewController.StartNextStep(LoLStaticResourceCacheResources.DownloadStaticResourcesProgressStepDescription);
+            progression.StartNextStep(LoLStaticResourceCacheResources.DownloadStaticResourcesProgressStepDescription);
 
             var downloadUrl = LoLRemoteEndpoint.Get.GetStaticResourceUrl(gameVersion);
             var fileExtension = downloadUrl.Split(new[] {"."}, StringSplitOptions.None).Last();
@@ -152,29 +152,29 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             var fileDownloader = new FileDownloader();
             fileDownloader.DownloadProgressChanged += (_, args) =>
                                                       {
-                                                          progressViewController.Model.CurrentStepProgress = args.Progress;
-                                                          progressViewController.Model.CurrentStepDescription = $"{LoLStaticResourceCacheResources.DownloadStaticResourcesProgressStepDescription} " +
-                                                                                                                $"({args.AverageDownloadSpeedInMBs:F1} MiB/s, " +
-                                                                                                                $"{LoLStaticResourceCacheResources.DownloadStaticResourcesRemainingTime}: {args.EstimatedRemainingTime.TotalSeconds:F0} s)";
+                                                          progression.CurrentStepProgress = args.Progress;
+                                                          progression.CurrentStepDescription = $"{LoLStaticResourceCacheResources.DownloadStaticResourcesProgressStepDescription} " +
+                                                                                               $"({args.AverageDownloadSpeedInMBs:F1} MiB/s, " +
+                                                                                               $"{LoLStaticResourceCacheResources.DownloadStaticResourcesRemainingTime}: {args.EstimatedRemainingTime.TotalSeconds:F0} s)";
                                                       };
             await fileDownloader.DownloadAsync(downloadUrl, targetFile);
             return targetFile;
         }
 
-        private async Task ExtractStaticResourcesAsync(ProgressViewController progressViewController, LoLVersion gameVersion, string staticResourceArchiveFile)
+        private async Task ExtractStaticResourcesAsync(Progression progression, LoLVersion gameVersion, string staticResourceArchiveFile)
         {
-            progressViewController.StartNextStep(LoLStaticResourceCacheResources.ExtractStaticResourcesProgressStepDescription);
+            progression.StartNextStep(LoLStaticResourceCacheResources.ExtractStaticResourcesProgressStepDescription);
 
             var targetDirectory = StaticResourceRootDirectory(gameVersion);
 
             var archiveFileExtension = Path.GetExtension(staticResourceArchiveFile);
             if (archiveFileExtension.Equals(".zip", StringComparison.InvariantCultureIgnoreCase))
             {
-                await Task.Run(() => ZipArchive.ExtractToDirectory(new FileInfo(staticResourceArchiveFile), new DirectoryInfo(targetDirectory), progressViewController.Model)).ConfigureAwait(false);
+                await Task.Run(() => ZipArchive.ExtractToDirectory(new FileInfo(staticResourceArchiveFile), new DirectoryInfo(targetDirectory), progression)).ConfigureAwait(false);
             }
             else
             {
-                await Task.Run(() => TarGZipArchive.ExtractToDirectory(new FileInfo(staticResourceArchiveFile), new DirectoryInfo(targetDirectory), progressViewController.Model)).ConfigureAwait(false);
+                await Task.Run(() => TarGZipArchive.ExtractToDirectory(new FileInfo(staticResourceArchiveFile), new DirectoryInfo(targetDirectory), progression)).ConfigureAwait(false);
             }
         }
 

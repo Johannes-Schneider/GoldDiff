@@ -1,7 +1,6 @@
 ﻿using System;
 using System.IO;
-using GoldDiff.Shared.View.Model;
-using GoldDiff.Shared.View.Theme;
+using FlatXaml.Model;
 using Newtonsoft.Json;
 
 namespace GoldDiff.View.Settings
@@ -39,22 +38,6 @@ namespace GoldDiff.View.Settings
         private ViewSettings() { }
 
     #endregion
-
-        private ThemeType _theme = ThemeType.Light;
-
-        public ThemeType Theme
-        {
-            get => _theme;
-            set => MutateVerbose(ref _theme, value);
-        }
-
-        [JsonProperty]
-        public string ThemeResourceDictionaryLocation => Theme switch
-                                                         {
-                                                             ThemeType.Light => @"pack://application:,,,/GoldDiff.Shared;component/View/Theme/Light.xaml",
-                                                             ThemeType.Dark => @"pack://application:,,,/GoldDiff.Shared;component/View/Theme/Dark.xaml",
-                                                             _ => throw new Exception($"Unknown {nameof(ThemeType)} {Theme}!"),
-                                                         };
 
         private StayOnTopType _goldDifferenceWindowStayOnTop = StayOnTopType.DuringGame;
 

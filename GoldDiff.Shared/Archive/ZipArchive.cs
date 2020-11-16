@@ -1,13 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.IO.Compression;
-using GoldDiff.Shared.View.Model;
+using FlatXaml.Model;
 
 namespace GoldDiff.Shared.Archive
 {
     public class ZipArchive
     {
-        public static void ExtractToDirectory(FileInfo? archive, DirectoryInfo? outputDirectory, ProgressViewViewModel? progress)
+        public static void ExtractToDirectory(FileInfo? archive, DirectoryInfo? outputDirectory, Progression? progress)
         {
             if (archive == null)
             {
@@ -32,7 +32,7 @@ namespace GoldDiff.Shared.Archive
             Extract(archive, outputDirectory, progress);
         }
 
-        private static void Extract(FileInfo source, DirectoryInfo destination, ProgressViewViewModel progress)
+        private static void Extract(FileInfo source, DirectoryInfo destination, Progression progress)
         {
             if (Directory.Exists(destination.FullName))
             {

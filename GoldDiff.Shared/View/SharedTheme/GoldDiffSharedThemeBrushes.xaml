@@ -1,0 +1,21 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme">
+
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideDark}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideDarkColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegular}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegularColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideLight}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideLightColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideDisabled}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideDisabledColor}}" />
+
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideDark}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideDarkColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegular}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegularColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideLight}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideLightColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideDisabled}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideDisabledColor}}" />
+
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerDark}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerDarkColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerRegular}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerRegularColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerLight}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerLightColor}}" />
+    <SolidColorBrush options:Freeze="True" x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerDisabled}" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerDisabledColor}}" />
+
+</ResourceDictionary>

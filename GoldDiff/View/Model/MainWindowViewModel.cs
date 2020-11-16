@@ -1,5 +1,5 @@
-﻿using GoldDiff.Shared.LeagueOfLegends;
-using GoldDiff.Shared.View.Model;
+﻿using FlatXaml.Model;
+using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.View.Model
 {

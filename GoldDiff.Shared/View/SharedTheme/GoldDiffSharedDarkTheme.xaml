@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/SharedTheme/GoldDiffSharedLightTheme.xaml" />
+        <ResourceDictionary>
+            <!-- Colors -->
+
+            <!-- /Colors -->
+        </ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/SharedTheme/GoldDiffSharedThemeBrushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

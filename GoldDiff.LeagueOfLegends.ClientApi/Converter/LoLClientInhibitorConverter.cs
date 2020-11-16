@@ -1,84 +1,40 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reflection;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.Shared.LeagueOfLegends;
-using log4net;
+using GoldDiff.Shared.Utility;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
-    internal sealed class LoLClientInhibitorConverter : ReadOnlyConverter<string>
+    internal sealed class LoLClientInhibitorConverter : JsonConverter<LoLClientInhibitor>
     {
-        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-        
-        private static string[] TokenSeparator { get; } = {"_"};
+        private const string StringPrefix = "Barracks";
+        private const string TokenSeparator = "_";
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        private static BidirectionalStringMapping<LoLTeamType> TeamMapping { get; } = new((LoLTeamType.Undefined, "UNDEFINED"),
+                                                                                          (LoLTeamType.BlueSide, "T1"),
+                                                                                          (LoLTeamType.RedSide, "T2"));
+
+        private static BidirectionalStringMapping<LoLClientInhibitorTier> TierMapping { get; } = new((LoLClientInhibitorTier.Undefined, "UNDEFINED"),
+                                                                                                     (LoLClientInhibitorTier.Top, "L1"),
+                                                                                                     (LoLClientInhibitorTier.Middle, "C1"),
+                                                                                                     (LoLClientInhibitorTier.Bottom, "R1"));
+        public override void WriteJson(JsonWriter writer, LoLClientInhibitor value, JsonSerializer serializer)
         {
-            if (!(reader.Value is string value))
-            {
-                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientInhibitor)}!");
-                return new LoLClientInhibitor
-                       {
-                           Team = LoLTeamType.Undefined,
-                           Tier = LoLClientInhibitorTier.Undefined,
-                       };
-            }
+            writer.WriteValue(string.Join(TokenSeparator, StringPrefix, TeamMapping.Get(value.Team), TierMapping.Get(value.Tier)));
+        }
 
-            var tokens = value.Split(TokenSeparator, StringSplitOptions.None);
-            if (tokens.Length != 3)
-            {
-                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientInhibitor)}!");
-                return new LoLClientInhibitor
-                       {
-                           Team = LoLTeamType.Undefined,
-                           Tier = LoLClientInhibitorTier.Undefined,
-                       };
-            }
-
-            var team = GetTeam(tokens[1]);
-            var tier = GetTier(tokens[2]);
+        public override LoLClientInhibitor ReadJson(JsonReader reader, Type objectType, LoLClientInhibitor existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            var value = reader.Value as string;
+            var tokens = value?.Split(TokenSeparator) ?? Array.Empty<string>();
+            var team = tokens.Length == 3 ? TeamMapping.Get(tokens[1]) : LoLTeamType.Undefined;
+            var tier = tokens.Length == 3 ? TierMapping.Get(tokens[2]) : LoLClientInhibitorTier.Undefined;
             return new LoLClientInhibitor
                    {
                        Team = team,
                        Tier = tier,
                    };
-        }
-
-        private LoLTeamType GetTeam(string token)
-        {
-            if (token.Equals("T1", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return LoLTeamType.BlueSide;
-            }
-
-            if (token.Equals("T2", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return LoLTeamType.RedSide;
-            }
-
-            return LoLTeamType.Undefined;
-        }
-
-        private LoLClientInhibitorTier GetTier(string token)
-        {
-            if (token.Equals("L1", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return LoLClientInhibitorTier.Top;
-            }
-
-            if (token.Equals("C1", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return LoLClientInhibitorTier.Middle;
-            }
-
-            if (token.Equals("R1", StringComparison.CurrentCultureIgnoreCase))
-            {
-                return LoLClientInhibitorTier.Bottom;
-            }
-
-            return LoLClientInhibitorTier.Undefined;
         }
     }
 }

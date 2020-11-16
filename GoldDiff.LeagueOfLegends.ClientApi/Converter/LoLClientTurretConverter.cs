@@ -1,207 +1,77 @@
 ﻿using System;
-using System.Reflection;
+using System.Collections.Generic;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.Shared.LeagueOfLegends;
-using log4net;
+using GoldDiff.Shared.Utility;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
 {
-    internal sealed class LoLClientTurretConverter : ReadOnlyConverter<string>
+    internal sealed class LoLClientTurretConverter : JsonConverter<LoLClientTurret>
     {
-        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private const string StringPrefix = "Turret";
+        private const string StringPostfix = "A";
+        private const string TokenSeparator = "_";
 
-        private static string[] TokenSeparator { get; } = {"_"};
+        private static BidirectionalStringMapping<LoLTeamType> TeamMapping { get; } = new((LoLTeamType.Undefined, "UNDEFINED"),
+                                                                                          (LoLTeamType.BlueSide, "T1"),
+                                                                                          (LoLTeamType.RedSide, "T2"));
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        private static Dictionary<LoLTeamType, BidirectionalStringMapping<LoLClientTurretTier>> TurretTierMapping { get; }
+
+        static LoLClientTurretConverter()
         {
-            if (!(reader.Value is string value))
-            {
-                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientTurret)}!");
-                return new LoLClientTurret
-                       {
-                           Team = LoLTeamType.Undefined,
-                           Tier = LoLClientTurretTier.Undefined,
-                       };
-            }
+            var blueTiers = new BidirectionalStringMapping<LoLClientTurretTier>((LoLClientTurretTier.Undefined, "UNDEFINED"),
+                                                                                (LoLClientTurretTier.TopOuter, $"L{TokenSeparator}03"),
+                                                                                (LoLClientTurretTier.TopInner, $"L{TokenSeparator}02"),
+                                                                                (LoLClientTurretTier.TopInhibitor, $"L{TokenSeparator}01"),
+                                                                                (LoLClientTurretTier.MiddleOuter, $"C{TokenSeparator}05"),
+                                                                                (LoLClientTurretTier.MiddleInner, $"C{TokenSeparator}04"),
+                                                                                (LoLClientTurretTier.MiddleInhibitor, $"C{TokenSeparator}03"),
+                                                                                (LoLClientTurretTier.MiddleNexusBottom, $"C{TokenSeparator}02"),
+                                                                                (LoLClientTurretTier.MiddleNexusTop, $"C{TokenSeparator}01"),
+                                                                                (LoLClientTurretTier.BottomOuter, $"R{TokenSeparator}03"),
+                                                                                (LoLClientTurretTier.BottomInner, $"R{TokenSeparator}02"),
+                                                                                (LoLClientTurretTier.BottomInhibitor, $"R{TokenSeparator}01"));
 
-            var tokens = value.Split(TokenSeparator, StringSplitOptions.None);
-            if (tokens.Length != 5)
-            {
-                Log.Error($"Unable to convert {reader.Value} to {nameof(LoLClientTurret)}!");
-                return new LoLClientTurret
-                       {
-                           Team = LoLTeamType.Undefined,
-                           Tier = LoLClientTurretTier.Undefined,
-                       };
-            }
+            var redTiers = new BidirectionalStringMapping<LoLClientTurretTier>((LoLClientTurretTier.Undefined, "UNDEFINED"),
+                                                                               (LoLClientTurretTier.TopOuter, $"R{TokenSeparator}03"),
+                                                                               (LoLClientTurretTier.TopInner, $"R{TokenSeparator}02"),
+                                                                               (LoLClientTurretTier.TopInhibitor, $"R{TokenSeparator}01"),
+                                                                               (LoLClientTurretTier.MiddleOuter, $"C{TokenSeparator}05"),
+                                                                               (LoLClientTurretTier.MiddleInner, $"C{TokenSeparator}04"),
+                                                                               (LoLClientTurretTier.MiddleInhibitor, $"C{TokenSeparator}03"),
+                                                                               (LoLClientTurretTier.MiddleNexusTop, $"C{TokenSeparator}02"),
+                                                                               (LoLClientTurretTier.MiddleNexusBottom, $"C{TokenSeparator}01"),
+                                                                               (LoLClientTurretTier.BottomOuter, $"L{TokenSeparator}03"),
+                                                                               (LoLClientTurretTier.BottomInner, $"L{TokenSeparator}02"),
+                                                                               (LoLClientTurretTier.BottomInhibitor, $"L{TokenSeparator}01"));
 
-            var team = GetTeam(tokens[1]);
-            var tier = GetTurretTier(tokens[2], tokens[3], team);
+            TurretTierMapping = new Dictionary<LoLTeamType, BidirectionalStringMapping<LoLClientTurretTier>>
+                                {
+                                    {LoLTeamType.BlueSide, blueTiers},
+                                    {LoLTeamType.RedSide, redTiers},
+                                    {LoLTeamType.Undefined, new BidirectionalStringMapping<LoLClientTurretTier>((LoLClientTurretTier.Undefined, "UNDEFINED"))},
+                                };
+        }
 
+        public override void WriteJson(JsonWriter writer, LoLClientTurret value, JsonSerializer serializer)
+        {
+            writer.WriteValue(string.Join(TokenSeparator, StringPrefix, TeamMapping.Get(value.Team), TurretTierMapping[value.Team].Get(value.Tier), StringPostfix));
+        }
+
+        public override LoLClientTurret ReadJson(JsonReader reader, Type objectType, LoLClientTurret existingValue, bool hasExistingValue, JsonSerializer serializer)
+        {
+            var value = reader.Value as string;
+            var tokens = value?.Split(TokenSeparator) ?? Array.Empty<string>();
+
+            var team = tokens.Length == 5 ? TeamMapping.Get(tokens[1]) : LoLTeamType.Undefined;
+            var tier = tokens.Length == 5 ? TurretTierMapping[team].Get(string.Join(TokenSeparator, tokens[2], tokens[3])) : LoLClientTurretTier.Undefined;
             return new LoLClientTurret
                    {
                        Team = team,
                        Tier = tier,
                    };
-        }
-
-        private LoLTeamType GetTeam(string token)
-        {
-            if (token.Equals("T1", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return LoLTeamType.BlueSide;
-            }
-
-            if (token.Equals("T2", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return LoLTeamType.RedSide;
-            }
-
-            return LoLTeamType.Undefined;
-        }
-
-        private LoLClientTurretTier GetTurretTier(string relativeLane, string tier, LoLTeamType team)
-        {
-            switch (team)
-            {
-                case LoLTeamType.BlueSide when relativeLane.Equals("L", StringComparison.InvariantCultureIgnoreCase):
-                {
-                    if (tier.Equals("03", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.TopOuter;
-                    }
-
-                    if (tier.Equals("02", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.TopInner;
-                    }
-
-                    if (tier.Equals("01", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.TopInhibitor;
-                    }
-
-                    break;
-                }
-                case LoLTeamType.BlueSide when relativeLane.Equals("R", StringComparison.InvariantCultureIgnoreCase):
-                {
-                    if (tier.Equals("03", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.BottomOuter;
-                    }
-
-                    if (tier.Equals("02", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.BottomInner;
-                    }
-
-                    if (tier.Equals("01", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.BottomInhibitor;
-                    }
-
-                    break;
-                }
-                case LoLTeamType.BlueSide when relativeLane.Equals("C", StringComparison.InvariantCultureIgnoreCase):
-                {
-                    if (tier.Equals("05", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleOuter;
-                    }
-
-                    if (tier.Equals("04", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleInner;
-                    }
-
-                    if (tier.Equals("03", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleInhibitor;
-                    }
-
-                    if (tier.Equals("02", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleNexusBottom;
-                    }
-
-                    if (tier.Equals("01", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleNexusTop;
-                    }
-
-                    break;
-                }
-                case LoLTeamType.RedSide when relativeLane.Equals("R", StringComparison.InvariantCultureIgnoreCase):
-                {
-                    if (tier.Equals("03", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.TopOuter;
-                    }
-
-                    if (tier.Equals("02", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.TopInner;
-                    }
-
-                    if (tier.Equals("01", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.TopInhibitor;
-                    }
-
-                    break;
-                }
-                case LoLTeamType.RedSide when relativeLane.Equals("L", StringComparison.InvariantCultureIgnoreCase):
-                {
-                    if (tier.Equals("03", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.BottomOuter;
-                    }
-
-                    if (tier.Equals("02", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.BottomInner;
-                    }
-
-                    if (tier.Equals("01", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.BottomInhibitor;
-                    }
-
-                    break;
-                }
-                case LoLTeamType.RedSide when relativeLane.Equals("C", StringComparison.InvariantCultureIgnoreCase):
-                {
-                    if (tier.Equals("05", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleOuter;
-                    }
-
-                    if (tier.Equals("04", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleInner;
-                    }
-
-                    if (tier.Equals("03", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleInhibitor;
-                    }
-
-                    if (tier.Equals("02", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleNexusTop;
-                    }
-
-                    if (tier.Equals("01", StringComparison.InvariantCultureIgnoreCase))
-                    {
-                        return LoLClientTurretTier.MiddleNexusBottom;
-                    }
-
-                    break;
-                }
-            }
-
-            return LoLClientTurretTier.Undefined;
         }
     }
 }

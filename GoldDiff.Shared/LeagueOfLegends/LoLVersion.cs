@@ -77,7 +77,7 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
         public override int GetHashCode()
         {
-            return Components.GetHashCode();
+            return HashCode.Combine(Components);
         }
 
     #endregion

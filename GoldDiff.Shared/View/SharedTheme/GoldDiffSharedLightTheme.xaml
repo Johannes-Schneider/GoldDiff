@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary>
+            <!-- Colors -->
+
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideDarkColor}">#1371a5</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegularColor}">#579fd7</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideLightColor}">#8cd0ff</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideDisabledColor}">#004676</Color>
+
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideDarkColor}">#ab000d</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegularColor}">#e53935</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideLightColor}">#ff6f60</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideDisabledColor}">#740000</Color>
+
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerDarkColor}">#c7a600</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerRegularColor}">#ffd700</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerLightColor}">#ffff52</Color>
+            <Color x:Key="{x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerDisabledColor}">#927800</Color>
+
+            <!-- /Colors -->
+        </ResourceDictionary>
+        <ResourceDictionary Source="pack://application:,,,/GoldDiff.Shared;component/View/SharedTheme/GoldDiffSharedThemeBrushes.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

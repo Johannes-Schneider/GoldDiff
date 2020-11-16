@@ -9,6 +9,8 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
 {
     public sealed class LoLClientEndpoint : IDisposable
     {
+        private static TimeSpan RequestTimeout { get; } = TimeSpan.FromMilliseconds(500);
+
         private const string ClientCertificateThumbprint = "8259aafd8f71a809d2b154dd1cdb492981e448bd";
         private const string Host = "https://127.0.0.1:2999/liveclientdata";
 
@@ -28,17 +30,17 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
             Requester = new RestRequester(new HttpClientHandler
                                           {
                                               ServerCertificateCustomValidationCallback = ValidateServerCertificate,
-                                          });
+                                          }, RequestTimeout);
         }
 
-        private static bool ValidateServerCertificate(HttpRequestMessage message, X509Certificate2 certificate, X509Chain chain, SslPolicyErrors errors)
+        private static bool ValidateServerCertificate(HttpRequestMessage message, X509Certificate2? certificate, X509Chain? chain, SslPolicyErrors errors)
         {
             if (errors == SslPolicyErrors.None)
             {
                 return true;
             }
 
-            if (certificate?.Thumbprint?.Equals(ClientCertificateThumbprint, StringComparison.OrdinalIgnoreCase) == true)
+            if (certificate?.Thumbprint.Equals(ClientCertificateThumbprint, StringComparison.OrdinalIgnoreCase) == true)
             {
                 return true;
             }

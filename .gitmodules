@@ -1,0 +1,3 @@
+[submodule "FlatXaml"]
+	path = FlatXaml
+	url = https://github.com/Johannes-Schneider/FlatXaml.git

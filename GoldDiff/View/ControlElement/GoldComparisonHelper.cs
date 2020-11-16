@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using GoldDiff.Annotations;
+using FlatXaml.Annotations;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.View.Settings;
 
@@ -13,16 +12,40 @@ namespace GoldDiff.View.ControlElement
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public static readonly DependencyProperty GoldOwnerBlueSideProperty =  DependencyProperty.Register(nameof(GoldOwnerBlueSide), typeof(ILoLGoldOwner), MethodBase.GetCurrentMethod().DeclaringType,
-                                                                                                           new PropertyMetadata(PropertyChangedCallback));
-        
-        public static readonly DependencyProperty GoldOwnerRedSideProperty =  DependencyProperty.Register(nameof(GoldOwnerRedSide), typeof(ILoLGoldOwner), MethodBase.GetCurrentMethod().DeclaringType,
-                                                                                                           new PropertyMetadata(PropertyChangedCallback));
-        
-        public static readonly DependencyProperty GoldBlueSideProperty = DependencyProperty.Register(nameof(GoldBlueSide), typeof(int), MethodBase.GetCurrentMethod().DeclaringType,
+        public ILoLGoldOwner? GoldOwnerBlueSide
+        {
+            get => GetValue(GoldOwnerBlueSideProperty) as ILoLGoldOwner;
+            set => SetValue(GoldOwnerBlueSideProperty, value);
+        }
+
+        public static readonly DependencyProperty GoldOwnerBlueSideProperty = DependencyProperty.Register(nameof(GoldOwnerBlueSide), typeof(ILoLGoldOwner), typeof(GoldComparisonHelper),
+                                                                                                          new PropertyMetadata(PropertyChangedCallback));
+
+        public ILoLGoldOwner? GoldOwnerRedSide
+        {
+            get => GetValue(GoldOwnerRedSideProperty) as ILoLGoldOwner;
+            set => SetValue(GoldOwnerRedSideProperty, value);
+        }
+
+        public static readonly DependencyProperty GoldOwnerRedSideProperty = DependencyProperty.Register(nameof(GoldOwnerRedSide), typeof(ILoLGoldOwner), typeof(GoldComparisonHelper),
+                                                                                                         new PropertyMetadata(PropertyChangedCallback));
+
+        public int GoldBlueSide
+        {
+            get => (int) GetValue(GoldBlueSideProperty);
+            private set => SetValue(GoldBlueSideProperty, value);
+        }
+
+        public static readonly DependencyProperty GoldBlueSideProperty = DependencyProperty.Register(nameof(GoldBlueSide), typeof(int), typeof(GoldComparisonHelper),
                                                                                                      new PropertyMetadata(PropertyChangedCallback));
-        
-        public static readonly DependencyProperty GoldRedSideProperty = DependencyProperty.Register(nameof(GoldRedSide), typeof(int), MethodBase.GetCurrentMethod().DeclaringType,
+
+        public int GoldRedSide
+        {
+            get => (int) GetValue(GoldRedSideProperty);
+            private set => SetValue(GoldRedSideProperty, value);
+        }
+
+        public static readonly DependencyProperty GoldRedSideProperty = DependencyProperty.Register(nameof(GoldRedSide), typeof(int), typeof(GoldComparisonHelper),
                                                                                                     new PropertyMetadata(PropertyChangedCallback));
 
         private static void PropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -36,32 +59,8 @@ namespace GoldDiff.View.ControlElement
             {
                 goldComparisonHelper.OnGoldOwnerChanged(e.OldValue as ILoLGoldOwner, e.NewValue as ILoLGoldOwner);
             }
-            
+
             goldComparisonHelper.OnPropertyChanged(e.Property.Name);
-        }
-
-        public ILoLGoldOwner? GoldOwnerBlueSide
-        {
-            get => GetValue(GoldOwnerBlueSideProperty) as ILoLGoldOwner;
-            set => SetValue(GoldOwnerBlueSideProperty, value);
-        }
-
-        public ILoLGoldOwner? GoldOwnerRedSide
-        {
-            get => GetValue(GoldOwnerRedSideProperty) as ILoLGoldOwner;
-            set => SetValue(GoldOwnerRedSideProperty, value);
-        }
-
-        public int GoldBlueSide
-        {
-            get => (int) GetValue(GoldBlueSideProperty);
-            private set => SetValue(GoldBlueSideProperty, value);
-        }
-
-        public int GoldRedSide
-        {
-            get => (int) GetValue(GoldRedSideProperty);
-            private set => SetValue(GoldRedSideProperty, value);
         }
 
         public GoldComparisonHelper()
@@ -72,7 +71,8 @@ namespace GoldDiff.View.ControlElement
 
         private void ViewSettings_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals(nameof(ViewSettings.DisplayGoldType)))
+            if (string.IsNullOrEmpty(e.PropertyName)
+                || e.PropertyName.Equals(nameof(ViewSettings.DisplayGoldType)))
             {
                 UpdateGold();
             }
@@ -89,14 +89,14 @@ namespace GoldDiff.View.ControlElement
             {
                 newValue.PropertyChanged += GoldOwner_OnPropertyChanged;
             }
-            
+
             UpdateGold();
         }
 
         private void GoldOwner_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (string.IsNullOrEmpty(e.PropertyName) 
-                || e.PropertyName.Equals(nameof(ILoLGoldOwner.TotalGold)) 
+            if (string.IsNullOrEmpty(e.PropertyName)
+                || e.PropertyName.Equals(nameof(ILoLGoldOwner.TotalGold))
                 || e.PropertyName.Equals(nameof(ILoLGoldOwner.NonConsumableGold)))
             {
                 UpdateGold();
@@ -133,7 +133,7 @@ namespace GoldDiff.View.ControlElement
             {
                 return;
             }
-            
+
             Dispatcher.Invoke(() => PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName)));
         }
     }
