@@ -97,6 +97,7 @@
                     <RowDefinition Height="Auto" /> <!-- Display Unspent Player Stats -->
                     <RowDefinition Height="Auto" /> <!-- Display Team Stats -->
                     <RowDefinition Height="Auto" /> <!-- Display Unspent Team Stats -->
+                    <RowDefinition Height="Auto" /> <!-- Display Inhibitor Respawn Timers -->
                 </Grid.RowDefinitions>
 
                 <!-- Stay On Top -->
@@ -200,6 +201,24 @@
                                        IsChecked="{Binding DisplayTeamScoresSinceLastItemAcquisition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <!-- /Display Team Scores -->
+                
+                <!-- Display Inhibitor Respawn Time -->
+                
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="6"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayInhibitorRespawnTimers}}"
+                                Target="{Binding ElementName=SelectDisplayInhibitorRespawnTime}" />
+
+                <flat:FlatIconCheckBox x:Name="SelectDisplayInhibitorRespawnTime"
+                                       Grid.Column="1"
+                                       Grid.Row="6"
+                                       Margin="12, 12, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                       IsChecked="{Binding DisplayInhibitorRespawnTimers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <!-- /Display Inhibitor Respawn Time -->
 
             </Grid>
 

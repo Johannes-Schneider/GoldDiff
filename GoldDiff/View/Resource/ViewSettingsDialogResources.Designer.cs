@@ -79,6 +79,15 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display Inhibitor Respawn Time.
+        /// </summary>
+        public static string LabelDisplayInhibitorRespawnTimers {
+            get {
+                return ResourceManager.GetString("LabelDisplayInhibitorRespawnTimers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Player KDA.
         /// </summary>
         public static string LabelDisplayPlayerScores {

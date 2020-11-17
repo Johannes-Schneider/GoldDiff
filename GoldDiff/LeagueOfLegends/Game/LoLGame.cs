@@ -61,6 +61,14 @@ namespace GoldDiff.LeagueOfLegends.Game
             private set => MutateVerbose(ref _time, value);
         }
 
+        private LoLObjectiveRespawnTimerCollection _objectiveRespawnTimerCollection = new();
+
+        public LoLObjectiveRespawnTimerCollection ObjectiveRespawnTimerCollection
+        {
+            get => _objectiveRespawnTimerCollection;
+            private set => MutateVerboseIfNotNull(ref _objectiveRespawnTimerCollection, value);
+        }
+
         public LoLStaticResourceCache StaticResourceCache { get; }
 
 
@@ -102,6 +110,7 @@ namespace GoldDiff.LeagueOfLegends.Game
             
             TeamBlueSide!.Consume(gameData);
             TeamRedSide!.Consume(gameData);
+            ObjectiveRespawnTimerCollection.Consume(gameData);
 
             if (invokeInitializedEvent && Initialized != null)
             {
@@ -134,6 +143,7 @@ namespace GoldDiff.LeagueOfLegends.Game
                 return false;
             }
 
+            ObjectiveRespawnTimerCollection = new LoLObjectiveRespawnTimerCollection();
             IsInitialized = true;
             return true;
         }

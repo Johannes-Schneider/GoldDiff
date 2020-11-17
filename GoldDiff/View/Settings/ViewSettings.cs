@@ -102,7 +102,7 @@ namespace GoldDiff.View.Settings
 
     #endregion
 
-    #region ILoLScoreOwnerSettings
+    #region LoLPlayer settings
 
         private bool _displayPlayerScores = true;
 
@@ -121,6 +121,10 @@ namespace GoldDiff.View.Settings
             get => _displayPlayerScoresSinceLastItemAcquisition;
             set => MutateVerbose(ref _displayPlayerScoresSinceLastItemAcquisition, value);
         }
+        
+    #endregion
+
+    #region LoLTeam settings
 
         private bool _displayTeamScores = true;
 
@@ -138,6 +142,15 @@ namespace GoldDiff.View.Settings
         {
             get => _displayTeamScoresSinceLastItemAcquisition;
             set => MutateVerbose(ref _displayTeamScoresSinceLastItemAcquisition, value);
+        }
+
+        private bool _displayInhibitorRespawnTimers = true;
+
+        [JsonProperty]
+        public bool DisplayInhibitorRespawnTimers
+        {
+            get => _displayInhibitorRespawnTimers;
+            set => MutateVerbose(ref _displayInhibitorRespawnTimers, value);
         }
 
     #endregion

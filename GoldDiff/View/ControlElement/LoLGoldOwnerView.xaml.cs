@@ -12,7 +12,7 @@ namespace GoldDiff.View.ControlElement
             get => GetValue(GoldOwnerProperty) as ILoLGoldOwner;
             set => SetValue(GoldOwnerProperty, value);
         }
-        
+
         public static readonly DependencyProperty GoldOwnerProperty = DependencyProperty.Register(nameof(GoldOwner), typeof(ILoLGoldOwner), typeof(LoLGoldOwnerView),
                                                                                                   new PropertyMetadata(PropertyChangedCallback));
 
@@ -34,11 +34,12 @@ namespace GoldDiff.View.ControlElement
             get => (LoLTeamType) GetValue(GoldOwnerTeamProperty);
             set => SetValue(GoldOwnerTeamProperty, value);
         }
-        
-        public static readonly DependencyProperty GoldOwnerTeamProperty = DependencyProperty.Register(nameof(GoldOwnerTeam), typeof(LoLTeamType), typeof(LoLGoldOwnerView));
+
+        public static readonly DependencyProperty GoldOwnerTeamProperty = DependencyProperty.Register(nameof(GoldOwnerTeam), typeof(LoLTeamType), typeof(LoLGoldOwnerView),
+                                                                                                      new PropertyMetadata(LoLTeamType.BlueSide));
 
         public LoLGoldOwnerHelper GoldOwnerHelper { get; } = new();
-        
+
         public LoLGoldOwnerView()
         {
             InitializeComponent();
