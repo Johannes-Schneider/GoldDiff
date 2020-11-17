@@ -8,7 +8,7 @@ using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
-    public sealed class LoLTeam : ViewModel, ILoLGoldOwner, ILoLScoreOwner, ILoLClientGameDataConsumer
+    public sealed class LoLTeam : BaseLoLScoreOwner, ILoLGoldOwner, ILoLClientGameDataConsumer
     {
     #region ILoLGoldOwner
 
@@ -41,74 +41,6 @@ namespace GoldDiff.LeagueOfLegends.Game
                 }
 
                 MutateVerbose(ref _nonConsumableGold, value);
-            }
-        }
-
-    #endregion
-
-    #region ILoLScoreOwner
-
-        private int _kills;
-
-        public int Kills
-        {
-            get => _kills;
-            private set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value));
-                }
-
-                MutateVerbose(ref _kills, value);
-            }
-        }
-
-        private int _deaths;
-
-        public int Deaths
-        {
-            get => _deaths;
-            private set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value));
-                }
-
-                MutateVerbose(ref _deaths, value);
-            }
-        }
-
-        private int _assists;
-
-        public int Assists
-        {
-            get => _assists;
-            private set
-            {
-                if (value < 0)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value));
-                }
-
-                MutateVerbose(ref _assists, value);
-            }
-        }
-
-        private double _vision;
-
-        public double Vision
-        {
-            get => _vision;
-            private set
-            {
-                if (value < 0.0d)
-                {
-                    throw new ArgumentOutOfRangeException(nameof(value));
-                }
-
-                MutateVerbose(ref _vision, value);
             }
         }
 
@@ -179,8 +111,14 @@ namespace GoldDiff.LeagueOfLegends.Game
         private void UpdateScore(LoLClientGameData gameData)
         {
             Kills = Players.Sum(player => player.Kills);
+            KillsAtLastItemAcquisition = Players.Sum(player => player.KillsAtLastItemAcquisition);
+            KillsSinceLastItemAcquisition = Players.Sum(player => player.KillsSinceLastItemAcquisition);
             Deaths = Players.Sum(player => player.Deaths);
+            DeathsAtLastItemAcquisition = Players.Sum(player => player.DeathsAtLastItemAcquisition);
+            DeathsSinceLastItemAcquisition = Players.Sum(player => player.DeathsSinceLastItemAcquisition);
             Assists = Players.Sum(player => player.Assists);
+            AssistsAtLastItemAcquisition = Players.Sum(player => player.AssistsAtLastItemAcquisition);
+            AssistsSinceLastItemAcquisition = Players.Sum(player => player.AssistsSinceLastItemAcquisition);
             Vision = Players.Sum(player => player.Vision);
 
             var playerNames = Players.Select(player => player.SummonerName).ToList();

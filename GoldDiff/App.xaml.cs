@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using FlatXaml.View;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.Game;
@@ -37,10 +34,14 @@ namespace GoldDiff
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
+            DispatcherUnhandledException += OnDispatcherUnhandledException;
+
             InitializeUserInterface();
             await UpdateResourceCacheAsync();
             StartWaitingForTargetProcess();
         }
+
+        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) { }
 
         private void InitializeUserInterface()
         {
@@ -72,7 +73,7 @@ namespace GoldDiff
         {
             ProcessEventWatcher.ProcessStarted += ProcessEventWatcher_OnProcessStarted;
             ProcessEventWatcher.ProcessStopped += ProcessEventWatcher_OnProcessStopped;
-            
+
             var processes = Process.GetProcessesByName(TargetProcessName);
             if (processes.Length > 0)
             {

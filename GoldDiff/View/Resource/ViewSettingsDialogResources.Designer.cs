@@ -79,11 +79,47 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display Inhibitor Respawn Time.
+        /// </summary>
+        public static string LabelDisplayInhibitorRespawnTimers {
+            get {
+                return ResourceManager.GetString("LabelDisplayInhibitorRespawnTimers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Player KDA.
         /// </summary>
-        public static string LabelDisplayPlayerStats {
+        public static string LabelDisplayPlayerScores {
             get {
-                return ResourceManager.GetString("LabelDisplayPlayerStats", resourceCulture);
+                return ResourceManager.GetString("LabelDisplayPlayerScores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Unspent Player KDA.
+        /// </summary>
+        public static string LabelDisplayPlayerScoresSinceLastItemAcquisition {
+            get {
+                return ResourceManager.GetString("LabelDisplayPlayerScoresSinceLastItemAcquisition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Team KDA.
+        /// </summary>
+        public static string LabelDisplayTeamScores {
+            get {
+                return ResourceManager.GetString("LabelDisplayTeamScores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Unspent Team KDA.
+        /// </summary>
+        public static string LabelDisplayTeamScoresSinceLastItemAcquisition {
+            get {
+                return ResourceManager.GetString("LabelDisplayTeamScoresSinceLastItemAcquisition", resourceCulture);
             }
         }
         

@@ -94,6 +94,10 @@
                     <RowDefinition Height="Auto" /> <!-- Stay On Top -->
                     <RowDefinition Height="Auto" /> <!-- Gold Type -->
                     <RowDefinition Height="Auto" /> <!-- Display Player Stats -->
+                    <RowDefinition Height="Auto" /> <!-- Display Unspent Player Stats -->
+                    <RowDefinition Height="Auto" /> <!-- Display Team Stats -->
+                    <RowDefinition Height="Auto" /> <!-- Display Unspent Team Stats -->
+                    <RowDefinition Height="Auto" /> <!-- Display Inhibitor Respawn Timers -->
                 </Grid.RowDefinitions>
 
                 <!-- Stay On Top -->
@@ -132,12 +136,12 @@
 
                 <!-- /Gold Type -->
 
-                <!-- Display Player Stats -->
+                <!-- Display Player Scores -->
 
                 <flat:FlatLabel Grid.Column="0"
                                 Grid.Row="2"
                                 Margin="0, 12, 0, 0"
-                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayPlayerStats}}"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayPlayerScores}}"
                                 Target="{Binding ElementName=SelectDisplayPlayerStats}" />
 
                 <flat:FlatIconCheckBox x:Name="SelectDisplayPlayerStats"
@@ -146,9 +150,75 @@
                                        Margin="12, 12, 0, 0"
                                        HorizontalAlignment="Left"
                                        DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
-                                       IsChecked="{Binding DisplayPlayerStats, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                       IsChecked="{Binding DisplayPlayerScores, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="3"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayPlayerScoresSinceLastItemAcquisition}}"
+                                Target="{Binding ElementName=SelectDisplayUnspentPlayerStats}" />
 
-                <!-- /Display Player Stats -->
+                <flat:FlatIconCheckBox x:Name="SelectDisplayUnspentPlayerStats"
+                                       Grid.Column="1"
+                                       Grid.Row="3"
+                                       Margin="12, 12, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       IsEnabled="{Binding ElementName=SelectDisplayPlayerStats, Path=IsChecked}"
+                                       DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                       IsChecked="{Binding DisplayPlayerScoresSinceLastItemAcquisition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- /Display Player Scores -->
+                
+                <!-- Display Team Scores -->
+
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="4"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayTeamScores}}"
+                                Target="{Binding ElementName=SelectDisplayTeamStats}" />
+
+                <flat:FlatIconCheckBox x:Name="SelectDisplayTeamStats"
+                                       Grid.Column="1"
+                                       Grid.Row="4"
+                                       Margin="12, 12, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                       IsChecked="{Binding DisplayTeamScores, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="5"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayTeamScoresSinceLastItemAcquisition}}"
+                                Target="{Binding ElementName=SelectDisplayUnspentTeamStats}" />
+
+                <flat:FlatIconCheckBox x:Name="SelectDisplayUnspentTeamStats"
+                                       Grid.Column="1"
+                                       Grid.Row="5"
+                                       Margin="12, 12, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       IsEnabled="{Binding ElementName=SelectDisplayTeamStats, Path=IsChecked}"
+                                       DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                       IsChecked="{Binding DisplayTeamScoresSinceLastItemAcquisition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <!-- /Display Team Scores -->
+                
+                <!-- Display Inhibitor Respawn Time -->
+                
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="6"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayInhibitorRespawnTimers}}"
+                                Target="{Binding ElementName=SelectDisplayInhibitorRespawnTime}" />
+
+                <flat:FlatIconCheckBox x:Name="SelectDisplayInhibitorRespawnTime"
+                                       Grid.Column="1"
+                                       Grid.Row="6"
+                                       Margin="12, 12, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                       IsChecked="{Binding DisplayInhibitorRespawnTimers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                
+                <!-- /Display Inhibitor Respawn Time -->
 
             </Grid>
 

@@ -27,7 +27,7 @@
     <data name="LabelGoldType" xml:space="preserve">
         <value>Display Gold</value>
     </data>
-    <data name="LabelDisplayPlayerStats" xml:space="preserve">
+    <data name="LabelDisplayPlayerScores" xml:space="preserve">
         <value>Display Player KDA</value>
     </data>
     <data name="LabelAppearanceSettings" xml:space="preserve">
@@ -38,5 +38,17 @@
     </data>
     <data name="LabelStayOnTop" xml:space="preserve">
         <value>Stay on Top</value>
+    </data>
+    <data name="LabelDisplayPlayerScoresSinceLastItemAcquisition" xml:space="preserve">
+        <value>Display Unspent Player KDA</value>
+    </data>
+    <data name="LabelDisplayTeamScores" xml:space="preserve">
+        <value>Display Team KDA</value>
+    </data>
+    <data name="LabelDisplayTeamScoresSinceLastItemAcquisition" xml:space="preserve">
+        <value>Display Unspent Team KDA</value>
+    </data>
+    <data name="LabelDisplayInhibitorRespawnTimers" xml:space="preserve">
+        <value>Display Inhibitor Respawn Time</value>
     </data>
 </root>

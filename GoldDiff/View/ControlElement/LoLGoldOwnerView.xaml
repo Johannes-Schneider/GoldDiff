@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="GoldDiff.View.ControlElement.LoLGoldOwnerView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
+             xmlns:flatConverter="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
+             xmlns:leagueOfLegends="clr-namespace:GoldDiff.Shared.LeagueOfLegends;assembly=GoldDiff.Shared"
+             xmlns:view="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+             xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
+             xmlns:converter="clr-namespace:GoldDiff.View.Converter"
+             mc:Ignorable="d"
+             
+             x:Name="This"
+             VerticalAlignment="Center"
+             
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <flatConverter:EqualityToVisibilityConverter x:Key="BlueSideTeamToVisible"
+                                                 TrueValue="Visible"
+                                                 FalseValue="Collapsed"
+                                                 CompareTo="{x:Static Member=leagueOfLegends:LoLTeamType.BlueSide}" />
+        <flatConverter:EqualityToVisibilityConverter x:Key="RedSideTeamToVisible"
+                                                 TrueValue="Visible"
+                                                 FalseValue="Collapsed"
+                                                 CompareTo="{x:Static Member=leagueOfLegends:LoLTeamType.RedSide}" />
+        <converter:IntToLoLGoldValueConverter x:Key="IntToLoLGoldValueConverter" />
+    </UserControl.Resources>
+    
+    <StackPanel Orientation="Horizontal"
+                VerticalAlignment="{Binding ElementName=This, Path=VerticalAlignment}"
+                HorizontalAlignment="{Binding ElementName=This, Path=HorizontalAlignment}">
+        
+        <view:FlatIcon Margin="0, 0, 6, 0" 
+                       Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}"
+                       Visibility="{Binding ElementName=This, Path=GoldOwnerTeam, Converter={StaticResource BlueSideTeamToVisible}}" />
+        
+        <TextBlock Margin="0, 0, 6, 0"
+                   DataContext="{Binding ElementName=This, Path=GoldOwnerHelper, Mode=OneWay}"
+                   Text="{Binding Path=Gold, Mode=OneWay, Converter={StaticResource IntToLoLGoldValueConverter}}" />
+        
+        <view:FlatIcon Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}"
+                       Visibility="{Binding ElementName=This, Path=GoldOwnerTeam, Converter={StaticResource RedSideTeamToVisible}}" />
+        
+    </StackPanel>
+</UserControl>
