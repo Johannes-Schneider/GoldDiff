@@ -13,13 +13,17 @@
       <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <DebugType>none</DebugType>
+      <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\FlatXaml\FlatXaml\FlatXaml.csproj" />
       <ProjectReference Include="..\GoldDiff.GitHub.RemoteApi\GoldDiff.GitHub.RemoteApi.csproj" />
       <ProjectReference Include="..\GoldDiff.LeagueOfLegends.ClientApi\GoldDiff.LeagueOfLegends.ClientApi.csproj" />
       <ProjectReference Include="..\GoldDiff.LeagueOfLegends.RemoteApi\GoldDiff.LeagueOfLegends.RemoteApi.csproj" />
       <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj" />
-      <ProjectReference Include="..\GoldDiff.Updater\GoldDiff.Updater.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -5,6 +5,11 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+      <DebugType>none</DebugType>
+      <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj" />
     </ItemGroup>
