@@ -4,13 +4,14 @@ using System.Linq;
 using FlatXaml.Model;
 using GoldDiff.View.Resource;
 using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.Shared.Utility;
 using Newtonsoft.Json.Linq;
 
 namespace GoldDiff.LeagueOfLegends.StaticResource
 {
     public sealed partial class LoLStaticResourceCache
     {
-        private void CreateItemIndex(Progression progression, LoLVersion gameVersion, string staticResourceRootDirectory)
+        private void CreateItemIndex(Progression progression, StringVersion gameVersion, string staticResourceRootDirectory)
         {
             progression.StartNextStep(LoLStaticResourceCacheResources.CreateItemIndexProgressStepDescription);
             Items.Clear();
@@ -33,7 +34,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             }
         }
 
-        private LoLStaticItem ToItem(JProperty property, LoLVersion gameVersion, string staticResourceRootDirectory)
+        private LoLStaticItem ToItem(JProperty property, StringVersion gameVersion, string staticResourceRootDirectory)
         {
             var id = int.Parse(property.Name);
             var token = property.First!;

@@ -15,9 +15,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\FlatXaml\FlatXaml\FlatXaml.csproj" />
+      <ProjectReference Include="..\GoldDiff.GitHub.RemoteApi\GoldDiff.GitHub.RemoteApi.csproj" />
       <ProjectReference Include="..\GoldDiff.LeagueOfLegends.ClientApi\GoldDiff.LeagueOfLegends.ClientApi.csproj" />
       <ProjectReference Include="..\GoldDiff.LeagueOfLegends.RemoteApi\GoldDiff.LeagueOfLegends.RemoteApi.csproj" />
       <ProjectReference Include="..\GoldDiff.Shared\GoldDiff.Shared.csproj" />
+      <ProjectReference Include="..\GoldDiff.Updater\GoldDiff.Updater.csproj" />
     </ItemGroup>
 
     <ItemGroup>
@@ -44,6 +46,18 @@
       <EmbeddedResource Update="View\Resource\ViewSettingsDialogResources.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
+      <EmbeddedResource Update="View\Resource\UpdateApplicationDialogResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>UpdateApplicationDialogResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="View\Resource\UpdateApplicationDialogResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>UpdateApplicationDialogResources.resx</DependentUpon>
+      </Compile>
     </ItemGroup>
 
 </Project>

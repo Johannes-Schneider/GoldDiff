@@ -1,0 +1,28 @@
+﻿<Window x:Class="GoldDiff.Updater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GoldDiff.Updater"
+        xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
+        xmlns:style="clr-namespace:FlatXaml.Style;assembly=FlatXaml"
+        xmlns:view="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+        xmlns:properties="clr-namespace:GoldDiff.Updater.Properties"
+        mc:Ignorable="d"
+        
+        x:Name="This"
+
+        Icon="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.WindowIcon}}"
+        Style="{DynamicResource {x:Static style:FlatStyleKeys.Window}}"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Title="{Binding Source={x:Static properties:MainWindowResources.Title}}"
+        
+        Width="600"
+        Height="800">
+    
+    <view:FlatProgression HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Progression="{Binding ElementName=This, Path=Progression}" />
+</Window>

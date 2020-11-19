@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GoldDiff.Shared.Http;
 using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.Shared.Utility;
 
 namespace GoldDiff.LeagueOfLegends.RemoteApi
 {
@@ -16,7 +17,7 @@ namespace GoldDiff.LeagueOfLegends.RemoteApi
 
         public static LoLRemoteEndpoint Get
         {
-            get { return _instance ??= new LoLRemoteEndpoint(); }
+            get => _instance ??= new LoLRemoteEndpoint();
         }
 
         private RestRequester Requester { get; }
@@ -26,7 +27,7 @@ namespace GoldDiff.LeagueOfLegends.RemoteApi
             Requester = new RestRequester(RequestTimeout);
         }
 
-        public async Task<List<LoLVersion>?> GetVersionsAsync()
+        public async Task<List<StringVersion>?> GetVersionsAsync()
         {
             var versionsAsString = await Requester.GetAsync<List<string>?>(VersionsUrl);
             if (versionsAsString == null)
@@ -34,10 +35,10 @@ namespace GoldDiff.LeagueOfLegends.RemoteApi
                 return null;
             }
 
-            var result = new List<LoLVersion>();
+            var result = new List<StringVersion>();
             foreach (var versionAsString in versionsAsString)
             {
-                if (LoLVersion.TryParse(versionAsString, out var version))
+                if (StringVersion.TryParse(versionAsString, out var version))
                 {
                     result.Add(version!);
                 }
@@ -46,18 +47,18 @@ namespace GoldDiff.LeagueOfLegends.RemoteApi
             return result;
         }
 
-        public async Task<LoLVersion> GetLatestVersionAsync()
+        public async Task<StringVersion> GetLatestVersionAsync()
         {
             var availableVersions = await GetVersionsAsync();
             if (availableVersions == null)
             {
-                throw new Exception($"Unable to determine the latest {nameof(LoLVersion)}!");
+                throw new Exception($"Unable to determine the latest {nameof(StringVersion)}!");
             }
 
             return availableVersions.First();
         }
 
-        public string GetStaticResourceUrl(LoLVersion? version)
+        public string GetStaticResourceUrl(StringVersion? version)
         {
             var versionAsString = version?.ToString();
             if (string.IsNullOrEmpty(versionAsString))

@@ -11,6 +11,7 @@
         xmlns:icon="clr-namespace:FlatXaml.Icon;assembly=FlatXaml"
         xmlns:command="clr-namespace:FlatXaml.Command;assembly=FlatXaml"
         xmlns:shared="clr-namespace:GoldDiff.Shared;assembly=GoldDiff.Shared"
+        xmlns:converter="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
         mc:Ignorable="d"
 
         x:Name="This"
@@ -24,6 +25,10 @@
         Title="{Binding Source={x:Static resource:MainWindowResources.Title}}"
         Height="600"
         Width="800">
+    
+    <Window.Resources>
+        <converter:ToStringConverter x:Key="ToStringConverter" />
+    </Window.Resources>
 
     <Window.DataContext>
         <Binding ElementName="This" Path="PrivateModel" />
@@ -93,7 +98,7 @@
                        FontSize="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeHint}}">
                 <Run Text="{x:Static resource:MainWindowResources.Title}" />
                 <Run Text=" Version " />
-                <Run Text="{x:Static shared:ApplicationConstants.Version}" />
+                <Run Text="{x:Static shared:ApplicationConstants.InformationalVersion}" />
             </TextBlock>
 
             <flat:FlatIconButton Grid.Column="1"
@@ -138,7 +143,7 @@
                        Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.BackgroundRegular}}"
                        FontSize="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeHint}}">
                 <Run Text="League Patch " />
-                <Run Text="{Binding LeagueVersion, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                <Run Text="{Binding LeagueVersion, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ToStringConverter}}" />
             </TextBlock>
 
         </Grid>

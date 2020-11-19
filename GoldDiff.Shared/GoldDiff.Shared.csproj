@@ -51,4 +51,8 @@
       <Resource Include="View\SharedIcon\ApplicationIcon.ico" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="GitHub" />
+    </ItemGroup>
+
 </Project>

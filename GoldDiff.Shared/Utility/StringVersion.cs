@@ -2,23 +2,23 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace GoldDiff.Shared.LeagueOfLegends
+namespace GoldDiff.Shared.Utility
 {
-    public sealed class LoLVersion : IEquatable<LoLVersion>
+    public sealed class StringVersion : IEquatable<StringVersion>
     {
         private const string ComponentSeparator = ".";
-        
+
         [JsonProperty]
         private int[] Components { get; }
-        
-        public static LoLVersion Zero => new LoLVersion(0);
 
-        public static bool TryParse(string? input, out LoLVersion? version)
+        public static StringVersion Zero => new StringVersion(0);
+
+        public static bool TryParse(string? input, out StringVersion? version)
         {
             try
             {
                 var components = input?.Split(new[] {ComponentSeparator}, StringSplitOptions.None) ?? throw new ArgumentNullException(nameof(input));
-                version = new LoLVersion(components.Select(component => Convert.ToInt32(component)).ToArray());
+                version = new StringVersion(components.Select(component => Convert.ToInt32(component)).ToArray());
                 return true;
             }
             catch
@@ -28,7 +28,7 @@ namespace GoldDiff.Shared.LeagueOfLegends
             }
         }
 
-        public LoLVersion(params int[]? components)
+        public StringVersion(params int[]? components)
         {
             if (components == null)
             {
@@ -47,7 +47,7 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
             Components = components;
         }
-        
+
         public override string ToString()
         {
             return string.Join(ComponentSeparator, Components);
@@ -57,10 +57,10 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
         public override bool Equals(object? obj)
         {
-            return Equals(obj as LoLVersion);
+            return Equals(obj as StringVersion);
         }
 
-        public bool Equals(LoLVersion? other)
+        public bool Equals(StringVersion? other)
         {
             if (ReferenceEquals(other, null))
             {
@@ -84,17 +84,17 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
     #region Operators
 
-        public static bool operator ==(LoLVersion? a, LoLVersion? b)
+        public static bool operator ==(StringVersion? a, StringVersion? b)
         {
             return a?.Equals(b) == true;
         }
 
-        public static bool operator !=(LoLVersion? a, LoLVersion? b)
+        public static bool operator !=(StringVersion? a, StringVersion? b)
         {
             return a?.Equals(b) == false;
         }
-        
-        public static bool operator >(LoLVersion? a, LoLVersion? b)
+
+        public static bool operator >(StringVersion? a, StringVersion? b)
         {
             if (ReferenceEquals(a, null))
             {
@@ -124,8 +124,8 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
             return false;
         }
-        
-        public static bool operator >=(LoLVersion? a, LoLVersion? b)
+
+        public static bool operator >=(StringVersion? a, StringVersion? b)
         {
             if (ReferenceEquals(a, null))
             {
@@ -155,8 +155,8 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
             return true;
         }
-        
-        public static bool operator <(LoLVersion? a, LoLVersion? b)
+
+        public static bool operator <(StringVersion? a, StringVersion? b)
         {
             if (ReferenceEquals(a, null))
             {
@@ -186,8 +186,8 @@ namespace GoldDiff.Shared.LeagueOfLegends
 
             return false;
         }
-        
-        public static bool operator <=(LoLVersion? a, LoLVersion? b)
+
+        public static bool operator <=(StringVersion? a, StringVersion? b)
         {
             if (ReferenceEquals(a, null))
             {

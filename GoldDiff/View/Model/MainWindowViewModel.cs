@@ -1,5 +1,6 @@
 ﻿using FlatXaml.Model;
 using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.Shared.Utility;
 
 namespace GoldDiff.View.Model
 {
@@ -13,9 +14,9 @@ namespace GoldDiff.View.Model
             set => MutateVerbose(ref _content, value);
         }
 
-        private LoLVersion _leagueVersion = LoLVersion.Zero;
+        private StringVersion _leagueVersion = StringVersion.Zero;
 
-        public LoLVersion LeagueVersion
+        public StringVersion LeagueVersion
         {
             get => _leagueVersion;
             set => MutateVerboseIfNotNull(ref _leagueVersion, value);

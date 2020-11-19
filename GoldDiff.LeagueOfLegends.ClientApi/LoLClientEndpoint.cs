@@ -27,10 +27,11 @@ namespace GoldDiff.LeagueOfLegends.ClientApi
 
         private LoLClientEndpoint()
         {
-            Requester = new RestRequester(new HttpClientHandler
+            Requester = new RestRequester(RequestTimeout,
+                                          new HttpClientHandler
                                           {
                                               ServerCertificateCustomValidationCallback = ValidateServerCertificate,
-                                          }, RequestTimeout);
+                                          });
         }
 
         private static bool ValidateServerCertificate(HttpRequestMessage message, X509Certificate2? certificate, X509Chain? chain, SslPolicyErrors errors)

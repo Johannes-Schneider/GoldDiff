@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using FlatXaml.View;
+using GoldDiff.GitHub.RemoteApi;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.OperatingSystem;
+using GoldDiff.Shared;
+using GoldDiff.Shared.Utility;
 using GoldDiff.Shared.View.SharedTheme;
 using GoldDiff.View;
+using GoldDiff.View.Dialog;
 using GoldDiff.View.Settings;
 
 namespace GoldDiff
@@ -34,14 +40,16 @@ namespace GoldDiff
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
-            DispatcherUnhandledException += OnDispatcherUnhandledException;
-
             InitializeUserInterface();
+            if (await UpdateApplication())
+            {
+                MainWindow.Close();
+                Shutdown();
+            }
+            
             await UpdateResourceCacheAsync();
             StartWaitingForTargetProcess();
         }
-
-        private void OnDispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e) { }
 
         private void InitializeUserInterface()
         {
@@ -56,6 +64,93 @@ namespace GoldDiff
             MainWindow = MyMainWindow;
             ShutdownMode = ShutdownMode.OnMainWindowClose;
             MainWindow.Show();
+        }
+
+        private async Task<bool> UpdateApplication()
+        {
+            var latestRelease = await GitHubRemoteEndpoint.Instance.GetLatestReleaseAsync(ApplicationConstants.RepositoryName);
+            
+            if (latestRelease == null)
+            {
+                return false;
+            }
+            
+            if (!StringVersion.TryParse(latestRelease.Version, out var latestReleaseVersion))
+            {
+                return false;
+            }
+            
+            if (latestReleaseVersion <= ApplicationConstants.Version)
+            {
+                return false;
+            }
+
+            if (!TryGetReleaseDownloadUrl(latestRelease, out var releaseDownloadUrl))
+            {
+                return false;
+            }
+
+            var dialog = new UpdateApplicationDialog(latestRelease)
+                         {
+                             Owner = MainWindow,
+                         };
+            
+            if (dialog.ShowDialog() != true)
+            {
+                return false;
+            }
+
+            var temporaryPath = Environment.CurrentDirectory;
+            var latestReleaseDownloadFile = Path.Combine(temporaryPath, Path.GetTempFileName());
+            var unpackedDirectory = Path.Combine(temporaryPath, $"GoldDiff {latestRelease.Version}");
+            
+            var command = new StringBuilder().Append("/C \"")
+                                             .Append($"cd \"{temporaryPath}\" && ")
+                                             .Append($"curl -s -L \"{releaseDownloadUrl}\" > \"{latestReleaseDownloadFile}\" && ")
+                                             .Append($"tar -xf \"{latestReleaseDownloadFile}\" > NUL && ")
+                                             .Append($"xcopy \"{unpackedDirectory}\\*.*\" \"{Environment.CurrentDirectory}\" /y > NUL && ")
+                                             .Append($"del \"{latestReleaseDownloadFile}\" > NUL && ")
+                                             .Append($"rmdir /q /s \"{unpackedDirectory}\" > NUL && ")
+                                             .Append($"cd /d \"{Environment.CurrentDirectory}\" && ")
+                                             .Append("start GoldDiff.exe\"");
+
+            try
+            {
+                Process.Start(new ProcessStartInfo
+                              {
+                                  FileName = "cmd.exe",
+                                  Arguments = command.ToString(),
+                              });
+                return true;
+            }
+            catch
+            {
+                // TODO: implement error handling
+            }
+
+            return false;
+        }
+
+        private bool TryGetReleaseDownloadUrl(GitHubReleaseInfo latestRelease, out string url)
+        {
+            url = string.Empty;
+            foreach (var asset in latestRelease.Assets)
+            {
+                if (!asset.ContentType.Equals("application/x-zip-compressed", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    continue;
+                }
+
+                if (!asset.Name.Equals($"GoldDiff.{latestRelease.Version}.zip", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    continue;
+                }
+
+                url = asset.DownloadUrl;
+                return true;
+            }
+
+            return false;
         }
 
         private async Task UpdateResourceCacheAsync()

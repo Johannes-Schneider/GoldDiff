@@ -10,6 +10,7 @@ using GoldDiff.LeagueOfLegends.RemoteApi;
 using GoldDiff.Shared.Archive;
 using GoldDiff.Shared.Http;
 using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.Shared.Utility;
 using Newtonsoft.Json;
 
 namespace GoldDiff.LeagueOfLegends.StaticResource
@@ -30,22 +31,22 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             {
                 return new LoLStaticResourceCache
                        {
-                           CurrentVersion = LoLVersion.Zero,
+                           CurrentVersion = StringVersion.Zero,
                        };
             }
         }
 
         [JsonProperty]
-        public LoLVersion CurrentVersion { get; private set; }
+        public StringVersion CurrentVersion { get; private set; }
 
         [JsonProperty]
-        private ConcurrentDictionary<string, int> ChampionNameToIdIndex { get; } = new ConcurrentDictionary<string, int>();
+        private ConcurrentDictionary<string, int> ChampionNameToIdIndex { get; } = new();
 
         [JsonProperty]
-        private ConcurrentDictionary<int, LoLStaticChampion> Champions { get; } = new ConcurrentDictionary<int, LoLStaticChampion>();
+        private ConcurrentDictionary<int, LoLStaticChampion> Champions { get; } = new();
 
         [JsonProperty]
-        private ConcurrentDictionary<int, LoLStaticItem> Items { get; } = new ConcurrentDictionary<int, LoLStaticItem>();
+        private ConcurrentDictionary<int, LoLStaticItem> Items { get; } = new();
 
         [JsonIgnore]
         public IEnumerable<int> ChampionIds => Champions.Keys;
@@ -113,7 +114,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             }
         }
 
-        private async Task DeleteOldStaticResourcesAsync(Progression progression, LoLVersion gameVersion)
+        private async Task DeleteOldStaticResourcesAsync(Progression progression, StringVersion gameVersion)
         {
             progression.StartNextStep(LoLStaticResourceCacheResources.DeleteOldStatisResourcesProgressStepDescription);
 
@@ -136,7 +137,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             progression.CurrentStepProgress = 1.0d;
         }
 
-        private async Task<string> DownloadStaticResourcesAsync(Progression progression, LoLVersion gameVersion)
+        private async Task<string> DownloadStaticResourcesAsync(Progression progression, StringVersion gameVersion)
         {
             progression.StartNextStep(LoLStaticResourceCacheResources.DownloadStaticResourcesProgressStepDescription);
 
@@ -161,7 +162,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             return targetFile;
         }
 
-        private async Task ExtractStaticResourcesAsync(Progression progression, LoLVersion gameVersion, string staticResourceArchiveFile)
+        private async Task ExtractStaticResourcesAsync(Progression progression, StringVersion gameVersion, string staticResourceArchiveFile)
         {
             progression.StartNextStep(LoLStaticResourceCacheResources.ExtractStaticResourcesProgressStepDescription);
 
@@ -178,7 +179,7 @@ namespace GoldDiff.LeagueOfLegends.StaticResource
             }
         }
 
-        private string StaticResourceRootDirectory(LoLVersion gameVersion)
+        private string StaticResourceRootDirectory(StringVersion gameVersion)
         {
             return Path.Combine(RootDirectory, gameVersion.ToString());
         }
