@@ -154,11 +154,11 @@ namespace GoldDiff.View.ControlElement
         {
             if (GoldOwnerBlueSide == null || GoldOwnerRedSide == null)
             {
-                Visibility = Visibility.Hidden;
+                Badge.Visibility = Visibility.Hidden;
                 return;
             }
 
-            Visibility = Visibility.Visible;
+            Badge.Visibility = Visibility.Visible;
             GoldDifference = Math.Abs(GoldOwnerHelperBlueSide.Gold - GoldOwnerHelperRedSide.Gold);
             var winningSide = GoldOwnerHelperBlueSide.Gold >= GoldOwnerHelperRedSide.Gold ? LoLTeamType.BlueSide : LoLTeamType.RedSide;
 

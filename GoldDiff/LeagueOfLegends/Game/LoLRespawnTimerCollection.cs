@@ -7,7 +7,7 @@ using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
-    public class LoLObjectiveRespawnTimerCollection : ILoLClientGameDataConsumer
+    public class LoLRespawnTimerCollection : ILoLClientGameDataConsumer
     {
     #region Inhibitors Blue Side
         

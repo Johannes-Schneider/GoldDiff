@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:data="clr-namespace:GoldDiff.Data"
         xmlns:resource="clr-namespace:GoldDiff.View.Resource"
         xmlns:style="clr-namespace:FlatXaml.Style;assembly=FlatXaml"
         xmlns:flat="clr-namespace:FlatXaml.View;assembly=FlatXaml"
@@ -11,6 +10,7 @@
         xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
         xmlns:icon="clr-namespace:FlatXaml.Icon;assembly=FlatXaml"
         xmlns:command="clr-namespace:FlatXaml.Command;assembly=FlatXaml"
+        xmlns:shared="clr-namespace:GoldDiff.Shared;assembly=GoldDiff.Shared"
         mc:Ignorable="d"
 
         x:Name="This"
@@ -93,7 +93,7 @@
                        FontSize="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeHint}}">
                 <Run Text="{x:Static resource:MainWindowResources.Title}" />
                 <Run Text=" Version " />
-                <Run Text="{x:Static data:ApplicationConstants.Version}" />
+                <Run Text="{x:Static shared:ApplicationConstants.Version}" />
             </TextBlock>
 
             <flat:FlatIconButton Grid.Column="1"
@@ -111,11 +111,11 @@
                                  BorderBrushWhenHovered="{DynamicResource {x:Static theme:FlatThemeKeys.BackgroundLight}}"
                                  BorderBrushWhenPressed="{DynamicResource {x:Static theme:FlatThemeKeys.BackgroundLight}}"
                                  Command="{x:Static command:GenericCommandCollection.CopyToClipboard}"
-                                 CommandParameter="{x:Static data:ApplicationConstants.Version}" />
+                                 CommandParameter="{x:Static shared:ApplicationConstants.Version}" />
 
             <flat:FlatIconButton Grid.Column="2"
                                  Grid.Row="0"
-                                 Margin="12, 3, 0, 3"
+                                 Margin="3, 3, 0, 3"
                                  BorderThickness="1"
                                  Icon="{DynamicResource {x:Static icon:FlatIconKeys.GitHub}}"
                                  Background="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
@@ -128,7 +128,7 @@
                                  BorderBrushWhenHovered="{DynamicResource {x:Static theme:FlatThemeKeys.BackgroundLight}}"
                                  BorderBrushWhenPressed="{DynamicResource {x:Static theme:FlatThemeKeys.BackgroundLight}}"
                                  Command="{x:Static command:GenericCommandCollection.OpenUrl}"
-                                 CommandParameter="{x:Static data:ApplicationConstants.RepositoryUrl}" />
+                                 CommandParameter="{x:Static shared:ApplicationConstants.RepositoryUrl}" />
 
             <TextBlock Grid.Column="4"
                        Grid.Row="0"

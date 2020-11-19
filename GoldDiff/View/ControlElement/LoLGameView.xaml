@@ -23,6 +23,12 @@
         <flatConverter:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"
                                                  TrueValue="Visible"
                                                  FalseValue="Collapsed" />
+        <flatConverter:BoolToVisibilityConverter x:Key="TrueToCollapsedConverter"
+                                                 TrueValue="Collapsed"
+                                                 FalseValue="Visible" />
+        <flatConverter:NullToVisibilityConverter x:Key="NullToCollapsed"
+                                                 IsNullValue="Collapsed"
+                                                 IsNotNullValue="Visible" />
     </UserControl.Resources>
 
     <Grid>
@@ -132,38 +138,91 @@
 
         <!-- Blue Side Gold -->
 
-        <local:LoLGoldOwnerView Grid.Column="3"
-                                Margin="0, 0, 12, 0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
-                                GoldOwner="{Binding}"
-                                GoldOwnerTeam="{Binding Path=Side}" />
+        <Grid Grid.Column="3"
+              Margin="0, 0, 12, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <local:LoLGoldOwnerView Grid.Row="2"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    DataContext="{Binding ElementName=This, Path=TeamBlueSide}"
+                                    GoldOwner="{Binding}"
+                                    GoldOwnerTeam="{Binding Path=Side}" />
+
+        </Grid>
 
         <!-- /Blue Side Gold -->
 
         <!-- Gold Difference -->
 
-        <local:LoLGoldOwnerGoldDifferenceView Grid.Column="4"
-                                              VerticalAlignment="Center"
-                                              HorizontalAlignment="Center"
-                                              MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamGoldDifference}"
-                                              MediocreGoldDifference="{x:Static game:LoLConstants.MediocreTeamGoldDifference}"
-                                              LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamGoldDifference}"
-                                              GoldOwnerBlueSide="{Binding ElementName=This, Path=TeamBlueSide, Mode=OneWay}"
-                                              GoldOwnerRedSide="{Binding ElementName=This, Path=TeamRedSide, Mode=OneWay}" />
+        <StackPanel Grid.Column="4"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+            
+            <local:LoLTeamPowerPlayView VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="0, 0, 0, 3"
+                                        MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamPowerPlayGoldDifference}"
+                                        MediocreGoldDifference="{x:Static game:LoLConstants.MediocrePlayerGoldDifference}"
+                                        LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamPowerPlayGoldDifference}"
+                                        DataContext="{Binding ElementName=This, Path=TeamPowerPlayCollection}"
+                                        PowerPlay="{Binding Path=BaronPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        PowerPlayIcon="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLBaron}}"
+                                        Visibility="{Binding Path=BaronPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullToCollapsed}}" />
+            
+            <local:LoLTeamPowerPlayView VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="0, 3, 0, 0"
+                                        MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamPowerPlayGoldDifference}"
+                                        MediocreGoldDifference="{x:Static game:LoLConstants.MediocrePlayerGoldDifference}"
+                                        LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamPowerPlayGoldDifference}"
+                                        DataContext="{Binding ElementName=This, Path=TeamPowerPlayCollection}"
+                                        PowerPlay="{Binding Path=ElderDragonPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                        PowerPlayIcon="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDragon}}"
+                                        Visibility="{Binding Path=ElderDragonPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullToCollapsed}}" />
+
+            <local:LoLGoldOwnerGoldDifferenceView VerticalAlignment="Center"
+                                                  HorizontalAlignment="Center"
+                                                  MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamGoldDifference}"
+                                                  MediocreGoldDifference="{x:Static game:LoLConstants.MediocreTeamGoldDifference}"
+                                                  LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamGoldDifference}"
+                                                  DataContext="{Binding ElementName=This, Path=TeamPowerPlayCollection}"
+                                                  Visibility="{Binding Path=AnyActive, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToCollapsedConverter}}"
+                                                  GoldOwnerBlueSide="{Binding ElementName=This, Path=TeamBlueSide, Mode=OneWay}"
+                                                  GoldOwnerRedSide="{Binding ElementName=This, Path=TeamRedSide, Mode=OneWay}" />
+
+
+        </StackPanel>
+
 
         <!-- /Gold Difference -->
 
         <!-- Red Side Total Gold -->
 
-        <local:LoLGoldOwnerView Grid.Column="5"
-                                Margin="12, 0, 0, 0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Right"
-                                DataContext="{Binding ElementName=This, Path=TeamRedSide}"
-                                GoldOwner="{Binding}"
-                                GoldOwnerTeam="{Binding Path=Side}" />
+        <Grid Grid.Column="5"
+              Margin="12, 0, 0, 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <local:LoLGoldOwnerView Grid.Row="2"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Right"
+                                    DataContext="{Binding ElementName=This, Path=TeamRedSide}"
+                                    GoldOwner="{Binding}"
+                                    GoldOwnerTeam="{Binding Path=Side}" />
+
+        </Grid>
 
         <!-- /Red Side Total Gold -->
 
@@ -179,7 +238,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="*"  />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!-- Turret Kills -->

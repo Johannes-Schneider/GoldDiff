@@ -14,8 +14,9 @@
     <UserControl.Resources>
         <converter:IntToLoLGoldValueConverter x:Key="IntToLoLGoldValueConverter" />
     </UserControl.Resources>
-    
-    <flat:FlatBadge BorderBrush="{Binding ElementName=This, Path=Foreground}">
+
+    <flat:FlatBadge x:Name="Badge"
+                    BorderBrush="{Binding ElementName=This, Path=Foreground}">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />

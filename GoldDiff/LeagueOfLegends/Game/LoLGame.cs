@@ -61,12 +61,20 @@ namespace GoldDiff.LeagueOfLegends.Game
             private set => MutateVerbose(ref _time, value);
         }
 
-        private LoLObjectiveRespawnTimerCollection _objectiveRespawnTimerCollection = new();
+        private LoLRespawnTimerCollection _respawnTimerCollection = new();
 
-        public LoLObjectiveRespawnTimerCollection ObjectiveRespawnTimerCollection
+        public LoLRespawnTimerCollection RespawnTimerCollection
         {
-            get => _objectiveRespawnTimerCollection;
-            private set => MutateVerboseIfNotNull(ref _objectiveRespawnTimerCollection, value);
+            get => _respawnTimerCollection;
+            private set => MutateVerboseIfNotNull(ref _respawnTimerCollection, value);
+        }
+
+        private LoLTeamPowerPlayCollection _teamPowerPlayCollection = null!;
+
+        public LoLTeamPowerPlayCollection TeamPowerPlayCollection
+        {
+            get => _teamPowerPlayCollection;
+            private set => MutateVerboseIfNotNull(ref _teamPowerPlayCollection, value);
         }
 
         public LoLStaticResourceCache StaticResourceCache { get; }
@@ -107,10 +115,11 @@ namespace GoldDiff.LeagueOfLegends.Game
 
             Time = gameData.Stats.GameTime;
             UpdateState(gameData);
-            
-            TeamBlueSide!.Consume(gameData);
-            TeamRedSide!.Consume(gameData);
-            ObjectiveRespawnTimerCollection.Consume(gameData);
+
+            TeamPowerPlayCollection.Consume(gameData);
+            TeamBlueSide?.Consume(gameData);
+            TeamRedSide?.Consume(gameData);
+            RespawnTimerCollection.Consume(gameData);
 
             if (invokeInitializedEvent && Initialized != null)
             {
@@ -127,7 +136,7 @@ namespace GoldDiff.LeagueOfLegends.Game
             }
             
             Mode = gameData.Stats.GameMode;
-            if (Mode != LoLGameModeType.Classic5X5)
+            if (Mode != LoLGameModeType.Classic5X5 && Mode != LoLGameModeType.PracticeTool)
             {
                 // We do support only classic 5v5 games right now
                 State = LoLGameStateType.Undefined;
@@ -135,15 +144,11 @@ namespace GoldDiff.LeagueOfLegends.Game
             }
             
             var teams = LoLTeamFactory.ExtractTeams(gameData, StaticResourceCache).ToList();
-            TeamBlueSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.BlueSide);
-            TeamRedSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.RedSide);
-            
-            if (TeamBlueSide == null || TeamRedSide == null)
-            {
-                return false;
-            }
+            TeamBlueSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.BlueSide) ?? new LoLTeam(LoLTeamType.BlueSide, Enumerable.Empty<LoLPlayer>());
+            TeamRedSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.RedSide) ?? new LoLTeam(LoLTeamType.RedSide, Enumerable.Empty<LoLPlayer>());
 
-            ObjectiveRespawnTimerCollection = new LoLObjectiveRespawnTimerCollection();
+            RespawnTimerCollection = new LoLRespawnTimerCollection();
+            TeamPowerPlayCollection = new LoLTeamPowerPlayCollection(this);
             IsInitialized = true;
             return true;
         }

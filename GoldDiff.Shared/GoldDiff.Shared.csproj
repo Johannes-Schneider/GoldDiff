@@ -20,29 +20,6 @@
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>
 
-    <!-- <ItemGroup>
-      <Page Include="View\GoldDiffShared.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-      </Page>
-      <Page Include="View\SharedIcon\GoldDiffSharedIconCollection.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-      </Page>
-      <Page Include="View\SharedTheme\GoldDiffSharedDarkTheme.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-      </Page>
-      <Page Include="View\SharedTheme\GoldDiffSharedLightTheme.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-      </Page>
-      <Page Include="View\SharedTheme\GoldDiffSharedThemeBrushes.xaml">
-        <Generator>MSBuild:Compile</Generator>
-        <XamlRuntime>Wpf</XamlRuntime>
-      </Page>
-    </ItemGroup> -->
-
     <ItemGroup>
       <EmbeddedResource Update="View\Resource\ThemeTypeResources.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>

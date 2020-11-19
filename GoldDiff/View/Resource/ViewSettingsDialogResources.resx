@@ -25,30 +25,36 @@
         <value>Changes are applied after the next restart.</value>
     </data>
     <data name="LabelGoldType" xml:space="preserve">
-        <value>Display Gold</value>
+        <value>Gold Type</value>
     </data>
     <data name="LabelDisplayPlayerScores" xml:space="preserve">
-        <value>Display Player KDA</value>
+        <value>Show KDA</value>
     </data>
     <data name="LabelAppearanceSettings" xml:space="preserve">
         <value>Appearance</value>
     </data>
-    <data name="LabelGoldDifferenceWindowSettings" xml:space="preserve">
-        <value>Gold Difference</value>
+    <data name="LabelGameDisplaySettings" xml:space="preserve">
+        <value>Game Display</value>
     </data>
     <data name="LabelStayOnTop" xml:space="preserve">
         <value>Stay on Top</value>
     </data>
     <data name="LabelDisplayPlayerScoresSinceLastItemAcquisition" xml:space="preserve">
-        <value>Display Unspent Player KDA</value>
+        <value>Show Unspent KDA</value>
     </data>
     <data name="LabelDisplayTeamScores" xml:space="preserve">
-        <value>Display Team KDA</value>
+        <value>Show KDA</value>
     </data>
     <data name="LabelDisplayTeamScoresSinceLastItemAcquisition" xml:space="preserve">
-        <value>Display Unspent Team KDA</value>
+        <value>Show Unspent KDA</value>
     </data>
     <data name="LabelDisplayInhibitorRespawnTimers" xml:space="preserve">
-        <value>Display Inhibitor Respawn Time</value>
+        <value>Show Inhibitor Respawn Time</value>
+    </data>
+    <data name="LabelPlayerDisplaySettings" xml:space="preserve">
+        <value>Player Display</value>
+    </data>
+    <data name="LabelTeamDisplaySettings" xml:space="preserve">
+        <value>Team Display</value>
     </data>
 </root>

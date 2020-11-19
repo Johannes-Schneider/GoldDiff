@@ -79,7 +79,7 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Inhibitor Respawn Time.
+        ///   Looks up a localized string similar to Show Inhibitor Respawn Time.
         /// </summary>
         public static string LabelDisplayInhibitorRespawnTimers {
             get {
@@ -88,7 +88,7 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Player KDA.
+        ///   Looks up a localized string similar to Show KDA.
         /// </summary>
         public static string LabelDisplayPlayerScores {
             get {
@@ -97,7 +97,7 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Unspent Player KDA.
+        ///   Looks up a localized string similar to Show Unspent KDA.
         /// </summary>
         public static string LabelDisplayPlayerScoresSinceLastItemAcquisition {
             get {
@@ -106,7 +106,7 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Team KDA.
+        ///   Looks up a localized string similar to Show KDA.
         /// </summary>
         public static string LabelDisplayTeamScores {
             get {
@@ -115,7 +115,7 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Unspent Team KDA.
+        ///   Looks up a localized string similar to Show Unspent KDA.
         /// </summary>
         public static string LabelDisplayTeamScoresSinceLastItemAcquisition {
             get {
@@ -124,20 +124,29 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gold Difference.
+        ///   Looks up a localized string similar to Game Display.
         /// </summary>
-        public static string LabelGoldDifferenceWindowSettings {
+        public static string LabelGameDisplaySettings {
             get {
-                return ResourceManager.GetString("LabelGoldDifferenceWindowSettings", resourceCulture);
+                return ResourceManager.GetString("LabelGameDisplaySettings", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Gold.
+        ///   Looks up a localized string similar to Gold Type.
         /// </summary>
         public static string LabelGoldType {
             get {
                 return ResourceManager.GetString("LabelGoldType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Player Display.
+        /// </summary>
+        public static string LabelPlayerDisplaySettings {
+            get {
+                return ResourceManager.GetString("LabelPlayerDisplaySettings", resourceCulture);
             }
         }
         
@@ -147,6 +156,15 @@ namespace GoldDiff.View.Resource {
         public static string LabelStayOnTop {
             get {
                 return ResourceManager.GetString("LabelStayOnTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Team Display.
+        /// </summary>
+        public static string LabelTeamDisplaySettings {
+            get {
+                return ResourceManager.GetString("LabelTeamDisplaySettings", resourceCulture);
             }
         }
         

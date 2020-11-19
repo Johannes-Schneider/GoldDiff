@@ -12,6 +12,13 @@ namespace GoldDiff.LeagueOfLegends.Game
         public const int MediocreTeamGoldDifference = 4000;
         public const int LargeTeamGoldDifference = 6000;
 
+        public const int MinorTeamPowerPlayGoldDifference = 1000;
+        public const int MediocreTeamPowerPlayGoldDifference = 1500;
+        public const int LargeTeamPowerPlayGoldDifference = 3000;
+        
         public static TimeSpan InhibitorRespawnTime { get; } = TimeSpan.FromMinutes(5);
+
+        public static TimeSpan BaronBuffDuration { get; } = TimeSpan.FromMinutes(3);
+        public static TimeSpan ElderDragonBuffDuration { get; } = TimeSpan.FromMinutes(2);
     }
 }

@@ -71,11 +71,6 @@ namespace GoldDiff.LeagueOfLegends.Game
             Side = team;
             Players = players?.ToList() ?? throw new ArgumentNullException(nameof(players));
 
-            if (!Players.Any())
-            {
-                throw new ArgumentException($"{nameof(players)} must contain at least 1 element!");
-            }
-
             if (Players.Any(player => player.Team != team))
             {
                 throw new ArgumentException($"At least one {nameof(LoLPlayer)} given in the {nameof(players)} does not belong to this {nameof(LoLTeam)}!");
@@ -126,7 +121,10 @@ namespace GoldDiff.LeagueOfLegends.Game
                                     .Events
                                     .Where(e => e.EventType == LoLClientEventType.TurretKilled)
                                     .Cast<LoLClientTurretKilledEvent>()
-                                    .Count(e => playerNames.Contains(e.KillerName) || e.AssistersNames.Any(name => playerNames.Contains(name)));
+                                    .Count(e => playerNames.Contains(e.KillerName) || e.AssistersNames.Any(name => playerNames.Contains(name)))
+                            + gameData.EventCollection.Events.Where(e => e.EventType == LoLClientEventType.FirstTurretKilled)
+                                      .Cast<LoLClientFirstTurretKilledEvent>()
+                                      .Count(e => playerNames.Contains(e.KillerName));
         }
     }
 }

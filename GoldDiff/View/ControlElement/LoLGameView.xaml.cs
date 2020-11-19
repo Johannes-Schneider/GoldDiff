@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using GoldDiff.LeagueOfLegends.Game;
+using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.View.ControlElement
 {
@@ -41,6 +42,7 @@ namespace GoldDiff.View.ControlElement
 
                     gameView.UpdateTeams();
                     gameView.UpdateRespawnTimerCollection();
+                    gameView.UpdateTeamPowerPlayCollection();
                     break;
                 }
             }
@@ -66,14 +68,57 @@ namespace GoldDiff.View.ControlElement
 
         private static readonly DependencyProperty TeamRedSideProperty = DependencyProperty.Register(nameof(TeamRedSide), typeof(LoLTeam), typeof(LoLGameView));
 
-        private LoLObjectiveRespawnTimerCollection? RespawnTimerCollection
+        private LoLRespawnTimerCollection? RespawnTimerCollection
         {
-            get => GetValue(RespawnTimerCollectionProperty) as LoLObjectiveRespawnTimerCollection;
+            get => GetValue(RespawnTimerCollectionProperty) as LoLRespawnTimerCollection;
             set => SetValue(RespawnTimerCollectionProperty, value);
         }
 
-        private static readonly DependencyProperty RespawnTimerCollectionProperty =
-            DependencyProperty.Register(nameof(RespawnTimerCollection), typeof(LoLObjectiveRespawnTimerCollection), typeof(LoLGameView));
+        private static readonly DependencyProperty RespawnTimerCollectionProperty = DependencyProperty.Register(nameof(RespawnTimerCollection), typeof(LoLRespawnTimerCollection), typeof(LoLGameView));
+
+        private LoLTeamPowerPlayCollection? TeamPowerPlayCollection
+        {
+            get => GetValue(TeamPowerPlayCollectionProperty) as LoLTeamPowerPlayCollection;
+            set => SetValue(TeamPowerPlayCollectionProperty, value);
+        }
+        
+        private static readonly DependencyProperty TeamPowerPlayCollectionProperty = DependencyProperty.Register(nameof(TeamPowerPlayCollection), typeof(LoLTeamPowerPlayCollection), typeof(LoLGameView),
+                                                                                                                 new PropertyMetadata(PrivatePropertyChangedCallback));
+
+        private bool AnyPowerPlayActive
+        {
+            get => (bool) GetValue(AnyPowerPlayActiveProperty);
+            set => SetValue(AnyPowerPlayActiveProperty, value);
+        }
+
+        private static readonly DependencyProperty AnyPowerPlayActiveProperty = DependencyProperty.Register(nameof(AnyPowerPlayActive), typeof(bool), typeof(LoLGameView));
+
+        private static void PrivatePropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is LoLGameView gameView))
+            {
+                return;
+            }
+
+            switch (e.Property.Name)
+            {
+                case nameof(TeamPowerPlayCollection):
+                {
+                    if (e.OldValue is LoLTeamPowerPlayCollection oldValue)
+                    {
+                        oldValue.PropertyChanged -= gameView.TeamPowerPlayCollection_OnPropertyChanged;
+                    }
+
+                    if (e.NewValue is LoLTeamPowerPlayCollection newValue)
+                    {
+                        newValue.PropertyChanged += gameView.TeamPowerPlayCollection_OnPropertyChanged;
+                    }
+
+                    gameView.UpdateTeamPowerPlayCollection();
+                    break;
+                }
+            }
+        }
 
     #endregion
 
@@ -94,9 +139,13 @@ namespace GoldDiff.View.ControlElement
             {
                 UpdateTeams();
             }
-            else if (e.PropertyName.Equals(nameof(LoLGame.ObjectiveRespawnTimerCollection)))
+            else if (e.PropertyName.Equals(nameof(LoLGame.RespawnTimerCollection)))
             {
                 UpdateRespawnTimerCollection();
+            }
+            else if (e.PropertyName.Equals(nameof(LoLGame.TeamPowerPlayCollection)))
+            {
+                UpdateTeamPowerPlayCollection();
             }
         }
 
@@ -108,7 +157,23 @@ namespace GoldDiff.View.ControlElement
 
         private void UpdateRespawnTimerCollection()
         {
-            RespawnTimerCollection = Game?.ObjectiveRespawnTimerCollection;
+            RespawnTimerCollection = Game?.RespawnTimerCollection;
+        }
+
+        private void UpdateTeamPowerPlayCollection()
+        {
+            TeamPowerPlayCollection = Game?.TeamPowerPlayCollection;
+            UpdateAnyPowerPlayActive();
+        }
+
+        private void TeamPowerPlayCollection_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            UpdateAnyPowerPlayActive();
+        }
+
+        private void UpdateAnyPowerPlayActive()
+        {
+            AnyPowerPlayActive = TeamPowerPlayCollection?.AnyActive == true;
         }
     }
 }
