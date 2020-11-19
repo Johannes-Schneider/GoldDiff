@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using GoldDiff.LeagueOfLegends.Game;
-using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.View.ControlElement
 {
@@ -81,44 +80,8 @@ namespace GoldDiff.View.ControlElement
             get => GetValue(TeamPowerPlayCollectionProperty) as LoLTeamPowerPlayCollection;
             set => SetValue(TeamPowerPlayCollectionProperty, value);
         }
-        
-        private static readonly DependencyProperty TeamPowerPlayCollectionProperty = DependencyProperty.Register(nameof(TeamPowerPlayCollection), typeof(LoLTeamPowerPlayCollection), typeof(LoLGameView),
-                                                                                                                 new PropertyMetadata(PrivatePropertyChangedCallback));
 
-        private bool AnyPowerPlayActive
-        {
-            get => (bool) GetValue(AnyPowerPlayActiveProperty);
-            set => SetValue(AnyPowerPlayActiveProperty, value);
-        }
-
-        private static readonly DependencyProperty AnyPowerPlayActiveProperty = DependencyProperty.Register(nameof(AnyPowerPlayActive), typeof(bool), typeof(LoLGameView));
-
-        private static void PrivatePropertyChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (!(d is LoLGameView gameView))
-            {
-                return;
-            }
-
-            switch (e.Property.Name)
-            {
-                case nameof(TeamPowerPlayCollection):
-                {
-                    if (e.OldValue is LoLTeamPowerPlayCollection oldValue)
-                    {
-                        oldValue.PropertyChanged -= gameView.TeamPowerPlayCollection_OnPropertyChanged;
-                    }
-
-                    if (e.NewValue is LoLTeamPowerPlayCollection newValue)
-                    {
-                        newValue.PropertyChanged += gameView.TeamPowerPlayCollection_OnPropertyChanged;
-                    }
-
-                    gameView.UpdateTeamPowerPlayCollection();
-                    break;
-                }
-            }
-        }
+        private static readonly DependencyProperty TeamPowerPlayCollectionProperty = DependencyProperty.Register(nameof(TeamPowerPlayCollection), typeof(LoLTeamPowerPlayCollection), typeof(LoLGameView));
 
     #endregion
 
@@ -163,17 +126,6 @@ namespace GoldDiff.View.ControlElement
         private void UpdateTeamPowerPlayCollection()
         {
             TeamPowerPlayCollection = Game?.TeamPowerPlayCollection;
-            UpdateAnyPowerPlayActive();
-        }
-
-        private void TeamPowerPlayCollection_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            UpdateAnyPowerPlayActive();
-        }
-
-        private void UpdateAnyPowerPlayActive()
-        {
-            AnyPowerPlayActive = TeamPowerPlayCollection?.AnyActive == true;
         }
     }
 }

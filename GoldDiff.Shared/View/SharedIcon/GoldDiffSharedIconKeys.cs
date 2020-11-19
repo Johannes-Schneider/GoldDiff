@@ -12,6 +12,6 @@
         public const string LoLAssists = nameof(LoLAssists);
         public const string LoLMinion = nameof(LoLMinion);
         public const string LoLBaron = nameof(LoLBaron);
-        public const string LoLDragon = nameof(LoLDragon);
+        public const string LoLElderDragon = nameof(LoLElderDragon);
     }
 }

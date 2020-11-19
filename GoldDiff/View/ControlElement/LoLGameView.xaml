@@ -184,7 +184,7 @@
                                         LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamPowerPlayGoldDifference}"
                                         DataContext="{Binding ElementName=This, Path=TeamPowerPlayCollection}"
                                         PowerPlay="{Binding Path=ElderDragonPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                        PowerPlayIcon="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLDragon}}"
+                                        PowerPlayIcon="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLElderDragon}}"
                                         Visibility="{Binding Path=ElderDragonPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource NullToCollapsed}}" />
 
             <local:LoLGoldOwnerGoldDifferenceView VerticalAlignment="Center"
