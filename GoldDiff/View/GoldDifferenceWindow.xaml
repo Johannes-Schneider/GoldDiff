@@ -33,6 +33,7 @@
     </Window.Topmost>
 
     <Window.Resources>
+        <system:Double x:Key="TeamRowMinimumHeight">64</system:Double>
         <system:Double x:Key="RowMinimumHeight">48</system:Double>
         <LinearGradientBrush x:Key="{x:Static local:GoldDifferenceWindow.ActivePlayerOnBlueSideBackground}" StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
             <GradientStop Offset="0" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLActivePlayerRegularColor}}" />
@@ -47,7 +48,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="1.5*" MinHeight="{StaticResource TeamRowMinimumHeight}" />
             <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
             <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
             <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />

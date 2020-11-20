@@ -34,13 +34,13 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="24" /> <!-- Spacing Left -->
-            <ColumnDefinition Width="1.5*" MinWidth="32" />        <!-- Blue Side Inhibitor Respawn Timers -->
+            <ColumnDefinition Width="1*" MinWidth="32" />        <!-- Blue Side Inhibitor Respawn Timers -->
             <ColumnDefinition Width="2.5*" MinWidth="32" />        <!-- Blue Side Stats -->
-            <ColumnDefinition Width="1.5*" MinWidth="32" />        <!-- Blue Side Total Gold -->
+            <ColumnDefinition Width="1*" MinWidth="32" />        <!-- Blue Side Total Gold -->
             <ColumnDefinition Width="Auto" />        <!-- Gold Difference -->
-            <ColumnDefinition Width="1.5*" MinWidth="32" />        <!-- Red Side Total Gold -->
+            <ColumnDefinition Width="1*" MinWidth="32" />        <!-- Red Side Total Gold -->
             <ColumnDefinition Width="2.5*" MinWidth="32" />        <!-- Red Side Stats -->
-            <ColumnDefinition Width="1.5*" MinWidth="32" />        <!-- Red Side Inhibitor Respawn Timers -->
+            <ColumnDefinition Width="1*" MinWidth="32" />        <!-- Red Side Inhibitor Respawn Timers -->
             <ColumnDefinition Width="24" /> <!-- Spacing Right -->
         </Grid.ColumnDefinitions>
 

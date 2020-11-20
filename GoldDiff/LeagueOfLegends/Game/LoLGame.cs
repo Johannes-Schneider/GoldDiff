@@ -94,7 +94,7 @@ namespace GoldDiff.LeagueOfLegends.Game
 
             State = LoLGameStateType.Ended;
         }
-        
+
         public void Consume(LoLClientGameData? gameData)
         {
             if (gameData == null)
@@ -125,6 +125,7 @@ namespace GoldDiff.LeagueOfLegends.Game
             {
                 EventDispatcher!.Invoke(() => Initialized.Invoke(this, EventArgs.Empty));
             }
+
             EventDispatcher!.Invoke(() => GameDataReceived?.Invoke(this, gameData));
         }
 
@@ -134,18 +135,30 @@ namespace GoldDiff.LeagueOfLegends.Game
             {
                 return true;
             }
-            
+
             Mode = gameData.Stats.GameMode;
-            if (Mode != LoLGameModeType.Classic5X5 && Mode != LoLGameModeType.PracticeTool)
+            if (Mode != LoLGameModeType.Classic5X5
+            #if DEBUG
+                && Mode != LoLGameModeType.PracticeTool
+            #endif
+            )
             {
                 // We do support only classic 5v5 games right now
                 State = LoLGameStateType.Undefined;
                 return false;
             }
-            
+
             var teams = LoLTeamFactory.ExtractTeams(gameData, StaticResourceCache).ToList();
-            TeamBlueSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.BlueSide) ?? new LoLTeam(LoLTeamType.BlueSide, Enumerable.Empty<LoLPlayer>());
-            TeamRedSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.RedSide) ?? new LoLTeam(LoLTeamType.RedSide, Enumerable.Empty<LoLPlayer>());
+            TeamBlueSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.BlueSide);
+            TeamRedSide = teams.FirstOrDefault(team => team.Side == LoLTeamType.RedSide);
+
+            if (TeamBlueSide == null && TeamRedSide == null)
+            {
+                return false;
+            }
+
+            TeamBlueSide ??= new LoLTeam(LoLTeamType.BlueSide, Enumerable.Empty<LoLPlayer>());
+            TeamRedSide ??= new LoLTeam(LoLTeamType.RedSide, Enumerable.Empty<LoLPlayer>());
 
             RespawnTimerCollection = new LoLRespawnTimerCollection();
             TeamPowerPlayCollection = new LoLTeamPowerPlayCollection(this);
