@@ -124,6 +124,15 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display Window Title.
+        /// </summary>
+        public static string LabelDisplayTitleBar {
+            get {
+                return ResourceManager.GetString("LabelDisplayTitleBar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Display.
         /// </summary>
         public static string LabelGameDisplaySettings {

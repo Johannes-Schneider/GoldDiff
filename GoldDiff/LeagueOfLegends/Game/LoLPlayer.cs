@@ -17,6 +17,8 @@ namespace GoldDiff.LeagueOfLegends.Game
 
     #region ILoLGoldOwner
 
+        public event EventHandler<LoLGoldSnapshot>? GoldSnapshotAdded; 
+
         private int _totalGold;
 
         public int TotalGold
@@ -48,6 +50,10 @@ namespace GoldDiff.LeagueOfLegends.Game
                 MutateVerbose(ref _nonConsumableGold, value);
             }
         }
+
+        private readonly List<LoLGoldSnapshot> _goldSnapshots = new();
+
+        public IEnumerable<LoLGoldSnapshot> GoldSnapshots => _goldSnapshots;
 
     #endregion
 
@@ -101,18 +107,23 @@ namespace GoldDiff.LeagueOfLegends.Game
             UpdateScore(clientPlayer);
             UpdateItems(clientPlayer);
             UpdateGold(clientPlayer);
+            AddGoldSnapshot(gameData.Stats.GameTime);
         }
 
         private void UpdateItems(LoLClientPlayer clientPlayer)
         {
             var oldItemIds = Items.SelectMany(item => Enumerable.Repeat(item.StaticProperties.Id, item.Amount)).ToList();
             var newItemIds = clientPlayer.Items.SelectMany(item => Enumerable.Repeat(item.Id, item.Amount)).ToList();
-
+            
             var addedItems = MultiSet.Difference(newItemIds, oldItemIds).GroupBy(id => id).Select(group => new LoLItem(StaticResourceCache.GetItem(group.Key), group.Count()));
-            var removedItems = MultiSet.Difference(oldItemIds, newItemIds).GroupBy(id => id).Select(group => new LoLItem(StaticResourceCache.GetItem(group.Key), group.Count()));
 
             MutableItems = clientPlayer.Items.Select(item => new LoLItem(StaticResourceCache.GetItem(item.Id), item.Amount)).ToList();
-            EventDispatcher!.Invoke(() => ItemsChanged?.Invoke(this, new ItemsChangedEventArguments(addedItems, removedItems)));
+            if (ItemsChanged != null)
+            {
+                
+                var removedItems = MultiSet.Difference(oldItemIds, newItemIds).GroupBy(id => id).Select(group => new LoLItem(StaticResourceCache.GetItem(group.Key), group.Count()));
+                OnEventDispatcher(() => ItemsChanged.Invoke(this, new ItemsChangedEventArguments(addedItems, removedItems)));
+            }
 
             if (addedItems.Any())
             {
@@ -137,6 +148,22 @@ namespace GoldDiff.LeagueOfLegends.Game
             Assists = clientPlayer.Score.Assists;
             Vision = clientPlayer.Score.Vision;
             MinionKills = clientPlayer.Score.MinionKills;
+        }
+
+        private void AddGoldSnapshot(TimeSpan gameTime)
+        {
+            var newGoldSnapshot = new LoLGoldSnapshot(gameTime, TotalGold, NonConsumableGold);
+            _goldSnapshots.Add(newGoldSnapshot);
+
+            if (GoldSnapshotAdded != null)
+            {
+                OnEventDispatcher(() => GoldSnapshotAdded.Invoke(this, newGoldSnapshot));
+            }
+        }
+
+        public override string ToString()
+        {
+            return SummonerName;
         }
     }
 }

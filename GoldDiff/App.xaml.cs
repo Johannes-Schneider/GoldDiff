@@ -37,16 +37,17 @@ namespace GoldDiff
         private LoLClientDataPollService? _clientDataPollService;
         private LoLGame? _game;
         private GoldDifferenceWindow? _goldDifferenceWindow;
+        private GoldChartWindow? _goldChartWindow;
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
             InitializeUserInterface();
             if (await UpdateApplication())
             {
-                MainWindow.Close();
+                MainWindow?.Close();
                 Shutdown();
             }
-            
+
             await UpdateResourceCacheAsync();
             StartWaitingForTargetProcess();
         }
@@ -69,17 +70,17 @@ namespace GoldDiff
         private async Task<bool> UpdateApplication()
         {
             var latestRelease = await GitHubRemoteEndpoint.Instance.GetLatestReleaseAsync(ApplicationConstants.RepositoryName);
-            
+
             if (latestRelease == null)
             {
                 return false;
             }
-            
+
             if (!StringVersion.TryParse(latestRelease.Version, out var latestReleaseVersion))
             {
                 return false;
             }
-            
+
             if (latestReleaseVersion <= ApplicationConstants.Version)
             {
                 return false;
@@ -94,7 +95,7 @@ namespace GoldDiff
                          {
                              Owner = MainWindow,
                          };
-            
+
             if (dialog.ShowDialog() != true)
             {
                 return false;
@@ -103,7 +104,7 @@ namespace GoldDiff
             var temporaryPath = Environment.CurrentDirectory;
             var latestReleaseDownloadFile = Path.Combine(temporaryPath, Path.GetTempFileName());
             var unpackedDirectory = Path.Combine(temporaryPath, $"GoldDiff {latestRelease.Version}");
-            
+
             var command = new StringBuilder().Append("/C \"")
                                              .Append($"cd \"{temporaryPath}\" && ")
                                              .Append($"curl -s -L \"{releaseDownloadUrl}\" > \"{latestReleaseDownloadFile}\" && ")
@@ -232,26 +233,56 @@ namespace GoldDiff
         {
             Current.Dispatcher.Invoke(() =>
                                       {
-                                          if (_goldDifferenceWindow != null)
-                                          {
-                                              _goldDifferenceWindow.Model.Game = _game;
-                                              if (_goldDifferenceWindow.WindowState == WindowState.Minimized)
-                                              {
-                                                  _goldDifferenceWindow.WindowState = WindowState.Normal;
-                                              }
-                                          }
-                                          else
-                                          {
-                                              _goldDifferenceWindow = new GoldDifferenceWindow(_game);
-                                              _goldDifferenceWindow.Closed += GoldDifferenceWindow_OnClosed;
-                                              _goldDifferenceWindow.Show();
-                                          }
+                                          OpenGoldDifferenceWindow();
+                                          OpenGoldChartWindow();
                                       });
         }
 
-        private void GoldDifferenceWindow_OnClosed(object sender, EventArgs e)
+        private void OpenGoldDifferenceWindow()
+        {
+            if (_goldDifferenceWindow != null)
+            {
+                _goldDifferenceWindow.Model.Game = _game;
+                if (_goldDifferenceWindow.WindowState == WindowState.Minimized)
+                {
+                    _goldDifferenceWindow.WindowState = WindowState.Normal;
+                }
+            }
+            else
+            {
+                _goldDifferenceWindow = new GoldDifferenceWindow(_game);
+                _goldDifferenceWindow.Closed += GoldDifferenceWindow_OnClosed;
+                _goldDifferenceWindow.Show();
+            }
+        }
+
+        private void OpenGoldChartWindow()
+        {
+            if (_goldChartWindow != null)
+            {
+                _goldChartWindow.Model.Game = _game;
+                if (_goldChartWindow.WindowState == WindowState.Minimized)
+                {
+                    _goldChartWindow.WindowState = WindowState.Normal;
+                }
+            }
+            else
+            {
+                _goldChartWindow = new GoldChartWindow();
+                _goldChartWindow.Model.Game = _game;
+                _goldChartWindow.Closed += GoldChartWindow_OnClosed;
+                _goldChartWindow.Show();
+            }
+        }
+
+        private void GoldDifferenceWindow_OnClosed(object? sender, EventArgs e)
         {
             _goldDifferenceWindow = null;
+        }
+
+        private void GoldChartWindow_OnClosed(object? sender, EventArgs e)
+        {
+            _goldChartWindow = null;
         }
 
         private void TargetProcessStopped()

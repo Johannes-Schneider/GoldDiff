@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GoldDiff.View.Resource {
+namespace GoldDiff.Shared.View.SharedResource {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace GoldDiff.View.Resource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StayOnTopTypeResources {
+    public class LoLTeamTypeResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StayOnTopTypeResources() {
+        internal LoLTeamTypeResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GoldDiff.View.Resource {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GoldDiff.View.Resource.StayOnTopTypeResources", typeof(StayOnTopTypeResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GoldDiff.Shared.View.SharedResource.LoLTeamTypeResources", typeof(LoLTeamTypeResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,20 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanent.
+        ///   Looks up a localized string similar to Blue.
         /// </summary>
-        public static string Always {
+        public static string BlueSide {
             get {
-                return ResourceManager.GetString("Always", resourceCulture);
+                return ResourceManager.GetString("BlueSide", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Never.
+        ///   Looks up a localized string similar to Red.
         /// </summary>
-        public static string Off {
+        public static string RedSide {
             get {
-                return ResourceManager.GetString("Off", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to While Ingame.
-        /// </summary>
-        public static string WhileGameIsRunning {
-            get {
-                return ResourceManager.GetString("WhileGameIsRunning", resourceCulture);
+                return ResourceManager.GetString("RedSide", resourceCulture);
             }
         }
     }

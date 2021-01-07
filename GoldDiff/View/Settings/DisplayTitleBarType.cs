@@ -1,9 +1,9 @@
 ﻿namespace GoldDiff.View.Settings
 {
-    public enum StayOnTopType
+    public enum DisplayTitleBarType
     {
         Off,
         Always,
-        WhileGameIsRunning,
+        WhileGameIsNotRunning,
     }
 }

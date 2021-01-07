@@ -22,14 +22,14 @@ namespace GoldDiff.View.Resource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StayOnTopTypeResources {
+    public class DisplayTitleBarTypeResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StayOnTopTypeResources() {
+        internal DisplayTitleBarTypeResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GoldDiff.View.Resource {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GoldDiff.View.Resource.StayOnTopTypeResources", typeof(StayOnTopTypeResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GoldDiff.View.Resource.DisplayTitleBarTypeResources", typeof(DisplayTitleBarTypeResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -79,11 +79,11 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to While Ingame.
+        ///   Looks up a localized string similar to While not Ingame.
         /// </summary>
-        public static string WhileGameIsRunning {
+        public static string WhileGameIsNotRunning {
             get {
-                return ResourceManager.GetString("WhileGameIsRunning", resourceCulture);
+                return ResourceManager.GetString("WhileGameIsNotRunning", resourceCulture);
             }
         }
     }

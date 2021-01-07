@@ -9,9 +9,9 @@ using GoldDiff.View.Settings;
 
 namespace GoldDiff.View.Controller
 {
-    public class GoldDifferenceWindowController
+    public class GoldDifferenceWindowController : AbstractWindowController
     {
-        private static List<string> PlayerPropertyNames { get; } = new List<string>
+        private static List<string> PlayerPropertyNames { get; } = new()
                                                                    {
                                                                        nameof(GoldDifferenceWindowViewModel.TopPlayerBlueSide),
                                                                        nameof(GoldDifferenceWindowViewModel.JunglePlayerBlueSide),
@@ -24,76 +24,20 @@ namespace GoldDiff.View.Controller
                                                                        nameof(GoldDifferenceWindowViewModel.BottomPlayerRedSide),
                                                                        nameof(GoldDifferenceWindowViewModel.SupportPlayerRedSide),
                                                                    };
-        
+
         public GoldDifferenceWindowViewModel Model { get; }
 
-        public GoldDifferenceWindowController(GoldDifferenceWindowViewModel? model)
+        public GoldDifferenceWindowController(GoldDifferenceWindowViewModel? model) : base(model)
         {
             Model = model ?? throw new ArgumentNullException(nameof(model));
-            Model.PropertyChanged += ModelOnPropertyChanged;
-            SubscribeToPropertyChangedEvent(Model.Game, Game_OnPropertyChanged);
-            ViewSettings.Instance.PropertyChanged += ViewSettings_OnPropertyChanged;
-            
+            Model.PropertyChanged += Model_OnPropertyChanged;
+
             TryInitializeModel();
-            UpdateTopmost();
         }
 
-        private void SubscribeToPropertyChangedEvent(INotifyPropertyChanged? sender, PropertyChangedEventHandler handler)
-        {
-            if (sender == null)
-            {
-                return;
-            }
-
-            sender.PropertyChanged += handler;
-        }
-
-        private void Game_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (!ReferenceEquals(sender, Model.Game))
-            {
-                return;
-            }
-            
-            if (e.PropertyName.Equals(nameof(LoLGame.State)))
-            {
-                UpdateTopmost();
-            }
-        }
-
-        private void ViewSettings_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName.Equals(nameof(ViewSettings.GoldDifferenceWindowStayOnTop)))
-            {
-                UpdateTopmost();
-            }
-        }
-
-        private void UpdateTopmost()
-        {
-            Model.Topmost = ViewSettings.Instance.GoldDifferenceWindowStayOnTop switch
-                            {
-                                StayOnTopType.Off => false,
-                                StayOnTopType.DuringGame => Model.Game?.State switch
-                                                            {
-                                                                null => false,
-                                                                LoLGameStateType.Undefined => false,
-                                                                LoLGameStateType.Ended => false,
-                                                                _ => true,
-                                                            },
-                                StayOnTopType.Always => true,
-                                _ => throw new Exception($"Unknown {nameof(StayOnTopType)} {ViewSettings.Instance.GoldDifferenceWindowStayOnTop}!")
-                            };
-        }
-
-        private void ModelOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName.Equals(nameof(Model.Game)))
-            {
-                SubscribeToPropertyChangedEvent(Model.Game, Game_OnPropertyChanged);
-                TryInitializeModel();
-            }
-            else if (string.IsNullOrEmpty(e.PropertyName) || PlayerPropertyNames.Contains(e.PropertyName))
+        private void Model_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        { 
+            if (string.IsNullOrEmpty(e.PropertyName) || PlayerPropertyNames.Contains(e.PropertyName))
             {
                 UpdateActivePlayerBackground();
             }
@@ -124,52 +68,61 @@ namespace GoldDiff.View.Controller
             Model.MiddlePlayerBackground = Model.InactivePlayerBackground;
             Model.BottomPlayerBackground = Model.InactivePlayerBackground;
             Model.SupportPlayerBackground = Model.InactivePlayerBackground;
-            
+
             if (Model.TopPlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.TopPlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
+
             if (Model.JunglePlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.JunglePlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
+
             if (Model.MiddlePlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.MiddlePlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
+
             if (Model.BottomPlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.BottomPlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
+
             if (Model.SupportPlayerBlueSide?.IsActivePlayer == true)
             {
                 Model.SupportPlayerBackground = Model.ActivePlayerOnBlueSideBackground;
                 return;
             }
+
             if (Model.TopPlayerRedSide?.IsActivePlayer == true)
             {
                 Model.TopPlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
+
             if (Model.JunglePlayerRedSide?.IsActivePlayer == true)
             {
                 Model.JunglePlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
+
             if (Model.MiddlePlayerRedSide?.IsActivePlayer == true)
             {
                 Model.MiddlePlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
+
             if (Model.BottomPlayerRedSide?.IsActivePlayer == true)
             {
                 Model.BottomPlayerBackground = Model.ActivePlayerOnRedSideBackground;
                 return;
             }
+
             if (Model.SupportPlayerRedSide?.IsActivePlayer == true)
             {
                 Model.SupportPlayerBackground = Model.ActivePlayerOnRedSideBackground;

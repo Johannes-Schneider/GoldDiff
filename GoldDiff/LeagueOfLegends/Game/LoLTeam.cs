@@ -5,6 +5,7 @@ using FlatXaml.Model;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.Shared.View.SharedResource;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
@@ -12,6 +13,8 @@ namespace GoldDiff.LeagueOfLegends.Game
     {
     #region ILoLGoldOwner
 
+        public event EventHandler<LoLGoldSnapshot>? GoldSnapshotAdded; 
+        
         private int _totalGold;
 
         public int TotalGold
@@ -43,6 +46,10 @@ namespace GoldDiff.LeagueOfLegends.Game
                 MutateVerbose(ref _nonConsumableGold, value);
             }
         }
+
+        private readonly List<LoLGoldSnapshot> _goldSnapshots = new();
+
+        public IEnumerable<LoLGoldSnapshot> GoldSnapshots => _goldSnapshots;
 
     #endregion
 
@@ -87,6 +94,7 @@ namespace GoldDiff.LeagueOfLegends.Game
             UpdatePlayers(gameData);
             UpdateGold();
             UpdateScore(gameData);
+            AddGoldSnapshot(gameData.Stats.GameTime);
         }
 
         private void UpdatePlayers(LoLClientGameData gameData)
@@ -125,6 +133,22 @@ namespace GoldDiff.LeagueOfLegends.Game
                             + gameData.EventCollection.Events.Where(e => e.EventType == LoLClientEventType.FirstTurretKilled)
                                       .Cast<LoLClientFirstTurretKilledEvent>()
                                       .Count(e => playerNames.Contains(e.KillerName));
+        }
+
+        private void AddGoldSnapshot(TimeSpan gameTime)
+        {
+            var newGoldSnapshot = new LoLGoldSnapshot(gameTime, TotalGold, NonConsumableGold);
+            _goldSnapshots.Add(newGoldSnapshot);
+
+            if (GoldSnapshotAdded != null)
+            {
+                OnEventDispatcher(() => GoldSnapshotAdded.Invoke(this, newGoldSnapshot));
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"{LoLTeamTypeResources.ResourceManager.GetString(Side.ToString())} Team";
         }
     }
 }

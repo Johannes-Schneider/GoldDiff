@@ -40,16 +40,29 @@ namespace GoldDiff.View.Settings
 
     #endregion
 
-    #region GoldDifferenceWindow settings
+    #region common window settings
 
-        private StayOnTopType _goldDifferenceWindowStayOnTop = StayOnTopType.DuringGame;
+        private StayOnTopType _windowStayOnTop = StayOnTopType.WhileGameIsRunning;
 
         [JsonProperty]
-        public StayOnTopType GoldDifferenceWindowStayOnTop
+        public StayOnTopType WindowStayOnTop
         {
-            get => _goldDifferenceWindowStayOnTop;
-            set => MutateVerbose(ref _goldDifferenceWindowStayOnTop, value);
+            get => _windowStayOnTop;
+            set => MutateVerbose(ref _windowStayOnTop, value);
         }
+
+        private DisplayTitleBarType _windowDisplayTitleBar = DisplayTitleBarType.Always;
+
+        [JsonProperty]
+        public DisplayTitleBarType WindowDisplayTitleBar
+        {
+            get => _windowDisplayTitleBar;
+            set => MutateVerbose(ref _windowDisplayTitleBar, value);
+        }
+
+    #endregion
+
+    #region GoldDifferenceWindow settings
 
         private int _goldDifferenceWindowLeft;
 
@@ -87,11 +100,51 @@ namespace GoldDiff.View.Settings
             set => MutateVerbose(ref _goldDifferenceWindowHeight, value);
         }
 
-        private DisplayGoldType _displayGoldType = DisplayGoldType.NonConsumable;
+    #endregion
+
+    #region GoldChartWindow settings
+
+        private int _goldChartWindowLeft;
+
+        [JsonProperty]
+        public int GoldChartWindowLeft
+        {
+            get => _goldChartWindowLeft;
+            set => MutateVerbose(ref _goldChartWindowLeft, value);
+        }
+
+        private int _goldChartWindowTop;
+
+        [JsonProperty]
+        public int GoldChartWindowTop
+        {
+            get => _goldChartWindowTop;
+            set => MutateVerbose(ref _goldChartWindowTop, value);
+        }
+
+        private int _goldChartWindowWidth;
+
+        [JsonProperty]
+        public int GoldChartWindowWidth
+        {
+            get => _goldChartWindowWidth;
+            set => MutateVerbose(ref _goldChartWindowWidth, value);
+        }
+
+        private int _goldChartWindowHeight;
+
+        [JsonProperty]
+        public int GoldChartWindowHeight
+        {
+            get => _goldChartWindowHeight;
+            set => MutateVerbose(ref _goldChartWindowHeight, value);
+        }
 
     #endregion
 
     #region ILoLGoldOwner settings
+        
+        private DisplayGoldType _displayGoldType = DisplayGoldType.NonConsumable;
 
         [JsonProperty]
         public DisplayGoldType DisplayGoldType

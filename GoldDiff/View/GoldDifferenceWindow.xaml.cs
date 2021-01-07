@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.Shared.LeagueOfLegends;
@@ -41,6 +42,8 @@ namespace GoldDiff.View
                     };
             Controller = new GoldDifferenceWindowController(Model);
             PrivateModel = Model;
+            
+            WindowControlBar.MouseLeftButtonDown += WindowControlBar_OnMouseLeftButtonDown;
         }
 
         private void PlayerGoldDifferenceView_OnSwapPlayers(object sender, LoLPlayerGoldDifferenceView.SwapPlayersEventArguments e)
@@ -51,6 +54,11 @@ namespace GoldDiff.View
             }
             
             Model.SwapPlayers(e.Team, e.PositionA, e.PositionB);
+        }
+
+        private void WindowControlBar_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

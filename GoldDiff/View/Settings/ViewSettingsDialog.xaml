@@ -25,6 +25,9 @@
         <flatConverter:EnumerationToStringConverter x:Key="StayOnTopTypeToStringConverter"
                                                     Enumeration="{x:Type local:StayOnTopType}"
                                                     Localization="{x:Static resource:StayOnTopTypeResources.ResourceManager}" />
+        <flatConverter:EnumerationToStringConverter x:Key="DisplayTitleBarToStringConverter"
+                                                    Enumeration="{x:Type local:DisplayTitleBarType}"
+                                                    Localization="{x:Static resource:DisplayTitleBarTypeResources.ResourceManager}" />
         <flatConverter:BoolToVisibilityConverter x:Key="TrueToVisible"
                                                  TrueValue="Visible"
                                                  FalseValue="Collapsed" />
@@ -46,6 +49,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" /> <!-- Theme -->
                     <RowDefinition Height="Auto" /> <!-- Stay on Top -->
+                    <RowDefinition Height="Auto" /> <!-- Display Title Bar -->
                 </Grid.RowDefinitions>
 
                 <!-- Theme -->
@@ -76,7 +80,7 @@
                 </StackPanel>
 
                 <!-- /Theme -->
-                
+
                 <!-- Stay On Top -->
 
                 <flat:FlatLabel Grid.Column="0"
@@ -91,9 +95,27 @@
                                    Margin="12, 12, 0, 0"
                                    ItemsSource="{markupExtension:Enumeration Enumeration={x:Type local:StayOnTopType}, Localization={x:Static resource:StayOnTopTypeResources.ResourceManager}}"
                                    DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
-                                   SelectedItem="{Binding GoldDifferenceWindowStayOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StayOnTopTypeToStringConverter}}" />
+                                   SelectedItem="{Binding WindowStayOnTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource StayOnTopTypeToStringConverter}}" />
 
                 <!-- /Stay On Top -->
+
+                <!-- Display Title Bar -->
+
+                <flat:FlatLabel Grid.Column="0"
+                                Grid.Row="2"
+                                Margin="0, 12, 0, 0"
+                                Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelDisplayTitleBar}}"
+                                Target="{Binding ElementName=SelectDisplayTitleBar}" />
+
+                <flat:FlatComboBox x:Name="SelectDisplayTitleBar"
+                                   Grid.Column="1"
+                                   Grid.Row="2"
+                                   Margin="12, 12, 0, 0"
+                                   ItemsSource="{markupExtension:Enumeration Enumeration={x:Type local:DisplayTitleBarType}, Localization={x:Static resource:DisplayTitleBarTypeResources.ResourceManager}}"
+                                   DataContext="{Binding Source={x:Static local:ViewSettings.Instance}}"
+                                   SelectedItem="{Binding WindowDisplayTitleBar, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource DisplayTitleBarToStringConverter}}" />
+
+                <!-- /Display Title Bar -->
 
             </Grid>
         </flat:FlatGroupBox>
@@ -193,7 +215,7 @@
         </flat:FlatGroupBox>
 
         <!-- /Player Display Settings -->
-        
+
         <!-- Team Display Settings -->
 
         <flat:FlatGroupBox Margin="0, 12, 0, 0"
@@ -243,7 +265,7 @@
                                        IsChecked="{Binding DisplayTeamScoresSinceLastItemAcquisition, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
                 <!-- /Display Team Scores -->
-                
+
                 <!-- Display Inhibitor Respawn Time -->
 
                 <flat:FlatLabel Grid.Column="0"

@@ -6,9 +6,9 @@ using GoldDiff.Shared.LeagueOfLegends;
 
 namespace GoldDiff.View.Model
 {
-    public class GoldDifferenceWindowViewModel : ViewModel
+    public class GoldDifferenceWindowViewModel : AbstractWindowViewModel
     {
-        private Dictionary<LoLTeamType, Dictionary<LoLPositionType, LoLPlayer?>> Players { get; } = new Dictionary<LoLTeamType, Dictionary<LoLPositionType, LoLPlayer?>>
+        private Dictionary<LoLTeamType, Dictionary<LoLPositionType, LoLPlayer?>> Players { get; } = new()
                                                                                                     {
                                                                                                         {
                                                                                                             LoLTeamType.BlueSide, new Dictionary<LoLPositionType, LoLPlayer?>
@@ -32,14 +32,6 @@ namespace GoldDiff.View.Model
                                                                                                         },
                                                                                                     };
 
-        private LoLGame? _game;
-
-        public LoLGame? Game
-        {
-            get => _game;
-            set => MutateVerboseIfNotNull(ref _game, value);
-        }
-        
     #region Blue Side
 
         private LoLTeam? _teamBlueSide;
@@ -59,7 +51,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? MiddlePlayerBlueSide
         {
             get => Players[LoLTeamType.BlueSide][LoLPositionType.Middle];
@@ -69,7 +61,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? BottomPlayerBlueSide
         {
             get => Players[LoLTeamType.BlueSide][LoLPositionType.Bottom];
@@ -79,7 +71,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? JunglePlayerBlueSide
         {
             get => Players[LoLTeamType.BlueSide][LoLPositionType.Jungle];
@@ -89,7 +81,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? SupportPlayerBlueSide
         {
             get => Players[LoLTeamType.BlueSide][LoLPositionType.Support];
@@ -101,7 +93,7 @@ namespace GoldDiff.View.Model
         }
 
     #endregion
-        
+
     #region Red Side
 
         private LoLTeam? _teamRedSide;
@@ -111,7 +103,7 @@ namespace GoldDiff.View.Model
             get => _teamRedSide;
             set => MutateVerbose(ref _teamRedSide, value);
         }
-        
+
         public LoLPlayer? TopPlayerRedSide
         {
             get => Players[LoLTeamType.RedSide][LoLPositionType.Top];
@@ -121,7 +113,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? MiddlePlayerRedSide
         {
             get => Players[LoLTeamType.RedSide][LoLPositionType.Middle];
@@ -131,7 +123,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? BottomPlayerRedSide
         {
             get => Players[LoLTeamType.RedSide][LoLPositionType.Bottom];
@@ -141,7 +133,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? JunglePlayerRedSide
         {
             get => Players[LoLTeamType.RedSide][LoLPositionType.Jungle];
@@ -151,7 +143,7 @@ namespace GoldDiff.View.Model
                 OnPropertyChanged();
             }
         }
-        
+
         public LoLPlayer? SupportPlayerRedSide
         {
             get => Players[LoLTeamType.RedSide][LoLPositionType.Support];
@@ -171,7 +163,7 @@ namespace GoldDiff.View.Model
             get => _activePlayerOnBlueSideBackground;
             set => MutateVerbose(ref _activePlayerOnBlueSideBackground, value);
         }
-        
+
         private Brush? _activePlayerOnRedSideBackground;
 
         public Brush? ActivePlayerOnRedSideBackground
@@ -195,7 +187,7 @@ namespace GoldDiff.View.Model
             get => _topPlayerBackground;
             set => MutateVerbose(ref _topPlayerBackground, value);
         }
-        
+
         private Brush? _junglePlayerBackground;
 
         public Brush? JunglePlayerBackground
@@ -203,7 +195,7 @@ namespace GoldDiff.View.Model
             get => _junglePlayerBackground;
             set => MutateVerbose(ref _junglePlayerBackground, value);
         }
-        
+
         private Brush? _middlePlayerBackground;
 
         public Brush? MiddlePlayerBackground
@@ -211,7 +203,7 @@ namespace GoldDiff.View.Model
             get => _middlePlayerBackground;
             set => MutateVerbose(ref _middlePlayerBackground, value);
         }
-        
+
         private Brush? _bottomPlayerBackground;
 
         public Brush? BottomPlayerBackground
@@ -219,21 +211,13 @@ namespace GoldDiff.View.Model
             get => _bottomPlayerBackground;
             set => MutateVerbose(ref _bottomPlayerBackground, value);
         }
-        
+
         private Brush? _supportPlayerBackground;
 
         public Brush? SupportPlayerBackground
         {
             get => _supportPlayerBackground;
             set => MutateVerbose(ref _supportPlayerBackground, value);
-        }
-
-        private bool _topmost = false;
-
-        public bool Topmost
-        {
-            get => _topmost;
-            set => MutateVerbose(ref _topmost, value);
         }
 
         public void SwapPlayers(LoLTeamType team, LoLPositionType positionA, LoLPositionType positionB)

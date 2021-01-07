@@ -18,13 +18,10 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="Off" xml:space="preserve">
-        <value>Never</value>
+    <data name="BlueSide" xml:space="preserve">
+        <value>Blue</value>
     </data>
-    <data name="Always" xml:space="preserve">
-        <value>Permanent</value>
-    </data>
-    <data name="WhileGameIsRunning" xml:space="preserve">
-        <value>While Ingame</value>
+    <data name="RedSide" xml:space="preserve">
+        <value>Red</value>
     </data>
 </root>

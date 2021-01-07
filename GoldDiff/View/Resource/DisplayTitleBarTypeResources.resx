@@ -24,7 +24,7 @@
     <data name="Always" xml:space="preserve">
         <value>Permanent</value>
     </data>
-    <data name="WhileGameIsRunning" xml:space="preserve">
-        <value>While Ingame</value>
+    <data name="WhileGameIsNotRunning" xml:space="preserve">
+        <value>While not Ingame</value>
     </data>
 </root>

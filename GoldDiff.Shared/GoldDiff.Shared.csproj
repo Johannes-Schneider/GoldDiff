@@ -33,6 +33,10 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>ThemeTypeResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
+      <EmbeddedResource Update="View\SharedResource\LoLTeamTypeResources.resx">
+        <Generator>PublicResXFileCodeGenerator</Generator>
+        <LastGenOutput>LoLTeamTypeResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
     </ItemGroup>
 
     <ItemGroup>
@@ -45,6 +49,11 @@
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
         <DependentUpon>ThemeTypeResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="View\SharedResource\LoLTeamTypeResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>LoLTeamTypeResources.resx</DependentUpon>
       </Compile>
     </ItemGroup>
 

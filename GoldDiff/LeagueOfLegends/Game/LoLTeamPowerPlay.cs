@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using FlatXaml.Model;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.Shared.LeagueOfLegends;
@@ -7,6 +8,8 @@ namespace GoldDiff.LeagueOfLegends.Game
 {
     public class LoLTeamPowerPlay : ViewModel, ILoLClientGameDataConsumer, ILoLGoldOwner
     {
+        public event EventHandler<LoLGoldSnapshot>? GoldSnapshotAdded; 
+        
         public LoLTeamType Team => OwningTeam.Side;
 
         private TimeSpan? _remainingDuration;
@@ -57,6 +60,10 @@ namespace GoldDiff.LeagueOfLegends.Game
             get => _nonConsumableGold;
             private set => MutateVerbose(ref _nonConsumableGold, value);
         }
+
+        private readonly List<LoLGoldSnapshot> _goldSnapshots = new();
+
+        public IEnumerable<LoLGoldSnapshot> GoldSnapshots => _goldSnapshots;
 
         private TimeSpan StartTime { get; }
         private TimeSpan TotalDuration { get; }
@@ -118,6 +125,14 @@ namespace GoldDiff.LeagueOfLegends.Game
 
             var currentNonConsumableGoldDifference = OwningTeam.NonConsumableGold - OpponentTeam.NonConsumableGold;
             NonConsumableGold = currentNonConsumableGoldDifference - InitialNonConsumableGoldDifference;
+
+            var newGoldSnapshot = new LoLGoldSnapshot(currentGameTime, TotalGold, NonConsumableGold);
+            _goldSnapshots.Add(newGoldSnapshot);
+
+            if (GoldSnapshotAdded != null)
+            {
+                OnEventDispatcher(() => GoldSnapshotAdded.Invoke(this, newGoldSnapshot));
+            }
         }
     }
 }
