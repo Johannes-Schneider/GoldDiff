@@ -32,6 +32,7 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+      <PackageReference Include="log4net" Version="2.0.12" />
       <PackageReference Include="System.Management" Version="5.0.0" />
     </ItemGroup>
 
@@ -45,9 +46,6 @@
       <EmbeddedResource Update="View\Resource\MainWindowResources.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
-      <EmbeddedResource Update="View\Resource\StayOnTopTypeResources.resx">
-        <Generator>PublicResXFileCodeGenerator</Generator>
-      </EmbeddedResource>
       <EmbeddedResource Update="View\Resource\ViewSettingsDialogResources.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
       </EmbeddedResource>
@@ -55,9 +53,9 @@
         <Generator>PublicResXFileCodeGenerator</Generator>
         <LastGenOutput>UpdateApplicationDialogResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
-      <EmbeddedResource Update="View\Resource\DisplayTitleBarTypeResources.resx">
+      <EmbeddedResource Update="View\Resource\GoldDifferenceWindowResources.resx">
         <Generator>PublicResXFileCodeGenerator</Generator>
-        <LastGenOutput>DisplayTitleBarTypeResources.Designer.cs</LastGenOutput>
+        <LastGenOutput>GoldDifferenceWindowResources.Designer.cs</LastGenOutput>
       </EmbeddedResource>
     </ItemGroup>
 
@@ -67,11 +65,17 @@
         <AutoGen>True</AutoGen>
         <DependentUpon>UpdateApplicationDialogResources.resx</DependentUpon>
       </Compile>
-      <Compile Update="View\Resource\DisplayTitleBarTypeResources.Designer.cs">
+      <Compile Update="View\Resource\GoldDifferenceWindowResources.Designer.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
-        <DependentUpon>DisplayTitleBarTypeResources.resx</DependentUpon>
+        <DependentUpon>GoldDifferenceWindowResources.resx</DependentUpon>
       </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="log4net.config">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 </Project>

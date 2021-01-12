@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="GoldDiff.View.ControlElement.LoLGoldChartTooltip"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:GoldDiff.View.ControlElement"
+             xmlns:view="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+             xmlns:sharedIcon="clr-namespace:GoldDiff.Shared.View.SharedIcon;assembly=GoldDiff.Shared"
+             xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme;assembly=GoldDiff.Shared"
+             xmlns:game="clr-namespace:GoldDiff.LeagueOfLegends.Game"
+             xmlns:theme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml"
+             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.SharedConverter;assembly=GoldDiff.Shared"
+             mc:Ignorable="d"
+
+             x:Name="This"
+
+             d:DesignHeight="300" d:DesignWidth="300">
+    
+    <UserControl.Resources>
+        <sharedConverter:TimeSpanToStringConverter x:Key="TimeSpanToStringConverter" />
+    </UserControl.Resources>
+
+    <Border BorderThickness="1"
+            Background="{DynamicResource {x:Static theme:FlatThemeKeys.BackgroundRegular}}"
+            BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}">
+
+        <Grid Margin="6">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" /> <!-- Game Time -->
+                <RowDefinition Height="Auto" /> <!-- Gold Advantage -->
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        Margin="0, 0, 0, 6"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <view:FlatIcon Margin="0, 0, 6, 0"
+                               Width="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
+                               Height="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLTeam}}"
+                               Foreground="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegular}}" />
+
+                <local:LoLGoldOwnerGoldDifferenceView Margin="6, 0, 6, 0"
+                                                      GoldOwnerBlueSide="{Binding ElementName=This, Path=BlueSideAdvantage}"
+                                                      GoldOwnerRedSide="{Binding ElementName=This, Path=RedSideAdvantage}"
+                                                      MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamGoldDifference}"
+                                                      MediocreGoldDifference="{x:Static game:LoLConstants.MediocreTeamGoldDifference}"
+                                                      LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamGoldDifference}" />
+
+                <view:FlatIcon Margin="6, 0, 0, 0"
+                               Width="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
+                               Height="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeRegular}}"
+                               Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.LoLTeam}}"
+                               Foreground="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegular}}" />
+
+            </StackPanel>
+
+            <TextBlock Grid.Row="1"
+                       Margin="0, 6, 0, 0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="{DynamicResource {x:Static theme:FlatThemeKeys.FontFamilyHint}}"
+                       FontSize="{DynamicResource {x:Static theme:FlatThemeKeys.FontSizeHint}}"
+                       Foreground="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundDisabled}}"
+                       Text="{Binding ElementName=This, Path=GameTime, Mode=OneWay, Converter={StaticResource TimeSpanToStringConverter}}" />
+
+
+        </Grid>
+    </Border>
+</UserControl>

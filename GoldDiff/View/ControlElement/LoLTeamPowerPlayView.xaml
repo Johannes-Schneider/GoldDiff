@@ -92,8 +92,7 @@
                                       Foreground="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegular}}"
                                       Value="{Binding Path=RemainingDurationRelative, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
                                       Visibility="{Binding Path=Team, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BlueSideTeamToVisible}}" />
-
-
+                
             </Grid>
 
         </Grid>

@@ -8,6 +8,7 @@
              xmlns:leagueOfLegends="clr-namespace:GoldDiff.Shared.LeagueOfLegends;assembly=GoldDiff.Shared"
              xmlns:converter="clr-namespace:GoldDiff.View.Converter"
              xmlns:view="clr-namespace:FlatXaml.View;assembly=FlatXaml"
+             xmlns:sharedConverter="clr-namespace:GoldDiff.Shared.View.SharedConverter;assembly=GoldDiff.Shared"
              mc:Ignorable="d"
 
              x:Name="This"
@@ -27,7 +28,7 @@
                                                      TrueValue="Visible"
                                                      FalseValue="Collapsed"
                                                      CompareTo="{x:Static Member=leagueOfLegends:LoLTeamType.RedSide}" />
-        <converter:TimeSpanToStringConverter x:Key="TimeSpanToString" />
+        <sharedConverter:TimeSpanToStringConverter x:Key="TimeSpanToString" />
     </ContentControl.Resources>
 
     <StackPanel Orientation="Horizontal"

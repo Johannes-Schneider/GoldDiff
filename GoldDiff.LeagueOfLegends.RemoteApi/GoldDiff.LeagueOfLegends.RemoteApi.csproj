@@ -20,4 +20,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="log4net" Version="2.0.12" />
+    </ItemGroup>
+
 </Project>

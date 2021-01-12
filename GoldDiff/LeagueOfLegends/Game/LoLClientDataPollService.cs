@@ -2,16 +2,19 @@
 using System.Threading;
 using System.Threading.Tasks;
 using GoldDiff.LeagueOfLegends.ClientApi;
+using log4net;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
     public sealed class LoLClientDataPollService : IDisposable
     {
+        private static ILog Log { get; } = LogManager.GetLogger(typeof(LoLClientDataPollService));
+        
         public event EventHandler<LoLClientGameData>? GameDataReceived;
 
         public TimeSpan PollInterval { get; set; }
 
-        private CancellationTokenSource CancellationTokenSource { get; } = new CancellationTokenSource();
+        private CancellationTokenSource CancellationTokenSource { get; } = new();
         private Task? _pollTask;
         private bool _isDisposed;
 
@@ -37,17 +40,20 @@ namespace GoldDiff.LeagueOfLegends.Game
                 try
                 {
                     var gameData = await LoLClientEndpoint.Get.GetGameDataAsync();
-                    if (gameData == null || _isDisposed)
+                    if (gameData != null && !_isDisposed)
                     {
-                        continue;
+                        GameDataReceived?.Invoke(this, gameData);
                     }
 
-                    GameDataReceived?.Invoke(this, gameData);
                     await Task.Delay(PollInterval, CancellationTokenSource.Token);
+                }
+                catch (TaskCanceledException)
+                {
+                    // ignored
                 }
                 catch (Exception exception)
                 {
-                    // TODO: handle exception
+                    Log.Warn($"Exception while polling {nameof(LoLClientGameData)}.", exception);
                 }
             }
         }

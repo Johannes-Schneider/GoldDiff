@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
@@ -59,6 +60,18 @@ namespace GoldDiff.View
         private void WindowControlBar_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (Model.Game?.State == LoLGameStateType.PreStart || Model.Game?.State == LoLGameStateType.Started)
+            {
+                e.Cancel = true;
+                WindowState = WindowState.Minimized;
+                return;
+            }
+            
+            base.OnClosing(e);
         }
     }
 }

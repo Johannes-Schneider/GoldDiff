@@ -22,6 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="log4net" Version="2.0.12" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>
 
@@ -63,10 +64,6 @@
 
     <ItemGroup>
       <Resource Include="View\SharedIcon\ApplicationIcon.ico" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="GitHub" />
     </ItemGroup>
 
 </Project>

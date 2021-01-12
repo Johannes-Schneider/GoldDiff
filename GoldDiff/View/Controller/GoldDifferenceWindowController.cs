@@ -41,6 +41,10 @@ namespace GoldDiff.View.Controller
             {
                 UpdateActivePlayerBackground();
             }
+            else if (e.PropertyName?.Equals(nameof(GoldDifferenceWindowViewModel.Game)) == true)
+            {
+                TryInitializeModel();
+            }
         }
 
         private void TryInitializeModel()

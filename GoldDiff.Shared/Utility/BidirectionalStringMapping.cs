@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
+using log4net;
 
 namespace GoldDiff.Shared.Utility
 {
     public class BidirectionalStringMapping<TValue>
     {
+        private static ILog Log { get; } = LogManager.GetLogger(MethodBase.GetCurrentMethod()!.DeclaringType);
+        
         private TValue[] Values { get; }
         
         private string[] Names { get; }
@@ -34,6 +38,7 @@ namespace GoldDiff.Shared.Utility
                 }
             }
 
+            Log.Warn($"Unable to find value named \"{name}\". Falling back to {FallbackValue} ({nameof(TValue)} = {typeof(TValue).Name}).");
             return FallbackValue;
         }
 
@@ -47,6 +52,7 @@ namespace GoldDiff.Shared.Utility
                 }
             }
 
+            Log.Warn($"Unable to get name of value {value} ({nameof(TValue)} = {typeof(TValue).Name}). Falling back to {FallbackName}.");
             return FallbackName;
         }
     }

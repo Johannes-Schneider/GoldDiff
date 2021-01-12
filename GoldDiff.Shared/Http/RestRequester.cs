@@ -2,12 +2,15 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using log4net;
 using Newtonsoft.Json;
 
 namespace GoldDiff.Shared.Http
 {
     public class RestRequester : IDisposable
     {
+        private static ILog Log { get; } = LogManager.GetLogger(typeof(RestRequester));
+        
         public static TimeSpan DefaultRequestTimeout { get; } = TimeSpan.FromMilliseconds(500);
 
         private HttpClient Client { get; }
@@ -32,14 +35,15 @@ namespace GoldDiff.Shared.Http
                 var response = await Client.GetAsync(url).ConfigureAwait(false);
                 if (!response.IsSuccessStatusCode)
                 {
+                    Log.Warn($"Request to {url} ({nameof(TResultType)} = {typeof(TResultType).Name}) did return status code {response.StatusCode}.");
                     return default!;
                 }
-
                 var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 return JsonConvert.DeserializeObject<TResultType>(json);
             }
             catch (TaskCanceledException)
             {
+                Log.Warn($"Request to {url} caused a {nameof(TaskCanceledException)}. This is usually an indicator for a timeout.");
                 return default!;
             }
         }

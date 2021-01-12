@@ -2,9 +2,7 @@
 using System.ComponentModel;
 using FlatXaml;
 using FlatXaml.Model;
-using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.View.Model;
-using GoldDiff.View.Settings;
 
 namespace GoldDiff.View.Controller
 {
@@ -15,29 +13,71 @@ namespace GoldDiff.View.Controller
         protected AbstractWindowController(AbstractWindowViewModel? model)
         {
             Model = model ?? throw new ArgumentNullException(nameof(model));
+            Model.PropertyChanged += Model_OnPropertyChanged;
             Model.PropertyAboutToChange += Model_OnPropertyAboutToChange;
-            ViewSettings.Instance.PropertyChanged += ViewSettings_OnPropertyChanged;
-            
-            UpdateIsTopmost();
-            UpdateDisplayTitleBar();
         }
+        
+        private void Model_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (!ReferenceEquals(sender, Model))
+            {
+                return;
+            }
+            
+            ModelOnPropertyChanged(e);
+        }
+        
+        protected virtual void ModelOnPropertyChanged(PropertyChangedEventArgs e) { }
 
         private void Model_OnPropertyAboutToChange(object? sender, PropertyAboutToChangeEventArgs e)
         {
+            if (!ReferenceEquals(sender, Model))
+            {
+                return;
+            }
+            
             switch (e.PropertyName)
             {
                 case nameof(AbstractWindowViewModel.Game):
                 {
-                    UnsubscribeFromPropertyChangedEvent(e.OldValue as ViewModel, Game_OnPropertyChanged);
-                    SubscribeToPropertyChangedEvent(e.NewValue as ViewModel, Game_OnPropertyChanged);
-                    UpdateIsTopmost();
-                    UpdateDisplayTitleBar();
+                    Unsubscribe(e.OldValue as ViewModel, Game_OnPropertyChanged);
+                    Unsubscribe(e.OldValue as ViewModel, Game_OnPropertyAboutToChange);
+                    Subscribe(e.NewValue as ViewModel, Game_OnPropertyChanged);
+                    Subscribe(e.NewValue as ViewModel, Game_OnPropertyAboutToChange);
                     break;
                 }
             }
+            
+            ModelOnPropertyIsAboutToChange(e);
         }
+        
+        protected virtual void ModelOnPropertyIsAboutToChange(PropertyAboutToChangeEventArgs e) { }
+        
+        private void Game_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (!ReferenceEquals(sender, Model.Game))
+            {
+                return;
+            }
 
-        protected void SubscribeToPropertyChangedEvent(INotifyPropertyChanged? sender, PropertyChangedEventHandler handler)
+            OnGamePropertyChanged(e);
+        }
+        
+        protected virtual void OnGamePropertyChanged(PropertyChangedEventArgs e) { }
+
+        private void Game_OnPropertyAboutToChange(object? sender, PropertyAboutToChangeEventArgs e)
+        {
+            if (!ReferenceEquals(sender, Model.Game))
+            {
+                return;
+            }
+            
+            GameOnPropertyAboutToChange(e);
+        }
+        
+        protected virtual void GameOnPropertyAboutToChange(PropertyAboutToChangeEventArgs e) { }
+
+        protected void Subscribe(INotifyPropertyChanged? sender, PropertyChangedEventHandler handler)
         {
             if (sender == null)
             {
@@ -47,7 +87,17 @@ namespace GoldDiff.View.Controller
             sender.PropertyChanged += handler;
         }
 
-        protected void UnsubscribeFromPropertyChangedEvent(INotifyPropertyChanged? sender, PropertyChangedEventHandler handler)
+        protected void Subscribe(INotifyPropertyAboutToChange? sender, EventHandler<PropertyAboutToChangeEventArgs> handler)
+        {
+            if (sender == null)
+            {
+                return;
+            }
+
+            sender.PropertyAboutToChange += handler;
+        }
+
+        protected void Unsubscribe(INotifyPropertyChanged? sender, PropertyChangedEventHandler handler)
         {
             if (sender == null)
             {
@@ -57,71 +107,14 @@ namespace GoldDiff.View.Controller
             sender.PropertyChanged -= handler;
         }
 
-        private void Game_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        protected void Unsubscribe(INotifyPropertyAboutToChange? sender, EventHandler<PropertyAboutToChangeEventArgs> handler)
         {
-            if (!ReferenceEquals(sender, Model.Game))
+            if (sender == null)
             {
                 return;
             }
 
-            switch (e.PropertyName)
-            {
-                case nameof(LoLGame.State):
-                {
-                    UpdateIsTopmost();
-                    UpdateDisplayTitleBar();
-                    break;
-                }
-            }
-        }
-
-        private void ViewSettings_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
-        {
-            switch (e.PropertyName)
-            {
-                case nameof(ViewSettings.WindowStayOnTop):
-                {
-                    UpdateIsTopmost();
-                    break;
-                }
-                case nameof(ViewSettings.WindowDisplayTitleBar):
-                {
-                    UpdateDisplayTitleBar();
-                    break;
-                }
-            }
-        }
-
-        private void UpdateIsTopmost()
-        {
-            Model.IsTopmost = ViewSettings.Instance.WindowStayOnTop switch
-                              {
-                                  StayOnTopType.Off => false,
-                                  StayOnTopType.WhileGameIsRunning => Model.Game?.State switch
-                                                              {
-                                                                  null => false,
-                                                                  LoLGameStateType.Undefined => false,
-                                                                  LoLGameStateType.Ended => false,
-                                                                  _ => true,
-                                                              },
-                                  StayOnTopType.Always => true,
-                                  _ => throw new Exception($"Unknown {nameof(StayOnTopType)} {ViewSettings.Instance.WindowStayOnTop}!")
-                              };
-        }
-
-        private void UpdateDisplayTitleBar()
-        {
-            Model.DisplayTitleBar = ViewSettings.Instance.WindowDisplayTitleBar switch
-                                    {
-                                        DisplayTitleBarType.Off => false,
-                                        DisplayTitleBarType.WhileGameIsNotRunning => Model.Game?.State switch
-                                                                                     {
-                                                                                         LoLGameStateType.Started => false,
-                                                                                         _ => true,
-                                                                                     },
-                                        DisplayTitleBarType.Always => true,
-                                        _ => throw new Exception($"Unknown {nameof(DisplayTitleBarType)} {ViewSettings.Instance.WindowDisplayTitleBar}!"),
-                                    };
+            sender.PropertyAboutToChange -= handler;
         }
     }
 }

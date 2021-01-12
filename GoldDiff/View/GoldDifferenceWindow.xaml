@@ -14,6 +14,7 @@
         xmlns:acrylic="clr-namespace:FlatXaml.Effect.Acrylic;assembly=FlatXaml"
         xmlns:view="clr-namespace:FlatXaml.View;assembly=FlatXaml"
         xmlns:converter="clr-namespace:FlatXaml.Converter;assembly=FlatXaml"
+        xmlns:resource="clr-namespace:GoldDiff.View.Resource"
         mc:Ignorable="d"
 
         x:Name="This"
@@ -25,11 +26,12 @@
         ResizeMode="CanResizeWithGrip"
 
         MinWidth="700"
-        MinHeight="350"
+        MinHeight="500"
         Height="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowHeight, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
         Width="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowWidth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
         Left="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowLeft, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-        Top="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+        Top="{Binding Source={x:Static settings:ViewSettings.Instance}, Path=GoldDifferenceWindowTop, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+        Title="{Binding Source={x:Static resource:GoldDifferenceWindowResources.Title}}">
 
     <Window.DataContext>
         <Binding ElementName="This" Path="PrivateModel" />
@@ -58,103 +60,135 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="2*" MinHeight="350" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="1.5*" MinHeight="{StaticResource TeamRowMinimumHeight}" />
-            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
-            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
-            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
-            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
-            <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            <RowDefinition Height="*" MinHeight="150" />
         </Grid.RowDefinitions>
 
-        <view:FlatWindowControlBar x:Name="WindowControlBar"
-                                   Grid.Row="0"
-                                   CanClose="True"
-                                   CanMinimize="True"
-                                   CanMaximize="True"
-                                   CanOpenSettings="False"
-                                   Visibility="{Binding Path=DisplayTitleBar, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}"/>
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1.5*" MinHeight="{StaticResource TeamRowMinimumHeight}" />
+                <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+                <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+                <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+                <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+                <RowDefinition Height="*" MinHeight="{StaticResource RowMinimumHeight}" />
+            </Grid.RowDefinitions>
 
-        <Border Grid.Row="1"
-                Padding="18, 6, 18, 6"
-                BorderThickness="0, 0, 0, 1"
-                BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}">
+            <view:FlatWindowControlBar x:Name="WindowControlBar"
+                                       Grid.Row="0"
+                                       CanClose="True"
+                                       CanMinimize="True"
+                                       CanMaximize="True"
+                                       CanToggleStayOnTop="True"
+                                       CanOpenSettings="False"
+                                       Visibility="{Binding Path=DisplayTitleBar, Mode=OneWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource TrueToVisibleConverter}}">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center">
 
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
-                    <GradientStop Offset="0" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegularColor}}" />
-                    <GradientStop Offset="0.45" Color="Transparent" />
-                    <GradientStop Offset="0.55" Color="Transparent" />
-                    <GradientStop Offset="1" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegularColor}}" />
-                </LinearGradientBrush>
-            </Border.Background>
+                    <view:FlatIcon Margin="6, 0, 6, 0"
+                                   Source="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.Coins}}" />
 
-            <controlElement:LoLGameView Game="{Binding Path=Game, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Margin="6, 0, 6, 0"
+                               VerticalAlignment="Center"
+                               Text="{Binding Source={x:Static resource:GoldDifferenceWindowResources.Title}}" />
 
-        </Border>
+                </StackPanel>
+            </view:FlatWindowControlBar>
 
-        <Border Grid.Row="2"
-                Padding="18, 6, 18, 6"
-                BorderThickness="0, 0, 0, 1"
-                BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
-                Background="{Binding TopPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+            <Border Grid.Row="1"
+                    Padding="18, 6, 18, 6"
+                    BorderThickness="0, 0, 0, 1"
+                    BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}">
 
-            <controlElement:LoLPlayerGoldDifferenceView Position="Top"
-                                                        PlayerBlueSide="{Binding TopPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        PlayerRedSide="{Binding TopPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
-        </Border>
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0, 0.5" EndPoint="1, 0.5" Opacity="0.35">
+                        <GradientStop Offset="0" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamBlueSideRegularColor}}" />
+                        <GradientStop Offset="0.45" Color="Transparent" />
+                        <GradientStop Offset="0.55" Color="Transparent" />
+                        <GradientStop Offset="1" Color="{DynamicResource {x:Static sharedTheme:GoldDiffSharedThemeKeys.LoLTeamRedSideRegularColor}}" />
+                    </LinearGradientBrush>
+                </Border.Background>
 
-        <Border Grid.Row="3"
-                Padding="18, 6, 18, 6"
-                BorderThickness="0, 0, 0, 1"
-                BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
-                Background="{Binding JunglePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                <controlElement:LoLGameView Game="{Binding Path=Game, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
 
-            <controlElement:LoLPlayerGoldDifferenceView Position="Jungle"
-                                                        PlayerBlueSide="{Binding JunglePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        PlayerRedSide="{Binding JunglePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+            </Border>
 
-        </Border>
+            <Border Grid.Row="2"
+                    Padding="18, 6, 18, 6"
+                    BorderThickness="0, 0, 0, 1"
+                    BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
+                    Background="{Binding TopPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-        <Border Grid.Row="4"
-                Padding="18, 6, 18, 6"
-                BorderThickness="0, 0, 0, 1"
-                BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
-                Background="{Binding MiddlePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+                <controlElement:LoLPlayerGoldDifferenceView Position="Top"
+                                                            PlayerBlueSide="{Binding TopPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            PlayerRedSide="{Binding TopPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+            </Border>
 
-            <controlElement:LoLPlayerGoldDifferenceView Position="Middle"
-                                                        PlayerBlueSide="{Binding MiddlePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        PlayerRedSide="{Binding MiddlePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+            <Border Grid.Row="3"
+                    Padding="18, 6, 18, 6"
+                    BorderThickness="0, 0, 0, 1"
+                    BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
+                    Background="{Binding JunglePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-        </Border>
+                <controlElement:LoLPlayerGoldDifferenceView Position="Jungle"
+                                                            PlayerBlueSide="{Binding JunglePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            PlayerRedSide="{Binding JunglePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
 
-        <Border Grid.Row="5"
-                Padding="18, 6, 18, 6"
-                BorderThickness="0, 0, 0, 1"
-                BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
-                Background="{Binding BottomPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+            </Border>
 
-            <controlElement:LoLPlayerGoldDifferenceView Position="Bottom"
-                                                        PlayerBlueSide="{Binding BottomPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        PlayerRedSide="{Binding BottomPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+            <Border Grid.Row="4"
+                    Padding="18, 6, 18, 6"
+                    BorderThickness="0, 0, 0, 1"
+                    BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
+                    Background="{Binding MiddlePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-        </Border>
+                <controlElement:LoLPlayerGoldDifferenceView Position="Middle"
+                                                            PlayerBlueSide="{Binding MiddlePlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            PlayerRedSide="{Binding MiddlePlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
 
-        <Border Grid.Row="6"
-                Padding="18, 6, 18, 6"
-                BorderThickness="0"
-                BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
-                Background="{Binding SupportPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+            </Border>
 
-            <controlElement:LoLPlayerGoldDifferenceView Position="Support"
-                                                        PlayerBlueSide="{Binding SupportPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        PlayerRedSide="{Binding SupportPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                                                        SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+            <Border Grid.Row="5"
+                    Padding="18, 6, 18, 6"
+                    BorderThickness="0, 0, 0, 1"
+                    BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
+                    Background="{Binding BottomPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
-        </Border>
+                <controlElement:LoLPlayerGoldDifferenceView Position="Bottom"
+                                                            PlayerBlueSide="{Binding BottomPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            PlayerRedSide="{Binding BottomPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+
+            </Border>
+
+            <Border Grid.Row="6"
+                    Padding="18, 6, 18, 6"
+                    BorderThickness="0"
+                    BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
+                    Background="{Binding SupportPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+
+                <controlElement:LoLPlayerGoldDifferenceView Position="Support"
+                                                            PlayerBlueSide="{Binding SupportPlayerBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            PlayerRedSide="{Binding SupportPlayerRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                                            SwapPlayers="PlayerGoldDifferenceView_OnSwapPlayers" />
+
+            </Border>
+        </Grid>
+
+        <GridSplitter Grid.Row="1"
+                      Height="5"
+                      HorizontalAlignment="Stretch" />
+
+        <controlElement:LoLGoldChart Grid.Row="2"
+                                     Margin="18, 6, 18, 6"
+                                     DataContext="{Binding Path=Game, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                     GoldOwnerBlueSide="{Binding Path=TeamBlueSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                                     GoldOwnerRedSide="{Binding Path=TeamRedSide, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
     </Grid>
 </Window>

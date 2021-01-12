@@ -169,7 +169,7 @@
                                         HorizontalAlignment="Center"
                                         Margin="0, 0, 0, 3"
                                         MinorGoldDifference="{x:Static game:LoLConstants.MinorTeamPowerPlayGoldDifference}"
-                                        MediocreGoldDifference="{x:Static game:LoLConstants.MediocrePlayerGoldDifference}"
+                                        MediocreGoldDifference="{x:Static game:LoLConstants.MediocreTeamPowerPlayGoldDifference}"
                                         LargeGoldDifference="{x:Static game:LoLConstants.LargeTeamPowerPlayGoldDifference}"
                                         DataContext="{Binding ElementName=This, Path=TeamPowerPlayCollection}"
                                         PowerPlay="{Binding Path=BaronPowerPlay, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"

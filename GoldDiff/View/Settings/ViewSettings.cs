@@ -40,28 +40,6 @@ namespace GoldDiff.View.Settings
 
     #endregion
 
-    #region common window settings
-
-        private StayOnTopType _windowStayOnTop = StayOnTopType.WhileGameIsRunning;
-
-        [JsonProperty]
-        public StayOnTopType WindowStayOnTop
-        {
-            get => _windowStayOnTop;
-            set => MutateVerbose(ref _windowStayOnTop, value);
-        }
-
-        private DisplayTitleBarType _windowDisplayTitleBar = DisplayTitleBarType.Always;
-
-        [JsonProperty]
-        public DisplayTitleBarType WindowDisplayTitleBar
-        {
-            get => _windowDisplayTitleBar;
-            set => MutateVerbose(ref _windowDisplayTitleBar, value);
-        }
-
-    #endregion
-
     #region GoldDifferenceWindow settings
 
         private int _goldDifferenceWindowLeft;
@@ -98,46 +76,6 @@ namespace GoldDiff.View.Settings
         {
             get => _goldDifferenceWindowHeight;
             set => MutateVerbose(ref _goldDifferenceWindowHeight, value);
-        }
-
-    #endregion
-
-    #region GoldChartWindow settings
-
-        private int _goldChartWindowLeft;
-
-        [JsonProperty]
-        public int GoldChartWindowLeft
-        {
-            get => _goldChartWindowLeft;
-            set => MutateVerbose(ref _goldChartWindowLeft, value);
-        }
-
-        private int _goldChartWindowTop;
-
-        [JsonProperty]
-        public int GoldChartWindowTop
-        {
-            get => _goldChartWindowTop;
-            set => MutateVerbose(ref _goldChartWindowTop, value);
-        }
-
-        private int _goldChartWindowWidth;
-
-        [JsonProperty]
-        public int GoldChartWindowWidth
-        {
-            get => _goldChartWindowWidth;
-            set => MutateVerbose(ref _goldChartWindowWidth, value);
-        }
-
-        private int _goldChartWindowHeight;
-
-        [JsonProperty]
-        public int GoldChartWindowHeight
-        {
-            get => _goldChartWindowHeight;
-            set => MutateVerbose(ref _goldChartWindowHeight, value);
         }
 
     #endregion

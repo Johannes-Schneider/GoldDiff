@@ -5,6 +5,7 @@
         public const string WindowIcon = nameof(WindowIcon);
         
         public const string Coins = nameof(Coins);
+        public const string LoLTeam = nameof(LoLTeam);
         public const string LoLTurret = nameof(LoLTurret);
         public const string LoLInhibitor = nameof(LoLInhibitor);
         public const string LoLKills = nameof(LoLKills);

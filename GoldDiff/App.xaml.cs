@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,6 +18,8 @@ using GoldDiff.Shared.View.SharedTheme;
 using GoldDiff.View;
 using GoldDiff.View.Dialog;
 using GoldDiff.View.Settings;
+using log4net;
+using log4net.Config;
 
 namespace GoldDiff
 {
@@ -33,14 +36,15 @@ namespace GoldDiff
         private LoLStaticResourceCache LoLResourceCache { get; } = LoLStaticResourceCache.Load();
         private ProcessEventWatcher ProcessEventWatcher { get; } = new();
 
+        private ILog Log { get; set; } = null!;
         private Process? _targetProcess;
         private LoLClientDataPollService? _clientDataPollService;
         private LoLGame? _game;
         private GoldDifferenceWindow? _goldDifferenceWindow;
-        private GoldChartWindow? _goldChartWindow;
 
         private async void App_OnStartup(object sender, StartupEventArgs e)
         {
+            InitializeLogger();
             InitializeUserInterface();
             if (await UpdateApplication())
             {
@@ -50,6 +54,14 @@ namespace GoldDiff
 
             await UpdateResourceCacheAsync();
             StartWaitingForTargetProcess();
+        }
+        
+        private void InitializeLogger()
+        {
+            var logRepo = LogManager.GetRepository(Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepo, new FileInfo("log4net.config"));
+
+            Log = LogManager.GetLogger(typeof(App));
         }
 
         private void InitializeUserInterface()
@@ -81,6 +93,7 @@ namespace GoldDiff
                 return false;
             }
 
+            Log.Info($"Checking for application updates... Latest release version {latestRelease.Version} vs. current version {ApplicationConstants.Version}.");
             if (latestReleaseVersion <= ApplicationConstants.Version)
             {
                 return false;
@@ -98,9 +111,11 @@ namespace GoldDiff
 
             if (dialog.ShowDialog() != true)
             {
+                Log.Info($"User cancelled application update.");
                 return false;
             }
 
+            Log.Info($"User confirmed application update.");
             var temporaryPath = Environment.CurrentDirectory;
             var latestReleaseDownloadFile = Path.Combine(temporaryPath, Path.GetTempFileName());
             var unpackedDirectory = Path.Combine(temporaryPath, $"GoldDiff {latestRelease.Version}");
@@ -215,6 +230,8 @@ namespace GoldDiff
 
         private void TargetProcessStarted()
         {
+            Log.Info($"Target process ({TargetProcessName}) detected.");
+            
             _clientDataPollService?.Dispose();
             _clientDataPollService = new LoLClientDataPollService(ClientDataPollInterval);
             _clientDataPollService.GameDataReceived += ClientDataPollService_OnGameDataReceived;
@@ -231,11 +248,7 @@ namespace GoldDiff
 
         private void Game_OnInitialized(object sender, EventArgs e)
         {
-            Current.Dispatcher.Invoke(() =>
-                                      {
-                                          OpenGoldDifferenceWindow();
-                                          OpenGoldChartWindow();
-                                      });
+            Current.Dispatcher.Invoke(OpenGoldDifferenceWindow);
         }
 
         private void OpenGoldDifferenceWindow()
@@ -256,33 +269,9 @@ namespace GoldDiff
             }
         }
 
-        private void OpenGoldChartWindow()
-        {
-            if (_goldChartWindow != null)
-            {
-                _goldChartWindow.Model.Game = _game;
-                if (_goldChartWindow.WindowState == WindowState.Minimized)
-                {
-                    _goldChartWindow.WindowState = WindowState.Normal;
-                }
-            }
-            else
-            {
-                _goldChartWindow = new GoldChartWindow();
-                _goldChartWindow.Model.Game = _game;
-                _goldChartWindow.Closed += GoldChartWindow_OnClosed;
-                _goldChartWindow.Show();
-            }
-        }
-
         private void GoldDifferenceWindow_OnClosed(object? sender, EventArgs e)
         {
             _goldDifferenceWindow = null;
-        }
-
-        private void GoldChartWindow_OnClosed(object? sender, EventArgs e)
-        {
-            _goldChartWindow = null;
         }
 
         private void TargetProcessStopped()
