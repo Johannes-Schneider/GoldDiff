@@ -22,14 +22,14 @@ namespace GoldDiff.View.Resource {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StayOnTopTypeResources {
+    public class GoldDifferenceWindowResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StayOnTopTypeResources() {
+        internal GoldDifferenceWindowResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace GoldDiff.View.Resource {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GoldDiff.View.Resource.StayOnTopTypeResources", typeof(StayOnTopTypeResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GoldDiff.View.Resource.GoldDifferenceWindowResources", typeof(GoldDifferenceWindowResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,11 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanent.
+        ///   Looks up a localized string similar to Gold Difference.
         /// </summary>
-        public static string Always {
+        public static string Title {
             get {
-                return ResourceManager.GetString("Always", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Never.
-        /// </summary>
-        public static string Off {
-            get {
-                return ResourceManager.GetString("Off", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to While Ingame.
-        /// </summary>
-        public static string WhileGameIsRunning {
-            get {
-                return ResourceManager.GetString("WhileGameIsRunning", resourceCulture);
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }
