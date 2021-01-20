@@ -20,7 +20,6 @@
         x:Name="This"
         Icon="{DynamicResource {x:Static sharedIcon:GoldDiffSharedIconKeys.WindowIcon}}"
         Style="{DynamicResource {x:Static style:FlatStyleKeys.Window}}"
-        acrylic:WindowBlur.IsEnabled="True"
         AllowsTransparency="True"
         WindowStyle="None"
         ResizeMode="CanResizeWithGrip"
