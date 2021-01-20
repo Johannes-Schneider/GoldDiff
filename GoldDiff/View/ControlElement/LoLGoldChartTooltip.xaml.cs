@@ -104,16 +104,17 @@ namespace GoldDiff.View.ControlElement
             var blueSideAdvantage = Data.Points.FirstOrDefault(point => point.Series.Title == LoLGoldChart.BlueSideAdvantageSeries);
             var redSideAdvantage = Data.Points.FirstOrDefault(point => point.Series.Title == LoLGoldChart.RedSideAdvantageSeries);
 
-            if (!(blueSideAdvantage?.ChartPoint.Instance is LoLGoldSnapshot blueSideSnapshot) || !(redSideAdvantage?.ChartPoint.Instance is LoLGoldSnapshot redSideSnapshot))
+            if (!(blueSideAdvantage?.ChartPoint.Instance is LoLGoldChart.GoldAdvantageChartPoint blueSideSnapshot) || 
+                !(redSideAdvantage?.ChartPoint.Instance is LoLGoldChart.GoldAdvantageChartPoint redSideSnapshot))
             {
                 return;
             }
 
             GameTime = blueSideSnapshot.GameTime;
-            BlueSideAdvantage.TotalGold = Math.Max(0, blueSideSnapshot.TotalGold);
-            BlueSideAdvantage.NonConsumableGold = Math.Max(0, blueSideSnapshot.NonConsumableGold);
-            RedSideAdvantage.TotalGold = Math.Max(0, redSideSnapshot.TotalGold);
-            RedSideAdvantage.NonConsumableGold = Math.Max(0, redSideSnapshot.NonConsumableGold);
+            BlueSideAdvantage.TotalGold = Math.Max(0, blueSideSnapshot.TotalGoldAdvantage);
+            BlueSideAdvantage.NonConsumableGold = Math.Max(0, blueSideSnapshot.NonConsumableGoldAdvantage);
+            RedSideAdvantage.TotalGold = Math.Max(0, redSideSnapshot.TotalGoldAdvantage);
+            RedSideAdvantage.NonConsumableGold = Math.Max(0, redSideSnapshot.NonConsumableGoldAdvantage);
         }
     }
 }

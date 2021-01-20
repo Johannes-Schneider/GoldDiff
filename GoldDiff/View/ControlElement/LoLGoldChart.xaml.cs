@@ -1,18 +1,18 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using GoldDiff.Annotations;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.Shared.View.SharedConverter;
 using GoldDiff.Shared.View.SharedTheme;
 using GoldDiff.View.Converter;
+using GoldDiff.View.Settings;
 using LiveCharts;
 using LiveCharts.Configurations;
+using LiveCharts.Helpers;
 using LiveCharts.Wpf;
 
 namespace GoldDiff.View.ControlElement
@@ -129,19 +129,74 @@ namespace GoldDiff.View.ControlElement
 
     #endregion
 
+        public class GoldAdvantageChartPoint
+        {
+            public int TotalGoldAdvantage { get; set; }
+            
+            public int NonConsumableGoldAdvantage { get; set; }
+            
+            public int DisplayGoldAdvantage { get; set; }
+            
+            public TimeSpan GameTime { get; set; }
+        }
+
         public const string BlueSideAdvantageSeries = nameof(BlueSideAdvantageSeries);
         public const string RedSideAdvantageSeries = nameof(RedSideAdvantageSeries);
         private const int HiddenValue = -100;
 
-        private ChartValues<LoLGoldSnapshot> BlueSideAdvantages { get; } = new();
-        private ChartValues<LoLGoldSnapshot> RedSideAdvantages { get; } = new();
+        private ChartValues<GoldAdvantageChartPoint> BlueSideAdvantages { get; } = new();
+        private ChartValues<GoldAdvantageChartPoint> RedSideAdvantages { get; } = new();
+        private DisplayGoldType _displayGoldType;
         private bool _minimumXValueExceeded;
         private bool _minimumYValueExceeded;
 
         public LoLGoldChart()
         {
             InitializeComponent();
+
+            _displayGoldType = ViewSettings.Instance.DisplayGoldType;
+            ViewSettings.Instance.PropertyChanged += ViewSettings_OnPropertyChanged;
+            
             Initialize();
+        }
+
+        private void ViewSettings_OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case nameof(ViewSettings.DisplayGoldType) when ViewSettings.Instance.DisplayGoldType == DisplayGoldType.Total:
+                {
+                    _displayGoldType = DisplayGoldType.Total;
+                    Dispatcher.InvokeAsync(() => UpdateChartValuesToTotalGold(BlueSideAdvantages.Count));
+                    break;
+                }
+                case nameof(ViewSettings.DisplayGoldType) when ViewSettings.Instance.DisplayGoldType == DisplayGoldType.NonConsumable:
+                {
+                    _displayGoldType = DisplayGoldType.NonConsumable;
+                    Dispatcher.InvokeAsync(() => UpdateChartValuesToNonConsumableGold(BlueSideAdvantages.Count));
+                    break;
+                }
+                case nameof(ViewSettings.DisplayGoldType):
+                {
+                    throw new Exception($"Unknown {nameof(DisplayGoldType)} \"{ViewSettings.Instance.DisplayGoldType}\"!");
+                }
+            }
+        }
+
+        private void UpdateChartValuesToTotalGold(int currentCount)
+        {
+            foreach (var chartPoint in BlueSideAdvantages.Take(currentCount).Concat(RedSideAdvantages.Take(currentCount)))
+            {
+                chartPoint.DisplayGoldAdvantage = chartPoint.TotalGoldAdvantage;
+            }
+        }
+        
+        private void UpdateChartValuesToNonConsumableGold(int currentCount)
+        {
+            foreach (var chartPoint in BlueSideAdvantages.Take(currentCount).Concat(RedSideAdvantages.Take(currentCount)))
+            {
+                chartPoint.DisplayGoldAdvantage = chartPoint.NonConsumableGoldAdvantage;
+            }
         }
 
         private void Initialize()
@@ -160,18 +215,39 @@ namespace GoldDiff.View.ControlElement
 
         private void InitializeSeriesCollection()
         {
-            BlueSideAdvantages.Clear();
-            RedSideAdvantages.Clear();
+            InitializeChartValues(BlueSideAdvantages);
+            InitializeChartValues(RedSideAdvantages);
             
-            var config = Mappers.Xy<LoLGoldSnapshot>()
+            var config = Mappers.Xy<GoldAdvantageChartPoint>()
                                 .X(snapshot => snapshot.GameTime.TotalSeconds)
-                                .Y(snapshot => snapshot.Gold);
+                                .Y(snapshot => snapshot.DisplayGoldAdvantage);
 
             SeriesCollection = new SeriesCollection(config)
                                {
                                    CreateLineSeries(LoLTeamType.BlueSide),
                                    CreateLineSeries(LoLTeamType.RedSide),
                                };
+        }
+
+        private static void InitializeChartValues(NoisyCollection<GoldAdvantageChartPoint> values)
+        {
+            values.Clear();
+            //
+            // // add two points, to avoid additional optimization logic (see GoldOwner_OnGoldSnapshotAdded)
+            // values.Add(new GoldAdvantageChartPoint
+            //            {
+            //                GameTime = TimeSpan.Zero,
+            //                TotalGoldAdvantage = 0,
+            //                NonConsumableGoldAdvantage = 0,
+            //                DisplayGoldAdvantage = 0,
+            //            });
+            // values.Add(new GoldAdvantageChartPoint
+            //            {
+            //                GameTime = TimeSpan.Zero,
+            //                TotalGoldAdvantage = 0,
+            //                NonConsumableGoldAdvantage = 0,
+            //                DisplayGoldAdvantage = 0,
+            //            });
         }
 
         private LineSeries CreateLineSeries(LoLTeamType team)
@@ -206,7 +282,7 @@ namespace GoldDiff.View.ControlElement
                        LineSmoothness = 0,
                    };
         }
-        
+
         private void GoldOwner_OnGoldSnapshotAdded(object? sender, LoLGoldSnapshot e)
         {
             var newBlueSideSnapshots = (GoldOwnerBlueSide?.GoldSnapshots.Skip(BlueSideAdvantages.Count) ?? Enumerable.Empty<LoLGoldSnapshot>()).ToList();
@@ -225,12 +301,27 @@ namespace GoldDiff.View.ControlElement
                 var totalDifference = blueSnapshot.TotalGold - redSnapshot.TotalGold;
                 var nonConsumableDifference = blueSnapshot.NonConsumableGold - redSnapshot.NonConsumableGold;
 
-                BlueSideAdvantages.Add(new LoLGoldSnapshot(blueSnapshot.GameTime,
-                                                                     totalDifference >= 0 ? totalDifference : HiddenValue,
-                                                                     nonConsumableDifference >= 0 ? nonConsumableDifference : HiddenValue));
-                RedSideAdvantages.Add(new LoLGoldSnapshot(redSnapshot.GameTime,
-                                                                    totalDifference < 0 ? -totalDifference : HiddenValue,
-                                                                    nonConsumableDifference < 0 ? -nonConsumableDifference : HiddenValue));
+                var blueSideTotalDifference = totalDifference >= 0 ? totalDifference : HiddenValue; 
+                var blueSideNonConsumableDifference = nonConsumableDifference >= 0 ? nonConsumableDifference : HiddenValue;
+
+                BlueSideAdvantages.Add(new GoldAdvantageChartPoint
+                                       {
+                                           GameTime = blueSnapshot.GameTime,
+                                           TotalGoldAdvantage = blueSideTotalDifference,
+                                           NonConsumableGoldAdvantage = blueSideNonConsumableDifference,
+                                           DisplayGoldAdvantage = _displayGoldType == DisplayGoldType.Total ? blueSideTotalDifference : blueSideNonConsumableDifference,
+                                       });
+
+                var redSideTotalDifference = totalDifference < 0 ? -totalDifference : HiddenValue;
+                var redSideNonConsumableDifference = nonConsumableDifference < 0 ? -nonConsumableDifference : HiddenValue;
+                
+                RedSideAdvantages.Add(new GoldAdvantageChartPoint
+                                      {
+                                          GameTime = redSnapshot.GameTime,
+                                          TotalGoldAdvantage = redSideTotalDifference,
+                                          NonConsumableGoldAdvantage = redSideNonConsumableDifference,
+                                          DisplayGoldAdvantage = _displayGoldType == DisplayGoldType.Total ? redSideTotalDifference : redSideNonConsumableDifference,
+                                      });
             }
 
             var lastTime = newBlueSideSnapshots.Last().GameTime;
@@ -243,8 +334,8 @@ namespace GoldDiff.View.ControlElement
             }
 
             if (!_minimumYValueExceeded &&
-                BlueSideAdvantages.Any(advantage => advantage.Gold >= MinimumYAxisMaximumValue) ||
-                RedSideAdvantages.Any(advantage => advantage.Gold >= MinimumYAxisMaximumValue))
+                BlueSideAdvantages.Any(advantage => advantage.DisplayGoldAdvantage >= MinimumYAxisMaximumValue) ||
+                RedSideAdvantages.Any(advantage => advantage.DisplayGoldAdvantage >= MinimumYAxisMaximumValue))
             {
                 // set y axis scaling to auto
                 _minimumYValueExceeded = true;
