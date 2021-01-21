@@ -100,6 +100,7 @@
             <Border Grid.Row="1"
                     Padding="18, 6, 18, 6"
                     BorderThickness="0, 0, 0, 1"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}">
 
                 <Border.Background>
@@ -118,6 +119,7 @@
             <Border Grid.Row="2"
                     Padding="18, 6, 18, 6"
                     BorderThickness="0, 0, 0, 1"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                     Background="{Binding TopPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
@@ -130,6 +132,7 @@
             <Border Grid.Row="3"
                     Padding="18, 6, 18, 6"
                     BorderThickness="0, 0, 0, 1"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                     Background="{Binding JunglePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
@@ -143,6 +146,7 @@
             <Border Grid.Row="4"
                     Padding="18, 6, 18, 6"
                     BorderThickness="0, 0, 0, 1"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                     Background="{Binding MiddlePlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
@@ -156,6 +160,7 @@
             <Border Grid.Row="5"
                     Padding="18, 6, 18, 6"
                     BorderThickness="0, 0, 0, 1"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                     Background="{Binding BottomPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
@@ -169,6 +174,7 @@
             <Border Grid.Row="6"
                     Padding="18, 6, 18, 6"
                     BorderThickness="0"
+                    SnapsToDevicePixels="True"
                     BorderBrush="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundRegular}}"
                     Background="{Binding SupportPlayerBackground, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
 
@@ -180,10 +186,9 @@
             </Border>
         </Grid>
 
-        <GridSplitter Grid.Row="1"
-                      Height="3"
-                      HorizontalAlignment="Stretch"
-                      Background="{DynamicResource {x:Static theme:FlatThemeKeys.ForegroundDark}}" />
+        <view:FlatGridSplitter Grid.Row="1"
+                               Height="2"
+                               HorizontalAlignment="Stretch" />
 
         <controlElement:LoLGoldChart Grid.Row="2"
                                      Margin="18, 6, 18, 6"

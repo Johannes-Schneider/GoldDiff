@@ -5,7 +5,6 @@ using System.Linq;
 using GoldDiff.LeagueOfLegends.Game;
 using GoldDiff.Shared.LeagueOfLegends;
 using GoldDiff.View.Model;
-using GoldDiff.View.Settings;
 
 namespace GoldDiff.View.Controller
 {
@@ -219,7 +218,7 @@ namespace GoldDiff.View.Controller
 
             foreach (var player in team.Players)
             {
-                var position = player.AssignedPosition;
+                var position = player.Position;
                 if (position == LoLPositionType.Undefined)
                 {
                     position = unfilledPositions.First();
