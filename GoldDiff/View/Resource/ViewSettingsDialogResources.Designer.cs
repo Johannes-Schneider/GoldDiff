@@ -124,20 +124,20 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Display Window Title.
-        /// </summary>
-        public static string LabelDisplayTitleBar {
-            get {
-                return ResourceManager.GetString("LabelDisplayTitleBar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Game Display.
         /// </summary>
         public static string LabelGameDisplaySettings {
             get {
                 return ResourceManager.GetString("LabelGameDisplaySettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string LabelGeneralSettings {
+            get {
+                return ResourceManager.GetString("LabelGeneralSettings", resourceCulture);
             }
         }
         
@@ -160,11 +160,11 @@ namespace GoldDiff.View.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stay on Top.
+        ///   Looks up a localized string similar to Enable All Modes.
         /// </summary>
-        public static string LabelStayOnTop {
+        public static string LabelShowInAllGameModes {
             get {
-                return ResourceManager.GetString("LabelStayOnTop", resourceCulture);
+                return ResourceManager.GetString("LabelShowInAllGameModes", resourceCulture);
             }
         }
         

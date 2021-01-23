@@ -7,5 +7,7 @@
         Classic5X5,
         
         PracticeTool,
+        
+        AllRandomAllMid,
     }
 }

@@ -5,6 +5,7 @@ using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.ClientApi.Event;
 using GoldDiff.LeagueOfLegends.StaticResource;
 using GoldDiff.Shared.LeagueOfLegends;
+using GoldDiff.View.Settings;
 
 namespace GoldDiff.LeagueOfLegends.Game
 {
@@ -137,7 +138,8 @@ namespace GoldDiff.LeagueOfLegends.Game
             }
 
             Mode = gameData.Stats.GameMode;
-            if (Mode != LoLGameModeType.Classic5X5
+            if (!ViewSettings.Instance.EnableForAllGameModes
+                && Mode != LoLGameModeType.Classic5X5
             #if DEBUG
                 && Mode != LoLGameModeType.PracticeTool
             #endif

@@ -11,6 +11,7 @@
                  xmlns:theme="clr-namespace:FlatXaml.Theme;assembly=FlatXaml"
                  xmlns:sharedTheme="clr-namespace:GoldDiff.Shared.View.SharedTheme;assembly=GoldDiff.Shared"
                  xmlns:sharedResource="clr-namespace:GoldDiff.Shared.View.SharedResource;assembly=GoldDiff.Shared"
+                 xmlns:controlElement="clr-namespace:GoldDiff.View.ControlElement"
                  mc:Ignorable="d"
 
                  x:Name="This">
@@ -29,9 +30,44 @@
 
     <StackPanel Orientation="Vertical">
 
-        <!-- Appearance Settings -->
+        <!-- General Settings -->
 
         <flat:FlatGroupBox Margin="0, 0, 0, 0"
+                           CanCollapse="True"
+                           Header="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelGeneralSettings}}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" /> <!-- Show in all Game Modes -->
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Column="0"
+                            Grid.Row="0"
+                            Orientation="Horizontal">
+
+                    <flat:FlatLabel Content="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelShowInAllGameModes}}" />
+
+                    <controlElement:BetaBadge Margin="12, 0, 0, 0" />
+                </StackPanel>
+
+                <flat:FlatIconCheckBox Grid.Column="1"
+                                       Grid.Row="0"
+                                       Margin="12, 0, 0, 0"
+                                       HorizontalAlignment="Left"
+                                       IsChecked="{Binding Source={x:Static local:ViewSettings.Instance}, Path=EnableForAllGameModes, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            </Grid>
+
+        </flat:FlatGroupBox>
+
+        <!-- /General Settings -->
+
+        <!-- Appearance Settings -->
+
+        <flat:FlatGroupBox Margin="0, 12, 0, 0"
                            CanCollapse="True"
                            Header="{Binding Source={x:Static resource:ViewSettingsDialogResources.LabelAppearanceSettings}}">
 

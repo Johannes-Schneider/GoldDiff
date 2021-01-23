@@ -6,6 +6,7 @@ namespace GoldDiff.LeagueOfLegends.ClientApi.Converter
     {
         public LoLGameModeConverter() : base((LoLGameModeType.Undefined, "UNDEFINED"),
                                              (LoLGameModeType.Classic5X5, "CLASSIC"),
-                                             (LoLGameModeType.PracticeTool, "PRACTICETOOL")) { }
+                                             (LoLGameModeType.PracticeTool, "PRACTICETOOL"),
+                                             (LoLGameModeType.AllRandomAllMid, "ARAM")) { }
     }
 }

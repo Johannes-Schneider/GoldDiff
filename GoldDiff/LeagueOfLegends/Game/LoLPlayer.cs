@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using FlatXaml.Model;
 using GoldDiff.LeagueOfLegends.ClientApi;
 using GoldDiff.LeagueOfLegends.ClientApi.Player;
 using GoldDiff.LeagueOfLegends.StaticResource;
@@ -70,13 +69,19 @@ namespace GoldDiff.LeagueOfLegends.Game
         public LoLStaticChampion Champion { get; }
 
         public bool IsActivePlayer { get; }
-        
-        public LoLPositionType AssignedPosition { get; }
+
+        private LoLPositionType _position = LoLPositionType.Undefined;
+
+        public LoLPositionType Position
+        {
+            get => _position;
+            set => MutateVerbose(ref _position, value);
+        }
 
         private LoLStaticResourceCache StaticResourceCache { get; }
         private List<LoLItem> MutableItems { get; set; } = new();
 
-        public LoLPlayer(LoLStaticResourceCache? staticResourceCache, string? summonerName, LoLTeamType team, LoLPositionType assignedPosition, LoLStaticChampion? champion, bool isActivePlayer)
+        public LoLPlayer(LoLStaticResourceCache? staticResourceCache, string? summonerName, LoLTeamType team, LoLStaticChampion? champion, bool isActivePlayer)
         {
             if (string.IsNullOrEmpty(summonerName))
             {
@@ -86,7 +91,6 @@ namespace GoldDiff.LeagueOfLegends.Game
             StaticResourceCache = staticResourceCache ?? throw new ArgumentNullException(nameof(staticResourceCache));
             SummonerName = summonerName!;
             Team = team;
-            AssignedPosition = assignedPosition;
             Champion = champion ?? throw new ArgumentNullException(nameof(champion));
             IsActivePlayer = isActivePlayer;
         }

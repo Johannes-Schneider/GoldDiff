@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Security.AccessControl;
 using FlatXaml.Model;
 using Newtonsoft.Json;
 
@@ -37,6 +36,19 @@ namespace GoldDiff.View.Settings
         }
 
         private ViewSettings() { }
+
+    #endregion
+
+    #region general settings
+
+        private bool _enableForAllGameModes;
+
+        [JsonProperty]
+        public bool EnableForAllGameModes
+        {
+            get => _enableForAllGameModes;
+            set => MutateVerbose(ref _enableForAllGameModes, value);
+        }
 
     #endregion
 
@@ -81,7 +93,7 @@ namespace GoldDiff.View.Settings
     #endregion
 
     #region ILoLGoldOwner settings
-        
+
         private DisplayGoldType _displayGoldType = DisplayGoldType.NonConsumable;
 
         [JsonProperty]
@@ -112,7 +124,7 @@ namespace GoldDiff.View.Settings
             get => _displayPlayerScoresSinceLastItemAcquisition;
             set => MutateVerbose(ref _displayPlayerScoresSinceLastItemAcquisition, value);
         }
-        
+
     #endregion
 
     #region LoLTeam settings
@@ -145,7 +157,6 @@ namespace GoldDiff.View.Settings
         }
 
     #endregion
-
 
         public void Save()
         {

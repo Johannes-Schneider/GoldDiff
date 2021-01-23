@@ -36,9 +36,6 @@
     <data name="LabelGameDisplaySettings" xml:space="preserve">
         <value>Game Display</value>
     </data>
-    <data name="LabelStayOnTop" xml:space="preserve">
-        <value>Stay on Top</value>
-    </data>
     <data name="LabelDisplayPlayerScoresSinceLastItemAcquisition" xml:space="preserve">
         <value>Show Unspent KDA</value>
     </data>
@@ -57,7 +54,10 @@
     <data name="LabelTeamDisplaySettings" xml:space="preserve">
         <value>Team Display</value>
     </data>
-    <data name="LabelDisplayTitleBar" xml:space="preserve">
-        <value>Display Window Title</value>
+    <data name="LabelGeneralSettings" xml:space="preserve">
+        <value>General</value>
+    </data>
+    <data name="LabelShowInAllGameModes" xml:space="preserve">
+        <value>Enable All Modes</value>
     </data>
 </root>

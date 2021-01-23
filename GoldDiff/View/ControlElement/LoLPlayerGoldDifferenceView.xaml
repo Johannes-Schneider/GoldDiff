@@ -20,10 +20,12 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <UserControl.Resources>
-        <converter:IntToLoLGoldValueConverter x:Key="IntToLoLGoldValueConverter" />
         <flatConverter:BoolToVisibilityConverter x:Key="TrueToVisibleConverter"
                                                  TrueValue="Visible"
                                                  FalseValue="Collapsed" />
+        <flatConverter:NullToVisibilityConverter x:Key="NullToCollapsedConverter"
+                                                 IsNullValue="Collapsed"
+                                                 IsNotNullValue="Visible" />
     </UserControl.Resources>
 
     <Grid>
@@ -64,7 +66,8 @@
 
         <!-- Stats Blue Side -->
 
-        <Grid Grid.Column="2">
+        <Grid Grid.Column="2"
+              Visibility="{Binding ElementName=This, Path=PlayerBlueSide, Converter={StaticResource NullToCollapsedConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
@@ -103,19 +106,20 @@
         <!-- Gold Difference -->
 
         <local:LoLGoldOwnerGoldDifferenceView Grid.Column="3"
-                                  HorizontalAlignment="Center"
-                                  VerticalAlignment="Center"
-                                  MinorGoldDifference="{x:Static game:LoLConstants.MinorPlayerGoldDifference}"
-                                  MediocreGoldDifference="{x:Static game:LoLConstants.MediocrePlayerGoldDifference}"
-                                  LargeGoldDifference="{x:Static game:LoLConstants.LargePlayerGoldDifference}"
-                                  GoldOwnerBlueSide="{Binding ElementName=This, Path=PlayerBlueSide, Mode=OneWay}"
-                                  GoldOwnerRedSide="{Binding ElementName=This, Path=PlayerRedSide, Mode=OneWay}" />
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              MinorGoldDifference="{x:Static game:LoLConstants.MinorPlayerGoldDifference}"
+                                              MediocreGoldDifference="{x:Static game:LoLConstants.MediocrePlayerGoldDifference}"
+                                              LargeGoldDifference="{x:Static game:LoLConstants.LargePlayerGoldDifference}"
+                                              GoldOwnerBlueSide="{Binding ElementName=This, Path=PlayerBlueSide, Mode=OneWay}"
+                                              GoldOwnerRedSide="{Binding ElementName=This, Path=PlayerRedSide, Mode=OneWay}" />
 
         <!-- /Gold Difference -->
 
         <!-- Stats Red Side -->
 
-        <Grid Grid.Column="4">
+        <Grid Grid.Column="4"
+              Visibility="{Binding ElementName=This, Path=PlayerRedSide, Converter={StaticResource NullToCollapsedConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
